@@ -15,4 +15,4 @@ app.get('/', function (req, res, next) {
 
 server.listen(port);
 
-console.log("let's go http");
+console.log("let's go http://localhost:4200");
