@@ -1,5 +1,5 @@
 // port utilisé par le site
-const port = 4200;
+const port = 4550;
 
 // instanciation du serveur
 const express = require('express');
@@ -15,4 +15,4 @@ app.get('/', function (req, res, next) {
 
 server.listen(port);
 
-console.log("let's go http://localhost:4200");
+console.log("let's go http://localhost:4550");
