@@ -1,5 +1,5 @@
 //Init Jeu
-var game = new Phaser.Game(1080, 600, Phaser.AUTO, '', {
+var game = new Phaser.Game(500, 500, Phaser.AUTO, '', {
     preload: preload,
     create: create,
     update: update
@@ -7,10 +7,23 @@ var game = new Phaser.Game(1080, 600, Phaser.AUTO, '', {
 
 let cursors, cursors2;
 let player;
+let val = 0
+let randomValue;
 
 function preload() {
     this.load.image('tempHouse', '../img/tempHouse.png');
     this.load.spritesheet('perso1', '../img/perso1_45x60.png', 45, 60);
+
+    this.load.on('progress', function (value) {
+        console.log(value);
+    });
+
+    this.load.on('fileprogress', function (file) {
+        console.log(file.src);
+    });
+    this.load.on('complete', function () {
+        console.log('complete');
+    });
 }
 
 function create() {
@@ -21,16 +34,33 @@ function create() {
         'P': Phaser.KeyCode.P
     });
 
+    //A voir
+    this.stage.backgroundColor = '#ccfbff';
+    this.physics.startSystem(Phaser.Physics.ARCADE);
+    this.physics.startSystem(Phaser.Physics.P2JS);
+    this.state.start('load');
+
     this.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
     cursors2.P.onDown.add(goFull, this);
 
     player = game.add.sprite(55, 80, 'perso1');
     this.physics.arcade.enable(player);
     initPlayer(player);
+
+    /*
+    progress = game.add.graphics(0,0);
+    progress.lineStyle(2, '0x000000');
+    progress.beginFill('0x000000',1);
+    progress.drawRoundedRect(100,50,300,27,10);
+    progress.endFill();
+    progress.beginFill('0x999999',1) //For drawing progress
+
+    this.progress.drawRoundedRect(101,501,298*percentDone,25,10);
+    */
 }
 
 function update() {
-   setInterval(movePlayer(player),10000);
+    movePlayer(player);
 }
 
 //Lance le plein ecran
@@ -59,7 +89,13 @@ function getRandomInt(max) {
 }
 
 function movePlayer(player) {
-    let randomValue = getRandomInt(5);
+    if (val % 50 == 0) {
+        randomValue = getRandomInt(5);
+    }
+    val++;
+
+    //console.log('x:', player.x, 'y:', player.y);
+    //console.log(game.height, game.width);
 
     player.body.velocity.x = 0;
     player.body.velocity.y = 0;
