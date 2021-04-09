@@ -12,19 +12,25 @@ let randomValue;
 
 var text;
 var button;
+let mapPilou;
+var layer;
+
 
 function preload() {
     game.load.spritesheet('button', '/img/button.png', 960, 480);
     game.load.image('tempHouse', '../img/tempHouse.png');
     game.load.spritesheet('perso1', '../img/perso1_45x60.png', 45, 60);
+
+    game.load.tilemapTiledJSON('pilou', '../pilou/pilou.json');
+    game.load.image('ptna', '../pilou/A.png');
+    game.load.image('ptnb', '../pilou/B.png');
+    game.load.image('collider', '../pilou/collider.png');
+    game.load.image('solmap', '../pilou/sol.png');
+
+
 }
 
 function create() {
-    //	You can listen for each of these events from Phaser.Loader
-    game.load.onLoadStart.add(loadStart, this);
-    game.load.onFileComplete.add(fileComplete, this);
-    game.load.onLoadComplete.add(loadComplete, this);
-
     //	Just to kick things off
     button = game.add.button(game.world.centerX - 120, game.world.centerY - 120, 'button', start, this, 2, 1, 0);
     button.width = 240;
@@ -42,11 +48,15 @@ function create() {
     
     this.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
     cursors2.P.onDown.add(goFull, this);
+
     
 }
 
 function update() {
-    if(!button.visible) movePlayer(player);
+    if(!button.visible) {
+        
+        movePlayer(player);
+    }
     
 }
 
@@ -110,6 +120,15 @@ function movePlayer(player) {
 }
 
 function start() {
+    mapPilou = game.make.tilemap('pilou');
+    mapPilou.addTilesetImage('sol','ptna');
+    mapPilou.addTilesetImage('sol','ptnb');
+    mapPilou.addTilesetImage('collisions', 'collider');
+    mapPilou.addTilesetImage('sol','solmap');
+
+    layer = mapPilou.createLayer('sol');
+    layer.resizeWorld();
+    
     player = game.add.sprite(55, 80, 'perso1');
     this.physics.arcade.enable(player);
     initPlayer(player);
