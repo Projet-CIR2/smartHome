@@ -20,11 +20,17 @@ function preload() {
 }
 
 function create() {
-    //Button Loader
+    //	You can listen for each of these events from Phaser.Loader
+    game.load.onLoadStart.add(loadStart, this);
+    game.load.onFileComplete.add(fileComplete, this);
+    game.load.onLoadComplete.add(loadComplete, this);
+
+    //	Just to kick things off
     button = game.add.button(game.world.centerX - 140, 220, 'button', start, this, 2, 1, 0);
     button.width = 240;
     button.height = 120;
 
+    //	Progress report
     text = game.add.text(game.world.centerX - 95, game.world.centerY - 95, 'Start Game', { fill: '#ffffff' });
 
     game.stage.backgroundColor = '#182d3b'
@@ -36,15 +42,17 @@ function create() {
     
     this.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
     cursors2.P.onDown.add(goFull, this);
+    
 }
 
 function update() {
     if(button.visible == false) {
         movePlayer(player);
     }
+    
 }
 
-//Plein écran
+//Lance le plein ecran
 function goFull() {
     if (this.scale.isFullScreen) this.scale.stopFullScreen();
     else this.scale.startFullScreen(false);
@@ -65,12 +73,10 @@ function initPlayer(perso) {
     perso.sendToBack();
 }
 
-//Random INT
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 
-//Moove du Joueur random
 function movePlayer(player) {
     if (val % 50 == 0) {
         randomValue = getRandomInt(5);
@@ -78,6 +84,7 @@ function movePlayer(player) {
     val++;
 
     //console.log('x:', player.x, 'y:', player.y);
+    //console.log(game.height, game.width);
 
     player.body.velocity.x = 0;
     player.body.velocity.y = 0;
@@ -104,7 +111,6 @@ function movePlayer(player) {
     }
 }
 
-//Start Game
 function start() {
     player = game.add.sprite(55, 80, 'perso1');
     this.physics.arcade.enable(player);
