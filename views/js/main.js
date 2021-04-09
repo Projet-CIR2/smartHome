@@ -1,5 +1,5 @@
 //Init Jeu
-var game = new Phaser.Game(500, 500, Phaser.AUTO, '', {
+var game = new Phaser.Game(1180, 720, Phaser.AUTO, '', {
     preload: preload,
     create: create,
     update: update
@@ -10,57 +10,46 @@ let player;
 let val = 0
 let randomValue;
 
+var text;
+var button;
+
 function preload() {
-    this.load.image('tempHouse', '../img/tempHouse.png');
-    this.load.spritesheet('perso1', '../img/perso1_45x60.png', 45, 60);
-
-    this.load.on('progress', function (value) {
-        console.log(value);
-    });
-
-    this.load.on('fileprogress', function (file) {
-        console.log(file.src);
-    });
-    this.load.on('complete', function () {
-        console.log('complete');
-    });
+    game.load.spritesheet('button', '/img/button.png', 960, 480);
+    game.load.image('tempHouse', '../img/tempHouse.png');
+    game.load.spritesheet('perso1', '../img/perso1_45x60.png', 45, 60);
 }
 
 function create() {
-    this.add.image(500, 300, 'tempHouse');
+    //	You can listen for each of these events from Phaser.Loader
+    game.load.onLoadStart.add(loadStart, this);
+    game.load.onFileComplete.add(fileComplete, this);
+    game.load.onLoadComplete.add(loadComplete, this);
+
+    //	Just to kick things off
+    button = game.add.button(game.world.centerX - 140, 220, 'button', start, this, 2, 1, 0);
+    button.width = 240;
+    button.height = 120;
+
+    //	Progress report
+    text = game.add.text(game.world.centerX - 95, game.world.centerY - 95, 'Start Game', { fill: '#ffffff' });
+
+    game.stage.backgroundColor = '#182d3b'
 
     cursors = this.input.keyboard.createCursorKeys();
     cursors2 = this.input.keyboard.addKeys({
         'P': Phaser.KeyCode.P
     });
-
-    //A voir
-    this.stage.backgroundColor = '#ccfbff';
-    this.physics.startSystem(Phaser.Physics.ARCADE);
-    this.physics.startSystem(Phaser.Physics.P2JS);
-    this.state.start('load');
-
+    
     this.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
     cursors2.P.onDown.add(goFull, this);
-
-    player = game.add.sprite(55, 80, 'perso1');
-    this.physics.arcade.enable(player);
-    initPlayer(player);
-
-    /*
-    progress = game.add.graphics(0,0);
-    progress.lineStyle(2, '0x000000');
-    progress.beginFill('0x000000',1);
-    progress.drawRoundedRect(100,50,300,27,10);
-    progress.endFill();
-    progress.beginFill('0x999999',1) //For drawing progress
-
-    this.progress.drawRoundedRect(101,501,298*percentDone,25,10);
-    */
+    
 }
 
 function update() {
-    movePlayer(player);
+    if(button.visible == false) {
+        movePlayer(player);
+    }
+    
 }
 
 //Lance le plein ecran
@@ -120,4 +109,13 @@ function movePlayer(player) {
         player.animations.stop();
         player.animations.play('face');
     }
+}
+
+function start() {
+    player = game.add.sprite(55, 80, 'perso1');
+    this.physics.arcade.enable(player);
+    initPlayer(player);
+
+    text.visible = false;
+    button.visible = false;
 }
