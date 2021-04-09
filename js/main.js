@@ -1,5 +1,5 @@
 //Init Jeu
-var game = new Phaser.Game(window.innerWidth *60/100, window.innerHeight *60/100, Phaser.AUTO, 'game_page', {
+var game = new Phaser.Game(window.innerWidth * 8/12 - 30, window.innerHeight - 56, Phaser.AUTO, 'game_page', {
     preload: preload,
     create: create,
     update: update
@@ -26,12 +26,12 @@ function create() {
     game.load.onLoadComplete.add(loadComplete, this);
 
     //	Just to kick things off
-    button = game.add.button(game.world.centerX - 140, 220, 'button', start, this, 2, 1, 0);
+    button = game.add.button(game.world.centerX - 120, game.world.centerY - 120, 'button', start, this, 2, 1, 0);
     button.width = 240;
     button.height = 120;
 
     //	Progress report
-    text = game.add.text(game.world.centerX - 95, game.world.centerY - 95, 'Start Game', { fill: '#ffffff' });
+    text = game.add.text(game.world.centerX - 70, game.world.centerY - 75, 'Start Game', { fill: '#ffffff' });
 
     game.stage.backgroundColor = '#182d3b'
 
@@ -46,9 +46,7 @@ function create() {
 }
 
 function update() {
-    if(button.visible == false) {
-        movePlayer(player);
-    }
+    if(!button.visible) movePlayer(player);
     
 }
 
