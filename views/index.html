@@ -5,6 +5,7 @@
     <meta charset="utf-8"/>
     <title>Smart Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="index.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -54,9 +55,10 @@
 
     <div class="row">
 
-        <div class="col-sm-8" style="background-color: black;" id="game_page">
+        <div class="col-sm-8" id="game_page" style="background-color: black;">
             <script src="/js/load.js"></script>
             <script src="/js/main.js"></script>
+
         </div>
 
         <div class="col-sm-4" style="background-color: red;">
@@ -65,8 +67,8 @@
 
                 <div class="col-sm-6" style="background-color: green;">
                     <div class="btn-group" style="margin: 30px 0px 0px 100px;">
-                        <button type="button" class="btn bg-transparent border border-dark">Mise à jour</button>
-                        <button type="button" class="btn bg-transparent border border-dark">Upgrade</button>
+                        <button type="button" class="btn bg-transparent border border-dark" id="MaJ">Mise à jour</button>
+                        <button type="button" class="btn bg-transparent border border-dark" id="Upgrade">Upgrade</button>
                     </div>
 
                     <div class="container-fluid" style="background-color:rgb(100, 100, 100);margin: 20px 10px 20px 5px;">
