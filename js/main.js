@@ -14,18 +14,15 @@ var text;
 var button;
 let mapPilou;
 var layer;
+var layer2;
 
 function preload() {
     game.load.spritesheet('button', '/img/button.png', 960, 480);
     game.load.image('tempHouse', '../img/tempHouse.png');
     game.load.spritesheet('perso1', '../img/perso1_45x60.png', 45, 60);
 
-    game.load.tilemapTiledJSON('map', '../pilou/map.json');
-
-    game.load.image('ptna', '../pilou/A.png');
-    game.load.image('ptnb', '../pilou/B.png');
-    game.load.image('collider', '../pilou/collider.png');
-    game.load.image('solmap', '../pilou/sol.png');
+    game.load.tilemap('map', '../testPathfinding/new.json', null, Phaser.Tilemap.TILED_JSON);
+    game.load.image('tiles', '../testPathfinding/map.png');
 }
 
 function create() {
@@ -47,14 +44,13 @@ function create() {
     this.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
     cursors2.P.onDown.add(goFull, this);
 
+    
 
-    mapPilou = game.make.tilemap("map");
-    mapPilou.addTilesetImage('pointA', 'ptna');
 }
 
 function update() {
     if (!button.visible) {
-
+        game.physics.arcade.collide(player, layer2);
         movePlayer(player);
     }
 
@@ -120,10 +116,20 @@ function movePlayer(player) {
 }
 
 function start() {
+    mapPilou = game.add.tilemap('map');
+    mapPilou.addTilesetImage('map', 'tiles');
+    
+    layer1 = mapPilou.createLayer('Calque de Tuiles 1');
+    layer2 = mapPilou.createLayer('collider');
+    layer1.resizeWorld();
+    layer2.resizeWorld();
 
-
-    player = game.add.sprite(55, 80, 'perso1');
+    player = game.add.sprite(1100, 300, 'perso1');
     this.physics.arcade.enable(player);
+
+    player.body.bounce.set(0.6);
+    player.body.tilePadding.set(32);
+
     initPlayer(player);
 
     text.visible = false;

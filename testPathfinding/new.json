@@ -1,9 +1,17 @@
 { "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "format":"json",
+         "target":"map.json"
+        }
+    },
  "height":9,
  "infinite":false,
  "layers":[
         {
-         "data":[4, 4, 4, 4, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 4, 4, 4, 4],
+         "data":[4, 4, 4, 4, 1, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 4, 4, 4, 4],
          "height":9,
          "id":1,
          "name":"Calque de Tuiles 1",
@@ -13,47 +21,40 @@
          "width":9,
          "x":0,
          "y":0
+        }, 
+        {
+         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+         "height":9,
+         "id":4,
+         "name":"collider",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":9,
+         "x":0,
+         "y":0
         }],
- "nextlayerid":2,
+ "nextlayerid":5,
  "nextobjectid":1,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.5.0",
  "tileheight":64,
- "name":"titles",
  "tilesets":[
         {
-         "columns":0,
+         "columns":4,
          "firstgid":1,
-         "grid":
-            {
-             "height":1,
-             "orientation":"orthogonal",
-             "width":1
-            },
+         "image":"map.png",
+         "imageheight":64,
+         "imagewidth":256,
          "margin":0,
+         "name":"map",
          "spacing":0,
          "tilecount":4,
          "tileheight":64,
          "tiles":[
                 {
-                 "id":0,
-                 "image":"A.png",
-                 "imageheight":64,
-                 "imagewidth":64,
-                 "name":"pointA"
-                }, 
-                {
-                 "id":1,
-                 "image":"B.png",
-                 "imageheight":64,
-                 "imagewidth":64
-                }, 
-                {
                  "id":2,
-                 "image":"collider.png",
-                 "imageheight":64,
-                 "imagewidth":64,
                  "objectgroup":
                     {
                      "draworder":"index",
@@ -61,14 +62,14 @@
                      "name":"",
                      "objects":[
                             {
-                             "height":63.7849944008959,
+                             "height":63.8646261042678,
                              "id":1,
                              "name":"",
                              "rotation":0,
                              "type":"",
                              "visible":true,
-                             "width":63.8646261042678,
-                             "x":0.0796317033719049,
+                             "width":63.7849944008959,
+                             "x":0,
                              "y":0.0796317033719049
                             }],
                      "opacity":1,
@@ -77,12 +78,6 @@
                      "x":0,
                      "y":0
                     }
-                }, 
-                {
-                 "id":3,
-                 "image":"sol.png",
-                 "imageheight":64,
-                 "imagewidth":64
                 }],
          "tilewidth":64
         }],
