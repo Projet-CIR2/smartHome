@@ -6,6 +6,33 @@ const server = require('http').createServer(app);
 
 const io = require('socket.io')(server);
 
+var PF = require('pathfinding');
+
+var tab = [
+    [0,1,0],
+    [0,0,0],
+]
+
+var grid = new PF.Grid(2, 3); 
+
+var finder = new PF.AStarFinder();
+
+
+for (var i = 0; i < 2; i++) {
+    for (var j = 0; j < 3; j++) {
+        //console.log(tab[i][j]);
+        if(tab[i][j] == 1) {
+            grid.setWalkableAt(i, j, false);
+        }
+    }
+}
+
+var path = finder.findPath(0,0,0,2, grid);
+
+console.log(path);
+
+var gridBackup = grid.clone();
+
 app.use(express.static(__dirname + "/"));
 
 app.get('/', (req, res, next) => {

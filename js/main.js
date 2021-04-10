@@ -1,5 +1,5 @@
 //Init Jeu
-var game = new Phaser.Game(window.innerWidth * 8/12 - 30, window.innerHeight - 56, Phaser.AUTO, 'game_page', {
+var game = new Phaser.Game(window.innerWidth * 8 / 12 - 30, window.innerHeight - 56, Phaser.AUTO, 'game_page', {
     preload: preload,
     create: create,
     update: update
@@ -15,19 +15,17 @@ var button;
 let mapPilou;
 var layer;
 
-
 function preload() {
     game.load.spritesheet('button', '/img/button.png', 960, 480);
     game.load.image('tempHouse', '../img/tempHouse.png');
     game.load.spritesheet('perso1', '../img/perso1_45x60.png', 45, 60);
 
-    game.load.tilemapTiledJSON('pilou', '../pilou/pilou.json');
+    game.load.tilemapTiledJSON('map', '../pilou/map.json');
+
     game.load.image('ptna', '../pilou/A.png');
     game.load.image('ptnb', '../pilou/B.png');
     game.load.image('collider', '../pilou/collider.png');
     game.load.image('solmap', '../pilou/sol.png');
-
-
 }
 
 function create() {
@@ -45,19 +43,21 @@ function create() {
     cursors2 = this.input.keyboard.addKeys({
         'P': Phaser.KeyCode.P
     });
-    
+
     this.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
     cursors2.P.onDown.add(goFull, this);
 
-    
+
+    mapPilou = game.make.tilemap("map");
+    mapPilou.addTilesetImage('pointA', 'ptna');
 }
 
 function update() {
-    if(!button.visible) {
-        
+    if (!button.visible) {
+
         movePlayer(player);
     }
-    
+
 }
 
 //Lance le plein ecran
@@ -120,15 +120,8 @@ function movePlayer(player) {
 }
 
 function start() {
-    mapPilou = game.make.tilemap('pilou');
-    mapPilou.addTilesetImage('sol','ptna');
-    mapPilou.addTilesetImage('sol','ptnb');
-    mapPilou.addTilesetImage('collisions', 'collider');
-    mapPilou.addTilesetImage('sol','solmap');
 
-    layer = mapPilou.createLayer('sol');
-    layer.resizeWorld();
-    
+
     player = game.add.sprite(55, 80, 'perso1');
     this.physics.arcade.enable(player);
     initPlayer(player);
