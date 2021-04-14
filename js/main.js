@@ -17,6 +17,10 @@ var layer;
 var layer2;
 let mur;
 
+// testsssssssssssss
+// let barreDebit = new Barres('debit');
+// let compteur = 0;
+
 function preload() {
     game.load.spritesheet('button', '/img/button.png', 960, 480);
     game.load.image('tempHouse', '../img/tempHouse.png');
@@ -52,6 +56,9 @@ function update() {
         movePlayer(player);
     }
 
+    // barreDebit.modifBarre(compteur);
+    // if (compteur < 100) compteur += 0.1;
+    // console.log(compteur);
 }
 
 //Lance le plein ecran
