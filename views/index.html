@@ -5,13 +5,14 @@
     <meta charset="utf-8"/>
     <title>Smart Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="index.css" />
+    <!--<link rel="stylesheet" href="index.css" />-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="../node_modules/phaser-ce/build/phaser.min.js"></script>
     <script src="../node_modules/phaser-ce/build/phaser.js"></script>
+    
 
     <link rel="stylesheet" type="text/css" href="./css/index.css"/>
 </head>
@@ -66,38 +67,76 @@
             <div class="row" style="height: 65vh">
 
                 <div class="col-sm-6" style="background-color: green;">
-                    <div class="btn-group" style="margin: 30px 0px 0px 100px;">
+
+                    
+                    <div class="btn-group" style="margin: 10px 0px 0px 20px;">
                         <button type="button" class="btn bg-transparent border border-dark" id="MaJ">Mise à jour</button>
                         <button type="button" class="btn bg-transparent border border-dark" id="Upgrade">Upgrade</button>
                     </div>
 
-                    <div class="container-fluid" style="background-color:rgb(100, 100, 100);margin: 20px 10px 20px 5px;">
-                        <h6>Détecteur de fumée :</h6>
-                        <a>Détecte si une fumée est présente dans l'habitation</a>
-                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning"
-                             role="progressbar" style="width: 75%"
-                             aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"> 75%</div>
-                        <button type="button" class="btn btn-secondary btn-sm" style="margin: 5px 0px 0px 130px;">Mettre a jour</button>
-                    </div>
 
-                    <div class="container-fluid" style="background-color: rgb(100, 100, 100);margin: 20px 10px 20px 5px;">
-                        <h6>Caméra de sécurité :</h6>
-                        <a>Détecte un cambrioleur ou un mouvement suspect</a>
-                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning"
-                             role="progressbar" style="width: 75%"
-                             aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"> 75%</div>
-                        <button type="button" class="btn btn-secondary btn-sm" style="margin: 5px 0px 0px 130px;">Mettre a jour</button>
-                    </div>
+                    <div id="d_MaJ" style="display: block;">
+
+                        <div class="container-fluid" style="background-color:rgb(100, 100, 100);margin: 10px 5px 10px 5px;">
+                            <h7>Détecteur de fumée :</h7>
+                            <a style="font-size: small;">Détecte si une fumée est présente dans l'habitation</a>
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning"
+                                role="progressbar" style="width: 75%; height: 20px"
+                                aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"> 75%</div>
+                            <button type="button" class="btn btn-secondary btn-sm" style="margin: 5px 0px 0px 50px;">Mettre a jour</button>
+                        </div>
+
+                        <div class="container-fluid" style="background-color: rgb(100, 100, 100);margin: 10px 5px 10px 5px;">
+                            <h7>Caméra de sécurité :</h7>
+                            <a style="font-size: small;">Détecte un cambrioleur ou un mouvement suspect</a>
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning"
+                                role="progressbar" style="width: 75%; height: 20px"
+                                aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"> 75%</div>
+                            <button type="button" class="btn btn-secondary btn-sm" style="margin: 5px 0px 0px 50px;">Mettre a jour</button>
+                        </div>
                     
-                    <div class="containerfluid" style="background-color: rgb(100, 100, 100);margin: 20px 10px 20px 5px;">
-                        <h6>Capteur de présence :</h6>
-                        <a>Permet d'allumer la lumière quand quelqu'un est présent</a>
-                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning"
-                             role="progressbar" style="width: 75%"
-                             aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"> 75%</div>
-                        <button type="button" class="btn btn-secondary btn-sm" style="margin: 5px 0px 0px 130px;">Mettre a jour</button>
+                        <div class="containerfluid" style="background-color: rgb(100, 100, 100);margin: 10px 5px 10px 5px;">
+                            <h7>Capteur de présence :</h7>
+                            <a style="font-size: small;">Permet d'allumer la lumière quand quelqu'un est présent</a>
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning"
+                                role="progressbar" style="width: 75%; height: 20px"
+                                aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"> 75%</div>
+                            <button type="button" class="btn btn-secondary btn-sm" style="margin: 5px 0px 0px 50px;">Mettre a jour</button>
+                        </div>
+
                     </div>
 
+                    <div id="d_Upgrade" style="display: none;">
+
+                        <div class="container-fluid" style="background-color:rgb(100, 100, 100);margin: 10px 5px 10px 5px;">
+                            <h7>Isolant Fibre de verre :</h7>
+                            <a style="font-size: small;">Une vitre qui atténue les bruits et retiens la chaleur</a>
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning"
+                                role="progressbar" style="width: 75%; height: 20px"
+                                aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"> 75%</div>
+                            <button type="button" class="btn btn-secondary btn-sm" style="margin: 5px 0px 0px 50px;">Mettre a jour</button>
+                        </div>
+
+                        <div class="container-fluid" style="background-color: rgb(100, 100, 100);margin: 10px 5px 10px 5px;">
+                            <h7>Fenetre triple vitrage :</h7>
+                            <a style="font-size: small;">Une vitre qui atténue les bruits et retiens la chaleur</a>
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning"
+                                role="progressbar" style="width: 75%; height: 20px"
+                                aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"> 75%</div>
+                            <button type="button" class="btn btn-secondary btn-sm" style="margin: 5px 0px 0px 50px;">Mettre a jour</button>
+                        </div>
+                    
+                        <div class="containerfluid" style="background-color: rgb(100, 100, 100);margin: 10px 5px 10px 5px;">
+                            <h7>lumière LED :</h7>
+                            <a style="font-size: small;">Meilleur luminosité et moins de consommation</a>
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning"
+                                role="progressbar" style="width: 75%; height: 20px"
+                                aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"> 75%</div>
+                            <button type="button" class="btn btn-secondary btn-sm" style="margin: 5px 0px 0px 50px;">Mettre a jour</button>
+                        </div>
+
+                    </div>
+                    <script src="../js/scriptmagique.js"></script>
                 </div>
 
                 <div class="col-sm-6" style="background-color: blue;">
