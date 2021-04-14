@@ -1,5 +1,5 @@
 //Init Jeu
-var game = new Phaser.Game(window.innerWidth * 8/12 - 30, window.innerHeight - 56, Phaser.AUTO, 'game_page', {
+var game = new Phaser.Game(window.innerWidth * 8 / 12 - 30, window.innerHeight - 56, Phaser.AUTO, 'game_page', {
     preload: preload,
     create: create,
     update: update
@@ -12,19 +12,21 @@ let randomValue;
 
 var text;
 var button;
+let mapPilou;
+var layer;
+var layer2;
+let mur;
 
 function preload() {
     game.load.spritesheet('button', '/img/button.png', 960, 480);
     game.load.image('tempHouse', '../img/tempHouse.png');
     game.load.spritesheet('perso1', '../img/perso1_45x60.png', 45, 60);
+
+    game.load.tilemap('map', '../testPathfinding/new.json', null, Phaser.Tilemap.TILED_JSON);
+    game.load.image('tiles', '../testPathfinding/map.png');
 }
 
 function create() {
-    //	You can listen for each of these events from Phaser.Loader
-    game.load.onLoadStart.add(loadStart, this);
-    game.load.onFileComplete.add(fileComplete, this);
-    game.load.onLoadComplete.add(loadComplete, this);
-
     //	Just to kick things off
     button = game.add.button(game.world.centerX - 120, game.world.centerY - 120, 'button', start, this, 2, 1, 0);
     button.width = 240;
@@ -39,15 +41,17 @@ function create() {
     cursors2 = this.input.keyboard.addKeys({
         'P': Phaser.KeyCode.P
     });
-    
+
     this.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
     cursors2.P.onDown.add(goFull, this);
-    
 }
 
 function update() {
-    if(!button.visible) movePlayer(player);
-    
+    if (!button.visible) {
+        game.physics.arcade.collide(player,mur);
+        movePlayer(player);
+    }
+
 }
 
 //Lance le plein ecran
@@ -56,30 +60,46 @@ function goFull() {
     else this.scale.startFullScreen(false);
 }
 
-function initPlayer(perso) {
-    //Modifie la taille et active les collisions avec les bords de la map
-    perso.body.setSize(43, 24, 2, 40);
-    perso.body.collideWorldBounds = true;
-
-    //Découpage des animations du personnage
-    perso.animations.add('left', [3, 4, 5], 10, true);
-    perso.animations.add('face', [1], 1, true);
-    perso.animations.add('back', [10], 1, true);
-    perso.animations.add('right', [6, 7, 8], 10, true);
-    perso.animations.add('down', [0, 1, 2], 10, true);
-    perso.animations.add('up', [9, 10, 11], 10, true);
-    perso.sendToBack();
-}
-
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
+function start() {
+    mapPilou = game.add.tilemap('map');
+    mapPilou.addTilesetImage('map', 'tiles');
+    
+    layer1 = mapPilou.createLayer('Calque de Tuiles 1');
+    layer2 = mapPilou.createLayer('collider');
+    layer1.resizeWorld();
+    layer2.resizeWorld();
+
+    mur = mapPilou.getLayer('collider');
+    
+    text.visible = false;
+    button.visible = false;
+
+    player = game.add.sprite(260, 600, 'perso1');
+    game.physics.arcade.enable(player);
+
+    player.body.bounce.y = 0.1;
+    player.body.collideWorldBounds = true;
+    player.body.setSize(43, 24, 2, 40);
+
+    player.animations.add('left', [3, 4, 5], 10, true);
+    player.animations.add('face', [1], 1, true);
+    player.animations.add('back', [10], 1, true);
+    player.animations.add('right', [6, 7, 8], 10, true);
+    player.animations.add('down', [0, 1, 2], 10, true);
+    player.animations.add('up', [9, 10, 11], 10, true);
+    
+    game.physics.arcade.enable(mur);
+    
+}
 
 function movePlayer(player) {
-    if (val % 50 == 0) {
-        randomValue = getRandomInt(5);
-    }
-    val++;
+    // if (val % 50 == 0) {
+    //     randomValue = getRandomInt(5);
+    // }
+    // val++;
 
     //console.log('x:', player.x, 'y:', player.y);
     //console.log(game.height, game.width);
@@ -109,11 +129,3 @@ function movePlayer(player) {
     }
 }
 
-function start() {
-    player = game.add.sprite(55, 80, 'perso1');
-    this.physics.arcade.enable(player);
-    initPlayer(player);
-
-    text.visible = false;
-    button.visible = false;
-}
