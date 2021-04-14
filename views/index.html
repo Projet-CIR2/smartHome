@@ -11,7 +11,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="../node_modules/phaser-ce/build/phaser.min.js"></script>
     <script src="../node_modules/phaser-ce/build/phaser.js"></script>
-
+    <script src="/socket.io/socket.io.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/index.css"/>
 </head>
 
@@ -53,10 +53,10 @@
 <div class="container-fluid">
 
     <div class="row">
-
+        <script> let socket = io();</script>
         <div class="col-sm-8" style="background-color: black;" id="game_page">
-            <script src="/js/load.js"></script>
-            <script src="/js/main.js"></script>
+            <script src="../js/load.js"></script>
+            <script src="../js/main.js"></script>
         </div>
 
         <div class="col-sm-4" style="background-color: red;">
@@ -126,11 +126,13 @@
     </div>
 </div>
 <!--Footer-->
+
 <script> 
+   
     function coord(event){
     
     var e = event || window.event;
-    //console.log(e.clientX,e.clientY);
+    console.log(e.clientX,e.clientY);
     }
 
 </script>

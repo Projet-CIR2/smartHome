@@ -15,14 +15,18 @@ var button;
 let mapPilou;
 var layer;
 var layer2;
-let mur;
+
+let matrixMap = new Array(9);
+for (var i = 0; i < 9; i++) {
+    matrixMap[i] = new Array(9);
+}
 
 function preload() {
     game.load.spritesheet('button', '/img/button.png', 960, 480);
     game.load.image('tempHouse', '../img/tempHouse.png');
     game.load.spritesheet('perso1', '../img/perso1_45x60.png', 45, 60);
 
-    game.load.tilemap('map', '../testPathfinding/new.json', null, Phaser.Tilemap.TILED_JSON);
+    game.load.tilemap('map', '../testPathfinding/newmaptest.json', null, Phaser.Tilemap.TILED_JSON);
     game.load.image('tiles', '../testPathfinding/map.png');
 }
 
@@ -48,7 +52,7 @@ function create() {
 
 function update() {
     if (!button.visible) {
-        game.physics.arcade.collide(player,mur);
+        game.physics.arcade.collide(player, layer2);
         movePlayer(player);
     }
 
@@ -66,14 +70,12 @@ function getRandomInt(max) {
 function start() {
     mapPilou = game.add.tilemap('map');
     mapPilou.addTilesetImage('map', 'tiles');
-    
+
     layer1 = mapPilou.createLayer('Calque de Tuiles 1');
     layer2 = mapPilou.createLayer('collider');
     layer1.resizeWorld();
     layer2.resizeWorld();
 
-    mur = mapPilou.getLayer('collider');
-    
     text.visible = false;
     button.visible = false;
 
@@ -90,9 +92,18 @@ function start() {
     player.animations.add('right', [6, 7, 8], 10, true);
     player.animations.add('down', [0, 1, 2], 10, true);
     player.animations.add('up', [9, 10, 11], 10, true);
-    
-    game.physics.arcade.enable(mur);
-    
+
+    mapPilou.setCollisionBetween(0, 3, true, 'collider');
+
+    let coucou = mapPilou.layers[1].data;
+
+    for (let u = 0; u < 9; u++) {
+        for (let v = 0; v < 9; v++) {
+           if(coucou[u][v].index == -1) matrixMap[u][v] = 0;
+           else matrixMap[u][v]= 1; 
+        }
+    }
+    socket.emit('matrix', matrixMap);
 }
 
 function movePlayer(player) {
@@ -128,4 +139,3 @@ function movePlayer(player) {
         player.animations.play('face');
     }
 }
-
