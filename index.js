@@ -32,7 +32,7 @@ app.get('/comment-jouer', (req, res, next) => {
 io.on('connection', function (socket) {
     io.emit('Hello', 'A new connection on our website !'); // permet d'envoyer le message à toutes les connections
     socket.on('matrix', data => {
-        console.table(data);
+        //console.table(data);
 
         var grid = new PF.Grid(9, 9);
 
@@ -44,7 +44,7 @@ io.on('connection', function (socket) {
         for (var i = 0; i < 9; i++) {
             for (var j = 0; j < 9; j++) {
                 if(data[i][j] == 1) {
-                    console.log(i,j," ");
+                    //console.log(i,j," ");
                     grid.setWalkableAt(i, j, false);
                 }
             }
@@ -53,7 +53,7 @@ io.on('connection', function (socket) {
         var path = finder.findPath(8, 4, 0, 4, grid);
 
         console.log(path);
-
+        socket.emit('path', path);
         var gridBackup = grid.clone();
 
     });
