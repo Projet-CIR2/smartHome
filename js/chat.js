@@ -3,16 +3,16 @@ let chat = (function () {
         afficheTexte(texte) {
             let divChat = document.getElementById('chat');
 
-            if (divChat.childElementCount >= 50) divChat.removeChild(divChat.firstElementChild);
+            if (divChat.childElementCount >= 10) divChat.removeChild(divChat.lastElementChild);
 
             let p = document.createElement('p');
-            divChat.appendChild(p);
-            p.textContent = window.Date;
+            divChat.prepend(p);
+            p.textContent = window.Date();
         },
 
         lanceTexte() {
             let compteur = 0;
-            setInterval(this.afficheTexte, 100, 'coucou');
+            setInterval(this.afficheTexte, 1000, 'coucou');
         }
     }
 })();
