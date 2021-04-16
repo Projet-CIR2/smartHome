@@ -1,0 +1,8 @@
+p {
+    margin-bottom: 2px;
+}
+
+#chat {
+    overflow: auto;
+    /*height: 65vh;*/
+}
