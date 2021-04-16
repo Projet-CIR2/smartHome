@@ -1,5 +1,5 @@
 //Init Jeu
-var game = new Phaser.Game(window.innerWidth * 8 / 12, window.innerHeight - 56, Phaser.AUTO, 'game_page', {
+var game = new Phaser.Game(window.innerWidth * 8 / 12 + 1, window.innerHeight - 56, Phaser.AUTO, 'game_page', {
     preload: preload,
     create: create,
     update: update
