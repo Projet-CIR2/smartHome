@@ -118,7 +118,7 @@ function start() {
     socket.emit('matrix', matrixMap);
 
     socket.on('path', path => {
-        testt = path;
+        testt = path
     });
 }
 
@@ -159,17 +159,17 @@ function movePlayer(player) {
 function calculPixelX(x) {
     //console.log(game.height, result, newCoordX);
     //console.log(game.width, result2, newCoordY);
-    
-    let test2 = x * 64 ;
+
+    let test2 = x * 64;
     //console.log(mapPilou.width, mapPilou.height);
     return test2;
 }
 
 function calculPixelY(y) {
-    
+
     let test2 = y * 64;
     return test2;
-    
+
 }
 
 function movePlayer2(player, x, y) {
@@ -199,7 +199,7 @@ function movePlayer2(player, x, y) {
             player.animations.play('down');
         }
     } else {
-        console.log("trouvé x");
+        //console.log("trouvé x");
         player.animations.stop();
         player.animations.play('face');
         return 1;
@@ -209,22 +209,26 @@ function movePlayer2(player, x, y) {
 function chemin() {
     let x, y;
 
-    if(destination == -1 && 9 >= 1){
+    if (destination == -1 && 9 >= 1) {
 
         destination = 8;
         destinationInter = 0;
 
     }
-    let coords = testt[destinationInter];
-    x = coords[1];
-    y = coords[0];
+    if (testt != undefined) {
 
-    newCoordX = calculPixelX(x);
-    newCoordY = calculPixelY(y);
-    newCoordX = Math.round(newCoordX);
-    newCoordY = Math.round(newCoordY);
-    console.log(newCoordX , newCoordY);
-    if(movePlayer2(player, newCoordX, newCoordY)){
-        if (destinationInter +1 < 9) destinationInter ++; 
+
+        let coords = testt[destinationInter];
+        x = coords[1];
+        y = coords[0];
+
+        newCoordX = calculPixelX(x);
+        newCoordY = calculPixelY(y);
+        newCoordX = Math.round(newCoordX);
+        newCoordY = Math.round(newCoordY);
+        //console.log(newCoordX, newCoordY);
+        if (movePlayer2(player, newCoordX, newCoordY)) {
+            if (destinationInter + 1 < 9) destinationInter++;
+        }
     }
 }
