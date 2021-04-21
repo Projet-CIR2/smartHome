@@ -12,15 +12,14 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="../node_modules/phaser-ce/build/phaser.min.js"></script>
     <script src="../node_modules/phaser-ce/build/phaser.js"></script>
-
-
+  
+    <script src="/socket.io/socket.io.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/index.css"/>
     <link rel="icon" href="../img/icone.gif" type="image/gif">
     <script type="text/javascript" src="../json/events.js"></script>
     <script type="text/javascript" src="../js/barres.js"></script>
     <script type="text/javascript" src="../js/chat.js"></script>
     <script type="text/javascript" src="../js/tests.js"></script>
-
 </head>
 
 <body onClick="coord(event)">
@@ -61,7 +60,7 @@
 <div class="container-fluid">
 
     <div class="row">
-
+        <script> let socket = io();</script>
         <div class="col-sm-8" id="game_page" style="background-color: black; margin-left: -15px; margin-right: 15px">
             <script src="/js/load.js"></script>
             <script src="/js/main.js"></script>
@@ -239,11 +238,12 @@
     </div>
 </div>
 <!--Footer-->
-<script>
-    function coord(event) {
-
-        var e = event || window.event;
-        //console.log(e.clientX,e.clientY);
+<script> 
+   
+    function coord(event){
+    
+    var e = event || window.event;
+    console.log(e.clientX,e.clientY);
     }
 
     tests();
