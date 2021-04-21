@@ -45,6 +45,16 @@ let json = {
     "vous n'avez pas assez de fond pour cette améliorations",
     "Vous voulez gagné de l'argent?",
     "Cette somme est énorme!"
-  ]
+  ],
+
+
+  evenements_important: {
+    positif: [
+      "gain d'argents"
+    ],
+    negatif: [
+        "perte d'argents"
+    ]
+  }
 }
 
