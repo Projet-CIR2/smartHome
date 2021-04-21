@@ -1,4 +1,5 @@
 //Init Jeu
+/*
 var game = new Phaser.Game(window.innerWidth * 8 / 12 + 1, window.innerHeight - 56, Phaser.AUTO, 'game_page', {
     preload: preload,
     create: create,
@@ -32,33 +33,9 @@ for (var i = 0; i < 9; i++) {
 // let barreDebit = new Barres('debit');
 // let compteur = 0;
 
-function preload() {
-    game.load.spritesheet('button', '/img/button.png', 960, 480);
-    game.load.image('tempHouse', '../img/tempHouse.png');
-    game.load.spritesheet('perso1', '../img/perso1_45x60.png', 45, 60);
-
-    game.load.tilemap('map', '../testPathfinding/newmaptest.json', null, Phaser.Tilemap.TILED_JSON);
-    game.load.image('tiles', '../testPathfinding/map.png');
-}
-
 function create() {
     //	Just to kick things off
-    button = game.add.button(game.world.centerX - 120, game.world.centerY - 120, 'button', start, this, 2, 1, 0);
-    button.width = 240;
-    button.height = 120;
-
-    //	Progress report
-    text = game.add.text(game.world.centerX - 70, game.world.centerY - 75, 'Start Game', { fill: '#ffffff' });
-
-    game.stage.backgroundColor = '#182d3b'
-
-    cursors = this.input.keyboard.createCursorKeys();
-    cursors2 = this.input.keyboard.addKeys({
-        'P': Phaser.KeyCode.P
-    });
-
-    this.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
-    cursors2.P.onDown.add(goFull, this);
+    
 }
 function update() {
 
@@ -87,10 +64,12 @@ function start() {
     mapPilou = game.add.tilemap('map');
     mapPilou.addTilesetImage('map', 'tiles');
 
-    layer1 = mapPilou.createLayer('Calque de Tuiles 1');
-    layer2 = mapPilou.createLayer('collider');
+    /*layer1 = mapPilou.createLayer('sol');
+    layer2 = mapPilou.createLayer('walls_doors');
+    layer3 = mapPilou.createLayer('meubles');
     layer1.resizeWorld();
     layer2.resizeWorld();
+    layer3.resizeWorld();
 
     text.visible = false;
     button.visible = false;
@@ -109,12 +88,13 @@ function start() {
     player.animations.add('down', [0, 1, 2], 10, true);
     player.animations.add('up', [9, 10, 11], 10, true);
 
-    mapPilou.setCollisionBetween(0, 3, true, 'collider');
+    mapPilou.setCollisionBetween(0, 100, true, 'walls_doors');
+    mapPilou.setCollisionBetween(0, 100, true, 'meubles');
 
     let coucou = mapPilou.layers[1].data;
 
-    for (let u = 0; u < 9; u++) {
-        for (let v = 0; v < 9; v++) {
+    for (let u = 0; u < mapPilou.width; u++) {
+        for (let v = 0; v < mapPilou.height; v++) {
             if (coucou[u][v].index == -1) matrixMap[u][v] = 0;
             else matrixMap[u][v] = 1;
         }
@@ -235,4 +215,87 @@ function chemin() {
             if (destinationInter + 1 < 9) destinationInter++;
         }
     }
+}*/
+
+
+var config = {
+    type: Phaser.WEBGL,
+    width: window.innerWidth * 8 / 12,
+    height: window.innerHeight - 56,
+    backgroundColor: '#2d2d2d',
+    parent: 'game_page',
+    pixelArt: true,
+    scene: {
+        preload: preload,
+        create: create,
+        update: update
+    }
+};
+
+var controls;
+
+
+var game = new Phaser.Game(config);
+
+function preload ()
+{
+    /*this.load.spritesheet('button', '/img/button.png', 960, 480);
+    this.load.image('tempHouse', '../img/tempHouse.png');
+    this.load.spritesheet('perso1', '../img/perso1_45x60.png', 45, 60);*/
+
+    this.load.tilemapTiledJSON('map', '../testPathfinding/map.json');
+    this.load.image('tiles', '../testPathfinding/tiles.png');   
+}
+
+function create ()
+{
+    /*button = game.add.button(game.world.centerX - 120, game.world.centerY - 120, 'button', start, this, 2, 1, 0);
+    button.width = 240;
+    button.height = 120;
+
+    //	Progress report
+    text = game.add.text(game.world.centerX - 70, game.world.centerY - 75, 'Start Game', { fill: '#ffffff' });
+
+    game.stage.backgroundColor = '#182d3b'
+
+    cursors = this.input.keyboard.createCursorKeys();
+    cursors2 = this.input.keyboard.addKeys({
+        'P': Phaser.KeyCode.P
+    });
+
+    this.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
+    cursors2.P.onDown.add(goFull, this);*/
+
+    let map = this.add.tilemap('map');
+
+    console.log(map);
+
+    let tilesets = map.addTilesetImage('tiles', 'tiles');
+
+    let layer1 = map.createLayer('sol', tilesets);
+    let layer2 = map.createLayer('walls_doors', tilesets);
+    let layer3 = map.createLayer('meubles', tilesets);
+
+    var cursors = this.input.keyboard.createCursorKeys();
+
+    this.cameras.main.setZoom(0.3);
+
+    var controlConfig = {
+        camera: this.cameras.main,
+        left: cursors.left,
+        right: cursors.right,
+        up: cursors.up,
+        down: cursors.down,
+        acceleration: 0.8,
+        drag: 0.005,
+        maxSpeed: 3
+    };
+
+    controls = new Phaser.Cameras.Controls.SmoothedKeyControl(controlConfig);
+   
+}
+
+function update (time, delta)
+{
+    controls.update(delta);
 }

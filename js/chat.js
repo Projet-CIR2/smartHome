@@ -14,8 +14,8 @@ let chat = (function () {
     return {
         texteEvent() {
             if (Math.floor(Math.random() * 2)) {
-                console.log(Math.floor(Math.random() * json.events.length));
-                console.log(json.events[Math.floor(Math.random() * json.events.length)])
+                //console.log(Math.floor(Math.random() * json.events.length));
+                //console.log(json.events[Math.floor(Math.random() * json.events.length)])
                 afficheTexte(json.events[Math.floor(Math.random() * json.events.length)])
             }
         },
