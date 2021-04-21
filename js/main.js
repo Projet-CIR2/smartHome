@@ -1,5 +1,5 @@
 //Init Jeu
-var game = new Phaser.Game(window.innerWidth * 8 / 12 - 30, window.innerHeight - 56, Phaser.AUTO, 'game_page', {
+var game = new Phaser.Game(window.innerWidth * 8 / 12 + 1, window.innerHeight - 56, Phaser.AUTO, 'game_page', {
     preload: preload,
     create: create,
     update: update
@@ -27,6 +27,10 @@ let matrixMap = new Array(9);
 for (var i = 0; i < 9; i++) {
     matrixMap[i] = new Array(9);
 }
+
+// testsssssssssssss
+// let barreDebit = new Barres('debit');
+// let compteur = 0;
 
 function preload() {
     game.load.spritesheet('button', '/img/button.png', 960, 480);
