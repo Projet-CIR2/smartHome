@@ -3,7 +3,4 @@ class Lumiere extends Objet {
     super("Lumiere",valeur);
     this.coutDebit = 40;
   }
-  upgrade(){
-    
-  }
 }

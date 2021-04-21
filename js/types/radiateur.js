@@ -3,7 +3,4 @@ class Radiateur extends Objet {
     super("Radiateur",valeur);
     this.coutDebit = 20;
   }
-  upgrade(){
-
-  }
 }
