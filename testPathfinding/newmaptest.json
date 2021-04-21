@@ -62,15 +62,15 @@
                      "name":"",
                      "objects":[
                             {
-                             "height":63.8646261042678,
+                             "height":63.8646,
                              "id":1,
                              "name":"",
                              "rotation":0,
-                             "type":"",
+                             "type":"collision",
                              "visible":true,
-                             "width":63.7849944008959,
+                             "width":63.785,
                              "x":0,
-                             "y":0.0796317033719049
+                             "y":0.0796317
                             }],
                      "opacity":1,
                      "type":"objectgroup",
