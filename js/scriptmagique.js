@@ -4,7 +4,7 @@ let dMAJ = document.getElementById("d_MaJ");
 let dupg = document.getElementById("d_Upgrade")
 
 MAJ.addEventListener("click", () => {
-    if(dMAJ.style.display != "none"){
+    if(dMAJ.style.display !== "none"){
       dMAJ.style.display = "none";
       dupg.style.display = "block";
     } else {
@@ -14,7 +14,7 @@ MAJ.addEventListener("click", () => {
   });
 
 upg.addEventListener("click", () => {
-    if(dupg.style.display != "none"){
+    if(dupg.style.display !== "none"){
       dupg.style.display = "none";
       dMAJ.style.display = "block";
     } else {
