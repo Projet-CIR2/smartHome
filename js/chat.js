@@ -4,7 +4,7 @@ let chat = (function () {
     function afficheTexte(texte) {
         let divChat = document.getElementById('chat');
 
-        if (divChat.childElementCount >= 15) divChat.removeChild(divChat.lastElementChild);
+        if (divChat.childElementCount >= 25) divChat.removeChild(divChat.lastElementChild);
 
         let p = document.createElement('p');
         divChat.prepend(p);
