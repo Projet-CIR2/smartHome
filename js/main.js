@@ -219,12 +219,18 @@ function chemin() {
 
 
 var config = {
-    type: Phaser.WEBGL,
+    type: Phaser.AUTO,
     width: window.innerWidth * 8 / 12,
     height: window.innerHeight - 56,
     backgroundColor: '#2d2d2d',
     parent: 'game_page',
     pixelArt: true,
+    physics: {
+        default: 'arcade',
+        arcade: {
+            debug: false
+        }
+    },
     scene: {
         preload: preload,
         create: create,
@@ -234,21 +240,26 @@ var config = {
 
 var controls;
 
-
 var game = new Phaser.Game(config);
 
-function preload ()
-{
+let player;
+var J2Haut;
+var J2Bas;
+var J2Gauche;
+var J2Droite;
+
+function preload() {
     /*this.load.spritesheet('button', '/img/button.png', 960, 480);
     this.load.image('tempHouse', '../img/tempHouse.png');
-    this.load.spritesheet('perso1', '../img/perso1_45x60.png', 45, 60);*/
+    */
 
     this.load.tilemapTiledJSON('map', '../testPathfinding/map.json');
-    this.load.image('tiles', '../testPathfinding/tiles.png');   
+    this.load.image('tiles', '../testPathfinding/tiles.png');
+
+    this.load.spritesheet('perso1', '../img/perso1_45x60.png', { frameWidth: 45, frameHeight: 60 });
 }
 
-function create ()
-{
+function create() {
     /*button = game.add.button(game.world.centerX - 120, game.world.centerY - 120, 'button', start, this, 2, 1, 0);
     button.width = 240;
     button.height = 120;
@@ -258,23 +269,31 @@ function create ()
 
     game.stage.backgroundColor = '#182d3b'
 
-    cursors = this.input.keyboard.createCursorKeys();
+    
     cursors2 = this.input.keyboard.addKeys({
         'P': Phaser.KeyCode.P
     });
 
     this.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
     cursors2.P.onDown.add(goFull, this);*/
+    J2Haut = this.input.keyboard.addKey('Z');
+    J2Bas = this.input.keyboard.addKey('S');
+    J2Gauche = this.input.keyboard.addKey('Q');
+    J2Droite = this.input.keyboard.addKey('D');
 
     let map = this.add.tilemap('map');
-
-    console.log(map);
-
     let tilesets = map.addTilesetImage('tiles', 'tiles');
+    console.log(map);
 
     let layer1 = map.createLayer('sol', tilesets);
     let layer2 = map.createLayer('walls_doors', tilesets);
     let layer3 = map.createLayer('meubles', tilesets);
+
+    //this.physics.add.collider(player, layer2);
+    //this.physics.add.collider(player, layer3);
+
+    map.setCollisionBetween(0, 100, true, 'walls_doors');
+    map.setCollisionBetween(0, 100, true, 'meubles');
 
     var cursors = this.input.keyboard.createCursorKeys();
 
@@ -292,10 +311,86 @@ function create ()
     };
 
     controls = new Phaser.Cameras.Controls.SmoothedKeyControl(controlConfig);
-   
+
+    player = this.physics.add.sprite(500, 500, 'perso1');
+
+    player.body.bounce.y = 0.1;
+    //player.setCollideWorldBounds(true);
+    player.body.setSize(43, 24, 2, 40);
+
+    this.physics.add.collider(player, )
+
+    this.anims.create({
+        key: 'left',
+        frames: this.anims.generateFrameNumbers('perso1', { start: 3, end: 5 }),
+        frameRate: 10,
+        repeat: -1
+
+    })
+    this.anims.create({
+        key: 'right',
+        frames: this.anims.generateFrameNumbers('perso1', { start: 6, end: 8 }),
+        frameRate: 10,
+        repeat: -1
+    })
+    this.anims.create({
+        key: 'up',
+        frames: this.anims.generateFrameNumbers('perso1', { start: 9, end: 11 }),
+        frameRate: 10,
+        repeat: -1
+    });
+
+    this.anims.create({
+        key: 'down',
+        frames: this.anims.generateFrameNumbers('perso1', { start: 0, end: 2 }),
+        frameRate: 10,
+        repeat: -1
+    });
+    this.anims.create({
+        key: 'face',
+        frames: this.anims.generateFrameNumbers('perso1', { start: 1, end: 1 }),
+        frameRate: 10,
+        repeat: -1
+    });
+    this.anims.create({
+        key: 'back',
+        frames: this.anims.generateFrameNumbers('perso1', { start: 10, end: 10 }),
+        frameRate: 10,
+        repeat: -1
+    });
 }
 
-function update (time, delta)
-{
+function update(time, delta) {
+    movePlayer(player);
     controls.update(delta);
+}
+
+function movePlayer(player) {
+    //console.log('x:', player.x, 'y:', player.y);
+    //console.log(game.height, game.width);
+
+    if (J2Haut.isDown) {
+        console.log("haut");
+        player.y -= 20;
+        player.anims.play('up');
+    }
+    else if (J2Bas.isDown) {
+        console.log("bas");
+        player.y += 20;
+        player.anims.play('down');
+    }
+    else if (J2Droite.isDown) {
+        console.log("droite");
+        player.x += 20;
+        player.anims.play('right');
+    }
+    else if (J2Gauche.isDown) {
+        console.log("gauche");
+        player.x -= 20;
+        player.anims.play('left');
+    }
+    else {
+        player.anims.stop();
+        player.anims.play('face');
+    }
 }
