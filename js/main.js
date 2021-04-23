@@ -247,6 +247,8 @@ var J2Haut;
 var J2Bas;
 var J2Gauche;
 var J2Droite;
+var layer;
+var layer2, layer3;
 
 function preload() {
     /*this.load.spritesheet('button', '/img/button.png', 960, 480);
@@ -282,19 +284,21 @@ function create() {
     J2Droite = this.input.keyboard.addKey('D');
 
     let map = this.add.tilemap('map');
+
     let tilesets = map.addTilesetImage('tiles', 'tiles');
     console.log(map);
 
-    let layer1 = map.createLayer('sol', tilesets);
-    let layer2 = map.createLayer('walls_doors', tilesets);
-    let layer3 = map.createLayer('meubles', tilesets);
+    layer1 = map.createLayer('sol', tilesets);
+    layer2 = map.createLayer('walls_doors', tilesets);
+    layer3 = map.createLayer('meubles', tilesets);
 
-    //this.physics.add.collider(player, layer2);
-    //this.physics.add.collider(player, layer3);
-
+    /*
+    this.physics.add.collider(player, layer2);
+    this.physics.add.collider(player, layer3);
+*/
     map.setCollisionBetween(0, 100, true, 'walls_doors');
     map.setCollisionBetween(0, 100, true, 'meubles');
-
+    
     var cursors = this.input.keyboard.createCursorKeys();
 
     this.cameras.main.setZoom(0.3);
@@ -358,9 +362,17 @@ function create() {
         frameRate: 10,
         repeat: -1
     });
+    /*
+    this.physics.add.collider(player, layer2, function() {
+        console.log("colllision");
+    });*/
+    this.physics.add.collider(player, layer2);
+    this.physics.add.collider(player, layer3);
 }
 
 function update(time, delta) {
+    this.physics.collide(player, layer2);
+    this.physics.collide(player, layer3);
     movePlayer(player);
     controls.update(delta);
 }
