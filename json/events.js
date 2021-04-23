@@ -7,7 +7,7 @@ let json = {
 
 
   lore: [
-    "Une nouvelle maison vient d'etre construite et le proprietaire adore acheter les objets connecté de toute dernière génération. L'on peut sensir que grace a sa passion, il a donner naissance a une toute nouvelle forme d'itelligence qui va l'aider à garder le sourir en tout temps.",
+    "Une nouvelle maison vient d'etre construite et le propriétaire adore acheter les objets connecté de toute dernière génération. L'on peut sensir que grace a sa passion, il a donner naissance a une toute nouvelle forme d'itelligence qui va l'aider à garder le sourir en tout temps.",
     "Coucou! C'est donc toi qui va s'occuper de moi? Je suis "
   ],
 
@@ -50,13 +50,13 @@ let json = {
 
   evenements_important: {
     positif: [
-      {description: "gain d'argents", argent: 5, debit: 0, bonheur: 0},
-      {description: "gain de débit", argent: 0, debit: 5, bonheur: 0}
+      {description: "gain d'argents", argent: 5, debit: 0, humeur: 0},
+      {description: "gain de débit", argent: 0, debit: 5, humeur: 0}
     ],
 
     negatif: [
-      {description: "perte d'argents", argent: -5, debit: 0, bonheur: 0},
-      {description: "perte de débit", argent: 0, debit: -5, bonheur: 0}
+      {description: "perte d'argents", argent: -5, debit: 0, humeur: 0},
+      {description: "perte de débit", argent: 0, debit: -5, humeur: 0}
     ]
   }
 }

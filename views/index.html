@@ -17,10 +17,11 @@
     <link rel="stylesheet" type="text/css" href="../css/index.css"/>
     <link rel="icon" href="../img/icone.gif" type="image/gif">
     <script type="text/javascript" src="../json/events.js"></script>
-    <script type="text/javascript" src="../js/barres.js"></script>
-    <script type="text/javascript" src="../js/chat.js"></script>
+    <script type="text/javascript" src="../js/models/barres.js"></script>
+    <script type="text/javascript" src="../js/module/varGame.js"></script>
+    <script type="text/javascript" src="../js/module/chat.js"></script>
     <script type="text/javascript" src="../js/tests.js"></script>
-    <script type="text/javascript" src="../js/gameView.js"></script>
+    <script type="text/javascript" src="../js/models/gameView.js"></script>
 </head>
 
 <body onClick="coord(event)">
@@ -249,6 +250,7 @@
 
     // tests();
     const gameView = new GameView();
+    VarGame.initView(gameView);
 </script>
 </body>
 </html>
