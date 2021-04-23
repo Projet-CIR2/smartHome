@@ -50,13 +50,13 @@ let json = {
 
   evenements_important: {
     positif: [
-      {description: "gain d'argents", argent: 5},
-      {description: "gain de débit", debit: 5}
+      {description: "gain d'argents", argent: 5, debit: 0, bonheur: 0},
+      {description: "gain de débit", argent: 0, debit: 5, bonheur: 0}
     ],
 
     negatif: [
-      {description: "perte d'argents", argent: -5},
-      {description: "perte de débit", debit: -5}
+      {description: "perte d'argents", argent: -5, debit: 0, bonheur: 0},
+      {description: "perte de débit", argent: 0, debit: -5, bonheur: 0}
     ]
   }
 }
