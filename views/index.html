@@ -29,7 +29,9 @@
 <!--Nav-Bar-->
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
 
-    <a class="navbar-brand" href="./main.html">Home</a>
+    <a class="navbar-brand" href="index.html">
+        <img src="../img/icone.gif" width="30" height="30" class="d-inline-block align-top" alt="logo" >
+    </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
@@ -38,9 +40,10 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
 
         <ul class="navbar-nav">
+            
 
             <li class="nav-item">
-                <a class="nav-link" href="#">Wiki</a>
+                <a class="nav-link" href="#" >Wiki</a>
             </li>
 
             <li class="nav-item">
@@ -72,116 +75,120 @@
 
             <div class="row" style="height: 65vh;">
 
-                <div class="col-sm-6" style="background-color: green; padding: 0 10px">
+                <div class="col-sm-6" style="background-color: #3bd13c; padding: 0 10px" id="upmaj">
 
-
-                    <div class="btn-group" style="margin: 5px;">
-                        <button type="button" class="btn bg-transparent border border-dark" id="MaJ" style="margin-left: auto;">Mise à jour
-                        </button>
-                        <button type="button" class="btn bg-transparent border border-dark" id="Upgrade" style="margin-right: auto;">Upgrade
-                        </button>
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons" style="margin: 5px;">
+                        <label class="btn btn-secondary active">
+                          <input id="MaJ" type="radio" name="options" autocomplete="off" checked> Mise à jour
+                        </label>
+                        <label class="btn btn-secondary">
+                          <input id="Upgrade" type="radio" name="options" autocomplete="off"> Upgrade
+                        </label>
                     </div>
 
 
-                    <div id="d_MaJ" style="display: block; height: 55vh; overflow: auto;">
+                    <div id="d_MaJ" style="display: block; height: 55vh; overflow: auto;background-color: #3bd13c;">
 
-                        <div class="container-fluid"
-                             style="background-color:rgb(100, 100, 100);margin: 10px 0px 10px 0px;">
+                        <div class="container"
+                             style="background-color:rgb(100, 100, 100);margin: 10px 20px 10px 20px; width: 80%; border-radius: 10px;">
                             <h7>Détecteur de fumée :</h7>
-                            <p style="font-size: small;">Détecte si une fumée est présente dans l'habitation</p>
+                            <p style="font-size: 14px;">Détecte si une fumée est présente dans l'habitation</p>
                             <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning"
-                                 role="progressbar" style="width: 75%; height: 20px"
-                                 aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"> 75%
+                                 role="progressbar" style="width: 100%; height: 20px"
+                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"> 100%
                             </div>
-                            <button type="button" class="btn btn-secondary btn-sm" style="margin: 5px 0px 0px 50px;">
+                            <button type="button" class="btn btn-warning btn-sm" style="margin: 7px 0px 7px 30px;">
                                 Mettre a jour
                             </button>
                         </div>
 
-                        <div class="container-fluid"
-                             style="background-color: rgb(100, 100, 100);margin: 10px 0px 10px 0px;">
-                            <h7>Caméra de sécurité :</h7>
-                            <a style="font-size: small;">Détecte un cambrioleur ou un mouvement suspect</a>
-                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning"
-                                 role="progressbar" style="width: 75%; height: 20px"
-                                 aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"> 75%
-                            </div>
-                            <button type="button" class="btn btn-secondary btn-sm" style="margin: 5px 0px 0px 50px;">
-                                Mettre a jour
-                            </button>
-                        </div>
-
-                        <div class="containerfluid"
-                             style="background-color: rgb(100, 100, 100);margin: 10px 0px 10px 0px;">
-                            <h7>Capteur de présence :</h7>
-                            <a style="font-size: small;">Permet d'allumer la lumière quand quelqu'un est présent</a>
-                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning"
-                                 role="progressbar" style="width: 75%; height: 20px"
-                                 aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"> 75%
-                            </div>
-                            <button type="button" class="btn btn-secondary btn-sm" style="margin: 5px 0px 0px 50px;">
-                                Mettre a jour
-                            </button>
-                        </div>
-
-                        <div class="container-fluid"
-                             style="background-color:rgb(100, 100, 100);margin: 10px 0px 10px 0px;">
+                        <div class="container"
+                             style="background-color:rgb(100, 100, 100);margin: 10px 20px 10px 20px; width: 80%; border-radius: 10px;">
                             <h7>Détecteur de fumée :</h7>
-                            <p style="font-size: small;">Détecte si une fumée est présente dans l'habitation</p>
+                            <p style="font-size: 14px;">Détecte si une fumée est présente dans l'habitation</p>
                             <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning"
-                                 role="progressbar" style="width: 75%; height: 20px"
-                                 aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"> 75%
+                                 role="progressbar" style="width: 100%; height: 20px"
+                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"> 100%
                             </div>
-                            <button type="button" class="btn btn-secondary btn-sm" style="margin: 5px 0px 0px 50px;">
+                            <button type="button" class="btn btn-warning btn-sm" style="margin: 7px 0px 7px 30px;">
+                                Mettre a jour
+                            </button>
+                        </div>
+
+                        <div class="container"
+                             style="background-color:rgb(100, 100, 100);margin: 10px 20px 10px 20px; width: 80%; border-radius: 10px;">
+                            <h7>Détecteur de fumée :</h7>
+                            <p style="font-size: 14px;">Détecte si une fumée est présente dans l'habitation</p>
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning"
+                                 role="progressbar" style="width: 100%; height: 20px"
+                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"> 100%
+                            </div>
+                            <button type="button" class="btn btn-warning btn-sm" style="margin: 7px 0px 7px 30px;">
+                                Mettre a jour
+                            </button>
+                        </div>
+
+                        <div class="container"
+                             style="background-color:rgb(100, 100, 100);margin: 10px 20px 10px 20px; width: 80%; border-radius: 10px;">
+                            <h7>Détecteur de fumée :</h7>
+                            <p style="font-size: 14px;">Détecte si une fumée est présente dans l'habitation</p>
+                            <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning"
+                                 role="progressbar" style="width: 100%; height: 20px"
+                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"> 100%
+                            </div>
+                            <button type="button" class="btn btn-warning btn-sm" style="margin: 7px 0px 7px 30px;">
                                 Mettre a jour
                             </button>
                         </div>
 
                     </div>
 
-                    <div id="d_Upgrade" style="display: none; height: 55vh; overflow: auto;">
+                    <div id="d_Upgrade" style="display: none; height: 55vh; overflow: auto; background-color: #162cb8;">
 
-                        <div class="container-fluid" style="background-color:rgb(100, 100, 100);margin: 10px 5px 10px 5px;">
-                            <h7>Isolant Fibre de verre :</h7>
-                            <a style="font-size: small;">Une vitre qui atténue les bruits et retiens la chaleur</a>
+                        <div class="container"
+                             style="background-color:rgb(100, 100, 100);margin: 10px 20px 10px 20px; width: 80%; border-radius: 10px;">
+                            <h7>Détecteur de fumée :</h7>
+                            <p style="font-size: 14px;">Détecte si une fumée est présente dans l'habitation</p>
                             <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning"
-                                 role="progressbar" style="width: 75%; height: 20px"
-                                 aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"> 75%
+                                 role="progressbar" style="width: 100%; height: 20px"
+                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"> 100%
                             </div>
-                            <button type="button" class="btn btn-secondary btn-sm" style="margin: 5px 0px 0px 50px;">
+                            <button type="button" class="btn btn-warning btn-sm" style="margin: 7px 0px 7px 30px;">
                                 Mettre a jour
                             </button>
                         </div>
 
-                        <div class="container-fluid" style="background-color: rgb(100, 100, 100);margin: 10px 5px 10px 5px;">
-                            <h7>Fenetre triple vitrage :</h7>
-                            <a style="font-size: small;">Une vitre qui atténue les bruits et retiens la chaleur</a>
+                       <div class="container"
+                             style="background-color:rgb(100, 100, 100);margin: 10px 20px 10px 20px; width: 80%; border-radius: 10px;">
+                            <h7>Détecteur de fumée :</h7>
+                            <p style="font-size: 14px;">Détecte si une fumée est présente dans l'habitation</p>
                             <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning"
-                                 role="progressbar" style="width: 75%; height: 20px"
-                                 aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"> 75%
+                                 role="progressbar" style="width: 100%; height: 20px"
+                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"> 100%
                             </div>
-                            <button type="button" class="btn btn-secondary btn-sm" style="margin: 5px 0px 0px 50px;">
+                            <button type="button" class="btn btn-warning btn-sm" style="margin: 7px 0px 7px 30px;">
                                 Mettre a jour
                             </button>
                         </div>
                     
-                        <div class="containerfluid" style="background-color: rgb(100, 100, 100);margin: 10px 5px 10px 5px;">
-                            <h7>lumière LED :</h7>
-                            <a style="font-size: small;">Meilleur luminosité et moins de consommation</a>
+                        <div class="container"
+                             style="background-color:rgb(100, 100, 100);margin: 10px 20px 10px 20px; width: 80%; border-radius: 10px;">
+                            <h7>Détecteur de fumée :</h7>
+                            <p style="font-size: 14px;">Détecte si une fumée est présente dans l'habitation</p>
                             <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning"
-                                 role="progressbar" style="width: 75%; height: 20px"
-                                 aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"> 75%
+                                 role="progressbar" style="width: 100%; height: 20px"
+                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"> 100%
                             </div>
-                            <button type="button" class="btn btn-secondary btn-sm" style="margin: 5px 0px 0px 50px;">
+                            <button type="button" class="btn btn-warning btn-sm" style="margin: 7px 0px 7px 30px;">
                                 Mettre a jour
                             </button>
                         </div>
-
+                        
                     </div>
                     <script src="../js/scriptmagique.js"></script>
                 </div>
 
-                <div class="col-sm-6" style="background-color: blue; padding-right: 10px; padding-left: 10px;">
+                <div class="col-sm-6" style="background-color: yellow; padding-right: 10px; padding-left: 10px;">
                     <h4>Le Chat :</h4>
                     <div id="chat">
                     </div>
