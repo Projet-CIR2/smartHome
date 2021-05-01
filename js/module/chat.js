@@ -41,7 +41,8 @@ let chat = (function () {
         // ajout des textes
         lanceTexte() {
             setInterval(texteEvent, 90000);
-            setInterval(texteImportant, 30000);
+            // setInterval(texteImportant, 30000);
+            setInterval(texteImportant, 1000);
         }
     }
 })();
