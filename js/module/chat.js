@@ -32,17 +32,16 @@ let chat = (function () {
         }
 
         // on modifie les valeurs du jeu
-        VarGame.modifVar('humeur', event.humeur);
-        VarGame.modifVar('argent', event.argent);
-        VarGame.modifVar('debit', event.debit);
+        if (event.humeur !== 0) VarGame.modifVar('humeur', event.humeur);
+        if (event.argent !== 0) VarGame.modifVar('argent', event.argent);
+        if (event.debit !== 0) VarGame.modifVar('debit', event.debit);
     }
 
     return {
         // ajout des textes
         lanceTexte() {
             setInterval(texteEvent, 90000);
-            // setInterval(texteImportant, 30000);
-            setInterval(texteImportant, 1000);
+            setInterval(texteImportant, 30000);
         }
     }
 })();
