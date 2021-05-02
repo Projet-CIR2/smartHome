@@ -242,23 +242,27 @@ var controls;
 
 var game = new Phaser.Game(config);
 
-let player;
+var player;
 var J2Haut;
 var J2Bas;
 var J2Gauche;
 var J2Droite;
-var layer;
+var layer1;
 var layer2, layer3;
+var collisions;
+var map;
 
 function preload() {
-    /*this.load.spritesheet('button', '/img/button.png', 960, 480);
+    /*
     this.load.image('tempHouse', '../img/tempHouse.png');
     */
 
     this.load.tilemapTiledJSON('map', '../testPathfinding/map.json');
+    //this.load.tilemapTiledJSON('map', '../testPathfinding/newmaptest.json');
     this.load.image('tiles', '../testPathfinding/tiles.png');
 
     this.load.spritesheet('perso1', '../img/perso1_45x60.png', { frameWidth: 45, frameHeight: 60 });
+    this.load.image('button', '/img/button.png');
 }
 
 function create() {
@@ -278,12 +282,17 @@ function create() {
 
     this.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
     cursors2.P.onDown.add(goFull, this);*/
+    
+
     J2Haut = this.input.keyboard.addKey('Z');
     J2Bas = this.input.keyboard.addKey('S');
     J2Gauche = this.input.keyboard.addKey('Q');
     J2Droite = this.input.keyboard.addKey('D');
 
-    let map = this.add.tilemap('map');
+    map = this.add.tilemap('map');
+
+    collisions = this.physics.add.staticGroup();
+    collisions.create(100, 50, 'button');
 
     let tilesets = map.addTilesetImage('tiles', 'tiles');
     console.log(map);
@@ -292,12 +301,13 @@ function create() {
     layer2 = map.createLayer('walls_doors', tilesets);
     layer3 = map.createLayer('meubles', tilesets);
 
+    //map.setCollisionBetween(0, 100, true, 'walls_doors');
     /*
     this.physics.add.collider(player, layer2);
     this.physics.add.collider(player, layer3);
 */
-    map.setCollisionBetween(0, 100, true, 'walls_doors');
-    map.setCollisionBetween(0, 100, true, 'meubles');
+    //map.setCollisionBetween(0, 100, true, 'walls_doors');
+    //map.setCollisionBetween(0, 100, true, 'meubles');
     
     var cursors = this.input.keyboard.createCursorKeys();
 
@@ -320,9 +330,8 @@ function create() {
 
     player.body.bounce.y = 0.1;
     //player.setCollideWorldBounds(true);
-    player.body.setSize(43, 24, 2, 40);
-
-    this.physics.add.collider(player, )
+    
+    //player.body.setSize(43, 24, 2, 40);
 
     this.anims.create({
         key: 'left',
@@ -366,13 +375,14 @@ function create() {
     this.physics.add.collider(player, layer2, function() {
         console.log("colllision");
     });*/
-    this.physics.add.collider(player, layer2);
-    this.physics.add.collider(player, layer3);
+    //this.physics.add.collider(player, layer2);
+    //this.physics.add.collider(player, layer3);
+
+    this.physics.add.collider(player, collisions);
+    
 }
 
 function update(time, delta) {
-    this.physics.collide(player, layer2);
-    this.physics.collide(player, layer3);
     movePlayer(player);
     controls.update(delta);
 }
