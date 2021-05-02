@@ -1,0 +1,90 @@
+body{
+    background-color: black;
+}
+
+.col{
+    background-color: black;
+}
+
+.col-8{
+    background-color: black;
+    padding: 200px;
+}
+
+#room{
+    border-radius: 20px;
+    padding: 20px;
+    background-color: #1E90FF;
+}
+
+.btn-group-vertical{
+    border-radius: 20px;
+}
+
+.btn{
+    margin: 0;
+}
+
+#FP{
+    text-align: justify;
+}
+
+#FP h3{
+    text-align: center ;
+}
+
+#CDC{
+    text-align: justify;
+}
+
+#CDC h3{
+    text-align: center ;
+}
+
+#LEF{
+    text-align: justify;
+}
+
+#LEF h3{
+    text-align: center ;
+}
+
+#S1{
+    text-align: justify;
+}
+
+#S1 h3{
+    text-align: center ;
+}
+
+#S2{
+    text-align: justify;
+}
+
+#S2 h3{
+    text-align: center ;
+}
+
+#S3{
+    text-align: justify;
+}
+
+#S3 h3{
+    text-align: center ;
+}
+
+#S4{
+    text-align: justify;
+}
+
+#S4 h3{
+    text-align: center ;
+}
+
+#S5{
+    text-align: justify;
+}
+
+#S5 h3{
+    text-align: center ;
+}

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Smart Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" type="text/css" href="wiki.css"/>
+    <link rel="icon" href="../img/icone.gif" type="image/gif">
+</head>
+
+<body>
+<!--Nav-Bar-->
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+
+    <a class="navbar-brand" href="index.html">
+        <img src="../img/icone.gif" width="30" height="30" class="d-inline-block align-top" alt="logo" >
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+
+        <ul class="navbar-nav">
+            
+
+            <li class="nav-item">
+                <a class="nav-link" href="wiki.html" >Wiki</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">Tutoriel</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="#">Crédit</a>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav>
+
+<!--Container-->
+
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col">
+    </div>
+
+    <div class="col-8">
+        <div class="row" id="room">
+          <div class="col-sm-2">
+            <div class="btn-group-vertical btn-group-toggle" data-toggle="buttons">
+              <label class="btn btn-secondary active" style="list-style: none;">
+                <input type="radio" name="options" id="Fiche projet" autocomplete="off" checked>Fiche projet
+              </label>
+              <label class="btn btn-secondary">
+                <input type="radio" name="options" id="Cahier des charges" autocomplete="off">Cahier des charges
+              </label>
+              <label class="btn btn-secondary">
+                <input type="radio" name="options" id="Liens et favoris" autocomplete="off">Liens et favoris
+              </label>
+              <label class="btn btn-secondary">
+                <input type="radio" name="options" id="Semaine 1" autocomplete="off">Semaine 1
+              </label>
+              <label class="btn btn-secondary">
+                <input type="radio" name="options" id="Semaine 2" autocomplete="off">Semaine 2
+              </label>
+              <label class="btn btn-secondary">
+                <input type="radio" name="options" id="Semaine 3" autocomplete="off">Semaine 3
+              </label>
+              <label class="btn btn-secondary">
+                <input type="radio" name="options" id="Semaine 4" autocomplete="off">Semaine 4
+              </label>
+              <label class="btn btn-secondary">
+                <input type="radio" name="options" id="Semaine 5" autocomplete="off">Semaine 5
+              </label>
+      
+            </div>
+          </div>
+        <div class="col-sm-8">
+            
+            <div id="FP" style="display: block;">
+                <h3>Titre</h3>
+                <p>Home I/O</p>
+                <h3>Message</h3>
+                <p>Faire découvrir tous les aspects d'une maison connectée (respectueuse de l'environnement, système de sécurité, faciliter la vie de ses occupants .... )
+                    Permet de montrer l'importance de faire ses mises à jour régulièrement et faire face aux différents problèmes qu'engendrent une absence de mise à jour
+                    Montrer la place que va prendre la maison connectée à l'avenir (avantages et inconvénients)
+                    Création d'une IA future qui connait les problématiques humaines et est capable de l'aider dans les différentes tâches qu'engendrent la maison intelligente
+                    Gérer son budget consciemment vis à vis des nouvelles technologies et à la mise en place d'une maison intelligente
+                </p>
+                <h3>Cible</h3>
+                <p>
+                    Grand public + personne intéressé par la maison connecté
+                </p>
+                <h3>Description</h3>
+                <p>
+                    Jeu entièrement solo
+                Système de gestion des mises à jour des différents appareils de la maison ainsi que les mises à jour de la maison en elle même afin de satisfaire l'habitant de la maison pour pas qu'il abandonne la maison et aille ailleurs
+                L'humeur de l'humain influe sur le budget qu'il nous alloue pour gérer la maison 
+                Plus les mises à jour sont faites et plus les équipements sont améliorés, plus l'humain est content et alloue de budget
+                Des événements aléatoires seront intégrés afin d'amener un peu de piquant (exemple : virus mondial, serveurs qui brûlent...)
+                Une victoire dépend du scénario / timer / objectif
+                La défaite arrive lorsque l'humain n'a plus d'humeur 
+                Gérer les mises à jours en fonction face à la connexion de la maison
+                </p>
+                <h3>Type du jeu</h3>
+                <p>
+                    Jeu de simulation / de gestion / God Game
+                </p>
+            </div>
+
+            <div id="CDC" style="display: none;">
+                <h3>Préambule</h3>
+                <p>
+                HOME-io est un jeu de type God-Game, dans lequel le joueur découvre en détails ce qu'est une maison connectée.
+                Ce projet a pour but de montrer les aspects négatif et positif de la maison connectée. 
+                Ce cahier des charges présente le concept du jeu, les mécaniques, le visuel ainsi que les délais du projet.
+                </p>
+                <h3>Concept</h3>
+                <p>
+                On joue une IA dans une maison afin de protéger un humain et permettre le développement de sa maison.
+                On pourra donc améliorer et faire des mises a jour de nos objet connectés afin de satisfaire le propriétaire de la maison, et gagner de l'argent dans le but d’améliorer des objets.
+                </p>
+                <h3>Mécaniques</h3>
+                <p>
+                -Gestion du débit internet
+                -possibilité d’améliorer des objets connectés
+                -empêcher une intrusion physique
+                -empêcher une intrusion informatique
+                -gestion de la température
+                -gérer la luminosité
+                -maintenir l'état de l'électroménager / écran
+                </p>
+                <h3>Visuel</h3>
+                <p>
+                <a href="https://www.figma.com/file/nbYC2FeTBc5OFMTddJgN2Q/Untitled?node-id=0%3A1" style="color: black;">Visuel Sur le site Figma</a>
+                </p>
+            </div>
+
+            <div id="LEF" style="display: none;">
+                <h3>Lien / Image - Design</h3>
+                <p>
+                    Image d’icône pour une maison intelligente :
+                    <br>
+                    <a href="https://fr.freepik.com/vecteurs-premium/jeu-icones-maison-intelligente_4305597.htm" style="color: black;">Icone pour le jeux</a>
+                    <br>
+                    <a href="https://fr.freepik.com/vecteurs-premium/jeu-icones-conception-maison-intelligente_2667879.htm" style="color: black;">Icone maison intelligente</a>
+                    <br>
+                    <a href="https://interview.ueno.co/" style="color: black;"> Idée jeux</a>
+                    <br>
+                    <a href="https://nova-smarthome.ueno.co/" style="color: black;">Idée jeux</a>
+                    <br>
+                    <a href="https://www.figma.com/" style="color: black;">Modélisation pour les sites</a>
+                    <br>
+                    <a href="https://www.figma.com/file/nbYC2FeTBc5OFMTddJgN2Q/Untitled?node-id=0%3A1" style="color: black;">Modelisation du site</a>
+                </p>
+                <h3>Points Positif / Négatif d'une maison intelligente</h3>
+                <p>
+                    Positif : <a href="https://blogue.bestbuy.ca/maison-intelligente/des-facons-faciles-de-rendre-votre-maison-plus-intelligente" style="color: black;">voir ici</a>
+                    <br>
+                    Pour et contre : <a href="https://domo-tools.com/avantage-et-desavantage-domotique/#:~:text=Les%20D%C3%A9savantages&text=Tous%20les%20appareils%20contr%C3%B4l%C3%A9s%20via,s%C3%A9curit%C3%A9%20et%20cambrioler%20la%20maison." style="color: black;">voir ici</a>
+                </p>
+            </div>
+
+            <div id="S1" style="display: none;">
+                <h3>Mise en place du projet</h3>
+                <p>
+                    Cette semaine nous avons chercher toutes les possibilités qu'offraient le sujet. Nous avons opter un jeu de simulation gestion (god game). 
+                    Le choix de faire un jeu en 2D en phaser a fait l'unanimité.
+                    Les rôles ont été attribué a chacun, la fiche projet (wiki) et le cahier des charges ont été travailler et sont en attente de validation.
+                </p>
+            </div>
+
+            <div id="S2" style="display: none;">  
+                <h3>Avancement</h3>
+                <p>
+                    Cette semaine a surtout permis de (re)découvrir le fonctionnement de phaser et de tiled en développant un début de jeu comportant diverses fonctionnalités de base
+                    Nous avons de plus commencé à rechercher les sprites qui pourront être utilisés dans ce projet
+                    Préparation de la maquette visuelle du site
+                </p>
+            </div>
+
+            <div id="S3" style="display: none;">
+                <h3>Avancement</h3>
+                <p>
+                    Mise en place d'un visuel
+                    <br>
+                    Début de la page html
+                    <br>
+                    Recherche de pathfinding et début phaser
+                    <br>
+                    Début création des événements
+                    <br>
+                    Début des maps tiled
+                    <br>
+                    Recherche de mécaniques de jeux / règles / économie
+                </p>
+            </div>
+
+            <div id="S4" style="display: none;">
+                <h3>Avancement</h3>
+                <p>
+                    Nous avons bien avancé cette semaine :
+                    <br>
+                    Nous avons maintenant réussi à lier une carte a notre jeu et de récupérer les données de la carte. Nous avons donc réussi à implémenter un pathfinding sur notre carte. Nous avons un PNJ qui se déplace d'un point A à un point B en évitant les collisions.
+                    Nous avons aussi bien avancé sur le site avec l'ajout des boutons mais aussi d'un début de chat. Nous avons aussi commencé à travailler sur la mise en page et la stylisation du site.
+                    Avancement aussi sur la class objet avec l'ajout des fonctions upgrade et update
+                </p>
+            </div>
+
+            <div id="S5" style="display: none;">
+                <h3>Avancement</h3>
+                <p>
+                    Passage sur phaser 3
+                    <br>
+                    Gestion des barres + fonctionnement jeu en arrière plan 
+                    <br>
+                    1.0 du site -> site + joli
+                    <br>
+                    Implémentation fonctionnement objet
+                </p>
+            </div>
+
+            <script src="../js/wiki.js"></script>
+        </div>
+    </div>
+</div>
+
+    <div class="col">
+    </div>
+    
+  </div>
+</div>
+
+</body>
+</html>
