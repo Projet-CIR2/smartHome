@@ -251,6 +251,12 @@ var layer2, layer3;
 var collisions;
 var map;
 var sprite, clickImg;
+let graphics, rect1;
+
+
+var chronoTexte;
+var monTimer;
+var chrono = 100;
 
 function preload() {
 
@@ -297,8 +303,11 @@ function create() {
 
     //Gestion du click
     //sprite = this.add.sprite(2, 2, 'back');
-    clickImg = this.add.sprite(0, 0, 'tempHouse');
+    clickImg = this.add.sprite(5, 5, 'tempHouse');
     clickImg.setInteractive();
+
+
+
 
     /*
     var style = { font: "100px Arial" };
@@ -308,9 +317,9 @@ function create() {
 
     clickImg.on('pointerdown', function (pointer) {
         console.log("click");
-        if(this.isTinted) {
+        if (this.isTinted) {
             this.clearTint();
-        }else {
+        } else {
             this.setTint(0xff0000);
         }
     });
@@ -403,9 +412,25 @@ function create() {
 
     this.physics.add.collider(player, collisions);
 
+    graphics = this.add.graphics({ lineStyle: { width: 2, color: 0x0000aa }, fillStyle: { color: 0x008800 } });
+    rect1 = new Phaser.Geom.Rectangle(-100, -150, clickImg.width, 25);
+
+    monTimer = this.time.addEvent({
+        delay: 1000,
+        callback: compteUneSeconde,
+        callbackScope: this,
+        loop: true
+    });
+    
 }
 
+
+function compteUneSeconde () {
+    chrono= chrono-1; // on incremente le chronometre d'une unite
+}  
+
 function update(time, delta) {
+    modifBarre(chrono);
     movePlayer(player);
     controls.update(delta);
 }
@@ -451,3 +476,26 @@ function over() {
 function out() {
     console.log('button out');
 }
+
+function modifBarre(value) {
+    if (value < 0) {
+        value = 0;
+    }
+    if (value < 30) {
+        graphics.fillStyle(0xff0000);
+    }
+    else {
+        graphics.fillStyle(0x00ff00);
+    }
+    var d = Math.floor(clickImg.width / 100 * value);
+    graphics.fillRect(-100, -150, d, 25);
+
+    draw(d);
+}
+
+function draw(d) {
+    graphics.fillStyle(0xffffff);
+    graphics.fillRect(-100 + d, -150, clickImg.width - d, 25);
+}
+
+
