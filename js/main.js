@@ -217,7 +217,6 @@ function chemin() {
     }
 }*/
 
-
 var config = {
     type: Phaser.AUTO,
     width: window.innerWidth * 8 / 12,
@@ -251,18 +250,20 @@ var layer1;
 var layer2, layer3;
 var collisions;
 var map;
+var sprite, clickImg;
 
 function preload() {
-    /*
+
     this.load.image('tempHouse', '../img/tempHouse.png');
-    */
 
     this.load.tilemapTiledJSON('map', '../testPathfinding/map.json');
     //this.load.tilemapTiledJSON('map', '../testPathfinding/newmaptest.json');
     this.load.image('tiles', '../testPathfinding/tiles.png');
 
     this.load.spritesheet('perso1', '../img/perso1_45x60.png', { frameWidth: 45, frameHeight: 60 });
-    this.load.image('button', '/img/button.png');
+    this.load.image('button', '../img/button.png');
+
+    this.load.image('back', '../img/back.png');
 }
 
 function create() {
@@ -282,7 +283,7 @@ function create() {
 
     this.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
     cursors2.P.onDown.add(goFull, this);*/
-    
+
 
     J2Haut = this.input.keyboard.addKey('Z');
     J2Bas = this.input.keyboard.addKey('S');
@@ -293,6 +294,28 @@ function create() {
 
     collisions = this.physics.add.staticGroup();
     collisions.create(100, 50, 'button');
+
+    //Gestion du click
+    //sprite = this.add.sprite(2, 2, 'back');
+    clickImg = this.add.sprite(0, 0, 'tempHouse');
+    clickImg.setInteractive();
+
+    /*
+    var style = { font: "100px Arial" };
+    let text = this.add.text(300, 200, "testtt", style);
+    text.visible = false;
+    */
+
+    clickImg.on('pointerdown', function (pointer) {
+        console.log("click");
+        if(this.isTinted) {
+            this.clearTint();
+        }else {
+            this.setTint(0xff0000);
+        }
+    });
+
+
 
     let tilesets = map.addTilesetImage('tiles', 'tiles');
     console.log(map);
@@ -308,7 +331,7 @@ function create() {
 */
     //map.setCollisionBetween(0, 100, true, 'walls_doors');
     //map.setCollisionBetween(0, 100, true, 'meubles');
-    
+
     var cursors = this.input.keyboard.createCursorKeys();
 
     this.cameras.main.setZoom(0.3);
@@ -330,7 +353,7 @@ function create() {
 
     player.body.bounce.y = 0.1;
     //player.setCollideWorldBounds(true);
-    
+
     //player.body.setSize(43, 24, 2, 40);
 
     this.anims.create({
@@ -379,7 +402,7 @@ function create() {
     //this.physics.add.collider(player, layer3);
 
     this.physics.add.collider(player, collisions);
-    
+
 }
 
 function update(time, delta) {
@@ -415,4 +438,16 @@ function movePlayer(player) {
         player.anims.stop();
         player.anims.play('face');
     }
+}
+
+function up() {
+    console.log('button up', arguments);
+}
+
+function over() {
+    console.log('button over');
+}
+
+function out() {
+    console.log('button out');
 }
