@@ -1,52 +1,31 @@
-class HealthBar2 {
+class Barre {
+    constructor(graphics, sprite, size) {
+        
+        this.graphics = graphics;
+        this.rect1 = new Phaser.Geom.Rectangle(-100, -150, size, 25); $
 
-    constructor(scene, x, y) {
-        this.bar = new Phaser.GameObjects.Graphics(scene);
-
-        this.x = x;
-        this.y = y;
-        this.value = 100;
-        this.p = 76 / 100;
-
-        this.draw();
-
-        scene.add.existing(this.bar);
+        this.sprite = sprite;
+        this.size = size;
     }
 
-    decrease(amount) {
-        this.value -= amount;
-
-        if (this.value < 0) {
-            this.value = 0;
+    modifBarre(value) {
+        if (value < 0) {
+            value = 0;
         }
-
-        this.draw();
-
-        return (this.value === 0);
-    }
-
-    draw() {
-        this.bar.clear();
-
-        //  BG
-        this.bar.fillStyle(0x000000);
-        this.bar.fillRect(this.x, this.y, 80, 16);
-
-        //  Health
-
-        this.bar.fillStyle(0xffffff);
-        this.bar.fillRect(this.x + 2, this.y + 2, 76, 12);
-
-        if (this.value < 30) {
-            this.bar.fillStyle(0xff0000);
+        if (value < 30) {
+            this.graphics.fillStyle(0xff0000);
         }
         else {
-            this.bar.fillStyle(0x00ff00);
+            this.graphics.fillStyle(0x00ff00);
         }
+        var d = Math.floor(this.size / 100 * value);
+        this.graphics.fillRect(-100, -150, d, 25);
 
-        var d = Math.floor(this.p * this.value);
-
-        this.bar.fillRect(this.x + 2, this.y + 2, d, 12);
+        this.draw(d);
     }
 
+    draw(d) {
+        this.graphics.fillStyle(0xffffff);
+        this.graphics.fillRect(-100 + d, -150, this.size - d, 25);
+    }
 }

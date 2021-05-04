@@ -251,7 +251,7 @@ var layer2, layer3;
 var collisions;
 var map;
 var sprite, clickImg;
-let graphics, rect1;
+let housebarre;
 
 
 var chronoTexte;
@@ -412,8 +412,9 @@ function create() {
 
     this.physics.add.collider(player, collisions);
 
-    graphics = this.add.graphics({ lineStyle: { width: 2, color: 0x0000aa }, fillStyle: { color: 0x008800 } });
-    rect1 = new Phaser.Geom.Rectangle(-100, -150, clickImg.width, 25);
+    let graphics = this.add.graphics({ lineStyle: { width: 2, color: 0x0000aa }, fillStyle: { color: 0x008800 } });
+
+    housebarre = new Barre(graphics, clickImg, clickImg.width);
 
     monTimer = this.time.addEvent({
         delay: 1000,
@@ -424,13 +425,12 @@ function create() {
     
 }
 
-
 function compteUneSeconde () {
     chrono= chrono-1; // on incremente le chronometre d'une unite
 }  
 
 function update(time, delta) {
-    modifBarre(chrono);
+    housebarre.modifBarre(chrono);
     movePlayer(player);
     controls.update(delta);
 }
@@ -464,38 +464,3 @@ function movePlayer(player) {
         player.anims.play('face');
     }
 }
-
-function up() {
-    console.log('button up', arguments);
-}
-
-function over() {
-    console.log('button over');
-}
-
-function out() {
-    console.log('button out');
-}
-
-function modifBarre(value) {
-    if (value < 0) {
-        value = 0;
-    }
-    if (value < 30) {
-        graphics.fillStyle(0xff0000);
-    }
-    else {
-        graphics.fillStyle(0x00ff00);
-    }
-    var d = Math.floor(clickImg.width / 100 * value);
-    graphics.fillRect(-100, -150, d, 25);
-
-    draw(d);
-}
-
-function draw(d) {
-    graphics.fillStyle(0xffffff);
-    graphics.fillRect(-100 + d, -150, clickImg.width - d, 25);
-}
-
-
