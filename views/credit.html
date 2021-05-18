@@ -9,7 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  
+
     <script src="/socket.io/socket.io.js"></script>
     <link rel="stylesheet" type="text/css" href="credit.css"/>
     <link rel="icon" href="../img/icone.gif" type="image/gif">
@@ -18,10 +18,10 @@
 <body>
 
 <!--Nav-Bar-->
-<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+<nav class="navbar navbar-expand-md bg-dark navbar-dark" style="z-index: 3">
 
     <a class="navbar-brand" href="index.html">
-        <img src="../img/icone.gif" width="30" height="30" class="d-inline-block align-top" alt="logo" >
+        <img src="../img/icone.gif" width="30" height="30" class="d-inline-block align-top" alt="logo">
     </a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -31,10 +31,10 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
 
         <ul class="navbar-nav">
-            
+
 
             <li class="nav-item">
-                <a class="nav-link" href="/views/wiki.html" >Wiki</a>
+                <a class="nav-link" href="/views/wiki.html">Wiki</a>
             </li>
 
             <li class="nav-item">
@@ -52,49 +52,38 @@
 </nav>
 
 <!--Container-->
-
 <article class="credit">
     <audio preload="auto">
-      <source src="http://s.cdpn.io/1202/Star_Wars_original_opening_crawl_1977.ogg" type="audio/ogg" />
-      <source src="http://s.cdpn.io/1202/Star_Wars_original_opening_crawl_1977.mp3" type="audio/mpeg" />
+        <source src="http://s.cdpn.io/1202/Star_Wars_original_opening_crawl_1977.ogg" type="audio/ogg"/>
+        <source src="http://s.cdpn.io/1202/Star_Wars_original_opening_crawl_1977.mp3" type="audio/mpeg"/>
     </audio>
-    
+
     <section class="start">
-      <p>
-        Voir les credits
-      </p>
+        <p>Voir les credits</p>
     </section>
-    
+
     <div class="animation">
         <section class="intro">
-          Sérious game
-          <br>
-          Année 2020-2021
+            Sérious game
+            <br>
+            Année 2020-2021
         </section>
-        
+
         <section class="logo">
-          <img src="/img/logos.png"></img>
+            <img src="/img/logos.png" alt="logo"/>
         </section>
-  
+
         <section class="titles">
-          <div>  
-            <p>
-              Home IO
-            </p>
-  
-            <p>
-              Theme : Maison connecté
-            </p>
-  
-            <p>
-              Phaser : Pierre-Louis
-            </p>
-          </div>
+            <div class="divTitle">
+                <p>Home IO</p>
+                <p>Theme : Maison connecté</p>
+                <p>Phaser : Pierre-Louis</p>
+            </div>
         </section>
     </div>
-  </article>
+</article>
 
-  <script src="/js/credit.js"></script>
+<script src="/js/credit.js"></script>
 
 </body>
 </html>
