@@ -1,9 +1,6 @@
 let achat = (function() {
     let data = upgradeJSON;
     let dataMaj = majJSON;
-    let dataMajDesc = majJSON.lores;
-   
-    
 
     return {
         recupData() {
@@ -11,7 +8,6 @@ let achat = (function() {
 
             for (let element of data) {
                 createObjetMaj('d_Upgrade', element.events, '', 'Acheter');
-
                 val++;
             }
            
@@ -22,7 +18,6 @@ let achat = (function() {
 
             for (let element of dataMaj) {
                 createObjetMaj('d_MaJ', element.events, element.lore, 'Mettre à jour');
-
                 val++;
             }
         },
@@ -45,6 +40,25 @@ let achat = (function() {
             if (indice !== -1) {
                 dataMaj.push(data[indice]);
                 this.popUpgrade(indice);
+            }
+        },
+
+        verif(mOru) {
+            let p, div;
+            
+            if(data.length == 0 && mOru == 'Upgrade') {
+                p = document.createElement('p');
+                p.textContent = "Vous avez tout acheté";
+                p.setAttribute('style', 'color: white; text-align: center; margin-top: 80%;');
+                div = document.getElementById('d_Upgrade');
+                div.appendChild(p);
+            }
+            if(dataMaj.length == 0 && mOru == 'MaJ') {
+                p = document.createElement('p');
+                p.textContent = "Vous n'avez pas d'objet";
+                p.setAttribute('style', 'color: white; text-align: center; margin-top: 80%;');
+                div = document.getElementById('d_MaJ');
+                div.appendChild(p);
             }
         }
     }
