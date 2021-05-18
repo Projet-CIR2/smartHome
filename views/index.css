@@ -11,3 +11,10 @@
     font-size: 12px;
     font-weight: bold;
 }
+
+#object #boutton{
+    font-size:12px;
+     margin-top: 9px; 
+     margin-bottom: 7px; 
+     margin-left: 15px;
+}
