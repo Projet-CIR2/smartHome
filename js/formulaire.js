@@ -16,8 +16,7 @@ let createObjetMaj = function (mOru, title, text, btn, val) {
     button.textContent = btn;
     if (mOru === 'd_Upgrade') {
         button.onclick = () => {
-            achat.popMaj(val);
-            createObjetMaj('d_Maj', title, text, btn, val);
+            achat.addMaj(val);
 
             console.log(val);
         };    

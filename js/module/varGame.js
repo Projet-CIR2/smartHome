@@ -19,7 +19,13 @@ let VarGame = (function () {
                 this.modifVar('argent', -20 * view.difficulte);
             }, 300000);
 
-            achat.achat();
+            document.getElementById('d_MaJ').addEventListener('click', () => {
+                achat.recupDataMaj();
+            });
+
+            document.getElementById('d_Upgrade').addEventListener('click', () => {
+                achat.recupData();
+            });
         },
 
         // modifie la variable de jeu du type de nb
