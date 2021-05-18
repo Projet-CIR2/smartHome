@@ -18,6 +18,8 @@ let VarGame = (function () {
             setInterval(() => {
                 this.modifVar('argent', -20 * view.difficulte);
             }, 300000);
+
+            achat.achat();
         },
 
         // modifie la variable de jeu du type de nb
