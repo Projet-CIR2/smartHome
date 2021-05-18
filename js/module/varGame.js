@@ -19,11 +19,11 @@ let VarGame = (function () {
                 this.modifVar('argent', -20 * view.difficulte);
             }, 300000);
 
-            document.getElementById('d_MaJ').addEventListener('click', () => {
+            document.getElementById('MaJ').addEventListener('click', () => {
                 achat.recupDataMaj();
             });
 
-            document.getElementById('d_Upgrade').addEventListener('click', () => {
+            document.getElementById('Upgrade').addEventListener('click', () => {
                 achat.recupData();
             });
         },

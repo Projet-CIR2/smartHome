@@ -1,31 +1,30 @@
 let achat = (function() {
-    let data = upgradeJSON.events;
-    let dataMaj = majJSON.events;
+    let data = upgradeJSON;
+    let dataMaj = majJSON;
     let dataMajDesc = majJSON.lores;
    
     
 
     return {
         recupData() {
-            let val, title, div, p, button;
-            val = 0;
-    
-            data.forEach(element => {
-                createObjetMaj('d_Upgrade', element, '', 'Acheter', val);
-    
+            let val = 0;
+
+            for (let element of data) {
+                createObjetMaj('d_Upgrade', element.events, '', 'Acheter');
+
                 val++;
-            });
+            }
            
         },
 
         recupDataMaj() {
-            let val, div, p, button, desc;
-            val = 0;
-            dataMaj.forEach(element => {
-                createObjetMaj('d_Upgrade', element, '', 'Mettre à jour', val);
-    
+            let val = 0;
+
+            for (let element of dataMaj) {
+                createObjetMaj('d_MaJ', element.events, element.lore, 'Mettre à jour');
+
                 val++;
-            });
+            }
         },
 
         achat() {
@@ -41,11 +40,13 @@ let achat = (function() {
             dataMaj.splice(nb, 1);
         },
 
-        addMaj(nb) {
-            dataMaj.push(data[nb]);
-            this.popUpgrade(nb);
+        addMaj(title) {
+            let indice = data.findIndex(element => element.events === title);
+            if (indice !== -1) {
+                dataMaj.push(data[indice]);
+                this.popUpgrade(indice);
+            }
         }
-
     }
 })();
 
