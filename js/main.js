@@ -218,6 +218,7 @@ function chemin() {
     }
 }*/
 
+
 var config = {
     type: Phaser.AUTO,
     width: window.innerWidth * 8 / 12,
@@ -262,6 +263,7 @@ var chrono = 100;
 
 let matrixMap;
 let chemin;
+let cheminSize;
 
 
 let newCoordX;
@@ -336,7 +338,9 @@ function create() {
     socket.emit('matrix', matrixMap);
     
     socket.on('path', path => {
-        chemin = path
+        chemin = path;
+        cheminSize = path.length;
+
     });
     
 
@@ -352,7 +356,7 @@ function create() {
     click(button);
 
     let tilesets = map.addTilesetImage('tiles', 'tiles');
-    console.log(map);
+    //console.log(map);
 
     layer1 = map.createLayer('sol', tilesets);
     layer2 = map.createLayer('walls_doors', tilesets);
@@ -375,7 +379,9 @@ function create() {
 
     controls = new Phaser.Cameras.Controls.SmoothedKeyControl(controlConfig);
 
-    player = this.physics.add.sprite(145, 560, 'perso1');
+
+    let pos = convert([0,0]);
+    player = this.physics.add.sprite(pos[0],pos[1], 'perso1');
 
     player.body.bounce.y = 0.1;
     //player.setCollideWorldBounds(true);
@@ -439,7 +445,7 @@ function create() {
     });
     //convertTileCoordInScreenCoord(5,5);
 
-    text = this.add.text(0, 0, 'Move the mouse', { font: '17px Courier', fill: '#00ff00' });
+    text = this.add.text(0, 0, 'Move the mouse', { font: '10px Courier', fill: '#00ff00' });
 }   
 
 function compteUneSeconde () {
@@ -452,7 +458,11 @@ function update(time, delta) {
     controls.update(delta);
     //movePlayer2(player, 401, 420);
     //console.log(player.x, player.y);
+
+
     cheminPath();
+
+
     let pointer = this.input.activePointer;
 
     text.setText([
@@ -477,22 +487,22 @@ function movePlayer(player) {
     //console.log(game.height, game.width);
 
     if (J2Haut.isDown) {
-        console.log("haut");
+        //console.log("haut");
         player.y -= 20;
         player.anims.play('up');
     }
     else if (J2Bas.isDown) {
-        console.log("bas");
+        //console.log("bas");
         player.y += 20;
         player.anims.play('down');
     }
     else if (J2Droite.isDown) {
-        console.log("droite");
+        //console.log("droite");
         player.x += 20;
         player.anims.play('right');
     }
     else if (J2Gauche.isDown) {
-        console.log("gauche");
+        //console.log("gauche");
         player.x -= 20;
         player.anims.play('left');
     }
@@ -506,7 +516,7 @@ function movePlayer(player) {
 
 function click(tileset) {
     tileset.on('pointerdown', function (pointer) {
-        console.log("click sur", tileset.texture.key);
+        //console.log("click sur", tileset.texture.key);
         if (this.isTinted) {
             this.clearTint();
         } else {
@@ -528,7 +538,9 @@ function calculPixelY(y) {
 }
 
 function movePlayer2(player, x, y) {
-    console.log('x:', player.x, 'y:', player.y);
+
+    let speed = 50;
+    //console.log('x:', player.x, 'y:', player.y);
 
     player.body.velocity.x = 0;
     player.body.velocity.y = 0;
@@ -542,23 +554,23 @@ function movePlayer2(player, x, y) {
     let isoY = (cartX + cartY) / 2;
     //console.log("Iso", isoX, isoY, "Cart", player.x, player.y);
 
-    if (playerXRound != x || playerYRound != y) {
+    if (playerXRound < x-25 || playerXRound > x+25 || playerYRound < y-25 || playerYRound > y +25) {
         if (playerXRound > x) {
-            player.body.velocity.x -= 30;
+            player.body.velocity.x -= speed;
             player.anims.play('left');
 
         }
         if (playerXRound < x) {
-            player.body.velocity.x += 30;
+            player.body.velocity.x += speed;
             player.anims.play('right');
 
         }
         if (playerYRound > y) {
-            player.body.velocity.y -= 30;
+            player.body.velocity.y -= speed;
             player.anims.play('up');
         }
         if (playerYRound < y) {
-            player.body.velocity.y += 30;
+            player.body.velocity.y += speed;
             player.anims.play('down');
         }
     } else {
@@ -570,9 +582,8 @@ function movePlayer2(player, x, y) {
 
 function cheminPath() {
     let x, y;
-
-    if (destination == -1 && 20 >= 1) {
-        destination = 18;
+    if (destination == -1 && cheminSize >= 1) {
+        destination = cheminSize-1;
         destinationInter = 0;
     }
     if (chemin != undefined) {
@@ -586,17 +597,43 @@ function cheminPath() {
         newCoordX = Math.round(newCoordX);
         newCoordY = Math.round(newCoordY);
         */
-       newCoordX =  convertMatrixX(y);
-       newCoordY =  convertMatrixX(x);
-        if (movePlayer2(player, newCoordX, newCoordY)) {
-            if (destinationInter + 1 < 20) destinationInter++;
+       let pos = convert([x,y]);
+        if (movePlayer2(player,pos[0],pos[1])) {
+            if (destinationInter < cheminSize) destinationInter++;
         }
     }
 }
 
+
+let convertMatrix = (function (){
+
+  
+
+    return {
+        posX(x,y){
+            return(145 + x * 128  - y * 128);
+        },
+
+        posY(x,y){
+            return(280 + y * 70);
+        }
+    }
+
+})();
+
 function convertMatrixX(tileCoordX) {
     return(145 + tileCoordX * 128);
 }
+
+
 function convertMatrixY(tileCoordY) {
     return(280 + tileCoordY * 70);
 }
+
+function convert([x, y]) {
+    let posX = 145 + x * 128  - y * 128;
+    let posY = 280 + y * 70  + x * 70;
+
+    return [posX, posY];
+}
+
