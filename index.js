@@ -32,25 +32,25 @@ app.get('/comment-jouer', (req, res, next) => {
 io.on('connection', function (socket) {
     io.emit('Hello', 'A new connection on our website !'); // permet d'envoyer le message à toutes les connections
     socket.on('matrix', data => {
-        //console.table(data);
+        console.table(data);
 
-        var grid = new PF.Grid(9, 9);
+        var grid = new PF.Grid(20, 20);
 
         var finder = new PF.AStarFinder({
-            allowDiagonal : true,
+            allowDiagonal : false,
         });
 
-
-        for (var i = 0; i < 9; i++) {
-            for (var j = 0; j < 9; j++) {
+        
+        for (var i = 0; i < 20; i++) {
+            for (var j = 0; j < 20; j++) {
                 if(data[i][j] == 1) {
                     //console.log(i,j," ");
                     grid.setWalkableAt(i, j, false);
                 }
             }
         }
-
-        var path = finder.findPath(8, 4, 0, 4, grid);
+        
+        var path = finder.findPath(0, 4, 1, 11, grid);
 
         console.log(path);
         socket.emit('path', path);

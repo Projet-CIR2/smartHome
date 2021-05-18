@@ -1,3 +1,4 @@
+
 //Init Jeu
 /*
 var game = new Phaser.Game(window.innerWidth * 8 / 12 + 1, window.innerHeight - 56, Phaser.AUTO, 'game_page', {
@@ -35,7 +36,7 @@ for (var i = 0; i < 9; i++) {
 
 function create() {
     //	Just to kick things off
-    
+
 }
 function update() {
 
@@ -233,7 +234,8 @@ var config = {
     scene: {
         preload: preload,
         create: create,
-        update: update
+        update: update,
+        render: render
     }
 };
 
@@ -258,6 +260,19 @@ var chronoTexte;
 var monTimer;
 var chrono = 100;
 
+let matrixMap;
+let chemin;
+
+
+let newCoordX;
+let newCoordY;
+let testt;
+let destination = -1;
+let destinationInter = -1;
+
+let isoX, isoY;
+let text;
+
 function preload() {
 
     this.load.image('tempHouse', '../img/tempHouse.png');
@@ -266,13 +281,20 @@ function preload() {
     //this.load.tilemapTiledJSON('map', '../testPathfinding/newmaptest.json');
     this.load.image('tiles', '../testPathfinding/tiles.png');
 
-    this.load.spritesheet('perso1', '../img/perso1_45x60.png', { frameWidth: 45, frameHeight: 60 });
+    //this.load.spritesheet('perso1', '../img/perso1_45x60.png', { frameWidth: 45, frameHeight: 60 });
+    this.load.spritesheet('perso1', '../img/player.png', { frameWidth: 256, frameHeight: 512 });
     this.load.image('button', '../img/button.png');
 
     this.load.image('back', '../img/back.png');
 }
 
 function create() {
+    let matrixMap = new Array(20);
+    for (var i = 0; i < 20; i++) {
+        matrixMap[i] = new Array(20);
+    }
+    //matrixMap.forEach(element => element.forEach(elem => elem = 0));
+    //console.log(matrixMap);
     /*button = game.add.button(game.world.centerX - 120, game.world.centerY - 120, 'button', start, this, 2, 1, 0);
     button.width = 240;
     button.height = 120;
@@ -282,7 +304,7 @@ function create() {
 
     game.stage.backgroundColor = '#182d3b'
 
-    
+
     cursors2 = this.input.keyboard.addKeys({
         'P': Phaser.KeyCode.P
     });
@@ -298,33 +320,36 @@ function create() {
 
     map = this.add.tilemap('map');
 
-    collisions = this.physics.add.staticGroup();
-    collisions.create(100, 50, 'button');
+    let coucou = map.layers[1].data;
 
-    //Gestion du click
-    //sprite = this.add.sprite(2, 2, 'back');
+    for (let u = 0; u < map.width; u++) {
+        for (let v = 0; v < map.height; v++) {
+            if (coucou[u][v].index == -1) {
+                matrixMap[u][v] = 0;
+            }
+            else {
+                matrixMap[u][v] = 1;
+            }
+        }
+    }
+
+    socket.emit('matrix', matrixMap);
+    
+    socket.on('path', path => {
+        chemin = path
+    });
+    
+
+    collisions = this.physics.add.staticGroup();
+
     clickImg = this.add.sprite(5, 5, 'tempHouse');
     clickImg.setInteractive();
 
+    let button = this.add.sprite(500, 500, 'button');
+    button.setInteractive();
 
-
-
-    /*
-    var style = { font: "100px Arial" };
-    let text = this.add.text(300, 200, "testtt", style);
-    text.visible = false;
-    */
-
-    clickImg.on('pointerdown', function (pointer) {
-        console.log("click");
-        if (this.isTinted) {
-            this.clearTint();
-        } else {
-            this.setTint(0xff0000);
-        }
-    });
-
-
+    click(clickImg);
+    click(button);
 
     let tilesets = map.addTilesetImage('tiles', 'tiles');
     console.log(map);
@@ -332,14 +357,6 @@ function create() {
     layer1 = map.createLayer('sol', tilesets);
     layer2 = map.createLayer('walls_doors', tilesets);
     layer3 = map.createLayer('meubles', tilesets);
-
-    //map.setCollisionBetween(0, 100, true, 'walls_doors');
-    /*
-    this.physics.add.collider(player, layer2);
-    this.physics.add.collider(player, layer3);
-*/
-    //map.setCollisionBetween(0, 100, true, 'walls_doors');
-    //map.setCollisionBetween(0, 100, true, 'meubles');
 
     var cursors = this.input.keyboard.createCursorKeys();
 
@@ -358,57 +375,55 @@ function create() {
 
     controls = new Phaser.Cameras.Controls.SmoothedKeyControl(controlConfig);
 
-    player = this.physics.add.sprite(500, 500, 'perso1');
+    player = this.physics.add.sprite(145, 560, 'perso1');
 
     player.body.bounce.y = 0.1;
     //player.setCollideWorldBounds(true);
-
     //player.body.setSize(43, 24, 2, 40);
 
     this.anims.create({
         key: 'left',
-        frames: this.anims.generateFrameNumbers('perso1', { start: 3, end: 5 }),
+        //frames: this.anims.generateFrameNumbers('perso1', { start: 3, end: 5 }),
+        frames: this.anims.generateFrameNumbers('perso1', { start: 0, end: 0 }),
         frameRate: 10,
         repeat: -1
 
     })
     this.anims.create({
         key: 'right',
-        frames: this.anims.generateFrameNumbers('perso1', { start: 6, end: 8 }),
+        //frames: this.anims.generateFrameNumbers('perso1', { start: 6, end: 8 }),
+        frames: this.anims.generateFrameNumbers('perso1', { start: 1, end: 1 }),
         frameRate: 10,
         repeat: -1
     })
     this.anims.create({
         key: 'up',
-        frames: this.anims.generateFrameNumbers('perso1', { start: 9, end: 11 }),
+        //frames: this.anims.generateFrameNumbers('perso1', { start: 9, end: 11 }),
+        frames: this.anims.generateFrameNumbers('perso1', { start: 2, end: 2 }),
         frameRate: 10,
         repeat: -1
     });
 
     this.anims.create({
         key: 'down',
-        frames: this.anims.generateFrameNumbers('perso1', { start: 0, end: 2 }),
+        //frames: this.anims.generateFrameNumbers('perso1', { start: 0, end: 2 }),
+        frames: this.anims.generateFrameNumbers('perso1', { start: 3, end: 3 }),
         frameRate: 10,
         repeat: -1
     });
     this.anims.create({
         key: 'face',
-        frames: this.anims.generateFrameNumbers('perso1', { start: 1, end: 1 }),
+        //frames: this.anims.generateFrameNumbers('perso1', { start: 1, end: 1 }),
+        frames: this.anims.generateFrameNumbers('perso1', { start: 3, end: 3 }),
         frameRate: 10,
         repeat: -1
     });
     this.anims.create({
         key: 'back',
-        frames: this.anims.generateFrameNumbers('perso1', { start: 10, end: 10 }),
+        //frames: this.anims.generateFrameNumbers('perso1', { start: 10, end: 10 }),
         frameRate: 10,
         repeat: -1
     });
-    /*
-    this.physics.add.collider(player, layer2, function() {
-        console.log("colllision");
-    });*/
-    //this.physics.add.collider(player, layer2);
-    //this.physics.add.collider(player, layer3);
 
     this.physics.add.collider(player, collisions);
 
@@ -422,17 +437,39 @@ function create() {
         callbackScope: this,
         loop: true
     });
-    
-}
+    //convertTileCoordInScreenCoord(5,5);
+
+    text = this.add.text(0, 0, 'Move the mouse', { font: '17px Courier', fill: '#00ff00' });
+}   
 
 function compteUneSeconde () {
     chrono= chrono-1; // on incremente le chronometre d'une unite
-}  
+}
 
 function update(time, delta) {
     housebarre.modifBarre(chrono);
-    movePlayer(player);
+    //movePlayer(player);
     controls.update(delta);
+    //movePlayer2(player, 401, 420);
+    //console.log(player.x, player.y);
+    cheminPath();
+    let pointer = this.input.activePointer;
+
+    text.setText([
+        'x: ' + pointer.x,
+        'y: ' + pointer.y,
+        'mid x: ' + pointer.midPoint.x,
+        'mid y: ' + pointer.midPoint.y,
+        'velocity x: ' + pointer.velocity.x,
+        'velocity y: ' + pointer.velocity.y,
+        'movementX: ' + pointer.movementX,
+        'movementY: ' + pointer.movementY
+    ]);
+}
+
+function render() {
+    game.debug.inputInfo(32, 32);
+    game.debug.pointer(game.input.activePointer);
 }
 
 function movePlayer(player) {
@@ -463,4 +500,103 @@ function movePlayer(player) {
         player.anims.stop();
         player.anims.play('face');
     }
+    
+}
+
+
+function click(tileset) {
+    tileset.on('pointerdown', function (pointer) {
+        console.log("click sur", tileset.texture.key);
+        if (this.isTinted) {
+            this.clearTint();
+        } else {
+            this.setTint(0xCDB751);
+        }
+    })
+}
+
+
+function calculPixelX(x) {
+    let test2 = x * /*256*/ 64;
+    return test2;
+}
+
+function calculPixelY(y) {
+    let test2 = y * /*128*/ 64;
+    return test2;
+
+}
+
+function movePlayer2(player, x, y) {
+    console.log('x:', player.x, 'y:', player.y);
+
+    player.body.velocity.x = 0;
+    player.body.velocity.y = 0;
+
+    var playerXRound = Math.round(player.x);
+    var playerYRound = Math.round(player.y);
+
+    let cartX = player.x;
+    let cartY = player.y;
+    let isoX = cartX - cartY; 
+    let isoY = (cartX + cartY) / 2;
+    //console.log("Iso", isoX, isoY, "Cart", player.x, player.y);
+
+    if (playerXRound != x || playerYRound != y) {
+        if (playerXRound > x) {
+            player.body.velocity.x -= 30;
+            player.anims.play('left');
+
+        }
+        if (playerXRound < x) {
+            player.body.velocity.x += 30;
+            player.anims.play('right');
+
+        }
+        if (playerYRound > y) {
+            player.body.velocity.y -= 30;
+            player.anims.play('up');
+        }
+        if (playerYRound < y) {
+            player.body.velocity.y += 30;
+            player.anims.play('down');
+        }
+    } else {
+        player.anims.stop();
+        player.anims.play('face');
+        return 1;
+    }
+}
+
+function cheminPath() {
+    let x, y;
+
+    if (destination == -1 && 20 >= 1) {
+        destination = 18;
+        destinationInter = 0;
+    }
+    if (chemin != undefined) {
+        let coords = chemin[destinationInter];
+        x = coords[1];
+        y = coords[0];
+        
+        /*
+        newCoordX = calculPixelX(x);
+        newCoordY = calculPixelY(y);
+        newCoordX = Math.round(newCoordX);
+        newCoordY = Math.round(newCoordY);
+        */
+       newCoordX =  convertMatrixX(y);
+       newCoordY =  convertMatrixX(x);
+        if (movePlayer2(player, newCoordX, newCoordY)) {
+            if (destinationInter + 1 < 20) destinationInter++;
+        }
+    }
+}
+
+function convertMatrixX(tileCoordX) {
+    return(145 + tileCoordX * 128);
+}
+function convertMatrixY(tileCoordY) {
+    return(280 + tileCoordY * 70);
 }
