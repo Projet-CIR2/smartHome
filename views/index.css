@@ -1,20 +1,31 @@
-#object{
+#d_Upgrade {
+    padding: 0 5%;
+}
+
+.object{
     background-color:rgb(100, 100, 100);
     margin: 10px 20px 10px 20px; 
     width: 80%; 
     border-radius: 10px;
 }
 
-#object p{
+.object p{
     padding-top: 6px; 
     padding-bottom: 0px; 
     font-size: 12px;
     font-weight: bold;
+    text-align: center;
 }
 
-#object #boutton{
+.object button{
     font-size:12px;
-     margin-top: 9px; 
-     margin-bottom: 7px; 
-     margin-left: 15px;
+    margin-top: 2px; 
+    margin-bottom: 7px; 
+    margin-left: 30px;
+}
+
+.object #describ{
+    padding-top: 0px;
+    font-size: 12px;
+    font-weight: normal;
 }
