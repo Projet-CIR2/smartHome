@@ -15,6 +15,20 @@ var button;
 
 function preload() {
     game.load.spritesheet('button', '/img/button.png', 960, 480);
+    game.load.spritesheet('boxinternet', '/img/boxinternet.png', 50, 50);
+    game.load.spritesheet('cheminee', '/img/cheminee.png', 50, 50);
+    game.load.spritesheet('fauteuil', '/img/fauteuil.png', 50, 50);
+    game.load.spritesheet('frigo', '/img/frigo.png', 50, 50);
+    game.load.spritesheet('gaziniere', '/img/gaziniere.png', 50, 50);
+    game.load.spritesheet('googlehome', '/img/googlehome.png', 50, 50);
+    game.load.spritesheet('lavelinge', '/img/lavelinge.png', 50, 50);
+    game.load.spritesheet('lavevaisselle', '/img/lavevaisselle.png', 50, 50);
+    game.load.spritesheet('lumiere', '/img/lumiere.png', 50, 50);
+    game.load.spritesheet('ordinateur', '/img/ordinateur.png', 50, 50);
+    game.load.spritesheet('radiateur', '/img/radiateur.png', 50, 50);
+    game.load.spritesheet('reveil', '/img/reveil.png', 50, 50);
+    game.load.spritesheet('sechelinge', '/img/sechelinge.png', 50, 50);
+    game.load.spritesheet('tele', '/img/tele.png', 50, 50);
     game.load.image('tempHouse', '../img/tempHouse.png');
     game.load.spritesheet('perso1', '../img/perso1_45x60.png', 45, 60);
 }
@@ -39,15 +53,15 @@ function create() {
     cursors2 = this.input.keyboard.addKeys({
         'P': Phaser.KeyCode.P
     });
-    
+
     this.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
     cursors2.P.onDown.add(goFull, this);
-    
+
 }
 
 function update() {
     if(!button.visible) movePlayer(player);
-    
+
 }
 
 //Lance le plein ecran

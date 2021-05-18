@@ -1,7 +1,16 @@
 var stock = 1;
 
-class Objet {
-  constructor(type, valeur) {
+class Objet extends Phaser.Physics.Arcade.Sprite{
+  constructor(type, valeur, scene, x, y, img) {
+    super(scene.matter.world, x, y, img, {isStatic:true});
+    this.on('pointerdown', function (pointer) {
+        if(!this.isTinted){
+            this.setTint(0xff0000);
+        }
+        else {
+            this.clearTint();
+        }
+    });
     this.type = type; //de quel objet il s'agit
     this.difficulte = valeur; //représente l'importance de l'objet
     this.cout_reparation = 0; //prix de la réparation
