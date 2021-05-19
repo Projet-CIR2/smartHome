@@ -2,7 +2,7 @@ var stock = 1;
 
 class Objet extends Phaser.Physics.Arcade.Sprite{
   constructor(type, valeur, scene, x, y, img) {
-    super(scene.matter.world, x, y, img, {isStatic:true});
+    super(scene, x, y, img, {isStatic: true});
     this.on('pointerdown', function (pointer) {
         if(!this.isTinted){
             this.setTint(0xff0000);

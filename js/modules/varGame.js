@@ -17,20 +17,7 @@ let VarGame = (function () {
             // paiement de la box
             setInterval(() => {
                 this.modifVar('argent', -20 * view.difficulte);
-            }, 300000),
-
-            achat.verif('MaJ');
-            achat.clickStop();
-            
-            document.getElementById('MaJ').addEventListener('click', () => {
-                achat.verif('MaJ');
-                achat.recupDataMaj();
-            });
-
-            document.getElementById('Upgrade').addEventListener('click', () => {
-                achat.verif('Upgrade');
-                achat.recupData();
-            });
+            }, 300000);
         },
 
         // modifie la variable de jeu du type de nb

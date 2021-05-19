@@ -10,7 +10,24 @@ class GameView {
         this.barreDebit = new Barres('debit');
         this.modifBarre();
 
+        this.initEvents();
+    }
+
+    initEvents() {
         chat.lanceTexte();
+
+        achat.verif('MaJ');
+        achat.clickStop();
+
+        document.getElementById('MaJ').addEventListener('click', () => {
+            achat.verif('MaJ');
+            achat.recupDataMaj();
+        });
+
+        document.getElementById('Upgrade').addEventListener('click', () => {
+            achat.verif('Upgrade');
+            achat.recupData();
+        });
     }
 
     modifBarre() {
