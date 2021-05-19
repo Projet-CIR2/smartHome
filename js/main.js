@@ -1,4 +1,4 @@
-var config = {
+let config = {
     type: Phaser.AUTO,
     width: window.innerWidth * 8 / 12,
     height: window.innerHeight - 56,
@@ -19,26 +19,26 @@ var config = {
     }
 };
 
-var controls;
+let controls;
 
-var game = new Phaser.Game(config);
+let game = new Phaser.Game(config);
 
-var player;
-var J2Haut;
-var J2Bas;
-var J2Gauche;
-var J2Droite;
-var layer1;
-var layer2, layer3;
-var collisions;
-var map;
-var sprite, clickImg;
+let player;
+let J2Haut;
+let J2Bas;
+let J2Gauche;
+let J2Droite;
+let layer1;
+let layer2, layer3;
+let collisions;
+let map;
+let sprite, clickImg;
 let housebarre;
 
 
-var chronoTexte;
-var monTimer;
-var chrono = 100;
+let chronoTexte;
+let monTimer;
+let chrono = 100;
 
 let matrixMap;
 let chemin;
@@ -74,7 +74,6 @@ function preload() {
 }
 
 function create() {
-    console.log('hola');
     //matrixMap.forEach(element => element.forEach(elem => elem = 0));
     //console.log(matrixMap);
     /*button = game.add.button(game.world.centerX - 120, game.world.centerY - 120, 'button', start, this, 2, 1, 0);
@@ -106,7 +105,7 @@ function create() {
     mapHeight = map.height;
 
     let matrixMap = new Array(mapWidth);
-    for (var i = 0; i < mapWidth; i++) {
+    for (let i = 0; i < mapWidth; i++) {
         matrixMap[i] = new Array(mapHeight);
     }
 
@@ -150,11 +149,11 @@ function create() {
     layer2 = map.createLayer('walls_doors', tilesets);
     layer3 = map.createLayer('meubles', tilesets);
 
-    var cursors = this.input.keyboard.createCursorKeys();
+    let cursors = this.input.keyboard.createCursorKeys();
 
     this.cameras.main.setZoom(0.3);
 
-    var controlConfig = {
+    let controlConfig = {
         camera: this.cameras.main,
         left: cursors.left,
         right: cursors.right,
@@ -333,8 +332,8 @@ function movePlayer2(player, x, y) {
     player.body.velocity.x = 0;
     player.body.velocity.y = 0;
 
-    var playerXRound = Math.round(player.x);
-    var playerYRound = Math.round(player.y);
+    let playerXRound = Math.round(player.x);
+    let playerYRound = Math.round(player.y);
 
     let cartX = player.x;
     let cartY = player.y;
