@@ -62,9 +62,9 @@ function preload() {
 
     this.load.image('tempHouse', '../img/tempHouse.png');
 
-    this.load.tilemapTiledJSON('map', '../testPathfinding/map.json');
+    this.load.tilemapTiledJSON('map', '../testPathfinding/map1.json');
     //this.load.tilemapTiledJSON('map', '../testPathfinding/newmaptest.json');
-    this.load.image('tiles', '../testPathfinding/tiles.png');
+    this.load.image('tiles', '../testPathfinding/newtiles.png');
 
     //this.load.spritesheet('perso1', '../img/perso1_45x60.png', { frameWidth: 45, frameHeight: 60 });
     this.load.spritesheet('perso1', '../img/player.png', { frameWidth: 256, frameHeight: 512 });
@@ -104,15 +104,16 @@ function create() {
     mapWidth = map.width;
     mapHeight = map.height;
 
-    let matrixMap = new Array(mapWidth);
-    for (let i = 0; i < mapWidth; i++) {
-        matrixMap[i] = new Array(mapHeight);
+    let matrixMap = new Array(mapHeight);
+    for (let i = 0; i < mapHeight; i++) {
+        matrixMap[i] = new Array(mapWidth);
     }
 
-    let coucou = map.layers[1].data;
+    let coucou = map.layers[4].data;
+    console.log(matrixMap);
 
-    for (let u = 0; u < map.width; u++) {
-        for (let v = 0; v < map.height; v++) {
+    for (let u = 0; u < mapHeight; u++) {
+        for (let v = 0; v < mapWidth; v++) {
             if (coucou[u][v].index == -1) {
                 matrixMap[u][v] = 0;
             }
@@ -122,10 +123,11 @@ function create() {
         }
     }
 
-    socket.emit('matrix', matrixMap);
+    socket.emit('matrix', matrixMap, mapWidth, mapHeight, [3,2,2,11]);
     
     socket.on('path', path => {
         chemin = path;
+        console.log(path);
         cheminSize = path.length;
 
     });
@@ -146,7 +148,7 @@ function create() {
     //console.log(map);
 
     layer1 = map.createLayer('sol', tilesets);
-    layer2 = map.createLayer('walls_doors', tilesets);
+    layer2 = map.createLayer('walls_1', tilesets);
     layer3 = map.createLayer('meubles', tilesets);
 
     let cursors = this.input.keyboard.createCursorKeys();
@@ -167,7 +169,7 @@ function create() {
     controls = new Phaser.Cameras.Controls.SmoothedKeyControl(controlConfig);
 
 
-    let pos = convert([0,0]);
+    let pos = convert([2,3]);
     player = this.physics.add.sprite(pos[0],pos[1], 'perso1');
 
     player.body.bounce.y = 0.1;

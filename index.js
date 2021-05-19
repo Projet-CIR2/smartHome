@@ -31,18 +31,19 @@ app.get('/comment-jouer', (req, res, next) => {
 
 io.on('connection', function (socket) {
     io.emit('Hello', 'A new connection on our website !'); // permet d'envoyer le message à toutes les connections
-    socket.on('matrix', data => {
+    socket.on('matrix', (data, width, heigth, tab) => {
         console.table(data);
 
-        var grid = new PF.Grid(20, 20);
+        var grid = new PF.Grid(heigth, width);
+        
 
         var finder = new PF.AStarFinder({
             allowDiagonal : false,
         });
 
         
-        for (var i = 0; i < 20; i++) {
-            for (var j = 0; j < 20; j++) {
+        for (var i = 0; i < heigth; i++) {
+            for (var j = 0; j < width; j++) {
                 if(data[i][j] == 1) {
                     //console.log(i,j," ");
                     grid.setWalkableAt(i, j, false);
@@ -50,8 +51,7 @@ io.on('connection', function (socket) {
             }
         }
         
-        var path = finder.findPath(0, 4, 1, 11, grid);
-
+        var path = finder.findPath(tab[0], tab[1], tab[2],tab[3], grid);
         console.log(path);
         socket.emit('path', path);
         var gridBackup = grid.clone();
