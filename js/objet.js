@@ -24,7 +24,7 @@ class Objet extends Phaser.Physics.Arcade.Sprite{
     this.coutDebit=0;
     ++stock;
     if(this.difficulte===1){ //valeur non officiel
-      this.cout_reparation = monModule.rand(30,100);
+      this.cout_reparation = monModule.rand(5,10);
       this.cout_amelioration = monModule.rand(50,200);
       this.tmp_etat = monModule.rand(100,300);
       this.tmp_reparation = monModule.rand(25,30);
@@ -32,7 +32,7 @@ class Objet extends Phaser.Physics.Arcade.Sprite{
       this.coutDebit = monModule.rand(15,20);
     }
     if(this.difficulte===2){
-      this.cout_reparation = monModule.rand(130,200);
+      this.cout_reparation = monModule.rand(15,20);
       this.cout_amelioration = monModule.rand(150,300);
       this.tmp_etat = monModule.rand(200,400);
       this.tmp_reparation = monModule.rand(30,50);
@@ -40,7 +40,7 @@ class Objet extends Phaser.Physics.Arcade.Sprite{
       this.coutDebit = monModule.rand(20,25);
     }
     if(this.difficulte===3){
-        this.cout_reparation = monModule.rand(230,300);
+        this.cout_reparation = monModule.rand(25,30);
         this.cout_amelioration = monModule.rand(250,300);
         this.tmp_etat = monModule.rand(300,500);
         this.tmp_reparation = monModule.rand(50,70);
@@ -76,6 +76,24 @@ class Objet extends Phaser.Physics.Arcade.Sprite{
         this.tmp_reparation = monModule.rand(this.tmp_reparation-5,this.tmp_reparation);
         this.cout = monModule.rand(this.cout-5,this.cout);
         this.coutDebit = monModule.rand(this.coutDebit-3,this.coutDebit);
+        for(let i=2;i<6;i++){
+          if(this.niveau===i){
+            switch (i) {
+              case 2:
+                this.setTint(0xADD8E6);
+                break;
+              case 3:
+                this.setTint(0x87CEEB);
+                break;
+              case 4:
+                this.setTint(0x00BFFF);
+                break;
+              case 5:
+                this.setTint(0x4169E1);
+                break;
+            }
+          }
+        }
     },tempo2 );
     }
   }
