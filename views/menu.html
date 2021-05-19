@@ -2,26 +2,27 @@
     <head>
         <meta charset="utf-8"/>
         <title>HomeIO</title>
+        <link rel="stylesheet" href="/views/menu.css"/>
         <script src="../node_modules/phaser-ce/build/phaser.min.js"></script>
         <script src="../node_modules/phaser-ce/build/phaser.js"></script>
+        <script src="../json/events.js"></script>
+        
         </head>
     <body>
-        <div class="masthead" class="container-fluid">
-            <img src="" id="logo">
-            <ol class="absolute">
-        
-                <form>
-                    <button type="submit" formaction="jouer" class="button">Jouer</button>
-                </form>
-        
-                <form>
-                    <button type="submit" formaction="comment-jouer" class="button">Comment Jouer</button>
-                </form>
-                <form>
-                    <button type="submit" formaction="https://www.serious-game.fr/" class="button">Serious-Game
-                    </button>
-                </form>
-            </ol>
+        <div class="masthead">
+            <p class="title">HOME IO</p>
+            <div class="scena">
+                    <a href='/views/scena.html'><p>Scénario</p></a>
+                </div>
+            <!--
+             <div id="list_scena">
+
+             </div>
+             --->
+            <div class="jouer">
+                <a href='/views/index.html'><p>Jouer</p></a>
+            </div>
         </div>
+        <script src="../js/menu.js"></script>
     </body>
 </html>

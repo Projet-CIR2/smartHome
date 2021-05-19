@@ -1,0 +1,40 @@
+body {
+    background-image: url("../img/fond.png");
+    background-size: cover;
+
+}
+
+p {
+    color: white;
+    font-weight: bold;
+}
+
+.title {
+    font-size: 130px;
+    margin-left: 15%;
+    margin-top: 3%;
+    margin-bottom: -130px;
+}
+.jouer {
+    margin-left: 82%;
+    font-size: 36px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.scena {
+    margin-left: 72%;
+    font-size: 36px;
+    color: white;
+    background-color: transparent;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+}
+a {
+    text-decoration: none;
+}
+
+#list_scena {
+    font-size: 16px;
+}
