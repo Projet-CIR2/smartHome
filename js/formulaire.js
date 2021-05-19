@@ -25,25 +25,35 @@ let createObjetMaj = function (mOru, title, text, btn) {
             let afficheAchat = document.getElementById('achat');
             let img = document.createElement('img');
             let pAchat = document.createElement('p');
+            let pClick = document.createElement('p');
 
-            afficheAchat.setAttribute('style', 'position: absolute; margin-top: 20%; margin-left: 35%; background-color: #BFB99E; border-radius: 4px; height: 30%; width: 30%;');
+            afficheAchat.setAttribute('style', 'position: absolute; margin-top: 20%; margin-left: 35%; background-color: #BFB99E; border-radius: 4px; height: 30%; width: 30%; visible: hidden;');
             img.src = "./img/cam.png";
             img.setAttribute('style', 'height: 120; width: 120px; margin-left: 25%; margin-top: 13px;');
             img.id = 'image';
 
             pAchat.textContent = "Vous avez acheté " + title;
             pAchat.setAttribute('style', 'color: white; margin-top: 10px; text-align:center;');
-            pAchat.id = 'achatTxt'
+            pAchat.id = 'achatTxt';
+
+            pClick.textContent = "Cliquer pour continuer";
+            pClick.setAttribute('style', 'color: white; margin-top: 10px; text-align:center;');
+            pClick.id = 'pClick';
 
             let pAchatHTML = document.getElementById('achatTxt');
             let imgHTML = document.getElementById('image');
-            
-            if(afficheAchat.childElementCount == 2) {
+            let pClickHTML = document.getElementById('pClick');
+           
+            if(afficheAchat.childElementCount == 3) {
                 afficheAchat.removeChild(imgHTML);
                 afficheAchat.removeChild(pAchatHTML);
+                afficheAchat.removeChild(pClickHTML);
+                
             }
             afficheAchat.appendChild(img);
             afficheAchat.appendChild(pAchat);
+            afficheAchat.appendChild(pClick);
+           
         };    
     }
 }

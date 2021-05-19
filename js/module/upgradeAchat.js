@@ -60,6 +60,12 @@ let achat = (function() {
                 div = document.getElementById('d_MaJ');
                 div.appendChild(p);
             }
+        },
+        clickStop() {
+            let div = document.getElementById('achat');
+            div.addEventListener('click', () => {
+                div.setAttribute('style', 'display: none;');
+            });
         }
     }
 })();

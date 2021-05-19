@@ -20,7 +20,8 @@ let VarGame = (function () {
             }, 300000),
 
             achat.verif('MaJ');
-
+            achat.clickStop();
+            
             document.getElementById('MaJ').addEventListener('click', () => {
                 achat.verif('MaJ');
                 achat.recupDataMaj();
