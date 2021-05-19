@@ -28,8 +28,10 @@ let J2Haut;
 let J2Bas;
 let J2Gauche;
 let J2Droite;
+
 let layer1;
 let layer2, layer3;
+
 let collisions;
 let map;
 let sprite, clickImg;
@@ -60,7 +62,7 @@ let mapHeight;
 
 function preload() {
 
-    this.load.image('tempHouse', '../img/tempHouse.png');
+    this.load.image('tempHouse', '../img/tqt.png');
 
     this.load.tilemapTiledJSON('map', '../testPathfinding/map1.json');
     //this.load.tilemapTiledJSON('map', '../testPathfinding/newmaptest.json');
@@ -135,7 +137,7 @@ function create() {
 
     collisions = this.physics.add.staticGroup();
 
-    clickImg = this.add.sprite(5, 5, 'tempHouse');
+    clickImg = this.add.sprite(0, 0, 'tempHouse');
     clickImg.setInteractive();
 
     let button = this.add.sprite(500, 500, 'button');
@@ -153,7 +155,7 @@ function create() {
 
     let cursors = this.input.keyboard.createCursorKeys();
 
-    this.cameras.main.setZoom(0.3);
+    this.cameras.main.setZoom(0.4);
 
     let controlConfig = {
         camera: this.cameras.main,
@@ -275,24 +277,31 @@ function movePlayer(player) {
     //console.log('x:', player.x, 'y:', player.y);
     //console.log(game.height, game.width);
 
+
+    let speedX = 10;
+    let speedY = speedX/2;
     if (J2Haut.isDown) {
         //console.log("haut");
-        player.y -= 20;
+        player.y -= speedY;
+        player.x += speedX;
         player.anims.play('up');
     }
     else if (J2Bas.isDown) {
         //console.log("bas");
-        player.y += 20;
+        player.y += speedY;
+        player.x -= speedX;
         player.anims.play('down');
     }
     else if (J2Droite.isDown) {
         //console.log("droite");
-        player.x += 20;
+        player.x += speedX;
+        player.y += speedY;
         player.anims.play('right');
     }
     else if (J2Gauche.isDown) {
         //console.log("gauche");
-        player.x -= 20;
+        player.x -= speedX;
+        player.y -= speedY;
         player.anims.play('left');
     }
     else {
@@ -328,7 +337,8 @@ function calculPixelY(y) {
 
 function movePlayer2(player, x, y) {
 
-    let speed = 50;
+    let speedX = 50;
+    let speedY = speedX/2
     //console.log('x:', player.x, 'y:', player.y);
 
     player.body.velocity.x = 0;
@@ -345,21 +355,27 @@ function movePlayer2(player, x, y) {
 
     if (playerXRound < x-25 || playerXRound > x+25 || playerYRound < y-25 || playerYRound > y +25) {
         if (playerXRound > x) {
-            player.body.velocity.x -= speed;
+            player.body.velocity.x -= speedX;
+            player.body.velocity.y -= speedY;
             player.anims.play('left');
 
         }
         if (playerXRound < x) {
-            player.body.velocity.x += speed;
+            player.body.velocity.x += speedX;
+            player.body.velocity.y += speedY
             player.anims.play('right');
 
         }
         if (playerYRound > y) {
-            player.body.velocity.y -= speed;
+            player.body.velocity.y -= speedY;
+            player.body.velocity.x += speedY;
+
             player.anims.play('up');
         }
         if (playerYRound < y) {
-            player.body.velocity.y += speed;
+            player.body.velocity.y += speedY;
+            player.body.velocity.x -= speedX;
+
             player.anims.play('down');
         }
     } else {
@@ -420,8 +436,8 @@ function convertMatrixY(tileCoordY) {
 }
 
 function convert([x, y]) {
-    let posX = 145 + x * 128  - y * 128;
-    let posY = 280 + y * 70  + x * 70;
+    let posX = 135 +x*128 - y * 128;
+    let posY = 280 + y* 64 + x*64; 
 
     return [posX, posY];
 }
