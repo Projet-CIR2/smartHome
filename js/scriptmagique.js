@@ -6,6 +6,7 @@ MAJ.addEventListener("click", () => {
     clean();
 
     let div = document.createElement('div');
+    majup.style.backgroundColor = '#3bd13c';
     majup.appendChild(div);
     div.setAttribute('id', 'd_MaJ');
     div.setAttribute('style', 'display: block; height: 55vh; overflow: auto;background-color: #3bd13c;');
