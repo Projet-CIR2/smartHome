@@ -9,21 +9,23 @@ let json = {
             debit: 100,
             humeur: 100,
             objectif: [
-                {objet: "Console", niveau: 3},
-                {}
+                {objet: "fauteuil", niveau: 3},
+                {objet: "ordinateur", niveau: 3},
+                {objet: "boxinternet", niveau: 3}
             ]
         },
 
         {
-            description: "Vous avez été combriolé et vous dever repartir de zéro mais vous decider de mieux vous proteger",
-            description_milieu:"Vous avez retrouver un niveau de sécurité convenable et vous senter donc plus  en sécurité désormais",
-            description_fin:"Vous etes protéger au maximum : meme le S.H.I.E.L.D. aurais du mal a s'introduire chez vous sans etre detectetr",
+            description: "Vous avez trouver un nouveau job mais vous avez du mal à vous levez le matin",
+            description_milieu:"Vous pouvez maintenant dormir sans devoir tendre l'oreil pour entendre votre reveil",
+            description_fin:"Votre sommeil est désormais parfais grace à l'aide des nouvelles technologies",
             argent: 30,
             debit: 100,
             humeur: 60,
             objectif: [
-                {objet: "alarme", niveau: 3},
-                {objet: "camera", niveau: 3}
+                {objet: "fauteuil", niveau: 3},
+                {objet: "reveil", niveau: 3},
+                {objet: "lumiere", niveau: 3}
             ]
         },
 
@@ -35,8 +37,9 @@ let json = {
             debit: 100,
             humeur: 90,
             objectif: [
-                {objet: "four", niveau: 3},
-                {objet: "frigo", niveau: 3}
+                {objet: "lavevaisselle", niveau: 3},
+                {objet: "frigo", niveau: 3},
+                {objet: "gaziniere", niveau: 3}
             ]
         },
 
@@ -48,8 +51,9 @@ let json = {
             debit: 60,
             humeur: 70,
             objectif: [
-                {objet: "canapé", niveau: 3},
-                {objet: "TV", niveau: 3}
+                {objet: "fauteuil", niveau: 3},
+                {objet: "radiateur", niveau: 3},
+                {objet: "tele", niveau: 3}
             ]
         },
 
@@ -61,10 +65,9 @@ let json = {
             debit: 70,
             humeur: 70,
             objectif: [
-                {objet: "lit", niveau: 5},
-                {objet: "canap", niveau: 5},
-                {objet: "TV", niveau: 5},
-                {objet: "radiateur", niveau: 5}
+                {objet: "lit", niveau: 3},
+                {objet: "fauteuil", niveau: 3},
+                {objet: "radiateur", niveau: 3}
             ]
         },
 
@@ -76,21 +79,23 @@ let json = {
             debit: 100,
             humeur: 90,
             objectif: [
-                {objet: "pc", niveau: 5},
-                {objet: "TV", niveau: 5}
+                {objet: "lumiere", niveau: 3},
+                {objet: "robotaspirateur", niveau: 3},
+                {objet: "boxinternet", niveau: 3}
             ]
         },
-        //
+
         {
-            description: "Vous avez hériter d'une grosse somme d'argent et vous decider de vous lancer dans la vie",
-            description_milieu:"Vous commencer vraiment a vous amuser grace a votre nouveau pc",
-            description_fin:"Vous pouvez enfin jouer a tout vos jeux préfére en qualité max bravo!",
+            description: "Vous décidez de vous reprendre en mains et de tout nettoyer dans votre maison",
+            description_milieu:"Votre environnement devient de plus en plus propre",
+            description_fin:"Votre maison est maintenant propre du sol au plafond bravo!",
             argent: 150,
             debit: 100,
             humeur: 90,
             objectif: [
-                {objet: "pc", niveau: 5},
-                {}
+                {objet: "lavelinge", niveau: 3},
+                {objet: "lavevaisselle", niveau: 3},
+                {objet: "robotaspirateur", niveau: 3}
             ]
         }
     ],
