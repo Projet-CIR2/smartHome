@@ -1,63 +1,176 @@
 let json = {
-  events: [
-    "Le coco est de retour",
-    "Arthur est allé chez le dentiste",
-    "fonctionne: donc je suis pas con"
-  ],
 
+    Scenario: [
+        {
+            description_debut: "Vous voilà lancé pris la vie active et vous voulez pouvoir jouer à n'importe quel jeu en rentrant le soir chez vous",
+            description_milieu:"Vous commencer vraiment a vous amuser grace a votre nouveau pc",
+            description_fin:"Vous pouvez enfin jouer a tout vos jeux préfére en qualité max bravo!",
+            argent: 100,
+            debit: 100,
+            humeur: 100,
+            objectif: [
+                {objet: "Console", niveau: 3},
+                {}
+            ]
+        },
 
-  lore: [
-    "Une nouvelle maison vient d'etre construite et le propriétaire adore acheter les objets connecté de toute dernière génération. L'on peut sensir que grace a sa passion, il a donner naissance a une toute nouvelle forme d'itelligence qui va l'aider à garder le sourir en tout temps.",
-    "Coucou! C'est donc toi qui va s'occuper de moi? Je suis "
-  ],
+        {
+            description: "Vous avez été combriolé et vous dever repartir de zéro mais vous decider de mieux vous proteger",
+            description_milieu:"Vous avez retrouver un niveau de sécurité convenable et vous senter donc plus  en sécurité désormais",
+            description_fin:"Vous etes protéger au maximum : meme le S.H.I.E.L.D. aurais du mal a s'introduire chez vous sans etre detectetr",
+            argent: 30,
+            debit: 100,
+            humeur: 60,
+            objectif: [
+                {objet: "alarme", niveau: 3},
+                {objet: "camera", niveau: 3}
+            ]
+        },
 
+        {
+            description: "Vous avez hériter d'une grosse somme d'argent et vous decider de vous lancer dans la vie de cuisinier professionnel",
+            description_milieu:"Tous ce matèriel va vraiment vous permettre de vous améliorer pour atteindre votre but",
+            description_fin:"bravo grace a tout vos investissement la victoire a Top Chef n'est plus très loin",
+            argent: 150,
+            debit: 100,
+            humeur: 90,
+            objectif: [
+                {objet: "four", niveau: 3},
+                {objet: "frigo", niveau: 3}
+            ]
+        },
 
-  equipements: [
+        {
+            description: "Vous vous installer dans une nouvelle maison afin d'etre loin de la ville pour etre au calme et profiter à fond de votre salon",
+            description_milieu:"Votre salon commence à resembler au salon de vos rêve",
+            description_fin:"Vous pouvez enfin vous reposer dans votre salon toute la journée. C'est une réussite!",
+            argent: 100,
+            debit: 60,
+            humeur: 70,
+            objectif: [
+                {objet: "canapé", niveau: 3},
+                {objet: "TV", niveau: 3}
+            ]
+        },
 
-  ],
+        {
+            description: "Vous etes au bout du rouleau et vous aimeriez pouvoir vous reposer un peu",
+            description_milieu:"Vous commencer a vous sentir mieux dans cette maison",
+            description_fin:"Vous etes de nouveaux en pleine forme avec tout ce que vous souhaitez",
+            argent: 60,
+            debit: 70,
+            humeur: 70,
+            objectif: [
+                {objet: "lit", niveau: 5},
+                {objet: "canap", niveau: 5},
+                {objet: "TV", niveau: 5},
+                {objet: "radiateur", niveau: 5}
+            ]
+        },
 
-
-  ameliorations: {
-    camera: [
-      "amélioration nv2",
-      "amélioration nv3",
-      "amélioration nv4",
-      "amélioration nv5"
+        {
+            description: "Vous vous réveiller avec une vision clair : les nouvelles technologies sont l'avenir du monde",
+            description_milieu:"votre objectif ce trouve à porter de mains désormais",
+            description_fin:"Vous êtes maintenant à la pointe de la technologie",
+            argent: 150,
+            debit: 100,
+            humeur: 90,
+            objectif: [
+                {objet: "pc", niveau: 5},
+                {objet: "TV", niveau: 5}
+            ]
+        },
+        //
+        {
+            description: "Vous avez hériter d'une grosse somme d'argent et vous decider de vous lancer dans la vie",
+            description_milieu:"Vous commencer vraiment a vous amuser grace a votre nouveau pc",
+            description_fin:"Vous pouvez enfin jouer a tout vos jeux préfére en qualité max bravo!",
+            argent: 150,
+            debit: 100,
+            humeur: 90,
+            objectif: [
+                {objet: "pc", niveau: 5},
+                {}
+            ]
+        }
     ],
 
-    ordi: [
-      "amélioration nv2",
-      "amélioration nv3",
-      "amélioration nv4",
-      "amélioration nv5"
+
+
+
+    ameliorations: {
+        camera: [
+            "amélioration nv2",
+            "amélioration nv3",
+            "amélioration nv4",
+            "amélioration nv5"
+        ],
+
+        ordi: [
+            "amélioration nv2",
+            "amélioration nv3",
+            "amélioration nv4",
+            "amélioration nv5"
+        ],
+
+        objet: [
+            "amélioration nv2",
+            "amélioration nv3",
+            "amélioration nv4",
+            "amélioration nv5"
+        ],
+
+
+    },
+
+
+    argent: [
+        "vous n'avez pas assez de fond pour cette améliorations",
+        "Vous voulez gagné de l'argent?",
+        "Cette somme est énorme!"
     ],
 
-    objet: [
-      "amélioration nv2",
-      "amélioration nv3",
-      "amélioration nv4",
-      "amélioration nv5"
-    ]
-  },
 
-
-  argent: [
-    "vous n'avez pas assez de fond pour cette améliorations",
-    "Vous voulez gagné de l'argent?",
-    "Cette somme est énorme!"
-  ],
-
-
-  evenements_important: {
-    positif: [
-      {description: "gain d'argents", argent: 5, debit: 0, humeur: 0},
-      {description: "gain de débit", argent: 0, debit: 5, humeur: 0}
+    events: [
+        "Alerte attentat dans le centre ville",
+        "Le monde en pleure après la mort de Johnny Hallyday",
+        "Le tour de france passerat par Sarlat cette année",
+        "C'est l'équipe de france qui as gagné la coupe du monde de foot en 2018",
+        "Les serveur d'OVH réduit en cendre",
+        "Le covid fais toujours plus de victimes",
+        "réouverture des bars dans la france",
+        "Cet été s'annonce chaud",
+        ""
     ],
 
-    negatif: [
-      {description: "perte d'argents", argent: -5, debit: 0, humeur: 0},
-      {description: "perte de débit", argent: 0, debit: -5, humeur: 0}
-    ]
-  }
+
+    evenements_important: {
+        positif: [
+            {description: "Vous trouver de l'argent", argent: 5, debit: 0, humeur: 0},
+            {description: "Votre débit fonctionne particulièrement bien", argent: 0, debit: 5, humeur: 0},
+            {description: "Erreur de la banque en votre faveur", argent: 20, debit: 0, humeur: 0},
+            {description: "Vous avez gagnez le premier prix de beauter", argent: 5, debit: 0, humeur: 5},
+            {description: "C'est votre anniversaire vous recevez de l'argent", argent: 10, debit: 0, humeur: 0},
+            {description: "Votre nouvelle entreprise obtient un gros bénéfice", argent: 15, debit: 0, humeur: 0},
+            {description: "Le débit de votre maison ", argent: 0, debit: 5, humeur: 0},
+            {description: "gain de débit", argent: 0, debit: 5, humeur: 0},
+            {description: "gain de débit", argent: 0, debit: 5, humeur: 0},
+            {description: "gain de débit", argent: 0, debit: 5, humeur: 0},
+            {description: "gain de débit", argent: 0, debit: 5, humeur: 0}
+        ],
+
+        negatif: [
+            {description: "Vous avez perdu votre argent durant votre balade", argent: -5, debit: 0, humeur: 0},
+            {description: "Votre fournisseur internet a des problemes", argent: 0, debit: -15, humeur: 0},
+            {description: "La banque est en faillite!", argent: -20, debit: 0, humeur: 0},
+            {description: "Votre jardin a été sacagé par un chien", argent: 0, debit: 0, humeur: -5},
+            {description: "Votre box internet a des problemes", argent: 0, debit: -10, humeur: 0},
+            {description: "Vous devez payer des intérêts", argent: -10, debit: 0, humeur: 0},
+            {description: "Votre investisement n'as pas porté ses fruits", argent: -20, debit: 0, humeur: 0},
+            {description: "perte de débit", argent: 0, debit: -5, humeur: 0},
+            {description: "perte de débit", argent: 0, debit: -5, humeur: 0},
+            {description: "perte de débit", argent: 0, debit: -5, humeur: 0},
+            {description: "perte de débit", argent: 0, debit: -5, humeur: 0}
+        ]
+    },
 }
-
