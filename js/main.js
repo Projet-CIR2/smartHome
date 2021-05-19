@@ -275,6 +275,10 @@ let destinationInter = -1;
 let isoX, isoY;
 let text;
 
+
+let mapWidth;
+let mapHeight;
+
 function preload() {
 
     this.load.image('tempHouse', '../img/tempHouse.png');
@@ -291,10 +295,7 @@ function preload() {
 }
 
 function create() {
-    let matrixMap = new Array(20);
-    for (var i = 0; i < 20; i++) {
-        matrixMap[i] = new Array(20);
-    }
+    
     //matrixMap.forEach(element => element.forEach(elem => elem = 0));
     //console.log(matrixMap);
     /*button = game.add.button(game.world.centerX - 120, game.world.centerY - 120, 'button', start, this, 2, 1, 0);
@@ -321,6 +322,14 @@ function create() {
     J2Droite = this.input.keyboard.addKey('D');
 
     map = this.add.tilemap('map');
+
+    mapWidth = map.width;
+    mapHeight = map.height;
+
+    let matrixMap = new Array(mapWidth);
+    for (var i = 0; i < mapWidth; i++) {
+        matrixMap[i] = new Array(mapHeight);
+    }
 
     let coucou = map.layers[1].data;
 
