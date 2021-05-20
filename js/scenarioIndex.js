@@ -5,7 +5,7 @@ socket.on('scena', (elmt) => {
     let scenar = document.createElement('div');
     chat.appendChild(scenar);
     scenar.style.backgroundColor = '#FFF5EE';
-    scenar.style.height = '200px';
+    scenar.style.height = '320px';
     scenar.style.textAlign = 'center';
     scenar.style.padding = '10px';
     scenar.style.borderRadius = '10px';
