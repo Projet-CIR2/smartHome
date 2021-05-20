@@ -169,33 +169,33 @@ function create() {
 
     this.anims.create({
         key: 'left',
-        frames: this.anims.generateFrameNumbers(idPlayer, { start: 0, end: 0 }),
+        frames: this.anims.generateFrameNumbers('perso1', { start: 0, end: 0 }),
         frameRate: 10,
         repeat: -1
 
     })
     this.anims.create({
         key: 'right',
-        frames: this.anims.generateFrameNumbers(idPlayer, { start: 1, end: 1 }),
+        frames: this.anims.generateFrameNumbers('perso1', { start: 1, end: 1 }),
         frameRate: 10,
         repeat: -1
     })
     this.anims.create({
         key: 'up',
-        frames: this.anims.generateFrameNumbers(idPlayer, { start: 2, end: 2 }),
+        frames: this.anims.generateFrameNumbers('perso1', { start: 2, end: 2 }),
         frameRate: 10,
         repeat: -1
     });
 
     this.anims.create({
         key: 'down',
-        frames: this.anims.generateFrameNumbers(idPlayer, { start: 3, end: 3 }),
+        frames: this.anims.generateFrameNumbers('perso1', { start: 3, end: 3 }),
         frameRate: 10,
         repeat: -1
     });
     this.anims.create({
         key: 'face',
-        frames: this.anims.generateFrameNumbers(idPlayer, { start: 3, end: 3 }),
+        frames: this.anims.generateFrameNumbers('perso1', { start: 3, end: 3 }),
         frameRate: 10,
         repeat: -1
     });
@@ -256,43 +256,7 @@ function render() {
     game.debug.pointer(game.input.activePointer);
 }
 
-function movePlayer(player) {
-    //console.log('x:', player.x, 'y:', player.y);
-    //console.log(game.height, game.width);
 
-
-    let speedX = 10;
-    let speedY = speedX/2;
-    if (J2Haut.isDown) {
-        //console.log("haut");
-        player.y -= speedY;
-        player.x += speedX;
-        player.anims.play('up');
-    }
-    else if (J2Bas.isDown) {
-        //console.log("bas");
-        player.y += speedY;
-        player.x -= speedX;
-        player.anims.play('down');
-    }
-    else if (J2Droite.isDown) {
-        //console.log("droite");
-        player.x += speedX;
-        player.y += speedY;
-        player.anims.play('right');
-    }
-    else if (J2Gauche.isDown) {
-        //console.log("gauche");
-        player.x -= speedX;
-        player.y -= speedY;
-        player.anims.play('left');
-    }
-    else {
-        player.anims.stop();
-        player.anims.play('face');
-    }
-    
-}
 
 
 function click(tileset) {
@@ -330,7 +294,6 @@ function movePlayer2(player, x, y) {
     let playerYRound = Math.round(player.y);
 
     let marge = 2;
-    console.log(destinationInter);
 
     if (playerXRound < x-marge || playerXRound > x+marge || playerYRound < y-marge || playerYRound > y +marge) {
         
@@ -338,7 +301,6 @@ function movePlayer2(player, x, y) {
             player.body.velocity.x -= speedX;
             player.body.velocity.y -= speedY;
             player.anims.play('left');
-            console.log("Gauche");
             lastDirection = 0;
 
         }
@@ -346,7 +308,6 @@ function movePlayer2(player, x, y) {
             player.body.velocity.x += speedX;
             player.body.velocity.y += speedY
             player.anims.play('right');
-            console.log("droite");
             lastDirection = 1;
 
 
@@ -356,7 +317,6 @@ function movePlayer2(player, x, y) {
             player.body.velocity.x += speedX;
 
             player.anims.play('up');
-            console.log("haut");
             lastDirection = 2;
 
         }
@@ -365,7 +325,6 @@ function movePlayer2(player, x, y) {
             player.body.velocity.x -= speedX;
 
             player.anims.play('down');
-            console.log("bas");
             lastDirection = 3;
 
         }
