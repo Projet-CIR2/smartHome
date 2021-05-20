@@ -1,7 +1,7 @@
 class GameView {
     constructor(elmt) {
         this.humeur = elmt.humeur; // en %
-        this.argent = elmt.argent; // en €
+        this.argent = Number(elmt.argent); // en €
         this.debit = elmt.debit; // en %
         if(elmt.difficulte == 'Facile') {
             this.difficulte = 1;
