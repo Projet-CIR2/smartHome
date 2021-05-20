@@ -167,7 +167,38 @@ function create() {
     // let polygon = new Phaser.Geom.Polygon('0 66 0 223 129 159 129 0');
     // this.physics.add.existing(polygon);
 
-    
+    this.anims.create({
+        key: 'left',
+        frames: this.anims.generateFrameNumbers(idPlayer, { start: 0, end: 0 }),
+        frameRate: 10,
+        repeat: -1
+
+    })
+    this.anims.create({
+        key: 'right',
+        frames: this.anims.generateFrameNumbers(idPlayer, { start: 1, end: 1 }),
+        frameRate: 10,
+        repeat: -1
+    })
+    this.anims.create({
+        key: 'up',
+        frames: this.anims.generateFrameNumbers(idPlayer, { start: 2, end: 2 }),
+        frameRate: 10,
+        repeat: -1
+    });
+
+    this.anims.create({
+        key: 'down',
+        frames: this.anims.generateFrameNumbers(idPlayer, { start: 3, end: 3 }),
+        frameRate: 10,
+        repeat: -1
+    });
+    this.anims.create({
+        key: 'face',
+        frames: this.anims.generateFrameNumbers(idPlayer, { start: 3, end: 3 }),
+        frameRate: 10,
+        repeat: -1
+    });
 
     this.physics.add.collider(player, collisions);
 
