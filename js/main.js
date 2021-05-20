@@ -331,7 +331,6 @@ function movePlayer2(player, x, y) {
 
     let speedX = 50;
     let speedY = speedX/2
-    //console.log('x:', player.x, 'y:', player.y);
 
     player.body.velocity.x = 0;
     player.body.velocity.y = 0;
@@ -339,11 +338,6 @@ function movePlayer2(player, x, y) {
     let playerXRound = Math.round(player.x);
     let playerYRound = Math.round(player.y);
 
-    let cartX = player.x;
-    let cartY = player.y;
-    let isoX = cartX - cartY; 
-    let isoY = (cartX + cartY) / 2;
-    //console.log("Iso", isoX, isoY, "Cart", player.x, player.y);
 
     if (playerXRound < x-25 || playerXRound > x+25 || playerYRound < y-25 || playerYRound > y +25) {
         if (playerXRound > x) {
@@ -388,12 +382,7 @@ function cheminPath() {
         x = coords[1];
         y = coords[0];
         
-        /*
-        newCoordX = calculPixelX(x);
-        newCoordY = calculPixelY(y);
-        newCoordX = Math.round(newCoordX);
-        newCoordY = Math.round(newCoordY);
-        */
+       
        let pos = convert([x,y]);
         if (movePlayer2(player,pos[0],pos[1])) {
             if (destinationInter < cheminSize) destinationInter++;
@@ -402,30 +391,7 @@ function cheminPath() {
 }
 
 
-let convertMatrix = (function (){
 
-  
-
-    return {
-        posX(x,y){
-            return(145 + x * 128  - y * 128);
-        },
-
-        posY(x,y){
-            return(280 + y * 70);
-        }
-    }
-
-})();
-
-function convertMatrixX(tileCoordX) {
-    return(145 + tileCoordX * 128);
-}
-
-
-function convertMatrixY(tileCoordY) {
-    return(280 + tileCoordY * 70);
-}
 
 function convert([x, y]) {
     let posX = 135 +x*128 - y * 128;
