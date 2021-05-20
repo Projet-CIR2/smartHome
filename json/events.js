@@ -10,11 +10,9 @@ let json = {
             argent: 150,
             debit: 100,
             humeur: 90,
-            objectif: [
-                {objet: "lumiere", niveau: 3},
-                {objet: "robotaspirateur", niveau: 3},
-                {objet: "boxinternet", niveau: 3}
-            ]
+            objet1: "lumiere",
+            objet2: "robot aspirateur", 
+            objet3: "box internet",
         },
         {
             titre: "Lève tard",
@@ -25,11 +23,9 @@ let json = {
             argent: 30,
             debit: 100,
             humeur: 60,
-            objectif: [
-                {objet: "fauteuil", niveau: 3},
-                {objet: "reveil", niveau: 3},
-                {objet: "lumiere", niveau: 3}
-            ]
+            objet1: "fauteuil",
+            objet2: "reveil", 
+            objet3: "lumiere",
         },
         {
             titre: "Repos avant tout",
@@ -40,11 +36,9 @@ let json = {
             argent: 60,
             debit: 70,
             humeur: 70,
-            objectif: [
-                {objet: "lumière", niveau: 3},
-                {objet: "fauteuil", niveau: 3},
-                {objet: "radiateur", niveau: 3}
-            ]
+            objet1: "lumière",
+            objet2: "fauteuil", 
+            objet3: "radiateur",
         },
 
         
@@ -58,11 +52,9 @@ let json = {
             argent: 150,
             debit: 100,
             humeur: 90,
-            objectif: [
-                {objet: "lavelinge", niveau: 3},
-                {objet: "lavevaisselle", niveau: 3},
-                {objet: "robotaspirateur", niveau: 3}
-            ]
+            objet1: "lave linge",
+            objet2: "lave vaisselle", 
+            objet3: "robot aspirateur",
         },
         {
             titre: "Le joueur",
@@ -87,11 +79,9 @@ let json = {
             argent: 150,
             debit: 100,
             humeur: 90,
-            objectif: [
-                {objet: "lavevaisselle", niveau: 3},
-                {objet: "frigo", niveau: 3},
-                {objet: "gaziniere", niveau: 3}
-            ]
+            objet1: "lave vaisselle",
+            objet2: "frigo", 
+            objet3: "gaziniere",
         },
         {
             titre: "Vie tranquille",
@@ -102,11 +92,9 @@ let json = {
             argent: 100,
             debit: 60,
             humeur: 70,
-            objectif: [
-                {objet: "fauteuil", niveau: 3},
-                {objet: "radiateur", niveau: 3},
-                {objet: "tele", niveau: 3}
-            ]
+            objet1: "fauteuil",
+            objet2: "radiateur", 
+            objet3: "tele",
         },
     ],
 
