@@ -113,20 +113,16 @@ main {
 header {
     padding: 1rem 2rem;
     text-align: center;
+    margin-top: -5%;
 }
 
-.card {
-    border: 1px solid #bac6d3;
-    border-radius: 8px;
-    padding: 1rem;
-}
+
 
 /********************************
 * Carousel styles
 *********************************/
 .carousel-items {
     display: flex;
-    overflow-x: scroll;
     padding: 1rem 0;
     scroll-snap-type: x mandatory;
 }
@@ -137,21 +133,6 @@ header {
     scroll-snap-align: start;
 }
 
-::-webkit-scrollbar-track {
-    background-color: #F5F5F5;
-}
-
-::-webkit-scrollbar {
-    height: 6px;
-    background-color: #F5F5F5;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: #3d4852;
-    border-radius: 3px;
-}
-
-
 /********************************
 * Breakpoints
 *********************************/
@@ -161,22 +142,29 @@ header {
     }
 }
 
-@media screen and (min-width: 992px) {
 
-    body,
-    button,
-    input,
-    select,
-    optgroup,
-    textarea {
-        font-size: 1.125rem;
-    }
+#card {
+    margin-bottom: 25px;
+    border: 1px solid #bac6d3;
+    border-radius: 8px;
+    padding: 1rem;
+}
 
-    h1 {
-        font-size: 2.75rem;
-    }
+body::-webkit-scrollbar {
+    width: 12px; /* width of the entire scrollbar */
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: transparent; /* color of the tracking area */
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: #3d4852; /* color of the scroll thumb */
+    border-radius: 20px; /* roundness of the scroll thumb */
+    border: 3px solid transparent; /* creates padding around scroll thumb */
+  }
 
-    .carousel-item {
-        flex-basis: 325px;
-    }
+#back {
+    margin-top: 2%;
+    margin-left: 3%;
 }

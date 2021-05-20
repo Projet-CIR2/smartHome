@@ -24,7 +24,9 @@ app.get('/', (req, res, next) => {
 app.get('/jouer', (req, res, next) => {
     res.sendFile(__dirname + '/views/index.html');
 });
-
+app.get('/scenario', (req, res, next) => {
+    res.sendFile(__dirname + '/views/scena.html');
+});
 app.get('/comment-jouer', (req, res, next) => {
     res.sendFile(__dirname + '/views/comment-jouer.html');
 });
@@ -58,6 +60,11 @@ io.on('connection', function (socket) {
 
     });
 });
+
+app.post('/scenario', (req, res) => {
+    const scenario = req.elmt;
+    console.log(scenario);
+})
 
 server.listen(port);
 
