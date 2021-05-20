@@ -19,10 +19,10 @@ data.forEach(element => {
     diffi.textContent = element.difficulte;
 
     if (element.difficulte == 'Facile') {
-        diffi.style.color = 'green';
+        diffi.style.color = '#32CD32';
     }
 
-    if (element.difficulte == 'Moyen') {
+    if (element.difficulte == 'Normal') {
         diffi.style.color = 'orange';
     }
 

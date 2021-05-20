@@ -2,20 +2,20 @@ let json = {
 
     Scenario: [
         {
-            titre: "Le joueur",
-            description_debut: "Vous voilà lancé pris la vie active et vous voulez pouvoir jouer à n'importe quel jeu en rentrant le soir chez vous",
-            description_milieu:"Vous commencer vraiment a vous amuser grace a votre nouveau pc",
-            description_fin:"Vous pouvez enfin jouer a tout vos jeux préfére en qualité max bravo!",
-            difficulte:"Difficile",
-            argent: 100,
+            titre: "Nouvelles technologies",
+            description_debut: "Vous vous réveiller avec une vision clair : les nouvelles technologies sont l'avenir du monde",
+            description_milieu:"votre objectif ce trouve à porter de mains désormais",
+            description_fin:"Vous êtes maintenant à la pointe de la technologie",
+            difficulte:"Facile",
+            argent: 150,
             debit: 100,
-            humeur: 100,
-            objet1: "fauteuil",
-            objet2: "ordinateur", 
-            objet3: "boxinternet",
-            
+            humeur: 90,
+            objectif: [
+                {objet: "lumiere", niveau: 3},
+                {objet: "robotaspirateur", niveau: 3},
+                {objet: "boxinternet", niveau: 3}
+            ]
         },
-
         {
             titre: "Lève tard",
             description_debut: "Vous avez trouver un nouveau job mais vous avez du mal à vous levez le matin",
@@ -31,7 +31,53 @@ let json = {
                 {objet: "lumiere", niveau: 3}
             ]
         },
+        {
+            titre: "Repos avant tout",
+            description_debut: "Vous etes au bout du rouleau et vous aimeriez pouvoir vous reposer un peu",
+            description_milieu:"Vous commencer a vous sentir mieux dans cette maison",
+            description_fin:"Vous etes de nouveaux en pleine forme avec tout ce que vous souhaitez",
+            difficulte:"Normal",
+            argent: 60,
+            debit: 70,
+            humeur: 70,
+            objectif: [
+                {objet: "lumière", niveau: 3},
+                {objet: "fauteuil", niveau: 3},
+                {objet: "radiateur", niveau: 3}
+            ]
+        },
 
+        
+
+        {
+            titre: "Tout est propre",
+            description_debut: "Vous décidez de vous reprendre en mains et de tout nettoyer dans votre maison",
+            description_milieu:"Votre environnement devient de plus en plus propre",
+            description_fin:"Votre maison est maintenant propre du sol au plafond bravo!",
+            difficulte:"Normal",
+            argent: 150,
+            debit: 100,
+            humeur: 90,
+            objectif: [
+                {objet: "lavelinge", niveau: 3},
+                {objet: "lavevaisselle", niveau: 3},
+                {objet: "robotaspirateur", niveau: 3}
+            ]
+        },
+        {
+            titre: "Le joueur",
+            description_debut: "Vous voilà lancé pris la vie active et vous voulez pouvoir jouer à n'importe quel jeu en rentrant le soir chez vous",
+            description_milieu:"Vous commencer vraiment a vous amuser grace a votre nouveau pc",
+            description_fin:"Vous pouvez enfin jouer a tout vos jeux préfére en qualité max bravo!",
+            difficulte:"Difficile",
+            argent: 100,
+            debit: 100,
+            humeur: 100,
+            objet1: "fauteuil",
+            objet2: "ordinateur", 
+            objet3: "boxinternet",
+            
+        },
         {
             titre: "Le cuisinier",
             description_debut: "Vous avez hériter d'une grosse somme d'argent et vous decider de vous lancer dans la vie de cuisinier professionnel",
@@ -47,7 +93,6 @@ let json = {
                 {objet: "gaziniere", niveau: 3}
             ]
         },
-
         {
             titre: "Vie tranquille",
             description_debut: "Vous vous installer dans une nouvelle maison afin d'etre loin de la ville pour etre au calme et profiter à fond de votre salon",
@@ -63,54 +108,6 @@ let json = {
                 {objet: "tele", niveau: 3}
             ]
         },
-
-        {
-            titre: "Repos avant tout",
-            description_debut: "Vous etes au bout du rouleau et vous aimeriez pouvoir vous reposer un peu",
-            description_milieu:"Vous commencer a vous sentir mieux dans cette maison",
-            description_fin:"Vous etes de nouveaux en pleine forme avec tout ce que vous souhaitez",
-            difficulte:"Moyen",
-            argent: 60,
-            debit: 70,
-            humeur: 70,
-            objectif: [
-                {objet: "lumière", niveau: 3},
-                {objet: "fauteuil", niveau: 3},
-                {objet: "radiateur", niveau: 3}
-            ]
-        },
-
-        {
-            titre: "Nouvelles technologies",
-            description_debut: "Vous vous réveiller avec une vision clair : les nouvelles technologies sont l'avenir du monde",
-            description_milieu:"votre objectif ce trouve à porter de mains désormais",
-            description_fin:"Vous êtes maintenant à la pointe de la technologie",
-            difficulte:"Facile",
-            argent: 150,
-            debit: 100,
-            humeur: 90,
-            objectif: [
-                {objet: "lumiere", niveau: 3},
-                {objet: "robotaspirateur", niveau: 3},
-                {objet: "boxinternet", niveau: 3}
-            ]
-        },
-
-        {
-            titre: "Tout est propre",
-            description_debut: "Vous décidez de vous reprendre en mains et de tout nettoyer dans votre maison",
-            description_milieu:"Votre environnement devient de plus en plus propre",
-            description_fin:"Votre maison est maintenant propre du sol au plafond bravo!",
-            difficulte:"Moyen",
-            argent: 150,
-            debit: 100,
-            humeur: 90,
-            objectif: [
-                {objet: "lavelinge", niveau: 3},
-                {objet: "lavevaisselle", niveau: 3},
-                {objet: "robotaspirateur", niveau: 3}
-            ]
-        }
     ],
 
 

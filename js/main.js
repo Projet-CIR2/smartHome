@@ -341,14 +341,12 @@ function movePlayer2(player, x, y) {
     let playerYRound = Math.round(player.y);
 
     let marge = 2;
-    console.log(destinationInter);
 
     if (playerXRound < x-marge || playerXRound > x+marge || playerYRound < y-marge || playerYRound > y +marge) {
         if (playerXRound > x && playerYRound >y) {
             player.body.velocity.x -= speedX;
             player.body.velocity.y -= speedY;
             player.anims.play('left');
-            console.log("Gauche");
             lastDirection = 0;
 
         }
@@ -356,7 +354,6 @@ function movePlayer2(player, x, y) {
             player.body.velocity.x += speedX;
             player.body.velocity.y += speedY
             player.anims.play('right');
-            console.log("droite");
             lastDirection = 1;
 
 
@@ -366,7 +363,6 @@ function movePlayer2(player, x, y) {
             player.body.velocity.x += speedX;
 
             player.anims.play('up');
-            console.log("haut");
             lastDirection = 2;
 
         }
@@ -375,7 +371,6 @@ function movePlayer2(player, x, y) {
             player.body.velocity.x -= speedX;
 
             player.anims.play('down');
-            console.log("bas");
             lastDirection = 3;
 
         }
