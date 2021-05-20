@@ -22,8 +22,12 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
         let pAchat = document.createElement('p');
         let pClick = document.createElement('p');
         button.onclick = () => {
-            //Verif si assez argent
+            stockageVar.clickPolygon.objet = title;
+            stockageVar.clickPolygon.removeAlpha();
+            stockageVar.clickPolygon.refreshUpgrade();
 
+            div.remove();
+            achat.addMaj(title);
             let afficheAchat = document.getElementById('achat');
             afficheAchat.innerHTML = "";
             afficheAchat.setAttribute('style', 'display: none;');

@@ -27,6 +27,7 @@
     <script type="text/javascript" src="../js/modules/upgradeAchat.js"></script>
     <script type="text/javascript" src="../js/barrePhaser.js"></script>
     <script type="text/javascript" src="../js/models/Player.js"></script>
+    <script type="text/javascript" src="../js/scriptmagique.js"></script>
     <script type="text/javascript" src="../js/models/Polygon.js"></script>
 </head>
 
@@ -161,7 +162,6 @@
 <script src="../js/scenarioIndex.js"></script>
 <script type="text/javascript" src="../js/models/gameView.js"></script>
 <script type="text/javascript" src="../js/formulaire.js"></script>
-<script src="../js/scriptmagique.js"></script>
 <script>
 
     function coord(event) {
@@ -169,7 +169,8 @@
         var e = event || window.event;
         // console.log(e.clientX,e.clientY);
     }
-    
+
+    scriptMagique.initEvent();
 </script>
 </body>
 </html>

@@ -9,27 +9,43 @@ class Polygon {
         this.polygon.setInteractive();
 
         this.polygon.setFillStyle(0xff0000, 0);
+
+        this.objet = undefined;
     }
 
     addEvent() {
         this.polygon.on('pointerdown', () => {
-            if (!stockageVar.click) {
-                stockageVar.click = true;
-                stockageVar.clickPolygon = this;
-                this.addAlpha();
-            } else {
-                if (stockageVar.clickPolygon.x === this.x && stockageVar.clickPolygon.y === this.y) {
-                    this.removeAlpha();
-                    stockageVar.click = false;
-                } else {
-                    stockageVar.clickPolygon.removeAlpha();
+            if (this.objet === undefined) {
+                if (!stockageVar.click) {
+                    stockageVar.click = true;
                     stockageVar.clickPolygon = this;
                     this.addAlpha();
-                }
-            }
-            console.log(stockageVar);
+                    this.refreshUpgrade();
+                } else {
+                    if (stockageVar.clickPolygon.x === this.x && stockageVar.clickPolygon.y === this.y) {
+                        this.removeAlpha();
+                        stockageVar.click = false;
+                        this.refreshUpgrade();
+                    } else {
+                        stockageVar.clickPolygon.removeAlpha();
+                        stockageVar.clickPolygon = this;
+                        this.addAlpha();
 
+                        this.refreshUpgrade();
+                    }
+                }
+            } else {
+                this.refreshUpgrade();
+            }
         });
+    }
+
+    refreshUpgrade() {
+        if (document.getElementById('d_Upgrade') !== null) {
+            scriptMagique.clean();
+            scriptMagique.clickUpgrade();
+            achat.verif('Upgrade', this);
+        }
     }
 
     addAlpha() {
@@ -37,8 +53,6 @@ class Polygon {
     }
 
     removeAlpha() {
-        console.log(this.polygon.fillAlpha);
         this.polygon.fillAlpha = 0;
-        console.log(this.polygon.fillAlpha);
     }
 }

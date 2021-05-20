@@ -7,7 +7,7 @@ let achat = (function() {
             for (let element of data) {
                 createObjetMaj('d_Upgrade', element.nom, element.niveau1.description + "<br><br>Prix : " + element.niveau1.prix + "€", 'Acheter', element);
             }
-           
+
         },
 
         recupDataMaj() {
@@ -18,7 +18,7 @@ let achat = (function() {
 
         achat() {
             this.recupData(),
-            this.recupDataMaj()
+                this.recupDataMaj()
         },
 
         popUpgrade(nb) {
@@ -37,22 +37,45 @@ let achat = (function() {
             }
         },
 
-        verif(mOru) {
+        verif(mOru, polygone) {
             let p, div;
-            
-            if(data.length == 0 && mOru == 'Upgrade') {
+
+            if (data.length !== 0 && mOru === 'Upgrade') {
+                if (!stockageVar.click) {
+                    p = document.createElement('p');
+                    p.textContent = "Cliquez sur une case pour ajouter un objet";
+                    p.setAttribute('style', 'color: white; text-align: center; margin-top: 80%;');
+                    div = document.getElementById('d_Upgrade');
+                    div.appendChild(p);
+                } else {
+                    if ((polygone !== undefined && polygone.objet === undefined) || polygone === undefined) this.recupData();
+                    else {
+                        p = document.createElement('p');
+                        p.textContent = "Vous avez déjà placé un objet";
+                        p.setAttribute('style', 'color: white; text-align: center; margin-top: 80%;');
+                        div = document.getElementById('d_Upgrade');
+                        div.appendChild(p);
+                    }
+                }
+            } else if (dataMaj.length === 0 && mOru === 'MaJ') {
+                    p = document.createElement('p');
+                    p.textContent = "Vous n'avez pas d'objet";
+                    p.setAttribute('style', 'color: white; text-align: center; margin-top: 80%;');
+                    div = document.getElementById('d_MaJ');
+                    div.appendChild(p);
+            } else if (data.length === 0 && mOru === 'Upgrade') {
                 p = document.createElement('p');
                 p.textContent = "Vous avez tout acheté";
                 p.setAttribute('style', 'color: white; text-align: center; margin-top: 80%;');
                 div = document.getElementById('d_Upgrade');
                 div.appendChild(p);
             }
-            if(dataMaj.length == 0 && mOru == 'MaJ') {
-                p = document.createElement('p');
-                p.textContent = "Vous n'avez pas d'objet";
-                p.setAttribute('style', 'color: white; text-align: center; margin-top: 80%;');
-                div = document.getElementById('d_MaJ');
-                div.appendChild(p);
+            else {
+                if (document.getElementById('d_MaJ') !== null) {
+                    scriptMagique.clean();
+                    scriptMagique.clickMaj();
+                    this.recupDataMaj();
+                }
             }
         },
         clickStop() {
