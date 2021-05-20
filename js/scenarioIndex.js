@@ -2,6 +2,14 @@ socket.on('scena', (elmt) => {
     let chat = document.getElementById('chat');
     chat.setAttribute('style', 'font-size: 12px;');
 
+    let scenar = document.createElement('div');
+    chat.appendChild(scenar);
+    scenar.style.backgroundColor = '#FFF5EE';
+    scenar.style.height = '100px';
+    scenar.style.textAlign = 'center';
+    scenar.style.padding = '10px';
+    scenar.style.borderRadius = '10px';
+
     let p = document.createElement('p');
     p.textContent = "Scénario activé : " + elmt.titre;
     p.setAttribute('style', 'text-shadow: inherit');
@@ -14,9 +22,11 @@ socket.on('scena', (elmt) => {
     infos.innerHTML = "Informations de départ : <br><br>Votre Humeur : " + elmt.argent + "<br>Votre débit internet : " + elmt.debit + "<br>Votre argent : " + elmt.argent ;
     infos.setAttribute('style', 'text-shadow: inherit');
 
-    chat.appendChild(infos);
-    chat.appendChild(desc);
-    chat.appendChild(p);
+    scenar.appendChild(infos);
+    scenar.appendChild(desc);
+    scenar.appendChild(p);
+    
+});
 
     const gameView = new GameView(elmt);
     VarGame.initView(gameView, 1);
