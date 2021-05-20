@@ -23,7 +23,7 @@ let controls;
 
 let game = new Phaser.Game(config);
 
-let player, J2Haut, J2Bas, J2Gauche, J2Droite, layer1, layer2, layer3, collisions, map, sprite, clickImg, housebarre;
+let player, player2, J2Haut, J2Bas, J2Gauche, J2Droite, layer1, layer2, layer3, collisions, map, sprite, clickImg, housebarre;
 
 let chronoTexte, monTimer, chrono = 100;
 
@@ -118,6 +118,8 @@ function create() {
         cheminSize = path.length;
 
     });
+
+
     
 
     collisions = this.physics.add.staticGroup();
@@ -205,7 +207,9 @@ function create() {
     });
 
 
-    let player2 = new Player(this, 2,3);
+    player2 = new Player(this, 2,3);
+
+    player2.setPath(matrixMap, mapWidth, mapHeight);
 
     let pos = convert([3,7]);
     player = this.physics.add.sprite(pos[0],pos[1], 'perso1');
@@ -242,7 +246,7 @@ function update(time, delta) {
     controls.update(delta);
     
 
-
+    player2.update();
    
 
     cheminPath();
@@ -366,6 +370,7 @@ function movePlayer2(player, x, y) {
     }
 }
 
+
 function cheminPath() {
     let x, y;
     if (destination == -1 && cheminSize >= 1) {
@@ -376,9 +381,9 @@ function cheminPath() {
         let coords = chemin[destinationInter];
         x = coords[1];
         y = coords[0];
-        
-       
-       let pos = convert([x,y]);
+
+
+        let pos = convert([x,y]);
         if (movePlayer2(player,pos[0],pos[1])) {
             if (destinationInter < cheminSize) destinationInter++;
         }
