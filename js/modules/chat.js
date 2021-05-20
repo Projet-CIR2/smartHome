@@ -4,9 +4,17 @@ let chat = (function () {
         let divChat = document.getElementById('chat');
 
         if (divChat.childElementCount >= 25) divChat.removeChild(divChat.lastElementChild);
+        
+        //création div pour mettre texte dedans
+
+        let div = document.createElement('div');
+        divChat.prepend(div);
+        div.style.borderLeft = '6px solid '+couleur;
+        div.style.paddingLeft = '3px';
+
 
         let p = document.createElement('p');
-        divChat.prepend(p);
+        div.appendChild(p);
         p.textContent = texte;
         if (couleur !== undefined) p.setAttribute('style', 'color:' + couleur);
     }

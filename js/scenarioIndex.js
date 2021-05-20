@@ -2,6 +2,14 @@ socket.on('scena', (elmt) => {
     let chat = document.getElementById('chat');
     chat.setAttribute('style', 'font-size: 12px;');
 
+    let scenar = document.createElement('div');
+    chat.appendChild(scenar);
+    scenar.style.backgroundColor = '#FFF5EE';
+    scenar.style.height = '200px';
+    scenar.style.textAlign = 'center';
+    scenar.style.padding = '10px';
+    scenar.style.borderRadius = '10px';
+
     let p = document.createElement('p');
     p.textContent = "Scénario activé : " + elmt.titre;
     p.setAttribute('style', 'text-shadow: inherit');
@@ -18,11 +26,13 @@ socket.on('scena', (elmt) => {
     obj.innerHTML = "Vos objectifs : <br><br>Vous devez améliorer ces objets connecté au niveau 3 !<br><br>" + "1. " + elmt.obj1 + "<br>2. " + elmt.obj2 + "<br>3. " + elmt.obj3; 
     obj.setAttribute('style', 'text-shadow: inherit');
 
-    chat.appendChild(obj);
-    chat.appendChild(infos);
-    chat.appendChild(desc);
-    chat.appendChild(p);
-
+	scenar.appendChild(obj);
+    scenar.appendChild(infos);
+    scenar.appendChild(desc);
+    scenar.appendChild(p);
+    
     const gameView = new GameView(elmt);
     VarGame.initView(gameView, 1);
 });
+
+    
