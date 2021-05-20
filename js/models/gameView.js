@@ -4,6 +4,7 @@ class GameView {
         this.argent = 10; // en €
         this.debit = 100; // en %
         this.difficulte = 0; // 1, 2, ou 3
+        this.objet = [];
 
         this.barreHumeur = new Barres('humeur');
         this.barreArgent = new Barres('argent');

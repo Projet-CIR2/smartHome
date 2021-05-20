@@ -23,42 +23,17 @@ let controls;
 
 let game = new Phaser.Game(config);
 
-let player;
-let J2Haut;
-let J2Bas;
-let J2Gauche;
-let J2Droite;
+let player, J2Haut, J2Bas, J2Gauche, J2Droite, layer1, layer2, layer3, collisions, map, sprite, clickImg, housebarre;
 
-let layer1;
-let layer2, layer3;
+let chronoTexte, monTimer, chrono = 100;
 
-let collisions;
-let map;
-let sprite, clickImg;
-let housebarre;
+let matrixMap, chemin, cheminSize;
 
+let newCoordX, newCoordY, testt, destination = -1, destinationInter = -1;
 
-let chronoTexte;
-let monTimer;
-let chrono = 100;
+let isoX, isoY, text;
 
-let matrixMap;
-let chemin;
-let cheminSize;
-
-
-let newCoordX;
-let newCoordY;
-let testt;
-let destination = -1;
-let destinationInter = -1;
-
-let isoX, isoY;
-let text;
-
-
-let mapWidth;
-let mapHeight;
+let mapWidth, mapHeight;
 
 function preload() {
 
@@ -140,11 +115,11 @@ function create() {
     clickImg = this.add.sprite(0, 0, 'tempHouse');
     clickImg.setInteractive();
 
-    let button = this.add.sprite(500, 500, 'button');
-    button.setInteractive();
+    // let button = this.add.sprite(500, 500, 'button');
+    // button.setInteractive();
 
     click(clickImg);
-    click(button);
+    // click(button);
 
     let tilesets = map.addTilesetImage('tiles', 'tiles');
     //console.log(map);
@@ -177,6 +152,18 @@ function create() {
     player.body.bounce.y = 0.1;
     //player.setCollideWorldBounds(true);
     //player.body.setSize(43, 24, 2, 40);
+
+    // console.log(layer1.layer.data.length);
+    // console.log(layer1.layer.data[0].length);
+    for (let y = 0; y < layer1.layer.data.length; y++) {
+        for (let x = 0; x < layer1.layer.data[0].length; x++) {
+            new Polygon(this, x, y);
+        }
+    }
+
+    // new Polygon(this, 1, 1);
+    // let polygon = new Phaser.Geom.Polygon('0 66 0 223 129 159 129 0');
+    // this.physics.add.existing(polygon);
 
     this.anims.create({
         key: 'left',
@@ -237,6 +224,11 @@ function create() {
     //convertTileCoordInScreenCoord(5,5);
 
     text = this.add.text(0, 0, 'Move the mouse', { font: '10px Courier', fill: '#00ff00' });
+
+    // this.input.on('pointerdown', function(pointer){
+    //     console.log(pointer.x);
+    //     console.log(pointer.y);
+    // });
 }   
 
 function compteUneSeconde () {
@@ -441,4 +433,3 @@ function convert([x, y]) {
 
     return [posX, posY];
 }
-
