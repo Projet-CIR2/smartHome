@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.5.0" orientation="isometric" renderorder="right-down" width="14" height="10" tilewidth="256" tileheight="128" infinite="0" nextlayerid="10" nextobjectid="1">
+ <editorsettings>
+  <export target="map1.json" format="json"/>
+ </editorsettings>
+ <tileset firstgid="1" name="tiles" tilewidth="512" tileheight="512" tilecount="144" columns="9">
+  <image source="New/tiles.png" width="4608" height="8192"/>
+  <tile id="9">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="114" y="387.333">
+     <polygon points="0,0 128,64.6667 141.667,59 14,-6.66667"/>
+    </object>
+    <object id="2" x="114" y="387.333">
+     <polygon points="0,0 -0.333333,-157.333 128,-93.3333 129,63.3333"/>
+    </object>
+    <object id="3" x="114.667" y="230.333">
+     <polygon points="0,0 11.6667,-7 140.333,57.3333 128,63"/>
+    </object>
+    <object id="4" x="242" y="293">
+     <polygon points="0,0 0.666667,157 13.3333,153 13.3333,-5.33333"/>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="10">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="0.5" y="444.5">
+     <polygon points="0,0 12,8 140.5,-57 127,-65.5"/>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="11">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="114" y="502.5">
+     <polygon points="0,0 13.5,7.5 141,-56 127,-65"/>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="12">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="0" y="445">
+     <polygon points="0,0 124,64 140,58.5 17,-5.5"/>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="13">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="114" y="504">
+     <polygon points="0,0 11,7 141,-56 125,-66"/>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="14">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="-1" y="446">
+     <polygon points="0,0 7.5,5.5 124.5,-53.5 243.5,6.5 256,0.5 124.5,-67"/>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="15">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="3" y="448.5">
+     <polygon points="0,0 123.5,62.5 138.5,54.5 17,-6.5 133.5,-69.5 117,-79 -2,-11"/>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="16">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="-0.5" y="445">
+     <polygon points="0,0 124.5,64.5 257,0 240.5,-10.5 126.5,45.5 24,-10"/>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="18">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="74" y="480.5">
+     <polygon points="0,0 121,-61.5 102,-77 -15.5,-15.5"/>
+    </object>
+   </objectgroup>
+  </tile>
+ </tileset>
+ <layer id="1" name="sol" width="14" height="10">
+  <data encoding="csv">
+2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+2,2,2,2,2,2,2,2,2,2,2,2,2,2
+</data>
+ </layer>
+ <layer id="2" name="walls_1" width="14" height="10">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+17,6,16,11,6,16,11,6,6,11,17,11,16,0,
+12,0,13,0,0,13,0,0,0,0,12,0,13,0,
+15,10,13,0,10,18,0,0,0,0,12,0,13,0,
+12,0,0,0,0,0,0,0,0,0,15,0,18,0,
+15,10,0,0,0,0,0,0,0,0,0,0,13,0,
+12,0,13,0,11,16,0,0,0,0,0,0,13,0,
+12,0,13,0,0,13,0,0,0,0,0,0,13,0,
+15,9,18,10,10,18,10,10,0,10,10,10,18,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="3" name="meubles" width="14" height="10">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+78,0,0,80,0,0,26,29,0,0,37,0,0,0,
+47,0,0,0,0,0,30,32,31,0,34,0,0,0,
+0,0,0,0,0,0,30,32,31,0,42,0,0,0,
+0,0,0,0,0,0,0,28,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+78,0,0,0,0,0,19,21,68,0,0,0,0,0,
+0,0,0,0,0,0,58,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="8" name="walls-2" width="14" height="10">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer id="9" name="collisions" width="14" height="10">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+136,136,136,136,136,136,136,136,136,0,136,136,136,0,
+136,0,0,0,0,136,136,136,136,136,136,0,136,0,
+136,0,0,0,136,136,136,136,136,136,136,0,136,0,
+136,0,0,0,0,0,0,136,0,136,136,0,136,0,
+136,0,0,0,136,136,0,0,0,0,0,0,136,0,
+136,0,136,0,0,136,136,136,136,0,0,0,136,0,
+136,0,136,0,0,136,136,0,0,0,0,0,136,0,
+136,136,136,136,136,136,136,136,136,136,136,136,136,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+</map>

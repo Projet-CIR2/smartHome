@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.5.0" orientation="orthogonal" renderorder="right-down" width="9" height="16" tilewidth="512" tileheight="512" infinite="0" nextlayerid="2" nextobjectid="1">
+ <tileset firstgid="1" name="tiles" tilewidth="256" tileheight="512" tilecount="74" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="12">
+   <image width="256" height="512" source="salon/tv1.png"/>
+  </tile>
+  <tile id="13">
+   <image width="256" height="512" source="salon/tv2.png"/>
+  </tile>
+  <tile id="14">
+   <image width="256" height="512" source="salon/table.png"/>
+  </tile>
+  <tile id="15">
+   <image width="256" height="128" source="floors/concrete_floor.png"/>
+  </tile>
+  <tile id="16">
+   <image width="256" height="128" source="floors/floor.png"/>
+  </tile>
+  <tile id="17">
+   <image width="256" height="128" source="floors/grass.png"/>
+  </tile>
+  <tile id="22">
+   <image width="256" height="256" source="doors/door1.png"/>
+  </tile>
+  <tile id="23">
+   <image width="256" height="512" source="kitchen/chair1.png"/>
+  </tile>
+  <tile id="24">
+   <image width="256" height="512" source="kitchen/chair2.png"/>
+  </tile>
+  <tile id="25">
+   <image width="256" height="512" source="kitchen/chair3.png"/>
+  </tile>
+  <tile id="26">
+   <image width="256" height="512" source="kitchen/chair4.png"/>
+  </tile>
+  <tile id="27">
+   <image width="256" height="512" source="kitchen/table.png"/>
+  </tile>
+  <tile id="28">
+   <image width="256" height="512" source="kitchen/furnace1.png"/>
+  </tile>
+  <tile id="29">
+   <image width="256" height="512" source="kitchen/furnace2.png"/>
+  </tile>
+  <tile id="30">
+   <image width="256" height="512" source="kitchen/furnace3.png"/>
+  </tile>
+  <tile id="31">
+   <image width="256" height="512" source="kitchen/furnace4.png"/>
+  </tile>
+  <tile id="32">
+   <image width="256" height="512" source="kitchen/frdige1.png"/>
+  </tile>
+  <tile id="33">
+   <image width="256" height="512" source="kitchen/frdige2.png"/>
+  </tile>
+  <tile id="34">
+   <image width="256" height="512" source="kitchen/frdige3.png"/>
+  </tile>
+  <tile id="35">
+   <image width="256" height="512" source="kitchen/frdige4.png"/>
+  </tile>
+  <tile id="36">
+   <image width="256" height="512" source="kitchen/dishwasher1.png"/>
+  </tile>
+  <tile id="37">
+   <image width="256" height="512" source="kitchen/dishwasher2.png"/>
+  </tile>
+  <tile id="38">
+   <image width="256" height="512" source="kitchen/dishwasher3.png"/>
+  </tile>
+  <tile id="39">
+   <image width="256" height="512" source="kitchen/dishwasher4.png"/>
+  </tile>
+  <tile id="40">
+   <image width="256" height="512" source="salon/computer1.png"/>
+  </tile>
+  <tile id="41">
+   <image width="256" height="512" source="salon/computer2.png"/>
+  </tile>
+  <tile id="42">
+   <image width="256" height="512" source="salon/computer3.png"/>
+  </tile>
+  <tile id="43">
+   <image width="256" height="512" source="salon/computer4.png"/>
+  </tile>
+  <tile id="44">
+   <image width="256" height="512" source="salon/desk1.png"/>
+  </tile>
+  <tile id="45">
+   <image width="256" height="512" source="salon/desk2.png"/>
+  </tile>
+  <tile id="46">
+   <image width="256" height="512" source="salon/desk3.png"/>
+  </tile>
+  <tile id="47">
+   <image width="256" height="512" source="salon/desk4.png"/>
+  </tile>
+  <tile id="48">
+   <image width="256" height="512" source="salon/box1.png"/>
+  </tile>
+  <tile id="49">
+   <image width="256" height="512" source="salon/box2.png"/>
+  </tile>
+  <tile id="50">
+   <image width="256" height="512" source="salon/box3.png"/>
+  </tile>
+  <tile id="51">
+   <image width="256" height="512" source="salon/box4.png"/>
+  </tile>
+  <tile id="52">
+   <image width="256" height="512" source="buanderie/lavelinge1.png"/>
+  </tile>
+  <tile id="53">
+   <image width="256" height="512" source="buanderie/lavelinge2.png"/>
+  </tile>
+  <tile id="54">
+   <image width="256" height="512" source="buanderie/lavelinge3.png"/>
+  </tile>
+  <tile id="55">
+   <image width="256" height="512" source="walls/wall1.png"/>
+  </tile>
+  <tile id="56">
+   <image width="256" height="512" source="walls/wall2.png"/>
+  </tile>
+  <tile id="57">
+   <image width="256" height="512" source="walls/wall3.png"/>
+  </tile>
+  <tile id="58">
+   <image width="256" height="512" source="walls/wall4.png"/>
+  </tile>
+  <tile id="59">
+   <image width="256" height="512" source="walls/corner1.png"/>
+  </tile>
+  <tile id="60">
+   <image width="256" height="512" source="walls/corner2.png"/>
+  </tile>
+  <tile id="61">
+   <image width="256" height="512" source="walls/corner3.png"/>
+  </tile>
+  <tile id="62">
+   <image width="256" height="512" source="walls/corner4.png"/>
+  </tile>
+  <tile id="63">
+   <image width="256" height="512" source="light/mural1.png"/>
+  </tile>
+  <tile id="64">
+   <image width="256" height="512" source="light/mural2.png"/>
+  </tile>
+  <tile id="65">
+   <image width="256" height="512" source="light/mural_off1.png"/>
+  </tile>
+  <tile id="66">
+   <image width="256" height="512" source="light/mural_off2.png"/>
+  </tile>
+  <tile id="67">
+   <image width="256" height="512" source="robots/cleaner1.png"/>
+  </tile>
+  <tile id="68">
+   <image width="256" height="512" source="robots/cleaner2.png"/>
+  </tile>
+  <tile id="69">
+   <image width="256" height="512" source="robots/cleaner3.png"/>
+  </tile>
+  <tile id="70">
+   <image width="256" height="512" source="robots/cleaner4.png"/>
+  </tile>
+  <tile id="71">
+   <image width="256" height="512" source="chauffage/radiateur1.png"/>
+  </tile>
+  <tile id="72">
+   <image width="256" height="512" source="chauffage/radiateur2.png"/>
+  </tile>
+  <tile id="73">
+   <image width="256" height="512" source="walls/window1.png"/>
+  </tile>
+  <tile id="74">
+   <image width="256" height="512" source="walls/window2.png"/>
+  </tile>
+  <tile id="75">
+   <image width="256" height="512" source="walls/window3.png"/>
+  </tile>
+  <tile id="76">
+   <image width="256" height="512" source="walls/window4.png"/>
+  </tile>
+  <tile id="77">
+   <image width="256" height="512" source="salon/canape1.png"/>
+  </tile>
+  <tile id="78">
+   <image width="256" height="512" source="salon/canape2.png"/>
+  </tile>
+  <tile id="79">
+   <image width="256" height="512" source="salon/canape3.png"/>
+  </tile>
+  <tile id="80">
+   <image width="256" height="512" source="salon/canape4.png"/>
+  </tile>
+  <tile id="81">
+   <image width="256" height="512" source="bedrooms/bed1.png"/>
+  </tile>
+  <tile id="82">
+   <image width="256" height="512" source="bedrooms/bed2.png"/>
+  </tile>
+  <tile id="83">
+   <image width="256" height="512" source="bedrooms/bed3.png"/>
+  </tile>
+  <tile id="84">
+   <image width="256" height="512" source="bedrooms/bed4.png"/>
+  </tile>
+  <tile id="85">
+   <image width="256" height="512" source="bedrooms/big_bed1.png"/>
+  </tile>
+  <tile id="86">
+   <image width="256" height="512" source="bedrooms/big_bed2.png"/>
+  </tile>
+  <tile id="87">
+   <image width="256" height="512" source="bedrooms/big_bed3.png"/>
+  </tile>
+  <tile id="88">
+   <image width="256" height="512" source="bedrooms/big_bed4.png"/>
+  </tile>
+  <tile id="89">
+   <image width="256" height="512" source="collision.png"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="91" name="tiles" tilewidth="512" tileheight="512" tilecount="144" columns="9">
+  <image source="tiles.png" width="4608" height="8192"/>
+  <tile id="9">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="114" y="387.333">
+     <polygon points="0,0 128,64.6667 141.667,59 14,-6.66667"/>
+    </object>
+    <object id="2" x="114" y="387.333">
+     <polygon points="0,0 -0.333333,-157.333 128,-93.3333 129,63.3333"/>
+    </object>
+    <object id="3" x="114.667" y="230.333">
+     <polygon points="0,0 11.6667,-7 140.333,57.3333 128,63"/>
+    </object>
+    <object id="4" x="242" y="293">
+     <polygon points="0,0 0.666667,157 13.3333,153 13.3333,-5.33333"/>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="10">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="0.5" y="444.5">
+     <polygon points="0,0 12,8 140.5,-57 127,-65.5"/>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="11">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="114" y="502.5">
+     <polygon points="0,0 13.5,7.5 141,-56 127,-65"/>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="12">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="0" y="445">
+     <polygon points="0,0 124,64 140,58.5 17,-5.5"/>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="13">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="114" y="504">
+     <polygon points="0,0 11,7 141,-56 125,-66"/>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="14">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="-1" y="446">
+     <polygon points="0,0 7.5,5.5 124.5,-53.5 243.5,6.5 256,0.5 124.5,-67"/>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="15">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="3" y="448.5">
+     <polygon points="0,0 123.5,62.5 138.5,54.5 17,-6.5 133.5,-69.5 117,-79 -2,-11"/>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="16">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="-0.5" y="445">
+     <polygon points="0,0 124.5,64.5 257,0 240.5,-10.5 126.5,45.5 24,-10"/>
+    </object>
+   </objectgroup>
+  </tile>
+  <tile id="18">
+   <objectgroup draworder="index" id="2">
+    <object id="1" x="74" y="480.5">
+     <polygon points="0,0 121,-61.5 102,-77 -15.5,-15.5"/>
+    </object>
+   </objectgroup>
+  </tile>
+ </tileset>
+ <layer id="1" name="Calque de Tuiles 1" width="9" height="16">
+  <data encoding="csv">
+16,17,18,0,0,74,75,76,77,
+56,57,58,59,23,60,61,62,63,
+13,14,15,64,65,66,67,72,73,
+24,25,26,27,28,29,30,31,32,
+33,34,35,36,37,38,39,40,0,
+41,42,43,44,45,46,47,48,0,
+49,50,51,52,53,54,55,0,0,
+68,69,70,71,78,79,80,81,0,
+82,83,84,85,86,87,88,89,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,
+90,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+</map>

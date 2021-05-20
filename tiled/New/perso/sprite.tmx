@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.5.0" orientation="orthogonal" renderorder="right-down" width="4" height="1" tilewidth="256" tileheight="512" infinite="0" nextlayerid="2" nextobjectid="1">
+ <tileset firstgid="1" name="sprites" tilewidth="256" tileheight="512" tilecount="4" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image width="256" height="512" source="perso1.png"/>
+  </tile>
+  <tile id="1">
+   <image width="256" height="512" source="perso2.png"/>
+  </tile>
+  <tile id="2">
+   <image width="256" height="512" source="perso3.png"/>
+  </tile>
+  <tile id="3">
+   <image width="256" height="512" source="perso4.png"/>
+  </tile>
+ </tileset>
+ <layer id="1" name="Calque de Tuiles 1" width="4" height="1">
+  <data encoding="csv">
+1,2,3,4
+</data>
+ </layer>
+</map>
