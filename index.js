@@ -80,6 +80,27 @@ app.post('/scenario', (req, res) => {
     res.sendFile(__dirname + '/views/index.html');
 });
 
+app.post('/', (req, res) => {
+    const scena = {
+        titre: req.body.elmtTitre,
+            description_debut: req.body.elmtdescription_debut,
+            description_milieu: req.body.elmtdescription_milieu,
+            description_fin: req.body.elmtdescription_fin,
+            difficulte: req.body.elmtdifficulte,
+            argent: req.body.elmtargent,
+            debit: req.body.elmtdebit,
+            humeur: req.body.elmthumeur,
+            
+            obj1 : req.body.elmtObj1,
+            obj2 : req.body.elmtObj2,
+            obj3 : req.body.elmtObj3,
+            
+    }
+    console.log("indexjs", scena);
+    scenario = scena;
+    res.sendFile(__dirname + '/views/index.html');
+});
+
 io.on('connection', function (socket) {
     io.emit('Hello', 'A new connection on our website !'); // permet d'envoyer le message à toutes les connections
     socket.on('matrix', (data, width, heigth, tab) => {
