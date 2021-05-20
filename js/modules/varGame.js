@@ -12,7 +12,7 @@ let VarGame = (function () {
                 this.modifVar('humeur', -2 * view.difficulte);
             }, 30000);
             setInterval(() => {
-                this.modifVar('argent', 0.15 * view.humeur);
+                this.modifVar('argent', 0.50 * view.humeur);
             }, 30000);
             // paiement de la box
             setInterval(() => {

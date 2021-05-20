@@ -37,6 +37,12 @@ let mapWidth, mapHeight;
 
 let lastDirection;
 
+let stockageVar = {
+    click: false,
+    clickPolygon: "",
+    stockagePolygones: []
+}
+
 function preload() {
 
     this.load.image('tempHouse', '../img/tqt.png');
@@ -157,9 +163,13 @@ function create() {
 
     // console.log(layer1.layer.data.length);
     // console.log(layer1.layer.data[0].length);
+    let polygon;
     for (let y = 0; y < layer1.layer.data.length; y++) {
         for (let x = 0; x < layer1.layer.data[0].length; x++) {
-            new Polygon(this, x, y);
+            polygon = new Polygon(this, x, y);
+            // console.log(new Polygon(this, x, y));
+            stockageVar.stockagePolygones.push(polygon);
+            polygon.addEvent();
         }
     }
 
