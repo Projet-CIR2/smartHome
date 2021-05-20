@@ -100,7 +100,7 @@ function create() {
         }
     }
 
-    socket.emit('matrix', matrixMap, mapWidth, mapHeight, [3,2,2,11]);
+    socket.emit('matrix', matrixMap, mapWidth, mapHeight, [3,2,4,2]);
     
     socket.on('path', path => {
         chemin = path;
@@ -346,19 +346,19 @@ function movePlayer2(player, x, y) {
             player.anims.play('left');
 
         }
-        if (playerXRound < x) {
+        else if (playerXRound < x) {
             player.body.velocity.x += speedX;
             player.body.velocity.y += speedY
             player.anims.play('right');
 
         }
-        if (playerYRound > y) {
+        else if (playerYRound > y) {
             player.body.velocity.y -= speedY;
             player.body.velocity.x += speedY;
 
             player.anims.play('up');
         }
-        if (playerYRound < y) {
+        else if (playerYRound < y) {
             player.body.velocity.y += speedY;
             player.body.velocity.x -= speedX;
 
@@ -377,7 +377,7 @@ function cheminPath() {
         destination = cheminSize-1;
         destinationInter = 0;
     }
-    if (chemin != undefined) {
+    if (chemin != undefined && destinationInter <= destination) {
         let coords = chemin[destinationInter];
         x = coords[1];
         y = coords[0];
