@@ -3,10 +3,25 @@ const port = 4555;
 const express = require('express');
 const app = express();
 const server = require('http').createServer(app);
-
+const http = require('http').Server(app);
 const io = require('socket.io')(server);
 
 var PF = require('pathfinding');
+
+
+const sharedsession = require("express-socket.io-session");
+
+const bodyParser = require('body-parser');
+const session = require('express-session')({
+    secret: "30cm",
+    resave: true,
+    saveUninitialized: true,
+    cookie: {
+        maxAge: 56060*1000,
+        secure: false,
+    }
+
+});
 
 /*
 var tab = [
@@ -15,7 +30,20 @@ var tab = [
 ]
 */
 
+let scenario;
+const urlencodedParser = bodyParser.urlencoded({ extended: false});
+
+/* init express */
+app.use(urlencodedParser);
+app.use(session);
 app.use(express.static(__dirname + "/"));
+
+
+io.use(sharedsession(session, {
+    autoSave: true
+}));
+
+
 
 app.get('/', (req, res, next) => {
     res.sendFile(__dirname + '/views/menu.html');
@@ -29,6 +57,27 @@ app.get('/scenario', (req, res, next) => {
 });
 app.get('/comment-jouer', (req, res, next) => {
     res.sendFile(__dirname + '/views/comment-jouer.html');
+});
+
+app.post('/scenario', (req, res) => {
+    const scena = {
+        titre: req.body.elmtTitre,
+            description_debut: req.body.elmtdescription_debut,
+            description_milieu: req.body.elmtdescription_milieu,
+            description_fin: req.body.elmtdescription_fin,
+            difficulte: req.body.elmtdifficulte,
+            argent: req.body.elmtargent,
+            debit: req.body.elmtdebit,
+            humeur: req.body.elmthumeur,
+            
+            obj1 : req.body.elmtObj1,
+            obj2 : req.body.elmtObj2,
+            obj3 : req.body.elmtObj3,
+            
+    }
+    console.log("indexjs", scena);
+    scenario = scena;
+    res.sendFile(__dirname + '/views/index.html');
 });
 
 io.on('connection', function (socket) {
@@ -59,12 +108,10 @@ io.on('connection', function (socket) {
         var gridBackup = grid.clone();
 
     });
+    socket.emit('scena', scenario);
 });
 
-app.post('/scenario', (req, res) => {
-    const scenario = req.elmt;
-    console.log(scenario);
-})
+
 
 server.listen(port);
 

@@ -19,7 +19,7 @@ data.forEach(element => {
     a.id = "boutton" + val;
     a.className = "button";
     a.textContent = "Jouer";
-    a.addEventListener('submit', event => {
+    a.addEventListener('click', event => {
         event.preventDefault();
         scenarIndexer.send(element);
     });

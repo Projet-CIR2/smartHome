@@ -10,11 +10,10 @@ let json = {
             argent: 100,
             debit: 100,
             humeur: 100,
-            objectif: [
-                {objet: "fauteuil", niveau: 3},
-                {objet: "ordinateur", niveau: 3},
-                {objet: "boxinternet", niveau: 3}
-            ]
+            objet1: "fauteuil",
+            objet2: "ordinateur", 
+            objet3: "boxinternet",
+            
         },
 
         {
