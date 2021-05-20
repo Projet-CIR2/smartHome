@@ -5,7 +5,7 @@ socket.on('scena', (elmt) => {
     let scenar = document.createElement('div');
     chat.appendChild(scenar);
     scenar.style.backgroundColor = '#FFF5EE';
-    scenar.style.height = '100px';
+    scenar.style.height = '200px';
     scenar.style.textAlign = 'center';
     scenar.style.padding = '10px';
     scenar.style.borderRadius = '10px';
@@ -26,8 +26,8 @@ socket.on('scena', (elmt) => {
     scenar.appendChild(desc);
     scenar.appendChild(p);
     
-});
-
     const gameView = new GameView(elmt);
     VarGame.initView(gameView, 1);
 });
+
+    
