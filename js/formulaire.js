@@ -1,4 +1,4 @@
-let createObjetMaj = function (mOru, title, text, btn) {
+let createObjetMaj = function (mOru, title, text, btn, element) {
     let currentDiv = document.getElementById(mOru);
 
     let div = document.createElement('div');
@@ -12,48 +12,77 @@ let createObjetMaj = function (mOru, title, text, btn) {
 
     p = document.createElement('p');
     div.appendChild(p);
-    p.textContent = text;
+    p.innerHTML = text;
 
     let button = document.createElement('button');
     div.appendChild(button);
     button.setAttribute('class', 'btn btn-warning btn-sm');
     button.textContent = btn;
     if (mOru === 'd_Upgrade') {
+        let pAchat = document.createElement('p');
+        let pClick = document.createElement('p');
         button.onclick = () => {
-            div.remove();
-            achat.addMaj(title);
+            //Verif si assez argent
+
             let afficheAchat = document.getElementById('achat');
-            let img = document.createElement('img');
-            let pAchat = document.createElement('p');
-            let pClick = document.createElement('p');
-
-            afficheAchat.setAttribute('style', 'position: absolute; margin-top: 20%; margin-left: 35%; background-color: #BFB99E; border-radius: 4px; height: 30%; width: 30%; visible: hidden;');
-            img.src = "./img/cam.png";
-            img.setAttribute('style', 'height: 120; width: 120px; margin-left: 25%; margin-top: 13px;');
-            img.id = 'image';
-
-            pAchat.textContent = "Vous avez acheté " + title;
-            pAchat.setAttribute('style', 'color: white; margin-top: 10px; text-align:center;');
-            pAchat.id = 'achatTxt';
-
-            pClick.textContent = "Cliquer pour continuer";
-            pClick.setAttribute('style', 'color: white; margin-top: 10px; text-align:center;');
-            pClick.id = 'pClick';
+            afficheAchat.innerHTML = "";
+            afficheAchat.setAttribute('style', 'display: none;');
+            
 
             let pAchatHTML = document.getElementById('achatTxt');
-            let imgHTML = document.getElementById('image');
             let pClickHTML = document.getElementById('pClick');
-           
-            if(afficheAchat.childElementCount == 3) {
-                afficheAchat.removeChild(imgHTML);
-                afficheAchat.removeChild(pAchatHTML);
-                afficheAchat.removeChild(pClickHTML);
+
+            if (element.niveau1.prix > gameView.getArgentPlayer()) {
+                afficheAchat.setAttribute('style', 'position: absolute; margin-top: 20%; margin-left: 35%; background-color: #BFB99E; border-radius: 4px; height: 30%; width: 30%; visible: hidden;');
                 
+                pAchat.textContent = "Vous n'avez pas assez d'argent pour acheter " + element.nom;
+                pAchat.setAttribute('style', 'color: white; margin-top: 10px; text-align:center;');
+                pAchat.id = 'achatTxt';
+
+                pClick.textContent = "Cliquer pour continuer";
+                pClick.setAttribute('style', 'color: white; margin-top: 10px; text-align:center;');
+                pClick.id = 'pClick';
+
+                if (afficheAchat.childElementCount == 2) {
+                    afficheAchat.removeChild(pAchatHTML);
+                    afficheAchat.removeChild(pClickHTML);
+
+                }
+                afficheAchat.appendChild(pAchat);
+                afficheAchat.appendChild(pClick);
+            } else {
+                div.remove();
+                achat.addMaj(title);
+                let img = document.createElement('img');
+                
+                afficheAchat.setAttribute('style', 'position: absolute; margin-top: 20%; margin-left: 35%; background-color: #BFB99E; border-radius: 4px; height: 30%; width: 30%; visible: hidden;');
+                img.src = "./img/cam.png";
+                img.setAttribute('style', 'height: 120; width: 120px; margin-left: 25%; margin-top: 13px;');
+                img.id = 'image';
+
+                pAchat.textContent = "Vous avez acheté " + title;
+                pAchat.setAttribute('style', 'color: white; margin-top: 10px; text-align:center;');
+                pAchat.id = 'achatTxt';
+
+                pClick.textContent = "Cliquer pour continuer";
+                pClick.setAttribute('style', 'color: white; margin-top: 10px; text-align:center;');
+                pClick.id = 'pClick';
+
+                let pAchatHTML = document.getElementById('achatTxt');
+                let imgHTML = document.getElementById('image');
+                let pClickHTML = document.getElementById('pClick');
+
+                if (afficheAchat.childElementCount == 3) {
+                    afficheAchat.removeChild(imgHTML);
+                    afficheAchat.removeChild(pAchatHTML);
+                    afficheAchat.removeChild(pClickHTML);
+
+                }
+                afficheAchat.appendChild(img);
+                afficheAchat.appendChild(pAchat);
+                afficheAchat.appendChild(pClick);
             }
-            afficheAchat.appendChild(img);
-            afficheAchat.appendChild(pAchat);
-            afficheAchat.appendChild(pClick);
-           
-        };    
+            console.log(afficheAchat);
+        };
     }
 }

@@ -1,24 +1,18 @@
 let achat = (function() {
-    let data = upgradeJSON;
+    let data = infoObjet;
     let dataMaj = majJSON;
 
     return {
         recupData() {
-            let val = 0;
-
             for (let element of data) {
-                createObjetMaj('d_Upgrade', element.events, '', 'Acheter');
-                val++;
+                createObjetMaj('d_Upgrade', element.nom, element.niveau1.description + "<br><br>Prix : " + element.niveau1.prix + "€", 'Acheter', element);
             }
            
         },
 
         recupDataMaj() {
-            let val = 0;
-
             for (let element of dataMaj) {
-                createObjetMaj('d_MaJ', element.events, element.lore, 'Mettre à jour');
-                val++;
+                createObjetMaj('d_MaJ', element.nom, element.niveau1.description + "<br><br>Prix Niveau 2: " + element.niveau1.coutAmelioration + "€" + "<br><br>Temps de MaJ : " + element.niveau1.tempsAmelioration + "s", 'Mettre à jour', element);
             }
         },
 
@@ -36,7 +30,7 @@ let achat = (function() {
         },
 
         addMaj(title) {
-            let indice = data.findIndex(element => element.events === title);
+            let indice = data.findIndex(element => element.nom === title);
             if (indice !== -1) {
                 dataMaj.push(data[indice]);
                 this.popUpgrade(indice);
@@ -64,7 +58,8 @@ let achat = (function() {
         clickStop() {
             let div = document.getElementById('achat');
             div.addEventListener('click', () => {
-                div.setAttribute('style', 'display: none;');
+                div.innerHTML = "";
+                div.setAttribute('style', 'display: none;')
             });
         }
     }

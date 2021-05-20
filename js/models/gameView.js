@@ -50,4 +50,7 @@ class GameView {
         console.log('argent', this.argent);
         console.log('debit', this.debit);
     }
+    getArgentPlayer() {
+        return this.argent;
+    }
 }

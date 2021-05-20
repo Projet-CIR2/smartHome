@@ -1,3 +1,4 @@
+let gameView;
 socket.on('scena', (elmt) => {
     let chat = document.getElementById('chat');
     chat.setAttribute('style', 'font-size: 12px;');
@@ -30,7 +31,7 @@ socket.on('scena', (elmt) => {
     scenar.appendChild(desc);
     scenar.appendChild(p);
     
-    const gameView = new GameView(elmt);
+    gameView = new GameView(elmt);
     VarGame.initView(gameView, 1);
 });
 
