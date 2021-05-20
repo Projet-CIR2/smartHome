@@ -35,6 +35,8 @@ let isoX, isoY, text;
 
 let mapWidth, mapHeight;
 
+let lastDirection;
+
 function preload() {
 
     this.load.image('tempHouse', '../img/tqt.png');
@@ -100,7 +102,7 @@ function create() {
         }
     }
 
-    socket.emit('matrix', matrixMap, mapWidth, mapHeight, [3,2,4,2]);
+    socket.emit('matrix', matrixMap, mapWidth, mapHeight, [7,3,2,11]);
     
     socket.on('path', path => {
         chemin = path;
@@ -146,7 +148,7 @@ function create() {
     controls = new Phaser.Cameras.Controls.SmoothedKeyControl(controlConfig);
 
 
-    let pos = convert([2,3]);
+    let pos = convert([3,7]);
     player = this.physics.add.sprite(pos[0],pos[1], 'perso1');
 
     player.body.bounce.y = 0.1;
@@ -338,35 +340,68 @@ function movePlayer2(player, x, y) {
     let playerXRound = Math.round(player.x);
     let playerYRound = Math.round(player.y);
 
+    let marge = 2;
+    console.log(destinationInter);
 
-    if (playerXRound < x-25 || playerXRound > x+25 || playerYRound < y-25 || playerYRound > y +25) {
-        if (playerXRound > x) {
+    if (playerXRound < x-marge || playerXRound > x+marge || playerYRound < y-marge || playerYRound > y +marge) {
+        if (playerXRound > x && playerYRound >y) {
             player.body.velocity.x -= speedX;
             player.body.velocity.y -= speedY;
             player.anims.play('left');
+            console.log("Gauche");
+            lastDirection = 0;
 
         }
-        else if (playerXRound < x) {
+        if (playerXRound < x && playerYRound < y) {
             player.body.velocity.x += speedX;
             player.body.velocity.y += speedY
             player.anims.play('right');
+            console.log("droite");
+            lastDirection = 1;
+
 
         }
-        else if (playerYRound > y) {
+        if (playerYRound > y && playerXRound < x) {
             player.body.velocity.y -= speedY;
-            player.body.velocity.x += speedY;
+            player.body.velocity.x += speedX;
 
             player.anims.play('up');
+            console.log("haut");
+            lastDirection = 2;
+
         }
-        else if (playerYRound < y) {
+        if (playerYRound < y && playerXRound > x) {
             player.body.velocity.y += speedY;
             player.body.velocity.x -= speedX;
 
             player.anims.play('down');
+            console.log("bas");
+            lastDirection = 3;
+
         }
-    } else {
+    } 
+    else {
         player.anims.stop();
-        player.anims.play('face');
+        player.x = x;
+        player.y = y;
+        switch(lastDirection){
+            case 0:
+                player.anims.play('left');
+                break;
+            case 1:
+                player.anims.play('right');
+                break;
+            case 2 :
+                player.anims.play('up');
+                break;
+            case 3:
+                player.anims.play('down');
+                break;
+            default:
+                player.anims.play('down');
+                break;
+                
+        }
         return 1;
     }
 }
