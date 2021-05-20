@@ -168,3 +168,19 @@ body::-webkit-scrollbar {
     margin-top: 2%;
     margin-left: 3%;
 }
+
+body {
+    background: linear-gradient(to bottom, rgba(22, 22, 22, 0.2) 0%, rgba(22, 22, 22, 0.6) 75%, #161616 100%), url(../img/fond.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+}
+
+/*.masthead {
+    background: linear-gradient(to bottom, rgba(22, 22, 22, 0.3) 0%, rgba(22, 22, 22, 0.7) 75%, #161616 100%), url(../img/fond.png);
+    background-size: cover;
+    margin: -15px -15px 0 -15px;
+    height: 101vh;
+    position: sticky;
+    z-index: -1;
+}*/
