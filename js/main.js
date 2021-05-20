@@ -167,49 +167,7 @@ function create() {
     // let polygon = new Phaser.Geom.Polygon('0 66 0 223 129 159 129 0');
     // this.physics.add.existing(polygon);
 
-    this.anims.create({
-        key: 'left',
-        //frames: this.anims.generateFrameNumbers('perso1', { start: 3, end: 5 }),
-        frames: this.anims.generateFrameNumbers('perso1', { start: 0, end: 0 }),
-        frameRate: 10,
-        repeat: -1
-
-    })
-    this.anims.create({
-        key: 'right',
-        //frames: this.anims.generateFrameNumbers('perso1', { start: 6, end: 8 }),
-        frames: this.anims.generateFrameNumbers('perso1', { start: 1, end: 1 }),
-        frameRate: 10,
-        repeat: -1
-    })
-    this.anims.create({
-        key: 'up',
-        //frames: this.anims.generateFrameNumbers('perso1', { start: 9, end: 11 }),
-        frames: this.anims.generateFrameNumbers('perso1', { start: 2, end: 2 }),
-        frameRate: 10,
-        repeat: -1
-    });
-
-    this.anims.create({
-        key: 'down',
-        //frames: this.anims.generateFrameNumbers('perso1', { start: 0, end: 2 }),
-        frames: this.anims.generateFrameNumbers('perso1', { start: 3, end: 3 }),
-        frameRate: 10,
-        repeat: -1
-    });
-    this.anims.create({
-        key: 'face',
-        //frames: this.anims.generateFrameNumbers('perso1', { start: 1, end: 1 }),
-        frames: this.anims.generateFrameNumbers('perso1', { start: 3, end: 3 }),
-        frameRate: 10,
-        repeat: -1
-    });
-    this.anims.create({
-        key: 'back',
-        //frames: this.anims.generateFrameNumbers('perso1', { start: 10, end: 10 }),
-        frameRate: 10,
-        repeat: -1
-    });
+    
 
     this.physics.add.collider(player, collisions);
 
@@ -341,12 +299,15 @@ function movePlayer2(player, x, y) {
     let playerYRound = Math.round(player.y);
 
     let marge = 2;
+    console.log(destinationInter);
 
     if (playerXRound < x-marge || playerXRound > x+marge || playerYRound < y-marge || playerYRound > y +marge) {
+        
         if (playerXRound > x && playerYRound >y) {
             player.body.velocity.x -= speedX;
             player.body.velocity.y -= speedY;
             player.anims.play('left');
+            console.log("Gauche");
             lastDirection = 0;
 
         }
@@ -354,6 +315,7 @@ function movePlayer2(player, x, y) {
             player.body.velocity.x += speedX;
             player.body.velocity.y += speedY
             player.anims.play('right');
+            console.log("droite");
             lastDirection = 1;
 
 
@@ -363,6 +325,7 @@ function movePlayer2(player, x, y) {
             player.body.velocity.x += speedX;
 
             player.anims.play('up');
+            console.log("haut");
             lastDirection = 2;
 
         }
@@ -371,6 +334,7 @@ function movePlayer2(player, x, y) {
             player.body.velocity.x -= speedX;
 
             player.anims.play('down');
+            console.log("bas");
             lastDirection = 3;
 
         }
