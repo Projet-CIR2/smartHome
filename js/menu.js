@@ -14,11 +14,27 @@ data.forEach(element => {
     
     let p = document.createElement('p');
     p.textContent = element.description_debut;
+
+    let diffi = document.createElement('p');
+    diffi.textContent = element.difficulte;
+
+    if (element.difficulte == 'Facile') {
+        diffi.style.color = 'green';
+    }
+
+    if (element.difficulte == 'Moyen') {
+        diffi.style.color = 'orange';
+    }
+
+    if (element.difficulte == 'Difficile') {
+        diffi.style.color = 'red';
+    }
     
     let a = document.createElement('a');
     a.id = "boutton" + val;
     a.className = "button";
     a.textContent = "Jouer";
+
     a.addEventListener('click', event => {
         event.preventDefault();
         scenarIndexer.send(element);
@@ -29,6 +45,7 @@ data.forEach(element => {
     divCard.appendChild(divContent);
     
     divCard.appendChild(p);
+    divCard.appendChild(diffi);
     divCard.appendChild(a);
     val++;
     
