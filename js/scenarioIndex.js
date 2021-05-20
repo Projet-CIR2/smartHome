@@ -1,7 +1,4 @@
 socket.on('scena', (elmt) => {
-    console.log(elmt);
-    console.log(elmt.titre);
-
     let chat = document.getElementById('chat');
     chat.setAttribute('style', 'font-size: 12px;');
 
@@ -10,12 +7,17 @@ socket.on('scena', (elmt) => {
     p.setAttribute('style', 'text-shadow: inherit');
 
     let desc = document.createElement('p');
-    desc.textContent = "Description : " + elmt.description_debut;
+    desc.innerHTML = "Description : <br><br>" + elmt.description_debut;
     desc.setAttribute('style', 'text-shadow: inherit');
 
+    let infos = document.createElement('p');
+    infos.innerHTML = "Informations de départ : <br><br>Votre Humeur : " + elmt.argent + "<br>Votre débit internet : " + elmt.debit + "<br>Votre argent : " + elmt.argent ;
+    infos.setAttribute('style', 'text-shadow: inherit');
+
+    chat.appendChild(infos);
     chat.appendChild(desc);
     chat.appendChild(p);
-    
+
+    const gameView = new GameView(elmt);
+    VarGame.initView(gameView, 1);
 });
-
-

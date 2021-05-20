@@ -1,9 +1,17 @@
 class GameView {
-    constructor() {
-        this.humeur = 100; // en %
-        this.argent = 10; // en €
-        this.debit = 100; // en %
-        this.difficulte = 0; // 1, 2, ou 3
+    constructor(elmt) {
+        this.humeur = elmt.humeur; // en %
+        this.argent = elmt.argent; // en €
+        this.debit = elmt.debit; // en %
+        if(elmt.difficulte == 'Facile') {
+            this.difficulte = 1;
+        }
+        if(elmt.difficulte == 'Normal') {
+            this.difficulte = 2;
+        }
+        if(elmt.difficulte == 'Difficile') {
+            this.difficulte = 3;
+        }
         this.objet = [];
 
         this.barreHumeur = new Barres('humeur');

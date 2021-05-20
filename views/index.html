@@ -5,7 +5,6 @@
     <meta charset="utf-8"/>
     <title>Smart Home</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../views/index.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -22,7 +21,7 @@
     <script type="text/javascript" src="../js/modules/varGame.js"></script>
     <script type="text/javascript" src="../js/modules/chat.js"></script>
     <script type="text/javascript" src="../js/tests.js"></script>
-    <script type="text/javascript" src="../js/models/gameView.js"></script>
+    
     <script type="text/javascript" src="../js/formulaire.js"></script>
     <script type="text/javascript" src="../json/upgrade.js"></script>
     <script type="text/javascript" src="../json/maj.js"></script>
@@ -161,6 +160,7 @@
 </div>
 <!--Footer-->
 <script src="../js/scenarioIndex.js"></script>
+<script type="text/javascript" src="../js/models/gameView.js"></script>
 <script src="../js/scriptmagique.js"></script>
 <script>
 
@@ -169,10 +169,7 @@
         var e = event || window.event;
         // console.log(e.clientX,e.clientY);
     }
-
-    // tests();
-    const gameView = new GameView();
-    VarGame.initView(gameView, 1);
+    
 </script>
 </body>
 </html>
