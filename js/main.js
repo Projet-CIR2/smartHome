@@ -108,6 +108,8 @@ function create() {
         }
     }
 
+    
+
     socket.emit('matrix', matrixMap, mapWidth, mapHeight, [7,3,2,11]);
     
     socket.on('path', path => {
@@ -138,7 +140,7 @@ function create() {
 
     let cursors = this.input.keyboard.createCursorKeys();
 
-    this.cameras.main.setZoom(0.4);
+    this.cameras.main.setZoom(0.3);
 
     let controlConfig = {
         camera: this.cameras.main,
@@ -153,16 +155,8 @@ function create() {
 
     controls = new Phaser.Cameras.Controls.SmoothedKeyControl(controlConfig);
 
-
-    let pos = convert([3,7]);
-    player = this.physics.add.sprite(pos[0],pos[1], 'perso1');
-
-    player.body.bounce.y = 0.1;
-    //player.setCollideWorldBounds(true);
-    //player.body.setSize(43, 24, 2, 40);
-
-    // console.log(layer1.layer.data.length);
-    // console.log(layer1.layer.data[0].length);
+    
+ 
     let polygon;
     for (let y = 0; y < layer1.layer.data.length; y++) {
         for (let x = 0; x < layer1.layer.data[0].length; x++) {
@@ -210,7 +204,12 @@ function create() {
         repeat: -1
     });
 
-    this.physics.add.collider(player, collisions);
+
+    let player2 = new Player(this, 2,3);
+
+    let pos = convert([3,7]);
+    player = this.physics.add.sprite(pos[0],pos[1], 'perso1');
+
 
     let graphics = this.add.graphics({ lineStyle: { width: 2, color: 0x0000aa }, fillStyle: { color: 0x008800 } });
 
@@ -237,12 +236,14 @@ function compteUneSeconde () {
 }
 
 function update(time, delta) {
-    housebarre.modifBarre(chrono);
-    //movePlayer(player);
-    controls.update(delta);
-    //movePlayer2(player, 401, 420);
-    //console.log(player.x, player.y);
 
+    housebarre.modifBarre(chrono);
+
+    controls.update(delta);
+    
+
+
+   
 
     cheminPath();
 
