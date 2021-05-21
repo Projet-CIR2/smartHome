@@ -80,26 +80,31 @@ function preload() {
 
 
 function create() {
+    // animation levelUp
     this.levelUp = this.physics.add.sprite(0, 0, 'levelUp');
     this.anims.create({
         key: 'levelUpAnim',
         frames: 'levelUp',
-        frameRate: 15,
+        frameRate: 14,
         // repeat: -1,
         // hideOnComplete: true
     });
+    this.levelUp.displayWidth = 150;
+    this.levelUp.displayHeight = 100;
+    this.levelUp.setAlpha(0);
+    // this.levelUp.play('levelUpAnim');
 
-    function destroy(up) {
-        up.play('levelUpAnim');
-
-        up.once('animationcomplete', () => {
-            console.log('destroy');
-            up.setAlpha(0);
-
-        });
-    }
-
-    destroy(this.levelUp);
+    // function destroy(up) {
+    //     up.play('levelUpAnim');
+    //
+    //     up.once('animationcomplete', () => {
+    //         console.log('destroy');
+    //         up.setAlpha(0);
+    //
+    //     });
+    // }
+    //
+    // destroy(this.levelUp);
 
     // setTimeout(() => {
     //     this.levelUp.play('levelUpAnim');
