@@ -33,9 +33,10 @@ p {
 }
 
 .object{
-    background-color:rgb(100, 100, 100);
+    background-color:#E5E3D8;
     margin: 10px 20px 10px 20px; 
     width: 80%; 
+    border: 3px solid black;
     border-radius: 10px;
 }
 

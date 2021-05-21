@@ -1,6 +1,6 @@
 let infoObjet = [
   {
-    nom: "frigo",
+    nom: "Frigo",
     niveau1: {
       description: "Frigo de niveau 1 équipé d'un freezer idéal pour commencer ",
       coutDebit: 25,
@@ -38,7 +38,7 @@ let infoObjet = [
   },
 
   {
-    nom: "fauteuil",
+    nom: "Fauteuil",
     niveau1: {
       description: "Fauteuil de niveau 1 peu confortable ",
       coutDebit: 20,
@@ -75,7 +75,7 @@ let infoObjet = [
   },
 
   {
-    nom: "gaziniere",
+    nom: "Gazinière",
     niveau1: {
       description: "Gaziniere de niveau 1 modeste et fonctionnel ",
       coutDebit: 20,
@@ -112,7 +112,7 @@ let infoObjet = [
   },
 
   {
-    nom: "radiateur",
+    nom: "Radiateur",
     niveau1: {
       description: "Radiateur de niveau 1 chauffe mais avec difficultée ",
       coutDebit: 20,
@@ -149,7 +149,7 @@ let infoObjet = [
   },
 
   {
-    nom: "lavelinge",
+    nom: "Lave Linge",
     niveau1: {
       description: "Lave linge de niveau 1 lave vos vêtements à faible température ",
       coutDebit: 20,
@@ -186,7 +186,7 @@ let infoObjet = [
   },
 
   {
-    nom: "lavevaisselle",
+    nom: "Lave Vaisselle",
     niveau1: {
       description: "Lave vaisselle de niveau 1 lave de façon superficiel ",
       coutDebit: 20,
@@ -223,7 +223,7 @@ let infoObjet = [
   },
 
   {
-    nom: "tele",
+    nom: "Télé",
     niveau1: {
       description: "Télévision de niveau 1 équipé d'un écran de basse qualité ",
       coutDebit: 25,
@@ -260,7 +260,7 @@ let infoObjet = [
   },
 
   {
-    nom: "reveil",
+    nom: "Réveil",
     niveau1: {
       description: "Réveil de niveau 1 modeste mais efficace ",
       coutDebit: 10,
@@ -297,7 +297,7 @@ let infoObjet = [
   },
 
   {
-    nom: "boxinternet",
+    nom: "Box Internet",
     niveau1: {
       description: "Box internet de niveau 1 qui fournie une connection suffisante mais instable ",
       coutDebit: 10,
@@ -334,7 +334,7 @@ let infoObjet = [
   },
 
   {
-    nom: "lumiere",
+    nom: "Lumière",
     niveau1: {
       description: "Lumiere de niveau 1 modeste mais efficace ",
       coutDebit: 10,
@@ -371,7 +371,7 @@ let infoObjet = [
   },
 
   {
-    nom: "ordinateur",
+    nom: "Ordinateur",
     niveau1: {
       description: "Ordinateur de niveau 1 équipé d'un écran de basse qualité ",
       coutDebit: 25,
@@ -408,7 +408,7 @@ let infoObjet = [
   },
 
   {
-    nom: "robotaspirateur",
+    nom: "Robot Aspirateur",
     niveau1: {
       description: "Robot aspirateur de niveau 1 nettoie avec une brosse le sol ",
       coutDebit: 20,
