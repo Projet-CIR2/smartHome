@@ -59,7 +59,7 @@ function preload() {
 
     this.load.image('back', '../img/back.png');
 
-    this.load.image('tele', '../tiled/New/salon/tv1.png');
+    this.load.image('Télé', '../tiled/New/salon/tv1.png');
 }
 
 function create() {

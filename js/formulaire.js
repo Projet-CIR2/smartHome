@@ -33,8 +33,9 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
             if (element.niveau1.prix > gameView.getArgentPlayer()) {
                 afficheAchat.setAttribute('style', 'position: absolute; margin-top: 20%; margin-left: 35%; background-color: #BFB99E; border-radius: 4px; height: 30%; width: 30%; visible: hidden;');
                 
+                let img = document.createElement('img');
                 img.src = "./img/icone_obj/attention.png";
-                img.setAttribute('style', 'height: 100; width: 100px; margin-left: 30%; margin-top: 15px; ');
+                img.setAttribute('style', 'height: 120; width: 120px; margin-left: 25%; margin-top: 13px;');
                 img.id = 'image';
 
                 pAchat.textContent = "Vous n'avez pas assez d'argent pour acheter " + element.nom;
@@ -58,19 +59,18 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 stockageVar.clickPolygon.objet = title;
                 stockageVar.clickPolygon.removeAlpha();
                 stockageVar.clickPolygon.refreshUpgrade();
-                stockageVar.clickPolygon = undefined;
-                stockageVar.click = false;
 
                 let obj = stockageObj.find(obj=>obj.objet.nom==element.nom);
                 obj.position(stockageVar.clickPolygon.x,stockageVar.clickPolygon.y);
+
+                stockageVar.clickPolygon = undefined;
+                stockageVar.click = false;
 
                 // on supprime la div avec le bouton
                 div.remove();
                 // on ajoute l'objet aux objets achetés
                 achat.addMaj(title);
                 let img = document.createElement('img');
-
-                gameView.updateArgentPlayer(-element.niveau1.prix);
                 
                 afficheAchat.setAttribute('style', 'position: absolute; margin-top: 20%; margin-left: 35%; background-color: #BFB99E;border-top-left-radius: 80px 80px;border-top-right-radius: 80px 80px;border-bottom-left-radius: 80px 80px;border-bottom-right-radius: 80px 80px; height: 32%; width: 27%; visible: hidden; border:5px solid black;');
                 img.src = "./img/icone_obj/"+title+".png";
