@@ -5,8 +5,22 @@ class Objet extends Phaser.Physics.Arcade.Sprite{
     this.physics.add.existing(this, true);
 
     this.on('pointerdown', function (pointer) {
-        if(!this.isTinted) this.setTint(0x87CEEB);
-        else this.clearTint();
+        if(!this.isTinted || this.isTinted) this.setTint(0x87CEEB);
+        else{
+          switch (this.etat) {
+            case 2:
+              this.setTint(0xFFA07A);
+              break;
+            case 1:
+              this.setTint(0xFA8072);
+              break;
+            case 1:
+              this.setTint(0xDC143C);
+              break;
+            default:
+            this.clearTint();
+          }
+        }
     });
 
     this.type = type; //de quel objet il s'agit
@@ -84,22 +98,27 @@ class Objet extends Phaser.Physics.Arcade.Sprite{
 
   degrade(){
     let tempo = (this.tmpEtat)*1000;
-    while(this.etat !== 0)
-    setTimeout(()=>{
-      --this.etat;
-      tempo=(this.tmpEtat)*1000;
-    },tempo );
-    switch (this.etat) {
-      case 2:
-        this.setTint(0xFFA07A);
-        break;
-      case 1:
-        this.setTint(0xFA8072);
-        break;
-      case 0:
-        this.setTint(0xDC143C);
-        break;
-
+    while(this.etat !== 0){
+      setTimeout(()=>{
+        --this.etat;
+        tempo=(this.tmpEtat)*1000;
+      },tempo );
+      switch (this.etat) {
+        case 2:
+          this.setTint(0xFFA07A);
+          break;
+        case 1:
+          this.setTint(0xFA8072);
+          break;
+        case 0:
+          this.setTint(0xDC143C);
+          break;
+          default:
+          this.clearTint();
+      }
+    }
+    if(this.etat===0){
+      this.bonheur= -this.bonheur;
     }
   }
 }
