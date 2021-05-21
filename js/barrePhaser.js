@@ -1,8 +1,15 @@
-class Barre {
-    constructor(graphics, sprite, size) {
-        
+class Barre extends Phaser.GameObjects.Rectangle {
+    constructor(scene, graphics, sprite, size, x, y) {
+        super(scene, x, y, size, 20)
+        //this.setPosition(this.x, this.y);
+        this.displayOriginX = x;
+        this.displayOriginY = y;
+        console.log("barre", x, y, this.displayOriginX, this.displayOriginY);
+
         this.graphics = graphics;
-        this.rect1 = new Phaser.Geom.Rectangle(-100, -150, size, 25); $
+        //this.rect1 = new Phaser.GameObjects.Rectangle(x, y, size, 20);
+        //this.rect1.setOrigin(x,y);
+        //console.log(this.rect1);
 
         this.sprite = sprite;
         this.size = size;

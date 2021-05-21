@@ -31,6 +31,11 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
             let pClickHTML = document.getElementById('pClick');
 
             if (element.niveau1.prix > gameView.getArgentPlayer()) {
+                let img = document.createElement('img');
+                img.src = "./img/cam.png";
+                img.setAttribute('style', 'height: 120; width: 120px; margin-left: 25%; margin-top: 13px;');
+                img.id = 'image';
+
                 afficheAchat.setAttribute('style', 'position: absolute; margin-top: 20%; margin-left: 35%; background-color: #BFB99E; border-radius: 4px; height: 30%; width: 30%; visible: hidden;');
                 
                 let img = document.createElement('img');
@@ -46,7 +51,11 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 pClick.setAttribute('style', 'color: white; margin-top: 10px; text-align:center;');
                 pClick.id = 'pClick';
 
-                if (afficheAchat.childElementCount === 2) {
+                
+                let imgHTML = document.getElementById('image');
+
+                if (afficheAchat.childElementCount === 3) {
+                    afficheAchat.removeChild(imgHTML);
                     afficheAchat.removeChild(pAchatHTML);
                     afficheAchat.removeChild(pClickHTML);
 

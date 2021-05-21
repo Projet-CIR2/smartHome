@@ -187,8 +187,10 @@ function create() {
         }
     }
     let obj;
+    let graphics = this.add.graphics({ lineStyle: { width: 2, color: 0x0000aa }, fillStyle: { color: 0x008800 } });
+
     for(let y of infoObjet){
-      obj = new Objet(y,this,-1000,-1000);
+      obj = new Objet(y,this,-1000,-1000, graphics);
       stockageObj.push(obj);
     }
 
@@ -241,7 +243,6 @@ function create() {
     player = this.physics.add.sprite(pos[0],pos[1], 'perso1');
 
 
-    let graphics = this.add.graphics({ lineStyle: { width: 2, color: 0x0000aa }, fillStyle: { color: 0x008800 } });
 
     //housebarre = new Barre(graphics, clickImg, clickImg.width);
 
@@ -267,7 +268,11 @@ function compteUneSeconde () {
 
 function update(time, delta) {
 
-    //housebarre.modifBarre(chrono);
+    for (let objet of stockageObj) {
+        if (objet.barre !== undefined) {
+            objet.barre.modifBarre(chrono);
+        }
+    }
 
     controls.update(delta);
 
