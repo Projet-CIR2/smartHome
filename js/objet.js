@@ -127,20 +127,18 @@ class Objet extends Phaser.Physics.Arcade.Sprite{
       this.bonheur= -this.bonheur;
     }
   }
+
   position(x,y) {
-    
     this.x = x;
     this.y = y;
 
-    let xPos = 127 + 20 + this.x * 128 - this.y * 128;
-    let yPos = 445 - 175 + this.y * 64 + this.x * 64;
+    let xPos = 127 - 30 + this.x * 128 - this.y * 128;
+    let yPos = 445 - 205 + this.y * 64 + this.x * 64;
 
     this.setX(xPos);
     this.setY(yPos);
 
     this.visible = true;
-    console.log(this.displayOriginX, this.displayOriginY);
-    this.fillAlpha = 1;
   }
   
   levelUp() {

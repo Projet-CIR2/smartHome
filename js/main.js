@@ -252,7 +252,7 @@ function create() {
     });
     //convertTileCoordInScreenCoord(5,5);
 
-    text = this.add.text(0, 0, 'Move the mouse', { font: '10px Courier', fill: '#00ff00' });
+    // text = this.add.text(0, 0, 'Move the mouse', { font: '10px Courier', fill: '#00ff00' });
 
     // this.input.on('pointerdown', function(pointer){
     //     console.log(pointer.x);
@@ -282,18 +282,18 @@ function update(time, delta) {
     cheminPath();
 
 
-    let pointer = this.input.activePointer;
+    // let pointer = this.input.activePointer;
 
-    text.setText([
-        'x: ' + pointer.x,
-        'y: ' + pointer.y,
-        'mid x: ' + pointer.midPoint.x,
-        'mid y: ' + pointer.midPoint.y,
-        'velocity x: ' + pointer.velocity.x,
-        'velocity y: ' + pointer.velocity.y,
-        'movementX: ' + pointer.movementX,
-        'movementY: ' + pointer.movementY
-    ]);
+    // text.setText([
+    //     'x: ' + pointer.x,
+    //     'y: ' + pointer.y,
+    //     'mid x: ' + pointer.midPoint.x,
+    //     'mid y: ' + pointer.midPoint.y,
+    //     'velocity x: ' + pointer.velocity.x,
+    //     'velocity y: ' + pointer.velocity.y,
+    //     'movementX: ' + pointer.movementX,
+    //     'movementY: ' + pointer.movementY
+    // ]);
 }
 
 function render() {
