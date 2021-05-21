@@ -1,11 +1,11 @@
 class Objet extends Phaser.Physics.Arcade.Sprite{
-  constructor(type, scene, x, y, img, stat) {
-    super(scene, x, y, img);
+  constructor(objet, scene, x, y) {
+    super(scene, x, y, objet.nom);
 
     this.physics.add.existing(this, true);
-
+    this.fillAlpha=0;
     this.on('pointerdown', function (pointer) {
-        if(!this.isTinted || this.isTinted) this.setTint(0x87CEEB);
+        if(stockageVar.click) this.setTint(0x87CEEB);
         else{
           switch (this.etat) {
             case 2:
@@ -34,15 +34,15 @@ class Objet extends Phaser.Physics.Arcade.Sprite{
     this.tmpAmelioration = 0; // temps avant l'amelioration fini
     this.bonheur = 0 //generation de bonheur de l'objet
 
-    this.tmpEtat = monModule.rand(stat.niveau1.tempsEtat,stat.niveau1.tempsEtat+10);
-    this.coutDebit = monModule.rand(stat.niveau1.coutDebit,stat.niveau1.coutDebit+3);
-    this.bonheur = stat.niveau1.bonheur;
+    this.tmpEtat = monModule.rand(objet.niveau1.tempsEtat,objet.niveau1.tempsEtat+10);
+    this.coutDebit = monModule.rand(objet.niveau1.coutDebit,objet.niveau1.coutDebit+3);
+    this.bonheur = objet.niveau1.bonheur;
 
-    this.coutReparation = monModule.rand(stat.niveau1.coutReparation,stat.niveau1.coutReparation+10);
-    this.tmpReparation = monModule.rand(stat.niveau1.tempsReparation,stat.niveau1.tempsReparation+3);
+    this.coutReparation = monModule.rand(objet.niveau1.coutReparation,objet.niveau1.coutReparation+10);
+    this.tmpReparation = monModule.rand(objet.niveau1.tempsReparation,objet.niveau1.tempsReparation+3);
 
-    this.coutAmelioration = monModule.rand(stat.niveau1.coutAmelioration,stat.niveau1.coutAmelioration+15);
-    this.tmpAmelioration = monModule.rand(stat.niveau1.tempsAmelioration,stat.niveau1.tempsAmelioration+5);
+    this.coutAmelioration = monModule.rand(objet.niveau1.coutAmelioration,objet.niveau1.coutAmelioration+15);
+    this.tmpAmelioration = monModule.rand(objet.niveau1.tempsAmelioration,objet.niveau1.tempsAmelioration+5);
 
   }
   preview(){
@@ -71,26 +71,26 @@ class Objet extends Phaser.Physics.Arcade.Sprite{
       ++this.niveau;
       this.etat = 3;
       if(this.niveau === 2){
-        this.tmpEtat = monModule.rand(stat.niveau2.tempsEtat,stat.niveau2.tempsEtat+10);
-        this.coutDebit = monModule.rand(stat.niveau2.coutDebit,stat.niveau2.coutDebit+3);
-        this.bonheur = stat.niveau2.bonheur;
+        this.tmpEtat = monModule.rand(objet.niveau2.tempsEtat,objet.niveau2.tempsEtat+10);
+        this.coutDebit = monModule.rand(objet.niveau2.coutDebit,objet.niveau2.coutDebit+3);
+        this.bonheur = objet.niveau2.bonheur;
 
-        this.coutReparation = monModule.rand(stat.niveau2.coutReparation,stat.niveau2.coutReparation+10);
-        this.tmpReparation = monModule.rand(stat.niveau2.tempsReparation,stat.niveau2.tempsReparation+3);
+        this.coutReparation = monModule.rand(objet.niveau2.coutReparation,objet.niveau2.coutReparation+10);
+        this.tmpReparation = monModule.rand(objet.niveau2.tempsReparation,objet.niveau2.tempsReparation+3);
 
-        this.coutAmelioration = monModule.rand(stat.niveau2.coutAmelioration,stat.niveau2.coutAmelioration+15);
-        this.tmpAmelioration = monModule.rand(stat.niveau2.tempsAmelioration,stat.niveau2.tempsAmelioration+5);
+        this.coutAmelioration = monModule.rand(objet.niveau2.coutAmelioration,objet.niveau2.coutAmelioration+15);
+        this.tmpAmelioration = monModule.rand(objet.niveau2.tempsAmelioration,objet.niveau2.tempsAmelioration+5);
       }
       if(this.niveau === 3){
-        this.tmpEtat = monModule.rand(stat.niveau3.tempsEtat,stat.niveau3.tempsEtat+10);
-        this.coutDebit = monModule.rand(stat.niveau3.coutDebit,stat.niveau3.coutDebit+3);
-        this.bonheur = stat.niveau2.bonheur;
+        this.tmpEtat = monModule.rand(objet.niveau3.tempsEtat,objet.niveau3.tempsEtat+10);
+        this.coutDebit = monModule.rand(objet.niveau3.coutDebit,objet.niveau3.coutDebit+3);
+        this.bonheur = objet.niveau2.bonheur;
 
-        this.coutReparation = monModule.rand(stat.niveau3.coutReparation,stat.niveau3.coutReparation+10);
-        this.tmpReparation = monModule.rand(stat.niveau3.tempsReparation,stat.niveau3.tempsReparation+3);
+        this.coutReparation = monModule.rand(objet.niveau3.coutReparation,objet.niveau3.coutReparation+10);
+        this.tmpReparation = monModule.rand(objet.niveau3.tempsReparation,objet.niveau3.tempsReparation+3);
 
-        this.coutAmelioration = monModule.rand(stat.niveau3.coutAmelioration,stat.niveau3.coutAmelioration+15);
-        this.tmpAmelioration = monModule.rand(stat.niveau3.tempsAmelioration,stat.niveau3.tempsAmelioration+5);
+        this.coutAmelioration = monModule.rand(objet.niveau3.coutAmelioration,objet.niveau3.coutAmelioration+15);
+        this.tmpAmelioration = monModule.rand(objet.niveau3.tempsAmelioration,objet.niveau3.tempsAmelioration+5);
       }
 
     },tempo );

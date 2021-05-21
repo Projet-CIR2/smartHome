@@ -108,10 +108,10 @@ function create() {
         }
     }
 
-    
+
 
     socket.emit('matrix', matrixMap, mapWidth, mapHeight, [7,3,2,11]);
-    
+
     socket.on('path', path => {
         chemin = path;
         console.log(path);
@@ -120,7 +120,7 @@ function create() {
     });
 
 
-    
+
 
     collisions = this.physics.add.staticGroup();
 
@@ -157,8 +157,8 @@ function create() {
 
     controls = new Phaser.Cameras.Controls.SmoothedKeyControl(controlConfig);
 
-    
- 
+
+
     let polygon;
     for (let y = 0; y < layer1.layer.data.length; y++) {
         for (let x = 0; x < layer1.layer.data[0].length; x++) {
@@ -167,6 +167,10 @@ function create() {
             stockageVar.stockagePolygones.push(polygon);
             polygon.addEvent();
         }
+    }
+    let obj;
+    for(let y of infoObjet){
+      obj = new Objet(y,this,-1000,-1000);
     }
 
     // new Polygon(this, 1, 1);
@@ -233,7 +237,7 @@ function create() {
     //     console.log(pointer.x);
     //     console.log(pointer.y);
     // });
-}   
+}
 
 function compteUneSeconde () {
     chrono= chrono-1; // on incremente le chronometre d'une unite
@@ -244,10 +248,10 @@ function update(time, delta) {
     housebarre.modifBarre(chrono);
 
     controls.update(delta);
-    
+
 
     player2.update();
-   
+
 
     cheminPath();
 
@@ -311,7 +315,7 @@ function movePlayer2(player, x, y) {
     let marge = 2;
 
     if (playerXRound < x-marge || playerXRound > x+marge || playerYRound < y-marge || playerYRound > y +marge) {
-        
+
         if (playerXRound > x && playerYRound >y) {
             player.body.velocity.x -= speedX;
             player.body.velocity.y -= speedY;
@@ -343,7 +347,7 @@ function movePlayer2(player, x, y) {
             lastDirection = 3;
 
         }
-    } 
+    }
     else {
         player.anims.stop();
         player.x = x;
@@ -364,7 +368,7 @@ function movePlayer2(player, x, y) {
             default:
                 player.anims.play('down');
                 break;
-                
+
         }
         return 1;
     }
@@ -395,7 +399,7 @@ function cheminPath() {
 
 function convert([x, y]) {
     let posX = 135 +x*128 - y * 128;
-    let posY = 280 + y* 64 + x*64; 
+    let posY = 280 + y* 64 + x*64;
 
     return [posX, posY];
 }
