@@ -31,19 +31,19 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
             let pClickHTML = document.getElementById('pClick');
 
             if (element.niveau1.prix > gameView.getArgentPlayer()) {
-                afficheAchat.setAttribute('style', 'position: absolute; margin-top: 20%; margin-left: 35%; background-color: #BFB99E; border-radius: 4px; height: 30%; width: 30%; visible: hidden;');
+                afficheAchat.setAttribute('style', 'position: absolute; margin-top: 20%; margin-left: 35%; background-color: #BFB99E;border-top-left-radius: 80px 80px;border-top-right-radius: 80px 80px;border-bottom-left-radius: 80px 80px;border-bottom-right-radius: 80px 80px; height: 35%; width: 32%; visible: hidden; border:5px solid black;');
                 
                 let img = document.createElement('img');
                 img.src = "./img/icone_obj/attention.png";
-                img.setAttribute('style', 'height: 120; width: 120px; margin-left: 25%; margin-top: 13px;');
+                img.setAttribute('style', 'height: 100; width: 100px; margin-left: 35%; margin-top: 15px; ');
                 img.id = 'image';
 
                 pAchat.textContent = "Vous n'avez pas assez d'argent pour acheter " + element.nom;
-                pAchat.setAttribute('style', 'color: white; margin-top: 10px; text-align:center;');
+                pAchat.setAttribute('style', 'color: white; margin-top: 13px; text-align:center; font-size: 20px;');
                 pAchat.id = 'achatTxt';
 
                 pClick.textContent = "Cliquer pour continuer";
-                pClick.setAttribute('style', 'color: white; margin-top: 10px; text-align:center;');
+                pClick.setAttribute('style', 'color: white; margin-top: 7px; text-align:center; font-size: 15px;');
                 pClick.id = 'pClick';
 
                 
