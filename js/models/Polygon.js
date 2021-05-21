@@ -32,7 +32,7 @@ class Polygon {
                         stockageVar.click = false;
                         this.refreshUpgrade();
                     } else {
-                        // sinon on supprime la couleur de l'ancienne case et on ajoute la couleur à la nouvelle 
+                        // sinon on supprime la couleur de l'ancienne case et on ajoute la couleur à la nouvelle
                         stockageVar.clickPolygon.removeAlpha();
                         stockageVar.clickPolygon = this;
                         this.addAlpha();
