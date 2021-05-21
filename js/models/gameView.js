@@ -51,4 +51,8 @@ class GameView {
     getArgentPlayer() {
         return this.argent;
     }
+    updateArgentPlayer(nb) {
+        this.argent += nb;
+        this.barreArgent.modifBarre(this.argent);
+    }
 }
