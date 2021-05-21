@@ -22,12 +22,6 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
         let pAchat = document.createElement('p');
         let pClick = document.createElement('p');
         button.onclick = () => {
-            stockageVar.clickPolygon.objet = title;
-            stockageVar.clickPolygon.removeAlpha();
-            stockageVar.clickPolygon.refreshUpgrade();
-
-            div.remove();
-            achat.addMaj(title);
             let afficheAchat = document.getElementById('achat');
             afficheAchat.innerHTML = "";
             afficheAchat.setAttribute('style', 'display: none;');
@@ -47,7 +41,7 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 pClick.setAttribute('style', 'color: white; margin-top: 10px; text-align:center;');
                 pClick.id = 'pClick';
 
-                if (afficheAchat.childElementCount == 2) {
+                if (afficheAchat.childElementCount === 2) {
                     afficheAchat.removeChild(pAchatHTML);
                     afficheAchat.removeChild(pClickHTML);
 
@@ -55,7 +49,14 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 afficheAchat.appendChild(pAchat);
                 afficheAchat.appendChild(pClick);
             } else {
+                // si on peut acheter, on assigne à la case polygon son objet
+                stockageVar.clickPolygon.objet = title;
+                stockageVar.clickPolygon.removeAlpha();
+                stockageVar.clickPolygon.refreshUpgrade();
+
+                // on supprime la div avec le bouton
                 div.remove();
+                // on ajoute l'objet aux objets achetés
                 achat.addMaj(title);
                 let img = document.createElement('img');
                 
@@ -76,7 +77,7 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 let imgHTML = document.getElementById('image');
                 let pClickHTML = document.getElementById('pClick');
 
-                if (afficheAchat.childElementCount == 3) {
+                if (afficheAchat.childElementCount === 3) {
                     afficheAchat.removeChild(imgHTML);
                     afficheAchat.removeChild(pAchatHTML);
                     afficheAchat.removeChild(pClickHTML);
@@ -86,7 +87,6 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 afficheAchat.appendChild(pAchat);
                 afficheAchat.appendChild(pClick);
             }
-            console.log(afficheAchat);
         };
     }
 }

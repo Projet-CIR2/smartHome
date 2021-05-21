@@ -14,19 +14,24 @@ class Polygon {
     }
 
     addEvent() {
+        // au click
         this.polygon.on('pointerdown', () => {
+            // si on a pas d'objet sur la case
             if (this.objet === undefined) {
+                // si c'est le premier click
                 if (!stockageVar.click) {
                     stockageVar.click = true;
                     stockageVar.clickPolygon = this;
                     this.addAlpha();
                     this.refreshUpgrade();
                 } else {
+                    // si le deuxième click est sur la même case que le premier click, on enlève la couleur de la case
                     if (stockageVar.clickPolygon.x === this.x && stockageVar.clickPolygon.y === this.y) {
                         this.removeAlpha();
                         stockageVar.click = false;
                         this.refreshUpgrade();
                     } else {
+                        // sinon on supprime la couleur de l'ancienne case et on ajoute la couleur à la nouvelle 
                         stockageVar.clickPolygon.removeAlpha();
                         stockageVar.clickPolygon = this;
                         this.addAlpha();
@@ -36,6 +41,10 @@ class Polygon {
                 }
             } else {
                 this.refreshUpgrade();
+
+                stockageVar.clickPolygon.removeAlpha();
+                stockageVar.clickPolygon = this;
+
             }
         });
     }

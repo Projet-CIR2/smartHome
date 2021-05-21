@@ -37,6 +37,14 @@ let achat = (function() {
             }
         },
 
+        addUpgrade(title) {
+            let indice = data.findIndex(element => element.nom === title);
+            if (indice !== -1) {
+                dataMaj.unshift(dataMaj[indice]);
+                this.popMaj(indice);
+            }
+        },
+
         verif(mOru, polygone) {
             let p, div;
 

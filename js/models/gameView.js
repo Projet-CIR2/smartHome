@@ -30,12 +30,10 @@ class GameView {
 
         document.getElementById('MaJ').addEventListener('click', () => {
             achat.verif('MaJ');
-            // achat.recupDataMaj();
         });
 
         document.getElementById('Upgrade').addEventListener('click', () => {
             achat.verif('Upgrade');
-            // achat.recupData();
         });
     }
 
