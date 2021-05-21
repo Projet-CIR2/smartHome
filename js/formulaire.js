@@ -54,8 +54,7 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 stockageVar.clickPolygon.removeAlpha();
                 stockageVar.clickPolygon.refreshUpgrade();
 
-                
-                let obj = stockageObj.find(obj=>obj.type==element.nom);
+                let obj = stockageObj.find(obj=>obj.objet.nom==element.nom);
                 obj.position(stockageVar.clickPolygon.x,stockageVar.clickPolygon.y);
 
                 // on supprime la div avec le bouton

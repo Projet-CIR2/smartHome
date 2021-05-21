@@ -1,9 +1,10 @@
 class Objet extends Phaser.Physics.Arcade.Sprite{
   constructor(objet, scene, x, y) {
     super(scene, x, y, objet.nom);
+    this.objet = objet;
+    scene.add.existing(this);
 
-    this.physics.add.existing(this, true);
-    this.fillAlpha=0;
+    //this.fillAlpha=0;
     this.on('pointerdown', function (pointer) {
         if(stockageVar.click) this.setTint(0x87CEEB);
         else{
@@ -23,7 +24,6 @@ class Objet extends Phaser.Physics.Arcade.Sprite{
         }
     });
 
-    this.type = type; //de quel objet il s'agit
     this.niveau = 1; //niveau de l'objet
     this.coutDebit=0; // cout en debit de l'amelioration et reparation
     this.etat = 3; // etat de l'objet il y en a 4 (bon/moyen/mauvais/casser)
@@ -122,12 +122,17 @@ class Objet extends Phaser.Physics.Arcade.Sprite{
     }
   }
   position(x,y) {
+    
     this.x = x;
     this.y = y;
 
-    let xPos = 127 + this.x * 128 - this.y * 128;
-    let yPos = 445 + this.y * 64 + this.x * 64;
+    let xPos = 127 + 20 + this.x * 128 - this.y * 128;
+    let yPos = 445 - 175 + this.y * 64 + this.x * 64;
 
-    this.setPosition(xPos,yPos);
+    this.setX(xPos);
+    this.setY(yPos);
+
+    console.log(this.displayOriginX, this.displayOriginY);
+    this.fillAlpha = 1;
   }
 }

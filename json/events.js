@@ -7,7 +7,7 @@ let json = {
             description_milieu:"votre objectif ce trouve à porter de mains désormais",
             description_fin:"Vous êtes maintenant à la pointe de la technologie",
             difficulte:"Facile",
-            argent: 150,
+            argent: 15000,
             debit: 100,
             humeur: 90,
             objet1: "lumiere",

@@ -43,6 +43,8 @@ let stockageVar = {
     stockagePolygones: []
 }
 
+let stockageObj = [];
+
 function preload() {
 
     this.load.image('tempHouse', '../img/tqt.png');
@@ -56,9 +58,12 @@ function preload() {
     this.load.image('button', '../img/button.png');
 
     this.load.image('back', '../img/back.png');
+
+    this.load.image('tele', '../tiled/New/salon/tv1.png');
 }
 
 function create() {
+
     //matrixMap.forEach(element => element.forEach(elem => elem = 0));
     //console.log(matrixMap);
     /*button = game.add.button(game.world.centerX - 120, game.world.centerY - 120, 'button', start, this, 2, 1, 0);
@@ -124,13 +129,12 @@ function create() {
 
     collisions = this.physics.add.staticGroup();
 
-    clickImg = this.add.sprite(0, 0, 'tempHouse');
-    clickImg.setInteractive();
+    //clickImg = this.add.sprite(0, 0, 'tempHouse');
+    //clickImg.setInteractive();
 
     // let button = this.add.sprite(500, 500, 'button');
     // button.setInteractive();
 
-    click(clickImg);
     // click(button);
 
     let tilesets = map.addTilesetImage('tiles', 'tiles');
@@ -171,6 +175,7 @@ function create() {
     let obj;
     for(let y of infoObjet){
       obj = new Objet(y,this,-1000,-1000);
+      stockageObj.push(obj);
     }
 
     // new Polygon(this, 1, 1);
@@ -221,7 +226,7 @@ function create() {
 
     let graphics = this.add.graphics({ lineStyle: { width: 2, color: 0x0000aa }, fillStyle: { color: 0x008800 } });
 
-    housebarre = new Barre(graphics, clickImg, clickImg.width);
+    //housebarre = new Barre(graphics, clickImg, clickImg.width);
 
     monTimer = this.time.addEvent({
         delay: 1000,
@@ -245,7 +250,7 @@ function compteUneSeconde () {
 
 function update(time, delta) {
 
-    housebarre.modifBarre(chrono);
+    //housebarre.modifBarre(chrono);
 
     controls.update(delta);
 
