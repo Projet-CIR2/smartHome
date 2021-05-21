@@ -191,6 +191,7 @@ function create() {
 
     for(let y of infoObjet){
       obj = new Objet(y,this,-1000,-1000, graphics);
+      obj.visible = false;
       stockageObj.push(obj);
     }
 
@@ -242,9 +243,6 @@ function create() {
     let pos = convert([3,7]);
     player = this.physics.add.sprite(pos[0],pos[1], 'perso1');
 
-
-
-    //housebarre = new Barre(graphics, clickImg, clickImg.width);
 
     monTimer = this.time.addEvent({
         delay: 1000,
