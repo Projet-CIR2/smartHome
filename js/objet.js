@@ -1,5 +1,6 @@
 class Objet extends Phaser.Physics.Arcade.Sprite{
-  constructor(type, scene, x, y, img, stat) {
+  constructor(scene, x, y, img, stat) {
+    console.log(scene, x, y, img, stat);
     super(scene, x, y, img);
 
     this.physics.add.existing(this, true);
@@ -120,5 +121,14 @@ class Objet extends Phaser.Physics.Arcade.Sprite{
     if(this.etat===0){
       this.bonheur= -this.bonheur;
     }
+  }
+  position(x,y) {
+    this.x = x;
+    this.y = y;
+
+    let xPos = 127 + this.x * 128 - this.y * 128;
+    let yPos = 445 + this.y * 64 + this.x * 64;
+    
+    this.setPosition(xPos,yPos);
   }
 }

@@ -1,5 +1,6 @@
 class Polygon {
     constructor(scene, xTemp, yTemp) {
+        this.scene = scene;
         this.x = xTemp;
         this.y = yTemp;
         let xPos = 127 + this.x * 128 - this.y * 128;
@@ -44,6 +45,7 @@ class Polygon {
 
                 stockageVar.clickPolygon.removeAlpha();
                 stockageVar.clickPolygon = this;
+
 
             }
         });

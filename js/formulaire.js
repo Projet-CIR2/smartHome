@@ -54,11 +54,17 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 stockageVar.clickPolygon.removeAlpha();
                 stockageVar.clickPolygon.refreshUpgrade();
 
+                
+                let obj = stockageObj.find(obj=>obj.type==element.nom);
+                obj.position(stockageVar.clickPolygon.x,stockageVar.clickPolygon.y);
+
                 // on supprime la div avec le bouton
                 div.remove();
                 // on ajoute l'objet aux objets achetés
                 achat.addMaj(title);
                 let img = document.createElement('img');
+
+                gameView.updateArgentPlayer(-element.niveau1.prix);
                 
                 afficheAchat.setAttribute('style', 'position: absolute; margin-top: 20%; margin-left: 35%; background-color: #BFB99E; border-radius: 4px; height: 30%; width: 30%; visible: hidden;');
                 img.src = "./img/cam.png";

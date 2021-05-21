@@ -43,6 +43,8 @@ let stockageVar = {
     stockagePolygones: []
 }
 
+let stockageObj = [];
+
 function preload() {
 
     this.load.image('tempHouse', '../img/tqt.png');
@@ -56,9 +58,12 @@ function preload() {
     this.load.image('button', '../img/button.png');
 
     this.load.image('back', '../img/back.png');
+
+    this.load.image('tele', '../tiled/New/salon/tv1.png');
 }
 
 function create() {
+
     //matrixMap.forEach(element => element.forEach(elem => elem = 0));
     //console.log(matrixMap);
     /*button = game.add.button(game.world.centerX - 120, game.world.centerY - 120, 'button', start, this, 2, 1, 0);
@@ -117,10 +122,7 @@ function create() {
         console.log(path);
         cheminSize = path.length;
 
-    });
-
-
-    
+    });    
 
     collisions = this.physics.add.staticGroup();
 
