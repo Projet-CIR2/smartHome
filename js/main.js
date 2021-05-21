@@ -45,6 +45,8 @@ let stockageVar = {
 
 let stockageObj = [];
 
+let levelUp;
+
 function preload() {
 
     this.load.image('tempHouse', '../img/tqt.png');
@@ -71,9 +73,41 @@ function preload() {
     this.load.image('Lave linge', '../tiled/New/buanderie/lavelinge1.png');
     this.load.image('Lave vaisselle', '../tiled/New/kitchen/dishwasher1.png');
     //this.load.image('reveil', '../tiled/New/bedroom/reveil1.png');
+
+    this.load.spritesheet('levelUp', '../img/levelUp.png', { frameWidth: 400, frameHeight: 300 })
 }
 
+
+
 function create() {
+    this.levelUp = this.physics.add.sprite(0, 0, 'levelUp');
+    this.anims.create({
+        key: 'levelUpAnim',
+        frames: 'levelUp',
+        frameRate: 15,
+        // repeat: -1,
+        // hideOnComplete: true
+    });
+
+    function destroy(up) {
+        up.play('levelUpAnim');
+
+        up.once('animationcomplete', () => {
+            console.log('destroy');
+            up.setAlpha(0);
+
+        });
+    }
+
+    destroy(this.levelUp);
+
+    // setTimeout(() => {
+    //     this.levelUp.play('levelUpAnim');
+    // }, 10000);
+    // levelUp.once('animationcomplete', () => {
+    //     console.log('destroy');
+    //     levelUp.destroy();
+    // });
 
     //matrixMap.forEach(element => element.forEach(elem => elem = 0));
     //console.log(matrixMap);
@@ -190,7 +224,7 @@ function create() {
     let graphics = this.add.graphics({ lineStyle: { width: 2, color: 0x0000aa }, fillStyle: { color: 0x008800 } });
 
     for(let y of infoObjet){
-      obj = new Objet(y,this,-1000,-1000, graphics);
+      obj = new Objet(y,this,-1000,-1000, graphics, this.levelUp);
       obj.visible = false;
       stockageObj.push(obj);
     }

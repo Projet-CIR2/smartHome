@@ -1,10 +1,11 @@
 class Objet extends Phaser.Physics.Arcade.Sprite{
-  constructor(objet, scene, x, y, graphics) {
+  constructor(objet, scene, x, y, graphics, up) {
     super(scene, x, y, objet.nom);
     this.objet = objet;
     this.graphics = graphics;
     this.barre = undefined;
     this.scene = scene;
+    this.up = up;
     scene.add.existing(this);
 
     this.fillAlpha=0;
@@ -155,5 +156,15 @@ class Objet extends Phaser.Physics.Arcade.Sprite{
           break;
       }
     }
+    this.animUp();
+  }
+
+  animUp() {
+    this.up.setAlpha(1);
+    this.up.anims.restart();
+    this.up.once('animationcomplete', () => {
+      console.log('fini');
+      this.up.setAlpha(0);
+    });
   }
 }
