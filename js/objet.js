@@ -121,4 +121,13 @@ class Objet extends Phaser.Physics.Arcade.Sprite{
       this.bonheur= -this.bonheur;
     }
   }
+  position(x,y) {
+    this.x = x;
+    this.y = y;
+
+    let xPos = 127 + this.x * 128 - this.y * 128;
+    let yPos = 445 + this.y * 64 + this.x * 64;
+
+    this.setPosition(xPos,yPos);
+  }
 }
