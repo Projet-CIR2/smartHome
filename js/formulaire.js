@@ -14,25 +14,28 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
     div.appendChild(p);
     p.innerHTML = text;
 
-    let button = document.createElement('button');
-    div.appendChild(button);
-    button.setAttribute('class', 'btn btn-warning btn-sm');
-    button.textContent = btn;
+    let button;
+    if (element.niveau !== 3) {
+        button = document.createElement('button');
+        div.appendChild(button);
+        button.setAttribute('class', 'btn btn-warning btn-sm');
+        button.textContent = btn;
+    }
     if (mOru === 'd_Upgrade') {
         let pAchat = document.createElement('p');
         let pClick = document.createElement('p');
-        button.onclick = () => {
+        if (element.niveau !== 3) button.onclick = () => {
             let afficheAchat = document.getElementById('achat');
             afficheAchat.innerHTML = "";
             afficheAchat.setAttribute('style', 'display: none;');
-            
+
 
             let pAchatHTML = document.getElementById('achatTxt');
             let pClickHTML = document.getElementById('pClick');
 
-            if (element.niveau1.prix > gameView.getArgentPlayer()) {
+            if (element.infosNiveau.coutAmelioration > gameView.getArgentPlayer()) {
                 afficheAchat.setAttribute('style', 'position: absolute; margin-top: 20%; margin-left: 35%; background-color: #BFB99E;border-top-left-radius: 80px 80px;border-top-right-radius: 80px 80px;border-bottom-left-radius: 80px 80px;border-bottom-right-radius: 80px 80px; height: 35%; width: 32%; visible: hidden; border:5px solid black;');
-                
+
                 let img = document.createElement('img');
                 img.src = "./img/icone_obj/attention.png";
                 img.setAttribute('style', 'height: 100; width: 100px; margin-left: 35%; margin-top: 15px; ');
@@ -46,7 +49,7 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 pClick.setAttribute('style', 'color: white; margin-top: 7px; text-align:center; font-size: 15px;');
                 pClick.id = 'pClick';
 
-                
+
                 let imgHTML = document.getElementById('image');
 
                 if (afficheAchat.childElementCount === 3) {
@@ -64,20 +67,21 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 stockageVar.clickPolygon.removeAlpha();
                 stockageVar.clickPolygon.refreshUpgrade();
 
-                let obj = stockageObj.find(obj=>obj.objet.nom==element.nom);
-                obj.position(stockageVar.clickPolygon.x,stockageVar.clickPolygon.y);
+                // let obj = stockageObj.find(obj => obj.objet.nom === element.nom);
+                if (element.niveau === 1) element.position(stockageVar.clickPolygon.x, stockageVar.clickPolygon.y);
+                element.levelUp();
 
                 stockageVar.clickPolygon = undefined;
                 stockageVar.click = false;
 
                 // on supprime la div avec le bouton
-                div.remove();
+                // div.remove();
                 // on ajoute l'objet aux objets achetés
                 achat.addMaj(title);
                 let img = document.createElement('img');
-                
+
                 afficheAchat.setAttribute('style', 'position: absolute; margin-top: 20%; margin-left: 35%; background-color: #BFB99E;border-top-left-radius: 80px 80px;border-top-right-radius: 80px 80px;border-bottom-left-radius: 80px 80px;border-bottom-right-radius: 80px 80px; height: 36%; width: 32%; visible: hidden; border:5px solid black;');
-                img.src = "./img/icone_obj/"+title+".png";
+                img.src = "./img/icone_obj/" + title + ".png";
                 img.setAttribute('style', 'height: 100; width: 100px; margin-left: 30%; margin-top: 15px; ');
                 img.id = 'image';
 
@@ -104,11 +108,11 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 afficheAchat.appendChild(pClick);
             }
         };
-    }
-    else {
+    } else {
         button.onclick = () => {
             console.log('click maj');
 
         }
     }
+
 }

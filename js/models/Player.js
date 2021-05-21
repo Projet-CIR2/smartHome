@@ -24,12 +24,9 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         socket.emit('matrix', matrixMap, mapWidth, mapHeight, [this.pos.x,this.pos.y,2,11], this.id);
     
         socket.on('path', (path, id) => {
-            console.log(id);
             if(id == this.id){
-                console.log(id, path);
                 this.chemin = path;
                 this.cheminSize = path.length;
-                console.log(path);
             }
           
     
@@ -92,7 +89,6 @@ class Player extends Phaser.Physics.Arcade.Sprite {
             y = coords[0];
             
             let pos = convert([x,y]);
-            //console.log(pos);
             let a;
             if (a=this.movePlayer(this,pos[0],pos[1])) {
                 if (this.destinationInter < this.cheminSize) this.destinationInter++;

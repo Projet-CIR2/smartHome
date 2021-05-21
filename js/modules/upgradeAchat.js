@@ -1,18 +1,22 @@
 let achat = (function() {
-    let data = infoObjet;
-    let dataMaj = majJSON;
+    let dataMaj = [];
 
     return {
         recupData() {
-            for (let element of data) {
-                createObjetMaj('d_Upgrade', element.nom, element.niveau1.description + "<br><br>Prix : " + element.niveau1.prix + "€", 'Acheter', element);
+            for (let element of stockageObj) {
+                createObjetMaj('d_Upgrade', element.nom, element.infosNiveau.description +
+                    ((element.niveau !== 3) ? "<br><br>Prix : " + element.infosNiveau.coutAmelioration + "€" : ""),
+                    'Acheter', element);
             }
-
         },
 
         recupDataMaj() {
             for (let element of dataMaj) {
-                createObjetMaj('d_MaJ', element.nom, element.niveau1.description + "<br><br>Prix Niveau 2: " + element.niveau1.coutAmelioration + "€" + "<br><br>Temps de MaJ : " + element.niveau1.tempsAmelioration + "s", 'Mettre à jour', element);
+                createObjetMaj('d_MaJ', element.nom,
+                    "Prix Maj : " + element.infosNiveau.coutReparation +
+                    "<br><br>Temps de MaJ : " + element.infosNiveau.tempsAmelioration + "s" +
+                    "<br><br>Cout débit : " + element.infosNiveau.coutDebit,
+                    'Mettre à jour', element);
             }
         },
 
@@ -30,10 +34,10 @@ let achat = (function() {
         },
 
         addMaj(title) {
-            let indice = data.findIndex(element => element.nom === title);
+            let indice = stockageObj.findIndex(element => element.nom === title);
             if (indice !== -1) {
-                dataMaj.push(data[indice]);
-                this.popUpgrade(indice);
+                dataMaj.push(stockageObj[indice]);
+                // this.popUpgrade(indice);
             }
         },
 
@@ -48,7 +52,7 @@ let achat = (function() {
         verif(mOru, polygone) {
             let p, div;
 
-            if (data.length !== 0 && mOru === 'Upgrade') {
+            if (mOru === 'Upgrade') {
                 if (!stockageVar.click) {
                     p = document.createElement('p');
                     p.textContent = "Cliquez sur une case pour ajouter un objet";
@@ -66,16 +70,10 @@ let achat = (function() {
                     }
                 }
             } else if (dataMaj.length === 0 && mOru === 'MaJ') {
-                    p = document.createElement('p');
-                    p.textContent = "Vous n'avez pas d'objet";
-                    p.setAttribute('style', 'color: white; text-align: center; margin-top: 80%;');
-                    div = document.getElementById('d_MaJ');
-                    div.appendChild(p);
-            } else if (data.length === 0 && mOru === 'Upgrade') {
                 p = document.createElement('p');
-                p.textContent = "Vous avez tout acheté";
+                p.textContent = "Vous n'avez pas d'objet";
                 p.setAttribute('style', 'color: white; text-align: center; margin-top: 80%;');
-                div = document.getElementById('d_Upgrade');
+                div = document.getElementById('d_MaJ');
                 div.appendChild(p);
             }
             else {

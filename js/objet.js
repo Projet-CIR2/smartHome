@@ -27,7 +27,9 @@ class Objet extends Phaser.Physics.Arcade.Sprite{
         }
     });
 
+    this.nom = this.objet.nom;
     this.niveau = 1; //niveau de l'objet
+    this.infosNiveau = this.objet.niveau1; //niveau de l'objet
     this.coutDebit=0; // cout en debit de l'amelioration et reparation
     this.etat = 3; // etat de l'objet il y en a 4 (bon/moyen/mauvais/casser)
     this.tmpEtat = 0; // temps avant que l'objet soit cassé
@@ -139,5 +141,21 @@ class Objet extends Phaser.Physics.Arcade.Sprite{
     this.visible = true;
     console.log(this.displayOriginX, this.displayOriginY);
     this.fillAlpha = 1;
+  }
+  
+  levelUp() {
+    if (this.niveau <= 3) {
+      this.niveau++;
+      switch (this.niveau) {
+        case 2:
+          this.infosNiveau = this.objet.niveau2;
+          break;
+        case 3:
+          this.infosNiveau = this.objet.niveau3;
+          break;
+        default:
+          break;
+      }
+    }
   }
 }
