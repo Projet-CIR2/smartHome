@@ -76,7 +76,7 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 achat.addMaj(title);
                 let img = document.createElement('img');
                 
-                afficheAchat.setAttribute('style', 'position: absolute; margin-top: 20%; margin-left: 35%; background-color: #BFB99E;border-top-left-radius: 80px 80px;border-top-right-radius: 80px 80px;border-bottom-left-radius: 80px 80px;border-bottom-right-radius: 80px 80px; height: 32%; width: 27%; visible: hidden; border:5px solid black;');
+                afficheAchat.setAttribute('style', 'position: absolute; margin-top: 20%; margin-left: 35%; background-color: #BFB99E;border-top-left-radius: 80px 80px;border-top-right-radius: 80px 80px;border-bottom-left-radius: 80px 80px;border-bottom-right-radius: 80px 80px; height: 36%; width: 32%; visible: hidden; border:5px solid black;');
                 img.src = "./img/icone_obj/"+title+".png";
                 img.setAttribute('style', 'height: 100; width: 100px; margin-left: 30%; margin-top: 15px; ');
                 img.id = 'image';
