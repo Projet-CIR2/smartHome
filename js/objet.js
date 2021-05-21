@@ -171,4 +171,7 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
             if (boucle === undefined) this.animUp(true);
         });
     }
+    getNiveau() {
+        return this.niveau;
+    }
 }

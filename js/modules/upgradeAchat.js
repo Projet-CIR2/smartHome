@@ -5,7 +5,7 @@ let achat = (function() {
         recupData() {
             for (let element of stockageObj) {
                 createObjetMaj('d_Upgrade', element.nom, element.infosNiveau.description +
-                    ((element.niveau !== 3) ? "<br><br>Prix : " + element.infosNiveau.coutAmelioration + "€" : ""),
+                    ((element.niveau !== 3) ? "<br><br>Prix : " + element.infosNiveau.coutAmelioration + "€" : "<br><br>Niveau Max"),
                     'Acheter', element);
             }
         },
@@ -13,7 +13,7 @@ let achat = (function() {
         recupDataMaj() {
             for (let element of dataMaj) {
                 createObjetMaj('d_MaJ', element.nom,
-                    "Prix Maj : " + element.infosNiveau.coutReparation +
+                    "Prix Maj : " + element.infosNiveau.coutReparation + "€" +
                     "<br><br>Temps de MaJ : " + element.infosNiveau.tempsAmelioration + "s" +
                     "<br><br>Cout débit : " + element.infosNiveau.coutDebit,
                     'Mettre à jour', element);

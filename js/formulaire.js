@@ -9,17 +9,23 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
     let p = document.createElement('p');
     div.appendChild(p);
     p.textContent = title;
+    
 
     p = document.createElement('p');
     div.appendChild(p);
-    p.innerHTML = text;
+    p.innerHTML = text + "<br><br>";
+    p.id="infos";
 
     let button;
+
     if (element.niveau !== 3) {
         button = document.createElement('button');
         div.appendChild(button);
         button.setAttribute('class', 'btn btn-warning btn-sm');
         button.textContent = btn;
+        if(mOru == 'd_MaJ') {
+            button.id = 'majButton';
+        }
     }
     if (mOru === 'd_Upgrade') {
         let pAchat = document.createElement('p');
@@ -107,11 +113,21 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 afficheAchat.appendChild(pAchat);
                 afficheAchat.appendChild(pClick);
             }
-        };
+        }
     } else {
         button.onclick = () => {
-            console.log('click maj');
-
+            console.log(element);
+            console.log('click maj sur : ' + element.nom);
+            let tmp = element.infosNiveau.tempsReparation;
+            let div = document.getElementById('d_MaJ');
+            let p  = document.getElementById('infos');
+            let p2 = document.createElement('p');
+            p2.id = "bip";
+            p.appendChild(p2);
+            
+            chronoTIME.setTimeMaJ(tmp);
+            chronoTIME.start();
+            
         }
     }
 
