@@ -1,39 +1,12 @@
-class Example extends Phaser.Scene
-{
-    constructor ()
-    {
-        super();
-    }
-
-    preload ()
-    {
-        this.load.spritesheet('boom', 'assets/sprites/explosion.png', { frameWidth: 64, frameHeight: 64, endFrame: 23 });
-    }
-
-    create ()
-    {
-        const config = {
-            key: 'explode',
-            frames: 'boom',
-            frameRate: 30,
-            repeat: 1,
-            repeatDelay: 1
-        };
-
-        this.anims.create(config);
-
-        for (let i = 0; i < 256; i++)
-        {
-            let x = Phaser.Math.Between(0, 800);
-            let y = Phaser.Math.Between(0, 600);
-
-            let boom = this.add.sprite(x, y, 'boom', 23);
-
-            //  Each one can have a random start delay
-            boom.play({
-                key: 'explode',
-                delay: Math.random() * 3000
-            });
-        }
-    }
+this.load.image('plus', '../assets/img/animation.png');
+function Animation(){
+  let tempo = 1000;
+  for (let i = 0; i < 50; i++){
+    let x = Phaser.Math.Between(0, 256);
+    let y = Phaser.Math.Between(0, 512);
+    let plus = this.add.image(x, y, 'plus');
+    setTimeout(()=>{
+      plus.remove();
+    },tempo);
+  }
 }
