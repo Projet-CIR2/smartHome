@@ -103,7 +103,7 @@ app.post('/', (req, res) => {
 
 io.on('connection', function (socket) {
     io.emit('Hello', 'A new connection on our website !'); // permet d'envoyer le message à toutes les connections
-    socket.on('matrix', (data, width, heigth, tab) => {
+    socket.on('matrix', (data, width, heigth, tab, id) => {
         console.table(data);
 
         var grid = new PF.Grid(heigth, width);
@@ -124,8 +124,8 @@ io.on('connection', function (socket) {
         }
         
         var path = finder.findPath(tab[0], tab[1], tab[2],tab[3], grid);
-        console.log(path);
-        socket.emit('path', path);
+        console.log(path, id);
+        socket.emit('path', path, id);
         var gridBackup = grid.clone();
 
     });

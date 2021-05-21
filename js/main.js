@@ -70,7 +70,7 @@ function preload() {
     this.load.image('Radiateur', '../tiled/New/chauffage/radiateur1.png');
     this.load.image('Lave linge', '../tiled/New/buanderie/lavelinge1.png');
     this.load.image('Lave vaisselle', '../tiled/New/kitchen/dishwasher1.png');
-    this.load.image('reveil', '../tiled/New/bedroom/reveil1.png');
+    //this.load.image('reveil', '../tiled/New/bedroom/reveil1.png');
 }
 
 function create() {
@@ -126,14 +126,17 @@ function create() {
 
 
 
-    socket.emit('matrix', matrixMap, mapWidth, mapHeight, [7,3,2,11]);
-
-    socket.on('path', path => {
+    socket.emit('matrix', matrixMap, mapWidth, mapHeight, [7,3,2,11], 2);
+    
+    socket.on('path', (path, id) => {
+        console.log(id);
+        if(id == 2){
         chemin = path;
         console.log(path);
         cheminSize = path.length;
-
+        }
     });
+
 
 
 
@@ -227,9 +230,12 @@ function create() {
     });
 
 
-    player2 = new Player(this, 2,3);
+    player2 = new Player(this, 2,3, 0);
+    player3 = new Player(this, 4,4, 1);
 
     player2.setPath(matrixMap, mapWidth, mapHeight);
+    player3.setPath(matrixMap, mapWidth, mapHeight);
+
 
     let pos = convert([3,7]);
     player = this.physics.add.sprite(pos[0],pos[1], 'perso1');
@@ -267,6 +273,7 @@ function update(time, delta) {
 
 
     player2.update();
+    player3.update();
 
 
     cheminPath();

@@ -1,25 +1,37 @@
 class Player extends Phaser.Physics.Arcade.Sprite {
-    constructor(scene, x, y){
+    constructor(scene, x_, y_, id_){
 
-
-        let pos = convert([x,y]);
+        let pos = convert([x_,y_]);
         super(scene, pos[0], pos[1], 'perso1');
-
-    
+        this.id = id_;
+        this.pos = {
+            x: x_,
+            y: y_
+        }
+        this.destinationInter = -1;
+        this.destination = -1;
     
 
         scene.add.existing(this);
         scene.physics.add.existing(this);
 
+
         this.initAnim();
     }
 
     setPath(matrixMap, mapWidth, mapHeight){
-        socket.emit('matrix', matrixMap, mapWidth, mapHeight, [2,3,2,11]);
+
+        socket.emit('matrix', matrixMap, mapWidth, mapHeight, [this.pos.x,this.pos.y,2,11], this.id);
     
-        socket.on('path', path => {
-            this.chemin = path;
-            this.cheminSize = path.length;
+        socket.on('path', (path, id) => {
+            console.log(id);
+            if(id == this.id){
+                console.log(id, path);
+                this.chemin = path;
+                this.cheminSize = path.length;
+                console.log(path);
+            }
+          
     
         });
     }
@@ -62,107 +74,124 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     }
 
 
+    cheminPathPlayer() {
+        let x, y;
+        
+        if (this.destination == -1 && this.cheminSize >= 1) {
+            this.destination = this.cheminSize-1;
+            this.destinationInter = 1;
+
+
+
+        }
+
+        
+        if (this.chemin != undefined && this.destinationInter <= this.destination) {
+            let coords = this.chemin[this.destinationInter];
+            x = coords[1];
+            y = coords[0];
+            
+            let pos = convert([x,y]);
+            //console.log(pos);
+            let a;
+            if (a=this.movePlayer(this,pos[0],pos[1])) {
+                if (this.destinationInter < this.cheminSize) this.destinationInter++;
+            }
+        }
+       
+    }
+    
+    
+
     update(){
-        let pos = convert([7,3]);
-        //cheminPath()
-        movePlayer2(this, pos[0], pos[1]);
+        this.cheminPathPlayer()
+
+        let pos = convert([2,4]);
+        //this.movePlayer(this, pos[0], pos[1]);
     }
+
+    movePlayer(player, x, y) {
+        let speedX = 50;
+        let speedY = speedX/2
+    
+        player.body.velocity.x = 0;
+        player.body.velocity.y = 0;
+    
+        let playerXRound = Math.round(player.x);
+        let playerYRound = Math.round(player.y);
+    
+        let marge = 2;
+
+
+    
+        if (playerXRound < x-marge || playerXRound > x+marge || playerYRound < y-marge || playerYRound > y +marge) {
+
+            if (playerXRound > x && playerYRound >y) {
+            player.body.velocity.x -= speedX;
+            player.body.velocity.y -= speedY;
+            player.anims.play('left');
+            lastDirection = 0;
+
+    
+            }
+            if (playerXRound < x && playerYRound < y) {
+            player.body.velocity.x += speedX;
+            player.body.velocity.y += speedY
+            player.anims.play('right');
+            lastDirection = 1;
+    
+            }
+            if (playerYRound > y && playerXRound < x) {
+            player.body.velocity.y -= speedY;
+            player.body.velocity.x += speedX;
+    
+            player.anims.play('up');
+            lastDirection = 2;
+    
+            }
+            if (playerYRound < y && playerXRound > x) {
+            player.body.velocity.y += speedY;
+            player.body.velocity.x -= speedX;
+    
+            player.anims.play('down');
+            lastDirection = 3;
+            }
+            return 0;
+        }
+    
+        else {
+            player.anims.stop();
+            player.x = x;
+            player.y = y;
+            player.body.velocity.x = 0;
+            player.body.velocity.y = 0;
+            switch(lastDirection){
+                case 0:
+                    player.anims.play('left');
+                    break;
+                case 1:
+                    player.anims.play('right');
+                    break;
+                case 2 :
+                    player.anims.play('up');
+                    break;
+                case 3:
+                    player.anims.play('down');
+                    break;
+                default:
+                    player.anims.play('down');
+                    break;
+            }
+            return 1;
+        }
+        
+    }
+    
+    
+    
 }
 
 
-function movePlayer2(player, x, y) {
-
-    let speedX = 50;
-    let speedY = speedX/2
-
-    player.body.velocity.x = 0;
-    player.body.velocity.y = 0;
-
-    let playerXRound = Math.round(player.x);
-    let playerYRound = Math.round(player.y);
-
-    let marge = 2;
-
-    if (playerXRound < x-marge || playerXRound > x+marge || playerYRound < y-marge || playerYRound > y +marge) {
-
-        if (playerXRound > x && playerYRound >y) {
-        player.body.velocity.x -= speedX;
-        player.body.velocity.y -= speedY;
-        player.anims.play('left');
-        lastDirection = 0;
-
-        }
-        if (playerXRound < x && playerYRound < y) {
-        player.body.velocity.x += speedX;
-        player.body.velocity.y += speedY
-        player.anims.play('right');
-        lastDirection = 1;
-
-
-        }
-        if (playerYRound > y && playerXRound < x) {
-        player.body.velocity.y -= speedY;
-        player.body.velocity.x += speedX;
-
-        player.anims.play('up');
-        lastDirection = 2;
-
-        }
-        if (playerYRound < y && playerXRound > x) {
-        player.body.velocity.y += speedY;
-        player.body.velocity.x -= speedX;
-
-        player.anims.play('down');
-        lastDirection = 3;
-        }
-    }
-
-    else {
-        player.anims.stop();
-        player.x = x;
-        player.y = y;
-        switch(lastDirection){
-            case 0:
-                player.anims.play('left');
-                break;
-            case 1:
-                player.anims.play('right');
-                break;
-            case 2 :
-                player.anims.play('up');
-                break;
-            case 3:
-                player.anims.play('down');
-                break;
-            default:
-                player.anims.play('down');
-                break;
-        }
-
-    }
-    return 1;
-}
-
-
-
-function cheminPath() {
-    let x, y;
-    if (destination == -1 && cheminSize >= 1) {
-        destination = cheminSize-1;
-        destinationInter = 0;
-    }
-    if (chemin != undefined && destinationInter <= destination) {
-        let coords = chemin[destinationInter];
-        x = coords[1];
-        y = coords[0];
-
-
-        let pos = convert([x,y]);
-        if (movePlayer2(player,pos[0],pos[1])) {
-            if (destinationInter < cheminSize) destinationInter++;
-        }
-    }
-}
 
 
 
