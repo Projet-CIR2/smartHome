@@ -136,6 +136,7 @@ class Objet extends Phaser.Physics.Arcade.Sprite{
     this.setX(xPos);
     this.setY(yPos);
 
+    this.visible = true;
     console.log(this.displayOriginX, this.displayOriginY);
     this.fillAlpha = 1;
   }
