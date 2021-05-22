@@ -14,7 +14,7 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
     p = document.createElement('p');
     div.appendChild(p);
     p.innerHTML = text + "<br><br>";
-    p.id="infos";
+    p.id="infos"+element.nom;
 
     let button;
 
@@ -24,7 +24,7 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
         button.setAttribute('class', 'btn btn-warning btn-sm');
         button.textContent = btn;
         if(mOru == 'd_MaJ') {
-            button.id = 'majButton';
+            button.id = 'majButton'+ element.nom;
         }
     }
     if (mOru === 'd_Upgrade') {
@@ -116,18 +116,25 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
         }
     } else {
         button.onclick = () => {
-            console.log(element);
+            console.log(element.niveauMaJ);
             console.log('click maj sur : ' + element.nom);
-            let tmp = element.infosNiveau.tempsReparation;
-            let div = document.getElementById('d_MaJ');
-            let p  = document.getElementById('infos');
+            let tmp = element.infosNiveauMaJ.tempsReparation;
+
+            let p  = document.getElementById('infos'+element.nom);
             let p2 = document.createElement('p');
+            let boutton = document.getElementById('majButton'+element.nom);
+
             p2.id = "bip";
             p.appendChild(p2);
-            
-            chronoTIME.setTimeMaJ(tmp);
-            chronoTIME.start();
-            
+
+            if(boutton != undefined) {
+                chronoTIME.setTimeMaJ(tmp);
+                chronoTIME.start();
+
+                debitModif.setDebit(element.infosNiveauMaJ.coutDebit);
+                debitModif.start();
+            }   
+            boutton.remove();
         }
     }
 

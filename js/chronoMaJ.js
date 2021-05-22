@@ -5,9 +5,9 @@ let chronoTIME = (function() {
     return {
         setTimeMaJ(time) {
             timeMaJ = time;
-            console.log(timeMaJ);
         },
         start(){
+            document.getElementById("bip").innerHTML = "MaJ en cours : " + timeMaJ + " secondes restantes ...";
             setInterval(function() {
                 timeMaJ--;
                 if(timeMaJ <= 0) {
@@ -18,6 +18,19 @@ let chronoTIME = (function() {
                     document.getElementById("bip").innerHTML = "MaJ en cours : " + timeMaJ + " secondes restantes ...";
              }	
             }, 1000);
+        }
+    }
+})();
+
+let debitModif = (function() {
+    let debit;
+    
+    return {
+        setDebit(deb) {
+            debit = deb;
+        },
+        start(){
+            gameView.barreDebit.modifBarre(debit);
         }
     }
 })();
