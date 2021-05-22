@@ -1,4 +1,5 @@
 let createObjetMaj = function (mOru, title, text, btn, element) {
+    console.log(element);
     let currentDiv = document.getElementById(mOru);
 
     let div = document.createElement('div');
@@ -115,27 +116,39 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
             }
         }
     } else {
-        button.onclick = () => {
-            console.log(element.niveauMaJ);
-            console.log('click maj sur : ' + element.nom);
-            let tmp = element.infosNiveauMaJ.tempsReparation;
-            console.log( element.infosNiveauMaJ);
-            let p  = document.getElementById('infos'+element.nom);
+        if(element.niveauMaJ != 0) {
+            let txt = document.getElementById('infos'+element.nom);
             let p2 = document.createElement('p');
-            let boutton = document.getElementById('majButton'+element.nom);
-
-            p2.id = "bip";
-            p.appendChild(p2);
-
-            if(boutton != undefined) {
-                chronoTIME.setTimeMaJ(tmp);
-                chronoTIME.start();
-
-                debitModif.setDebit(element.infosNiveauMaJ.coutDebit);
-                debitModif.start();
-            }   
-            boutton.remove();
+            p2.innerHTML = "Vous avez déjà fait cette MaJ";
+            txt.appendChild(p2);
+            let aze = document.getElementById('majButton'+element.nom);
+            aze.setAttribute('style', 'display: none');
+        }else {
+            button.onclick = () => {
+                console.log(element.infosNiveau, element.niveauMaJ);
+                let tmp = element.infosNiveauMaJ.tempsReparation;
+    
+                let p  = document.getElementById('infos'+element.nom);
+                let p2 = document.createElement('p');
+                let boutton = document.getElementById('majButton'+element.nom);
+    
+                p2.id = "bip";
+                p.appendChild(p2);
+    
+                if(boutton != undefined) {
+                    chronoTIME.setTimeMaJ(tmp);
+                    chronoTIME.start();
+    
+                    debitModif.setDebit(element.infosNiveauMaJ.coutDebit);
+                    debitModif.start();
+    
+                    element.niveauMaJ++;
+                }   
+                boutton.setAttribute('style', 'display: none;');
+                console.log(element.niveauMaJ);
+            }
         }
+        
     }
 
 }

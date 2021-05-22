@@ -1,6 +1,6 @@
 let chronoTIME = (function() {
     let timeMaJ;
-    let intervalId = null;
+    let myVar;
 
     return {
         setTimeMaJ(time) {
@@ -8,11 +8,11 @@ let chronoTIME = (function() {
         },
         start(){
             document.getElementById("bip").innerHTML = "MaJ en cours : " + timeMaJ + " secondes restantes ...";
-            setInterval(function() {
+            myVar = setInterval(function() {
                 timeMaJ--;
                 if(timeMaJ <= 0) {
-                    clearInterval(intervalId);
-                    document.getElementById("bip").innerHTML = "TERMINE!";	
+                    document.getElementById("bip").innerHTML = "TERMINE!";
+                    clearInterval(myVar);
                 }
                 else {	
                     document.getElementById("bip").innerHTML = "MaJ en cours : " + timeMaJ + " secondes restantes ...";
