@@ -12,10 +12,11 @@ let achat = (function() {
 
         recupDataMaj() {
             for (let element of dataMaj) {
+                console.log(element);
                 createObjetMaj('d_MaJ', element.nom,
-                    "Prix Maj : " + element.infosNiveau.coutReparation + "€" +
-                    "<br><br>Temps de MaJ : " + element.infosNiveau.tempsAmelioration + "s" +
-                    "<br><br>Cout débit : " + element.infosNiveau.coutDebit,
+                    "Prix Maj : " + element.infosNiveauMaJ.coutReparation + "€" +
+                    "<br><br>Temps de MaJ : " + element.infosNiveauMaJ.tempsReparation + "s" +
+                    "<br><br>Cout débit : " + element.infosNiveauMaJ.coutDebit,
                     'Mettre à jour', element);
             }
         },

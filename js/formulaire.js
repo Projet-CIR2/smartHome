@@ -119,7 +119,7 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
             console.log(element.niveauMaJ);
             console.log('click maj sur : ' + element.nom);
             let tmp = element.infosNiveauMaJ.tempsReparation;
-
+            console.log( element.infosNiveauMaJ);
             let p  = document.getElementById('infos'+element.nom);
             let p2 = document.createElement('p');
             let boutton = document.getElementById('majButton'+element.nom);
