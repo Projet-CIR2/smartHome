@@ -148,8 +148,8 @@ function create() {
     for (let i = 0; i < mapHeight; i++) {
         matrixMap[i] = new Array(mapWidth);
     }
-
-    let coucou = map.layers[4].data;
+    console.log(map);
+    let coucou = map.layers[3].data;
     console.log(matrixMap);
 
     for (let u = 0; u < mapHeight; u++) {
@@ -196,6 +196,8 @@ function create() {
     layer1 = map.createLayer('sol', tilesets);
     layer2 = map.createLayer('walls_1', tilesets);
     layer3 = map.createLayer('meubles', tilesets);
+    layer4 = map.createLayer('collisions', tilesets);
+
 
     let cursors = this.input.keyboard.createCursorKeys();
 
@@ -273,7 +275,7 @@ function create() {
 
 
     player2 = new Player(this, 2,3, 0);
-    player3 = new Player(this, 4,4, 1);
+    player3 = new Player(this, 7,7, 1);
 
     player2.setPath(matrixMap, mapWidth, mapHeight);
     player3.setPath(matrixMap, mapWidth, mapHeight);
