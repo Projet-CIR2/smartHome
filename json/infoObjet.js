@@ -1,10 +1,13 @@
 let infoObjet = [
   {
     nom: "Frigo",
+    niveau0:{
+      prix:750
+    },
+
     niveau1: {
       description: "Frigo de niveau 1 équipé d'un freezer idéal pour commencer ",
       coutDebit: 25,
-      prix: 750,
       tempsEtat: 90,
       bonheur: 3,
 
@@ -39,10 +42,13 @@ let infoObjet = [
 
   {
     nom: "Fauteuil",
+    niveau0:{
+      prix:250
+    },
+
     niveau1: {
       description: "Fauteuil de niveau 1 peu confortable ",
       coutDebit: 20,
-      prix: 250,
       tempsEtat: 60,
       bonheur: 2,
 
@@ -76,10 +82,13 @@ let infoObjet = [
 
   {
     nom: "Gazinière",
+    niveau0:{
+      prix:400
+    },
+
     niveau1: {
       description: "Gaziniere de niveau 1 modeste et fonctionnel ",
       coutDebit: 20,
-      prix: 400,
       tempsEtat: 60,
       bonheur: 2,
 
@@ -113,10 +122,13 @@ let infoObjet = [
 
   {
     nom: "Radiateur",
+    niveau0:{
+      prix:200
+    },
+
     niveau1: {
       description: "Radiateur de niveau 1 chauffe mais avec difficultée ",
       coutDebit: 20,
-      prix: 200,
       tempsEtat: 60,
       bonheur: 2,
 
@@ -150,10 +162,13 @@ let infoObjet = [
 
   {
     nom: "Lave Linge",
+    niveau0:{
+      prix:400
+    },
+
     niveau1: {
       description: "Lave linge de niveau 1 lave vos vêtements à faible température ",
       coutDebit: 20,
-      prix: 400,
       tempsEtat: 60,
       bonheur: 2,
 
@@ -187,10 +202,13 @@ let infoObjet = [
 
   {
     nom: "Lave Vaisselle",
+    niveau0:{
+      prix:300
+    },
+
     niveau1: {
       description: "Lave vaisselle de niveau 1 lave de façon superficiel ",
       coutDebit: 20,
-      prix: 300,
       tempsEtat: 60,
       bonheur: 2,
 
@@ -224,10 +242,13 @@ let infoObjet = [
 
   {
     nom: "Télé",
+    niveau0:{
+      prix:600
+    },
+
     niveau1: {
       description: "Télévision de niveau 1 équipé d'un écran de basse qualité ",
       coutDebit: 25,
-      prix: 600,
       tempsEtat: 90,
       bonheur: 3,
 
@@ -261,10 +282,13 @@ let infoObjet = [
 
   {
     nom: "Réveil",
+    niveau0:{
+      prix:50
+    },
+
     niveau1: {
       description: "Réveil de niveau 1 modeste mais efficace ",
       coutDebit: 10,
-      prix: 50,
       tempsEtat: 30,
       bonheur: 1,
 
@@ -298,10 +322,13 @@ let infoObjet = [
 
   {
     nom: "Box Internet",
+    niveau0:{
+      prix:70
+    },
+
     niveau1: {
       description: "Box internet de niveau 1 qui fournie une connection suffisante mais instable ",
       coutDebit: 10,
-      prix: 70,
       tempsEtat: 30,
       bonheur: 1,
 
@@ -335,10 +362,13 @@ let infoObjet = [
 
   {
     nom: "Lumière",
+    niveau0:{
+      prix:50
+    },
+
     niveau1: {
       description: "Lumiere de niveau 1 modeste mais efficace ",
       coutDebit: 10,
-      prix: 50,
       tempsEtat: 30,
       bonheur: 1,
 
@@ -372,10 +402,13 @@ let infoObjet = [
 
   {
     nom: "Ordinateur",
+    niveau0:{
+      prix:700
+    },
+
     niveau1: {
       description: "Ordinateur de niveau 1 équipé d'un écran de basse qualité ",
       coutDebit: 25,
-      prix: 700,
       tempsEtat: 90,
       bonheur: 3,
 
@@ -409,10 +442,13 @@ let infoObjet = [
 
   {
     nom: "Robot Aspirateur",
+    niveau0:{
+      prix:200
+    },
+
     niveau1: {
       description: "Robot aspirateur de niveau 1 nettoie avec une brosse le sol ",
       coutDebit: 20,
-      prix: 200,
       tempsEtat: 60,
       bonheur: 2,
 
