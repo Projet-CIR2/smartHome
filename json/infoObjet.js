@@ -10,6 +10,7 @@ let infoObjet = [
       coutDebit: 25,
       tempsEtat: 90,
       bonheur: 3,
+      environnement: -20,
 
       coutReparation: 600,
       tempsReparation: 15,
@@ -23,6 +24,7 @@ let infoObjet = [
       coutDebit: 28,
       tempsEtat: 120,
       bonheur: 6,
+      environnement: 5,
       coutReparation: 525,
       tempsReparation: 10,
       coutAmelioration: 1470,
@@ -34,6 +36,7 @@ let infoObjet = [
       description: "Frigo de niveau 3 sublime l'humeur de ses utilisateurs",
       coutDebit: 31,
       bonheur: 9,
+      environnement: 5,
       tempsEtat: 150,
       coutReparation: 735,
       tempsReparation: 5
@@ -51,6 +54,7 @@ let infoObjet = [
       coutDebit: 20,
       tempsEtat: 60,
       bonheur: 2,
+      environnement: -20,
 
       coutReparation: 125,
       tempsReparation: 10,
@@ -64,6 +68,7 @@ let infoObjet = [
       coutDebit: 23,
       tempsEtat: 90,
       bonheur: 4,
+      environnement: 5,
       coutReparation: 150,
       tempsReparation: 7,
       coutAmelioration: 350,
@@ -74,6 +79,7 @@ let infoObjet = [
       description: "Fauteuil de niveau 3 avec un confort irrésistible",
       coutDebit: 26,
       bonheur: 6,
+      environnement: 5,
       tempsEtat: 120,
       coutReparation: 175,
       tempsReparation: 4
@@ -91,6 +97,7 @@ let infoObjet = [
       coutDebit: 20,
       tempsEtat: 60,
       bonheur: 2,
+      environnement: -20,
 
       coutReparation: 200,
       tempsReparation: 10,
@@ -104,6 +111,7 @@ let infoObjet = [
       coutDebit: 23,
       tempsEtat: 90,
       bonheur: 4,
+      environnement: 5,
       coutReparation: 280,
       tempsReparation: 7,
       coutAmelioration: 784,
@@ -114,6 +122,7 @@ let infoObjet = [
       description: "Gaziniere de niveau 3 équipé d'un autocuiseur parfait pour toutes les envies",
       coutDebit: 26,
       bonheur: 6,
+      environnement: 5,
       tempsEtat: 120,
       coutReparation: 392,
       tempsReparation: 4
@@ -131,6 +140,7 @@ let infoObjet = [
       coutDebit: 20,
       tempsEtat: 60,
       bonheur: 2,
+      environnement: -20,
 
       coutReparation: 100,
       tempsReparation: 10,
@@ -144,6 +154,7 @@ let infoObjet = [
       coutDebit: 23,
       tempsEtat: 90,
       bonheur: 4,
+      environnement: 5,
       coutReparation: 190,
       tempsReparation: 7,
       coutAmelioration: 532,
@@ -155,6 +166,7 @@ let infoObjet = [
       coutDebit: 26,
       tempsEtat: 120,
       bonheur: 6,
+      environnement: 5,
       coutReparation: 266,
       tempsReparation: 4
     }
@@ -171,6 +183,7 @@ let infoObjet = [
       coutDebit: 20,
       tempsEtat: 60,
       bonheur: 2,
+      environnement: -20,
 
       coutReparation: 200,
       tempsReparation: 10,
@@ -184,6 +197,7 @@ let infoObjet = [
       coutDebit: 23,
       tempsEtat: 90,
       bonheur: 4,
+      environnement: 5,
       coutReparation: 380,
       tempsReparation: 7,
       coutAmelioration: 784,
@@ -195,6 +209,7 @@ let infoObjet = [
       coutDebit: 26,
       tempsEtat: 120,
       bonheur: 6,
+      environnement: 5,
       coutReparation: 392,
       tempsReparation: 4
     }
@@ -211,6 +226,7 @@ let infoObjet = [
       coutDebit: 20,
       tempsEtat: 60,
       bonheur: 2,
+      environnement: -20,
 
       coutReparation: 150,
       tempsReparation: 10,
@@ -224,6 +240,7 @@ let infoObjet = [
       coutDebit: 23,
       tempsEtat: 90,
       bonheur: 4,
+      environnement: 5,
       coutReparation: 210,
       tempsReparation: 7,
       coutAmelioration: 588,
@@ -235,6 +252,7 @@ let infoObjet = [
       coutDebit: 26,
       tempsEtat: 120,
       bonheur: 6,
+      environnement: 5,
       coutReparation: 392,
       tempsReparation: 4
     }
@@ -251,6 +269,7 @@ let infoObjet = [
       coutDebit: 25,
       tempsEtat: 90,
       bonheur: 3,
+      environnement: -20,
 
       coutReparation: 300,
       tempsReparation: 15,
@@ -264,6 +283,7 @@ let infoObjet = [
       coutDebit: 28,
       tempsEtat: 120,
       bonheur: 6,
+      environnement: 5,
       coutReparation: 420,
       tempsReparation: 10,
       coutAmelioration: 1116,
@@ -275,6 +295,7 @@ let infoObjet = [
       coutDebit: 31,
       tempsEtat: 150,
       bonheur: 9,
+      environnement: 5,
       coutReparation: 558,
       tempsReparation: 5
     }
@@ -291,6 +312,7 @@ let infoObjet = [
       coutDebit: 10,
       tempsEtat: 30,
       bonheur: 1,
+      environnement: -20,
 
       coutReparation: 25,
       tempsReparation: 5,
@@ -304,6 +326,7 @@ let infoObjet = [
       coutDebit: 13,
       tempsEtat: 60,
       bonheur: 2,
+      environnement: 5,
       coutReparation: 47,
       tempsReparation: 3,
       coutAmelioration: 132,
@@ -315,6 +338,7 @@ let infoObjet = [
       coutDebit: 16,
       tempsEtat: 90,
       bonheur: 3,
+      environnement: 5,
       coutReparation: 66,
       tempsReparation: 1
     }
@@ -331,6 +355,7 @@ let infoObjet = [
       coutDebit: 10,
       tempsEtat: 30,
       bonheur: 1,
+      environnement: -20,
 
       coutReparation: 35,
       tempsReparation: 5,
@@ -344,6 +369,7 @@ let infoObjet = [
       coutDebit: 13,
       tempsEtat: 60,
       bonheur: 2,
+      environnement: 5,
       coutReparation: 49,
       tempsReparation: 3,
       coutAmelioration: 137,
@@ -355,6 +381,7 @@ let infoObjet = [
       coutDebit: 16,
       tempsEtat: 90,
       bonheur: 3,
+      environnement: 5,
       coutReparation: 68,
       tempsReparation: 1
     }
@@ -371,6 +398,7 @@ let infoObjet = [
       coutDebit: 10,
       tempsEtat: 30,
       bonheur: 1,
+      environnement: -20,
 
       coutReparation: 25,
       tempsReparation: 5,
@@ -384,6 +412,7 @@ let infoObjet = [
       coutDebit: 13,
       tempsEtat: 60,
       bonheur: 2,
+      environnement: 5,
       coutReparation: 47,
       tempsReparation: 3,
       coutAmelioration: 132,
@@ -395,6 +424,7 @@ let infoObjet = [
       coutDebit: 16,
       tempsEtat: 90,
       bonheur: 3,
+      environnement: 5,
       coutReparation: 66,
       tempsReparation: 1
     }
@@ -411,6 +441,7 @@ let infoObjet = [
       coutDebit: 25,
       tempsEtat: 90,
       bonheur: 3,
+      environnement: -20,
 
       coutReparation: 350,
       tempsReparation: 15,
@@ -424,6 +455,7 @@ let infoObjet = [
       coutDebit: 28,
       tempsEtat: 120,
       bonheur: 6,
+      environnement: 5,
       coutReparation: 490,
       tempsReparation: 10,
       coutAmelioration: 1372,
@@ -435,6 +467,7 @@ let infoObjet = [
       coutDebit: 31,
       tempsEtat: 150,
       bonheur: 9,
+      environnement: 5,
       coutReparation: 686,
       tempsReparation: 5
     }
@@ -451,6 +484,7 @@ let infoObjet = [
       coutDebit: 20,
       tempsEtat: 60,
       bonheur: 2,
+      environnement: -20,
 
       coutReparation: 100,
       tempsReparation: 10,
@@ -464,6 +498,7 @@ let infoObjet = [
       coutDebit: 23,
       tempsEtat: 90,
       bonheur: 4,
+      environnement: 5,
       coutReparation: 190,
       tempsReparation: 7,
       coutAmelioration: 532,
@@ -475,6 +510,7 @@ let infoObjet = [
       coutDebit: 26,
       tempsEtat: 120,
       bonheur: 6,
+      environnement: 5,
       coutReparation: 266,
       tempsReparation: 4
     }

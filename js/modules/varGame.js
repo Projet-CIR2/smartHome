@@ -22,7 +22,6 @@ let VarGame = (function () {
 
         // modifie la variable de jeu du type de nb
         modifVar(type, nb) {
-            ///////////////////////// à modifier
             if (type === 'humeur' && view + nb >= 0 && view + nb <= 100) view.humeur += nb / view.difficulte;
             if (type === 'argent') view.argent += nb / view.difficulte;
             if (type === 'debit' && view.debit + nb >= 0 && view.debit + nb <= 100) view.debit += nb / view.difficulte;
