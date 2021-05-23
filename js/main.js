@@ -219,10 +219,9 @@ function create() {
 
 
     let polygon;
-    console.log(layer4.layer.data[0]);
     for (let y = 0; y < layer1.layer.data.length; y++) {
         for (let x = 0; x < layer1.layer.data[0].length; x++) {
-            if (layer4.layer.data[x][y].index === 137) {
+            if (layer4.layer.data[y][x].index === 137) {
                 polygon = new Polygon(this, x, y);
                 stockageVar.stockagePolygones.push(polygon);
                 polygon.addEvent();
