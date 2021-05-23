@@ -1,30 +1,3 @@
-let chronoTIME = (function() {
-    let timeMaJ;
-    let myVar;
-    let elmt;
-
-    return {
-        setTimeMaJ(time, elmtName) {
-            timeMaJ = time;
-            elmt = elmtName
-            myVar = myVar+elmtName;
-        },
-        start(){
-            document.getElementById("bip"+elmt).innerHTML = "MaJ en cours : " + timeMaJ + " secondes restantes ...";
-            myVar = setInterval(function() {
-                timeMaJ--;
-                if(timeMaJ <= 0) {
-                    document.getElementById("bip"+elmt).innerHTML = "TERMINE!";
-                    clearInterval(myVar);
-                }
-                else {	
-                    document.getElementById("bip"+elmt).innerHTML = "MaJ en cours : " + timeMaJ + " secondes restantes ...";
-             }	
-            }, 1000);
-        }
-    }
-})();
-
 let debitModif = (function() {
     let debit;
     
@@ -43,25 +16,34 @@ class timee {
         this.timeMaJ = time;
         this.elmt = elmtName;
         this.myVar;
+        this.verif = false;
     }
     getElmt() {
         return this.elmt;
     }
     start(){
         document.getElementById("bip"+this.elmt).innerHTML = "MaJ en cours : " + this.timeMaJ + " secondes restantes ...";
-        this.dec(this.elmt, this.timeMaJ, this.myVar);
+        this.dec(this.elmt, this.timeMaJ, this.myVar, this.verif);
     }
-    dec(elmt, time, myVar) {
+    setTime(nb) {
+        this.timeMaJ = nb;
+    }
+    dec(elmt, time, myVar, verif) {
         this.myVar = setInterval(function() {
             time--;
             if(time <= 0) {
-                document.getElementById("bip"+elmt).innerHTML = "TERMINE!";
+                if(document.getElementById("bip"+elmt) != null && verif == false) {
+                    document.getElementById("bip"+elmt).innerHTML = "TERMINE!";
+                    verif = true;
+                }
                 clearInterval(myVar);
             }
             else {	
-                
-                document.getElementById("bip"+elmt).innerHTML = "MaJ en cours : " + time + " secondes restantes ...";
-         }	
+                if(document.getElementById("bip"+elmt) != null) {
+                    document.getElementById("bip"+elmt).innerHTML = "MaJ en cours : " + time + " secondes restantes ...";
+                } 
+               
+            }	
         }, 1000);
     }
 }

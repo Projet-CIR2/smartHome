@@ -135,8 +135,7 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 p.appendChild(p2);
     
                 if(boutton != undefined) {
-                    //chronoTIME.setTimeMaJ(tmp, element.nom);
-                    //chronoTIME.start();
+                    
                     let chrono = new timee(tmp, element.nom);
                     chrono.start();
                     
