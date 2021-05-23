@@ -1,5 +1,4 @@
 let createObjetMaj = function (mOru, title, text, btn, element) {
-    console.log(element);
     let currentDiv = document.getElementById(mOru);
 
     let div = document.createElement('div');
@@ -19,7 +18,7 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
 
     let button;
 
-    if (element.niveau !== 3) {
+    if (element.niveauMaJ !== 3) {
         button = document.createElement('button');
         div.appendChild(button);
         button.setAttribute('class', 'btn btn-warning btn-sm');
@@ -116,7 +115,8 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
             }
         }
     } else {
-        if(element.niveauMaJ != 0) {
+        
+        if(element.verifMaJ != false) { 
             let txt = document.getElementById('infos'+element.nom);
             let p2 = document.createElement('p');
             p2.innerHTML = "Vous avez déjà fait cette MaJ";
@@ -124,7 +124,9 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
             let aze = document.getElementById('majButton'+element.nom);
             aze.setAttribute('style', 'display: none');
         }else {
+            console.log("yolo");
             button.onclick = () => {
+                console.log("Verif Maj : ", element.verifMaJ);
                 console.log(element.infosNiveau, element.niveauMaJ);
                 let tmp = element.infosNiveauMaJ.tempsReparation;
     
@@ -143,12 +145,13 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                     debitModif.start();
     
                     element.niveauMaJ++;
+                    element.verifMaJ = true;
                 }   
                 boutton.setAttribute('style', 'display: none;');
                 console.log(element.niveauMaJ);
             }
-        }
         
+        }
     }
 
 }
