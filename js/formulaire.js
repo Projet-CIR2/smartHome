@@ -1,4 +1,5 @@
 let createObjetMaj = function (mOru, title, text, btn, element) {
+    
     let currentDiv = document.getElementById(mOru);
 
     let div = document.createElement('div');
@@ -34,7 +35,6 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
             let afficheAchat = document.getElementById('achat');
             afficheAchat.innerHTML = "";
             afficheAchat.setAttribute('style', 'display: none;');
-
 
             let pAchatHTML = document.getElementById('achatTxt');
             let pClickHTML = document.getElementById('pClick');
@@ -124,10 +124,7 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
             let aze = document.getElementById('majButton'+element.nom);
             aze.setAttribute('style', 'display: none');
         }else {
-            console.log("yolo");
             button.onclick = () => {
-                console.log("Verif Maj : ", element.verifMaJ);
-                console.log(element.infosNiveau, element.niveauMaJ);
                 let tmp = element.infosNiveauMaJ.tempsReparation;
     
                 let p  = document.getElementById('infos'+element.nom);
@@ -148,7 +145,6 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                     element.verifMaJ = true;
                 }   
                 boutton.setAttribute('style', 'display: none;');
-                console.log(element.niveauMaJ);
             }
         
         }
