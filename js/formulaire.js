@@ -1,5 +1,5 @@
 let createObjetMaj = function (mOru, title, text, btn, element) {
-    console.log(element);
+    
     let currentDiv = document.getElementById(mOru);
 
     let div = document.createElement('div');
@@ -19,7 +19,7 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
 
     let button;
 
-    if (element.niveau !== 3) {
+    if (element.niveauMaJ !== 3) {
         button = document.createElement('button');
         div.appendChild(button);
         button.setAttribute('class', 'btn btn-warning btn-sm');
@@ -35,7 +35,6 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
             let afficheAchat = document.getElementById('achat');
             afficheAchat.innerHTML = "";
             afficheAchat.setAttribute('style', 'display: none;');
-
 
             let pAchatHTML = document.getElementById('achatTxt');
             let pClickHTML = document.getElementById('pClick');
@@ -116,7 +115,8 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
             }
         }
     } else {
-        if(element.niveauMaJ != 0) {
+        
+        if(element.verifMaJ != false) { 
             let txt = document.getElementById('infos'+element.nom);
             let p2 = document.createElement('p');
             p2.innerHTML = "Vous avez déjà fait cette MaJ";
@@ -125,7 +125,6 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
             aze.setAttribute('style', 'display: none');
         }else {
             button.onclick = () => {
-                console.log(element.infosNiveau, element.niveauMaJ);
                 let tmp = element.infosNiveauMaJ.tempsReparation;
     
                 let p  = document.getElementById('infos'+element.nom);
@@ -143,12 +142,12 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                     debitModif.start();
     
                     element.niveauMaJ++;
+                    element.verifMaJ = true;
                 }   
                 boutton.setAttribute('style', 'display: none;');
-                console.log(element.niveauMaJ);
             }
-        }
         
+        }
     }
 
 }

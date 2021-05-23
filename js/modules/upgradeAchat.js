@@ -1,12 +1,12 @@
 let achat = (function() {
     let dataMaj = [];
-
+    
     return {
         recupData() {
             for (let element of stockageObj) {
                 createObjetMaj('d_Upgrade', element.nom, element.infosNiveau.description + "<br><br>" +
-                    ((element.niveau !== 3) ? "Prix : " + element.infosNiveau.coutAmelioration + "€" : "Niveau Max"),
-                    'Acheter', element);
+                    ((element.niveau !== 3) ? "Prix : " + element.infosNiveau.coutAmelioration + "€" : ""),
+                    ((element.niveau !== 3) ? 'Acheter': 'Niveau Max'), element);
             }
         },
 
@@ -35,8 +35,23 @@ let achat = (function() {
 
         addMaj(title) {
             let indice = stockageObj.findIndex(element => element.nom === title);
-            if (indice !== -1) {
-                dataMaj.push(stockageObj[indice]);
+            let verif = false;
+            console.log(this.getDataMaJ());
+            let tab = this.getDataMaJ();
+            
+            if(tab.length != 0) {
+                
+            
+                for(let i = 0; i < tab.length; i++) {
+                    console.log(stockageObj[indice].nom);
+                    if(stockageObj[indice].nom == tab[i].nom) {
+                        verif = true;
+                    }
+                }
+            }
+            
+            if (indice !== -1 && verif == false) {
+                this.setDataMaJ(stockageObj[indice]);
                 // this.popUpgrade(indice);
             }
         },
@@ -90,6 +105,12 @@ let achat = (function() {
                 div.innerHTML = "";
                 div.setAttribute('style', 'display: none;')
             });
+        },
+        getDataMaJ() {
+            return dataMaj;
+        },
+        setDataMaJ(val) {
+            dataMaj.push(val);
         }
     }
 })();
