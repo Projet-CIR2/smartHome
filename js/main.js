@@ -23,7 +23,7 @@ let controls;
 
 let game = new Phaser.Game(config);
 
-let player, player2, J2Haut, J2Bas, J2Gauche, J2Droite, layer1, layer2, layer3, collisions, map, sprite, clickImg, housebarre;
+let player, player2, J2Haut, J2Bas, J2Gauche, J2Droite, layer1, layer2, layer3, layer4, collisions, map, sprite, clickImg, housebarre;
 
 let chronoTexte, monTimer, chrono = 100;
 
@@ -219,12 +219,14 @@ function create() {
 
 
     let polygon;
+    console.log(layer4.layer.data[0]);
     for (let y = 0; y < layer1.layer.data.length; y++) {
         for (let x = 0; x < layer1.layer.data[0].length; x++) {
-            polygon = new Polygon(this, x, y);
-            // console.log(new Polygon(this, x, y));
-            stockageVar.stockagePolygones.push(polygon);
-            polygon.addEvent();
+            if (layer4.layer.data[x][y].index === 137) {
+                polygon = new Polygon(this, x, y);
+                stockageVar.stockagePolygones.push(polygon);
+                polygon.addEvent();
+            }
         }
     }
     let obj;
