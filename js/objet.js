@@ -55,7 +55,7 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
         this.coutAmelioration = monModule.rand(objet.niveau1.coutAmelioration, objet.niveau1.coutAmelioration + 15);
         this.tmpAmelioration = monModule.rand(objet.niveau1.tempsAmelioration, objet.niveau1.tempsAmelioration + 5);
 
-        //this.barre = new Barre(this.scene, this.graphics, this.objet, 100, 678, 89);
+        this.barre = new Barre(this.scene, this.graphics, this.objet, 100, 678, 89);
     }
 
     preview() {

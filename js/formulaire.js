@@ -131,13 +131,15 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 let p2 = document.createElement('p');
                 let boutton = document.getElementById('majButton'+element.nom);
     
-                p2.id = "bip";
+                p2.id = "bip"+element.nom;
                 p.appendChild(p2);
     
                 if(boutton != undefined) {
-                    chronoTIME.setTimeMaJ(tmp);
-                    chronoTIME.start();
-    
+                    //chronoTIME.setTimeMaJ(tmp, element.nom);
+                    //chronoTIME.start();
+                    let chrono = new timee(tmp, element.nom);
+                    chrono.start();
+                    
                     debitModif.setDebit(element.infosNiveauMaJ.coutDebit);
                     debitModif.start();
     
