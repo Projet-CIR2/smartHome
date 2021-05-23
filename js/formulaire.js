@@ -74,15 +74,15 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 stockageVar.clickPolygon.removeAlpha();
                 stockageVar.clickPolygon.refreshUpgrade();
 
+                // modification des variables lors du paiement
+                gameView.paiement(element.infosNiveau);
+
                 // let obj = stockageObj.find(obj => obj.objet.nom === element.nom);
                 if (element.niveau === 1) element.position(stockageVar.clickPolygon.x, stockageVar.clickPolygon.y);
                 element.levelUp();
 
                 stockageVar.clickPolygon = undefined;
                 stockageVar.click = false;
-
-                // on supprime la div avec le bouton
-                // div.remove();
                 // on ajoute l'objet aux objets achetés
                 achat.addMaj(title);
                 let img = document.createElement('img');

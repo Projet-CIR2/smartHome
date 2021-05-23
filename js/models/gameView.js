@@ -3,7 +3,7 @@ class GameView {
         this.humeur = elmt.humeur; // en %
         this.argent = Number(elmt.argent); // en €
         this.debit = elmt.debit; // en %
-        this.environnement = elmt.environnement; // en %
+        this.environnement = 100; // en %
         if(elmt.difficulte == 'Facile') {
             this.difficulte = 1;
         }
@@ -57,8 +57,10 @@ class GameView {
         return this.argent;
     }
 
-    updateArgentPlayer(nb) {
-        this.argent += nb;
-        this.barreArgent.modifBarre(this.argent);
+    paiement(infosNiveau) {
+        this.argent -= infosNiveau.coutAmelioration;
+        this.environnement += infosNiveau.environnement;
+        this.humeur += infosNiveau.bonheur;
+        this.modifBarre();
     }
 }

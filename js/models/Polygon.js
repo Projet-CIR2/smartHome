@@ -43,9 +43,10 @@ class Polygon {
             } else {
                 this.refreshUpgrade();
 
-                stockageVar.clickPolygon.removeAlpha();
-                stockageVar.clickPolygon = this;
-
+                if (stockageVar.clickPolygon !== undefined) {
+                    stockageVar.clickPolygon.removeAlpha();
+                    stockageVar.clickPolygon = this;
+                }
 
             }
         });
