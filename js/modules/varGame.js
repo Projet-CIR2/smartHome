@@ -24,6 +24,7 @@ let VarGame = (function () {
         modifVar(type, nb) {
             if (type === 'humeur' && view + nb >= 0 && view + nb <= 100) view.humeur += nb / view.difficulte;
             if (type === 'argent') view.argent += nb / view.difficulte;
+            if (type === 'environnement') view.environnement += nb;
             if (type === 'debit' && view.debit + nb >= 0 && view.debit + nb <= 100) view.debit += nb / view.difficulte;
 
             view.modifBarre();

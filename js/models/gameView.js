@@ -3,6 +3,7 @@ class GameView {
         this.humeur = elmt.humeur; // en %
         this.argent = Number(elmt.argent); // en €
         this.debit = elmt.debit; // en %
+        this.environnement = elmt.environnement; // en %
         if(elmt.difficulte == 'Facile') {
             this.difficulte = 1;
         }
@@ -17,6 +18,7 @@ class GameView {
         this.barreHumeur = new Barres('humeur');
         this.barreArgent = new Barres('argent');
         this.barreDebit = new Barres('debit');
+        this.barreEnvironnement = new Barres('environnement');
         this.modifBarre();
 
         this.initEvents();
@@ -41,16 +43,20 @@ class GameView {
         this.barreHumeur.modifBarre(this.humeur);
         this.barreArgent.modifBarre(this.argent);
         this.barreDebit.modifBarre(this.debit);
+        this.barreEnvironnement.modifBarre(this.environnement);
     }
 
     logVar() {
         console.log('humeur', this.humeur);
         console.log('argent', this.argent);
         console.log('debit', this.debit);
+        console.log('environnement', this.environnement);
     }
+
     getArgentPlayer() {
         return this.argent;
     }
+
     updateArgentPlayer(nb) {
         this.argent += nb;
         this.barreArgent.modifBarre(this.argent);

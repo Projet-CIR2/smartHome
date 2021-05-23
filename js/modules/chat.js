@@ -9,7 +9,7 @@ let chat = (function () {
 
         let div = document.createElement('div');
         divChat.prepend(div);
-        div.style.borderLeft = '6px solid '+couleur;
+        div.style.borderLeft = '6px solid '+ couleur;
         div.style.paddingLeft = '3px';
 
 
@@ -43,6 +43,7 @@ let chat = (function () {
         if (event.humeur !== 0) VarGame.modifVar('humeur', event.humeur);
         if (event.argent !== 0) VarGame.modifVar('argent', event.argent);
         if (event.debit !== 0) VarGame.modifVar('debit', event.debit);
+        if (event.environnement !== 0) VarGame.modifVar('environnement', event.environnement);
     }
 
     return {

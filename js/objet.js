@@ -7,11 +7,9 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
         this.scene = scene;
         this.up = up;
         this.niveauMaJ = 0;
-        this.infosNiveauMaJ;
 
         scene.add.existing(this);
 
-        this.fillAlpha = 0;
         this.on('pointerdown', function (pointer) {
             if (stockageVar.click) this.setTint(0x87CEEB);
             else {
@@ -34,6 +32,7 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
         this.nom = this.objet.nom;
         this.niveau = 1; //niveau de l'objet
         this.infosNiveau = this.objet.niveau1; //niveau de l'objet
+        this.infosNiveauMaJ = this.objet.niveau1;
         this.coutDebit = 0; // cout en debit de l'amelioration et reparation
         this.etat = 3; // etat de l'objet il y en a 4 (bon/moyen/mauvais/casser)
         this.tmpEtat = 0; // temps avant que l'objet soit cassé

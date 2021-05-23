@@ -80,40 +80,6 @@ function preload() {
 
 
 function create() {
-    // animation levelUp
-    this.levelUp = this.physics.add.sprite(0, 0, 'levelUp');
-    this.anims.create({
-        key: 'levelUpAnim',
-        frames: 'levelUp',
-        frameRate: 14,
-        // repeat: -1,
-        // hideOnComplete: true
-    });
-    this.levelUp.displayWidth = 150;
-    this.levelUp.displayHeight = 100;
-    this.levelUp.setAlpha(0);
-    // this.levelUp.play('levelUpAnim');
-
-    // function destroy(up) {
-    //     up.play('levelUpAnim');
-    //
-    //     up.once('animationcomplete', () => {
-    //         console.log('destroy');
-    //         up.setAlpha(0);
-    //
-    //     });
-    // }
-    //
-    // destroy(this.levelUp);
-
-    // setTimeout(() => {
-    //     this.levelUp.play('levelUpAnim');
-    // }, 10000);
-    // levelUp.once('animationcomplete', () => {
-    //     console.log('destroy');
-    //     levelUp.destroy();
-    // });
-
     //matrixMap.forEach(element => element.forEach(elem => elem = 0));
     //console.log(matrixMap);
     /*button = game.add.button(game.world.centerX - 120, game.world.centerY - 120, 'button', start, this, 2, 1, 0);
@@ -198,6 +164,18 @@ function create() {
     layer3 = map.createLayer('meubles', tilesets);
     layer4 = map.createLayer('collisions', tilesets);
 
+    // animation levelUp
+    this.levelUp = this.physics.add.sprite(0, 0, 'levelUp');
+    this.anims.create({
+        key: 'levelUpAnim',
+        frames: 'levelUp',
+        frameRate: 14,
+        // repeat: -1,
+        // hideOnComplete: true
+    });
+    this.levelUp.displayWidth = 150;
+    this.levelUp.displayHeight = 100;
+    this.levelUp.setAlpha(0);
 
     let cursors = this.input.keyboard.createCursorKeys();
 
