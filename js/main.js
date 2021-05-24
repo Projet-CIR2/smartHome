@@ -57,6 +57,13 @@ function preload() {
 
     //this.load.spritesheet('perso1', '../img/perso1_45x60.png', { frameWidth: 45, frameHeight: 60 });
     this.load.spritesheet('perso1', '../img/player.png', { frameWidth: 256, frameHeight: 512 });
+    this.load.spritesheet('pere', '../img/pere.png', { frameWidth: 256, frameHeight: 512 });
+    this.load.spritesheet('mere', '../img/mere.png', { frameWidth: 256, frameHeight: 512 });
+    this.load.spritesheet('fils', '../img/fils.png', { frameWidth: 256, frameHeight: 512 });
+
+
+
+
     this.load.image('button', '../img/button.png');
 
     this.load.image('back', '../img/back.png');
@@ -160,7 +167,7 @@ function create() {
     //console.log(map);
 
     layer1 = map.createLayer('sol', tilesets);
-    layer2 = map.createLayer('walls_1', tilesets);
+    layer2 = map.createLayer('walls', tilesets);
     layer3 = map.createLayer('meubles', tilesets);
     layer4 = map.createLayer('collisions', tilesets);
 
@@ -252,16 +259,14 @@ function create() {
         repeat: -1
     });
 
+    player = new Player(this, 4,7, 0, "pere");
+    player2 = new Player(this, 7,16, 1, "mere");
+    player3 = new Player(this, 2,16, 2, "fils");
 
-    player2 = new Player(this, 2,3, 0);
-    player3 = new Player(this, 7,7, 1);
-
+    player.setPath(matrixMap, mapWidth, mapHeight)
     player2.setPath(matrixMap, mapWidth, mapHeight);
     player3.setPath(matrixMap, mapWidth, mapHeight);
 
-
-    let pos = convert([3,7]);
-    player = this.physics.add.sprite(pos[0],pos[1], 'perso1');
 
 
     monTimer = this.time.addEvent({
@@ -294,7 +299,7 @@ function update(time, delta) {
 
     controls.update(delta);
 
-
+    player.update();
     player2.update();
     player3.update();
 

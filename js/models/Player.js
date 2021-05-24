@@ -1,12 +1,12 @@
 class Player extends Phaser.Physics.Arcade.Sprite {
-    constructor(scene, x_, y_, id_){
+    constructor(scene, x_, y_, id_, perso){
 
         let pos = convert([x_,y_]);
-        super(scene, pos[0], pos[1], 'perso1');
+        super(scene, pos[0], pos[1], perso);
         this.id = id_;
         this.pos = {
-            x: x_,
-            y: y_
+            x: y_,
+            y: x_
         }
         this.destinationInter = -1;
         this.destination = -1;
@@ -15,13 +15,14 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         scene.add.existing(this);
         scene.physics.add.existing(this);
 
+        this.sprite= perso;
 
         this.initAnim();
     }
 
     setPath(matrixMap, mapWidth, mapHeight){
 
-        socket.emit('matrix', matrixMap, mapWidth, mapHeight, [this.pos.x,this.pos.y,2,11], this.id);
+        socket.emit('matrix', matrixMap, mapWidth, mapHeight, [this.pos.x,this.pos.y,10,10], this.id);
     
         socket.on('path', (path, id) => {
             if(id == this.id){
@@ -34,35 +35,37 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     }
 
     initAnim() {
+
+        console.log(this.sprite);
         this.anims.create({
             key: 'left',
-            frames: this.anims.generateFrameNumbers('perso1', { start: 0, end: 0 }),
+            frames: this.anims.generateFrameNumbers(this.sprite, { start: 0, end: 0 }),
             frameRate: 10,
             repeat: -1
     
         })
         this.anims.create({
             key: 'right',
-            frames: this.anims.generateFrameNumbers('perso1', { start: 1, end: 1 }),
+            frames: this.anims.generateFrameNumbers(this.sprite, { start: 1, end: 1 }),
             frameRate: 10,
             repeat: -1
         })
         this.anims.create({
             key: 'up',
-            frames: this.anims.generateFrameNumbers('perso1', { start: 2, end: 2 }),
+            frames: this.anims.generateFrameNumbers(this.sprite, { start: 2, end: 2 }),
             frameRate: 10,
             repeat: -1
         });
     
         this.anims.create({
             key: 'down',
-            frames: this.anims.generateFrameNumbers('perso1', { start: 3, end: 3 }),
+            frames: this.anims.generateFrameNumbers(this.sprite, { start: 3, end: 3 }),
             frameRate: 10,
             repeat: -1
         });
         this.anims.create({
             key: 'face',
-            frames: this.anims.generateFrameNumbers('perso1', { start: 3, end: 3 }),
+            frames: this.anims.generateFrameNumbers(this.sprite, { start: 3, end: 3 }),
             frameRate: 10,
             repeat: -1
         });
@@ -81,7 +84,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
 
         }
-
+        console.log(this.chemin);
         
         if (this.chemin != undefined && this.destinationInter <= this.destination) {
             let coords = this.chemin[this.destinationInter];
@@ -101,9 +104,6 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
     update(){
         this.cheminPathPlayer()
-
-        let pos = convert([2,4]);
-        //this.movePlayer(this, pos[0], pos[1]);
     }
 
     movePlayer(player, x, y) {
