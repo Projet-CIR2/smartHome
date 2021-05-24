@@ -6,6 +6,8 @@ let BTNS2 = document.getElementById("Semaine 2");
 let BTNS3 = document.getElementById("Semaine 3");
 let BTNS4 = document.getElementById("Semaine 4");
 let BTNS5 = document.getElementById("Semaine 5");
+let BTNS5 = document.getElementById("Semaine 5");
+let BTNS67 = document.getElementById("Semaine 6-7");
 
 let dFP = document.getElementById("FP");
 let dCDC = document.getElementById("CDC");
@@ -15,6 +17,7 @@ let dS2 = document.getElementById("S2");
 let dS3 = document.getElementById("S3");
 let dS4 = document.getElementById("S4");
 let dS5 = document.getElementById("S5");
+let dS67 = document.getElementById("S6-7");
 
 BTNFP.addEventListener("click", () => {
     if(dFP.style.display != "none"){
@@ -29,6 +32,7 @@ BTNFP.addEventListener("click", () => {
         dS3.style.display = "none";
         dS4.style.display = "none";
         dS5.style.display = "none";
+        dS67.style.display = "none";
     }
   });
 
@@ -45,6 +49,7 @@ BTNCDC.addEventListener("click", () => {
         dS3.style.display = "none";
         dS4.style.display = "none";
         dS5.style.display = "none";
+        dS67.style.display = "none";
     }
   });
 
@@ -61,6 +66,7 @@ BTNCDC.addEventListener("click", () => {
         dS3.style.display = "none";
         dS4.style.display = "none";
         dS5.style.display = "none";
+        dS67.style.display = "none";
     }
   });
 
@@ -77,6 +83,7 @@ BTNCDC.addEventListener("click", () => {
         dS3.style.display = "none";
         dS4.style.display = "none";
         dS5.style.display = "none";
+        dS67.style.display = "none";
     }
   });
 
@@ -93,6 +100,7 @@ BTNCDC.addEventListener("click", () => {
         dS3.style.display = "none";
         dS4.style.display = "none";
         dS5.style.display = "none";
+        dS67.style.display = "none";
     }
   });
 
@@ -109,6 +117,7 @@ BTNCDC.addEventListener("click", () => {
         dS1.style.display = "none";
         dS4.style.display = "none";
         dS5.style.display = "none";
+        dS67.style.display = "none";
     }
   });
 
@@ -125,6 +134,7 @@ BTNCDC.addEventListener("click", () => {
         dS3.style.display = "none";
         dS1.style.display = "none";
         dS5.style.display = "none";
+        dS67.style.display = "none";
     }
   });
 
@@ -141,5 +151,23 @@ BTNCDC.addEventListener("click", () => {
         dS3.style.display = "none";
         dS4.style.display = "none";
         dS1.style.display = "none";
+        dS67.style.display = "none";
+    }
+  });
+
+  BTNS67.addEventListener("click", () => {
+    if(dS67.style.display != "none"){
+      //nothing
+    } 
+    else {
+        dS67.style.display = "block";
+        dFP.style.display = "none";
+        dCDC.style.display = "none";
+        dLEF.style.display = "none";
+        dS2.style.display = "none";
+        dS3.style.display = "none";
+        dS4.style.display = "none";
+        dS1.style.display = "none";
+        dS5.style.display = "none";
     }
   });

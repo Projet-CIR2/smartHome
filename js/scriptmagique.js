@@ -28,6 +28,7 @@ let scriptMagique = (function () {
             majup.appendChild(div);
             div.setAttribute('id', 'd_MaJ');
             div.setAttribute('style', 'display: block; height: 55vh; overflow: auto;background-color: #A09E97;');
+
         },
 
         clickUpgrade () {

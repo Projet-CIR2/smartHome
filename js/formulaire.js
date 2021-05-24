@@ -102,6 +102,8 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 let pAchatHTML = document.getElementById('achatTxt');
                 let imgHTML = document.getElementById('image');
                 let pClickHTML = document.getElementById('pClick');
+                let cash = document.querySelector('#cash')
+                console.log(cash);
 
                 if (afficheAchat.childElementCount === 3) {
                     afficheAchat.removeChild(imgHTML);
@@ -112,6 +114,7 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 afficheAchat.appendChild(img);
                 afficheAchat.appendChild(pAchat);
                 afficheAchat.appendChild(pClick);
+                cash.play();
             }
         }
     } else {
