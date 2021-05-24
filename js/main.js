@@ -51,12 +51,12 @@ function preload() {
 
     this.load.image('tempHouse', '../img/tqt.png');
 
+
+    /*------------- LOAD MAPS -------------*/
     this.load.tilemapTiledJSON('map', '../testPathfinding/map1.json');
-    //this.load.tilemapTiledJSON('map', '../testPathfinding/newmaptest.json');
     this.load.image('tiles', '../testPathfinding/newtiles.png');
 
-    //this.load.spritesheet('perso1', '../img/perso1_45x60.png', { frameWidth: 45, frameHeight: 60 });
-    this.load.spritesheet('perso1', '../img/player.png', { frameWidth: 256, frameHeight: 512 });
+    /*------------- LOAD SPRITES -------------*/
     this.load.spritesheet('pere', '../img/pere.png', { frameWidth: 256, frameHeight: 512 });
     this.load.spritesheet('mere', '../img/mere.png', { frameWidth: 256, frameHeight: 512 });
     this.load.spritesheet('fils', '../img/fils.png', { frameWidth: 256, frameHeight: 512 });
@@ -67,6 +67,8 @@ function preload() {
     this.load.image('button', '../img/button.png');
 
     this.load.image('back', '../img/back.png');
+
+    /*------------- LOAD OBJECTS -------------*/
 
     this.load.image('Télé', '../tiled/New/salon/tv1.png');
     this.load.image('Boxinternet', '../tiled/New/salon/box1.png');
@@ -107,11 +109,7 @@ function create() {
     cursors2.P.onDown.add(goFull, this);*/
 
 
-    J2Haut = this.input.keyboard.addKey('Z');
-    J2Bas = this.input.keyboard.addKey('S');
-    J2Gauche = this.input.keyboard.addKey('Q');
-    J2Droite = this.input.keyboard.addKey('D');
-
+    /*------------- INITIALISATION MAP -------------*/
     map = this.add.tilemap('map');
 
     mapWidth = map.width;
@@ -121,13 +119,12 @@ function create() {
     for (let i = 0; i < mapHeight; i++) {
         matrixMap[i] = new Array(mapWidth);
     }
-    console.log(map);
-    let coucou = map.layers[3].data;
-    console.log(matrixMap);
+
+    let collisions = map.layers[3].data;
 
     for (let u = 0; u < mapHeight; u++) {
         for (let v = 0; v < mapWidth; v++) {
-            if (coucou[u][v].index == -1) {
+            if (collisions[u][v].index == -1) {
                 matrixMap[u][v] = 0;
             }
             else {
@@ -135,25 +132,6 @@ function create() {
             }
         }
     }
-
-
-
-    socket.emit('matrix', matrixMap, mapWidth, mapHeight, [7,3,2,11], 2);
-    
-    socket.on('path', (path, id) => {
-        console.log(id);
-        if(id == 2){
-        chemin = path;
-        console.log(path);
-        cheminSize = path.length;
-        }
-    });
-
-
-
-
-
-    collisions = this.physics.add.staticGroup();
 
     //clickImg = this.add.sprite(0, 0, 'tempHouse');
     //clickImg.setInteractive();
@@ -163,8 +141,11 @@ function create() {
 
     // click(button);
 
+
+    
+    /*------------- INITIALISATION TILES/LAYERS -------------*/
+    
     let tilesets = map.addTilesetImage('tiles', 'tiles');
-    //console.log(map);
 
     layer1 = map.createLayer('sol', tilesets);
     layer2 = map.createLayer('walls', tilesets);
@@ -201,8 +182,6 @@ function create() {
 
     controls = new Phaser.Cameras.Controls.SmoothedKeyControl(controlConfig);
 
-
-
     let polygon;
     for (let y = 0; y < layer1.layer.data.length; y++) {
         for (let x = 0; x < layer1.layer.data[0].length; x++) {
@@ -226,38 +205,9 @@ function create() {
     // let polygon = new Phaser.Geom.Polygon('0 66 0 223 129 159 129 0');
     // this.physics.add.existing(polygon);
 
-    this.anims.create({
-        key: 'left',
-        frames: this.anims.generateFrameNumbers('perso1', { start: 0, end: 0 }),
-        frameRate: 10,
-        repeat: -1
-
-    })
-    this.anims.create({
-        key: 'right',
-        frames: this.anims.generateFrameNumbers('perso1', { start: 1, end: 1 }),
-        frameRate: 10,
-        repeat: -1
-    })
-    this.anims.create({
-        key: 'up',
-        frames: this.anims.generateFrameNumbers('perso1', { start: 2, end: 2 }),
-        frameRate: 10,
-        repeat: -1
-    });
-
-    this.anims.create({
-        key: 'down',
-        frames: this.anims.generateFrameNumbers('perso1', { start: 3, end: 3 }),
-        frameRate: 10,
-        repeat: -1
-    });
-    this.anims.create({
-        key: 'face',
-        frames: this.anims.generateFrameNumbers('perso1', { start: 3, end: 3 }),
-        frameRate: 10,
-        repeat: -1
-    });
+    
+    
+    /*------------- INITIALISATION HABITANTS -------------*/
 
     player = new Player(this, 4,7, 0, "pere");
     player2 = new Player(this, 7,16, 1, "mere");
@@ -303,10 +253,6 @@ function update(time, delta) {
     player2.update();
     player3.update();
 
-
-    cheminPath();
-
-
     // let pointer = this.input.activePointer;
 
     // text.setText([
@@ -351,100 +297,6 @@ function calculPixelY(y) {
     return test2;
 
 }
-
-function movePlayer2(player, x, y) {
-
-    let speedX = 50;
-    let speedY = speedX/2
-
-    player.body.velocity.x = 0;
-    player.body.velocity.y = 0;
-
-    let playerXRound = Math.round(player.x);
-    let playerYRound = Math.round(player.y);
-
-    let marge = 2;
-
-    if (playerXRound < x-marge || playerXRound > x+marge || playerYRound < y-marge || playerYRound > y +marge) {
-
-        if (playerXRound > x && playerYRound >y) {
-            player.body.velocity.x -= speedX;
-            player.body.velocity.y -= speedY;
-            player.anims.play('left');
-            lastDirection = 0;
-
-        }
-        if (playerXRound < x && playerYRound < y) {
-            player.body.velocity.x += speedX;
-            player.body.velocity.y += speedY
-            player.anims.play('right');
-            lastDirection = 1;
-
-
-        }
-        if (playerYRound > y && playerXRound < x) {
-            player.body.velocity.y -= speedY;
-            player.body.velocity.x += speedX;
-
-            player.anims.play('up');
-            lastDirection = 2;
-
-        }
-        if (playerYRound < y && playerXRound > x) {
-            player.body.velocity.y += speedY;
-            player.body.velocity.x -= speedX;
-
-            player.anims.play('down');
-            lastDirection = 3;
-
-        }
-    }
-    else {
-        player.anims.stop();
-        player.x = x;
-        player.y = y;
-        switch(lastDirection){
-            case 0:
-                player.anims.play('left');
-                break;
-            case 1:
-                player.anims.play('right');
-                break;
-            case 2 :
-                player.anims.play('up');
-                break;
-            case 3:
-                player.anims.play('down');
-                break;
-            default:
-                player.anims.play('down');
-                break;
-
-        }
-        return 1;
-    }
-}
-
-
-function cheminPath() {
-    let x, y;
-    if (destination == -1 && cheminSize >= 1) {
-        destination = cheminSize-1;
-        destinationInter = 0;
-    }
-    if (chemin != undefined && destinationInter <= destination) {
-        let coords = chemin[destinationInter];
-        x = coords[1];
-        y = coords[0];
-
-
-        let pos = convert([x,y]);
-        if (movePlayer2(player,pos[0],pos[1])) {
-            if (destinationInter < cheminSize) destinationInter++;
-        }
-    }
-}
-
 
 
 

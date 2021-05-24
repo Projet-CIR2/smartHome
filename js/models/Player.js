@@ -189,9 +189,6 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
 
 
-
-
-
 function convert([x, y]) {
     let posX = 135 +x*128 - y * 128;
     let posY = 280 + y* 64 + x*64;
