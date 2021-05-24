@@ -55,7 +55,6 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
         this.coutAmelioration = monModule.rand(objet.niveau1.coutAmelioration, objet.niveau1.coutAmelioration + 15);
         this.tmpAmelioration = monModule.rand(objet.niveau1.tempsAmelioration, objet.niveau1.tempsAmelioration + 5);
 
-        this.barre = new Barre(this.scene, this.graphics, this.objet, 100, 678, 89);
     }
 
     preview() {
@@ -149,6 +148,7 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
     }
 
     levelUp() {
+       
         if (this.niveau <= 3) {
             this.niveau++;
             this.verifMaJ = false;
@@ -192,5 +192,8 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
     }
     getNiveau() {
         return this.niveau;
+    }
+    addBarre()  {
+        this.barre = new Barre(this.scene, this.graphics, this.objet, 100, this.x, this.y);
     }
 }

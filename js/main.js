@@ -133,7 +133,7 @@ function create() {
         }
     }
 
-    //clickImg = this.add.sprite(0, 0, 'tempHouse');
+    //let test = this.add.sprite(609, 624, 'tempHouse');
     //clickImg.setInteractive();
 
     // let button = this.add.sprite(500, 500, 'button');
@@ -193,7 +193,7 @@ function create() {
         }
     }
     let obj;
-    let graphics = this.add.graphics({ lineStyle: { width: 2, color: 0x0000aa }, fillStyle: { color: 0x008800 } });
+    graphics = this.add.graphics({ fillStyle: { width: 15, color: 0x00ff00 } });
 
     for(let y of infoObjet){
       obj = new Objet(y,this,-1000,-1000, graphics, this.levelUp);
@@ -241,11 +241,13 @@ function compteUneSeconde () {
 
 function update(time, delta) {
 
+    
     for (let objet of stockageObj) {
         if (objet.barre !== undefined) {
-            objet.barre.modifBarre(chrono);
+           //objet.barre.modifBarre(chrono);
         }
     }
+    
 
     controls.update(delta);
 

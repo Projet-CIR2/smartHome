@@ -84,7 +84,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
 
         }
-        console.log(this.chemin);
+        //console.log(this.chemin);
         
         if (this.chemin != undefined && this.destinationInter <= this.destination) {
             let coords = this.chemin[this.destinationInter];

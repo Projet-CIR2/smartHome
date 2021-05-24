@@ -12,13 +12,17 @@ let debitModif = (function() {
 })();
 
 class timee {
-    constructor(time, elmtName, cacher, cacher2) {
+    constructor(time, elmtName, cacher, cacher2, element) {
         this.timeMaJ = time;
         this.elmt = elmtName;
         this.myVar;
         this.verif = false;
         this.cacher = cacher;
         this.cacher2 = cacher2;
+        this.element = element;
+        this.maxTime = time;
+
+        element.addBarre();
     }
     getElmt() {
         return this.elmt;
@@ -27,13 +31,14 @@ class timee {
         (this.cacher).setAttribute('style','display: none');
         (this.cacher2).setAttribute('style','display: none');
         document.getElementById("bip"+this.elmt).innerHTML = "MaJ en cours : " + this.timeMaJ + " secondes restantes ...";
-        this.dec(this.elmt, this.timeMaJ, this.myVar, this.verif, this.cacher, this.cacher2);
+        this.dec(this.elmt, this.timeMaJ, this.myVar, this.verif, this.cacher, this.cacher2, this.element, this.maxTime);
     }
     setTime(nb) {
         this.timeMaJ = nb;
     }
-    dec(elmt, time, myVar, verif, cacherachat, cachermaJ) {
+    dec(elmt, time, myVar, verif, cacherachat, cachermaJ, element, maxTime) {
         this.myVar = setInterval(function() {
+            element.barre.modifBarre(time-1,maxTime);
             time--;
             if(time <= 0) {
                 if(document.getElementById("bip"+elmt) != null && verif == false) {

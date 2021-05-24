@@ -140,10 +140,8 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 if(boutton != undefined) {
                     let cacherbutton = document.getElementById('achatButton');
                     let cacherbutton2 = document.getElementById('achatMaJ');
-
                     
-
-                    let chrono = new timee(tmp, element.nom, cacherbutton, cacherbutton2);
+                    let chrono = new timee(tmp, element.nom, cacherbutton, cacherbutton2, element);
                     chrono.start();
                     
                     debitModif.setDebit(element.infosNiveauMaJ.coutDebit);
