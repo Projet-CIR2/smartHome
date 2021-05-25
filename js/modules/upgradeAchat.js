@@ -111,6 +111,6 @@ let achat = (function() {
         },
         setDataMaJ(val) {
             dataMaj.push(val);
-        }
+        },
     }
 })();

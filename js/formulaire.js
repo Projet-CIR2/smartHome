@@ -109,7 +109,7 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 let affichageAchatChat = document.getElementById('chat');
                 let div = document.createElement('div');
                 let txtChat = document.createElement('p');
-                txtChat.innerHTML = "Vous venez d'acheter " + element.nom + " Niveau : " + element.niveauMaJ;
+                txtChat.innerHTML = "Vous venez d'acheter " + element.nom + " Niveau : " + element.niveau;
                 div.setAttribute('style', 'color: green; border-left : 6px solid green; padding-left : 3px; ');
                 div.appendChild(txtChat);
                 affichageAchatChat.prepend(div);

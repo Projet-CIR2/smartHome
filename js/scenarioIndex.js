@@ -1,4 +1,5 @@
 let gameView;
+
 socket.on('scena', (elmt) => {
     let chat = document.getElementById('chat');
     chat.setAttribute('style', 'font-size: 12px;');
@@ -35,4 +36,3 @@ socket.on('scena', (elmt) => {
     VarGame.initView(gameView, 1);
 });
 
-    

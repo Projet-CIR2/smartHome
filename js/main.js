@@ -47,6 +47,8 @@ let stockageObj = [];
 
 let levelUp, MaJUp;
 
+let tabObjNivMax =  [];
+
 function preload() {
 
     this.load.image('tempHouse', '../img/tqt.png');
@@ -287,22 +289,21 @@ function create() {
     // });
 
     this.sound.play('music');
-
 }
 
 function compteUneSeconde () {
     chrono= chrono-1; // on incremente le chronometre d'une unite
 }
 
-function update(time, delta) {
 
-    
+function update(time, delta) {    
     for (let objet of stockageObj) {
-        if (objet.barre !== undefined) {
-           //objet.barre.modifBarre(chrono);
+        if(objet.niveau === 3) {
+            tabObjNivMax.push(objet.nom);
         }
     }
-    
+
+    gameView.verifWin(tabObjNivMax);
 
     controls.update(delta);
 
