@@ -123,7 +123,7 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 afficheAchat.appendChild(img);
                 afficheAchat.appendChild(pAchat);
                 afficheAchat.appendChild(pClick);
-                soundCash.play();
+                soundCash.play().then();
             }
         }
     } else {
