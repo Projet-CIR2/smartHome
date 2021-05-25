@@ -99,34 +99,6 @@ let json = {
     ],
 
 
-
-
-    ameliorations: {
-        camera: [
-            "amélioration nv2",
-            "amélioration nv3",
-            "amélioration nv4",
-            "amélioration nv5"
-        ],
-
-        ordi: [
-            "amélioration nv2",
-            "amélioration nv3",
-            "amélioration nv4",
-            "amélioration nv5"
-        ],
-
-        objet: [
-            "amélioration nv2",
-            "amélioration nv3",
-            "amélioration nv4",
-            "amélioration nv5"
-        ],
-
-
-    },
-
-
     argent: [
         "vous n'avez pas assez de fond pour cette améliorations",
         "Vous voulez gagné de l'argent?",
@@ -135,9 +107,9 @@ let json = {
 
 
     events: [
-        "Alerte attentat dans le centre ville",
+        "Il faut que j'aille travailler",
         "Le monde en pleure après la mort de Johnny Hallyday",
-        "Le tour de france passerat par Sarlat cette année",
+        "Le tour de france passerat par Brest cette année",
         "C'est l'équipe de france qui as gagné la coupe du monde de foot en 2018",
         "Les serveur d'OVH réduit en cendre",
         "Le covid fais toujours plus de victimes",
@@ -152,39 +124,42 @@ let json = {
         "J'ai besoin de me changer les idées",
         "On est bien ici",
         "Pour les vacances partez à la plage",
-        "",
-        "",
-        ""
+        "Le président va bientot faire un discour",
+        "Ma maison est vraiment belle",
+        "Le temps est vraiment magnifique",
+        "J'ai besoin de me reposer",
+        "Les plantes sont vraiment magnifique",
+        "Une balade au parc me ferais du bien"
     ],
 
 
     evenements_important: {
         positif: [
-            {description: "Vous trouver de l'argent", argent: 5, debit: 0, humeur: 0},
-            {description: "Votre débit fonctionne particulièrement bien", argent: 0, debit: 5, humeur: 0},
-            {description: "Erreur de la banque en votre faveur", argent: 20, debit: 0, humeur: 0},
-            {description: "Vous avez gagnez le premier prix de beauter", argent: 5, debit: 0, humeur: 5},
-            {description: "C'est votre anniversaire vous recevez de l'argent", argent: 10, debit: 0, humeur: 0},
-            {description: "Votre nouvelle entreprise obtient un gros bénéfice", argent: 15, debit: 0, humeur: 0},
-            {description: "Le débit de votre maison est très bon aujourd'huidd", argent: 0, debit: 5, humeur: 0},
-            {description: "gain de débit", argent: 0, debit: 5, humeur: 0},
-            {description: "gain de débit", argent: 0, debit: 5, humeur: 0},
-            {description: "gain de débit", argent: 0, debit: 5, humeur: 0},
-            {description: "gain de débit", argent: 0, debit: 5, humeur: 0}
+            {description: "Vous trouver de l'argent", argent: 5, debit: 0, humeur: 0, environnement: 0},
+            {description: "Votre débit fonctionne particulièrement bien", argent: 0, debit: 5, humeur: 0, environnement: 0},
+            {description: "Erreur de la banque en votre faveur", argent: 20, debit: 0, humeur: 0, environnement: 0},
+            {description: "Vous avez gagnez le premier prix de beauter", argent: 10, debit: 0, humeur: 5, environnement: 0},
+            {description: "C'est votre anniversaire vous recevez de l'argent", argent: 15, debit: 0, humeur: 0, environnement: 0},
+            {description: "Votre nouvelle entreprise obtient un gros bénéfice", argent: 25, debit: 0, humeur: 0, environnement: 0},
+            {description: "Le débit de votre maison est très bon aujourd'huidd", argent: 0, debit: 5, humeur: 0, environnement: 0},
+            {description: "La ville veut ouvrir un parc près de chez vous", argent: 0, debit: 0, humeur: 0, environnement: 10},
+            {description: "Les zones vertes près de chez vous on été rénover", argent: 0, debit: 0, humeur: 0, environnement: 15},
+            {description: "Votre famille vous rend visite à l'improviste", argent: 0, debit: 0, humeur: 10, environnement: 0},
+            {description: "Vous obtenez une offre de votre fournisseur internet", argent: 0, debit: 15, humeur: 0, environnement: 0}
         ],
 
         negatif: [
-            {description: "Vous avez perdu votre argent durant votre balade", argent: -5, debit: 0, humeur: 0},
-            {description: "Votre fournisseur internet a des problemes", argent: 0, debit: -15, humeur: 0},
-            {description: "La banque est en faillite!", argent: -20, debit: 0, humeur: 0},
-            {description: "Votre jardin a été sacagé par un chien", argent: 0, debit: 0, humeur: -5},
-            {description: "Votre box internet a des problemes", argent: 0, debit: -10, humeur: 0},
-            {description: "Vous devez payer des intérêts", argent: -10, debit: 0, humeur: 0},
-            {description: "Votre investisement n'as pas porté ses fruits", argent: -20, debit: 0, humeur: 0},
-            {description: "perte de débit", argent: 0, debit: -5, humeur: 0},
-            {description: "perte de débit", argent: 0, debit: -5, humeur: 0},
-            {description: "perte de débit", argent: 0, debit: -5, humeur: 0},
-            {description: "perte de débit", argent: 0, debit: -5, humeur: 0}
+            {description: "Vous avez perdu votre argent durant votre balade", argent: -5, debit: 0, humeur: 0, environnement: 0},
+            {description: "Votre fournisseur internet a des problemes", argent: 0, debit: -15, humeur: 0, environnement: 0},
+            {description: "La banque est en faillite!", argent: -20, debit: 0, humeur: 0, environnement: 0},
+            {description: "Un chien a fais ses besoins dans mon jardin", argent: 0, debit: 0, humeur: -5, environnement: 0},
+            {description: "Votre box internet a des problemes", argent: 0, debit: -10, humeur: 0, environnement: 0},
+            {description: "Vous devez payer des intérêts", argent: -10, debit: 0, humeur: 0, environnement: 0},
+            {description: "Votre investisement n'as pas porté ses fruits", argent: -20, debit: 0, humeur: 0, environnement: 0},
+            {description: "Des enfants on saccager votre jardin", argent: 0, debit: 0, humeur: 0, environnement: -10},
+            {description: "La ville veut construire un nouveau batiment à la place de ce parc", argent: 0, debit: 0, humeur: 0, environnement: -15},
+            {description: "Votre maison a été endomagé par la tempete", argent: 0, debit: 0, humeur: -10, environnement: 0},
+            {description: "Vos nouveaux voisin ne vous laisse pas vivre tranquillement", argent: 0, debit: 0, humeur: -10, environnement: 0}
         ]
     },
 }
