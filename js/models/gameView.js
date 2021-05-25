@@ -57,6 +57,13 @@ class GameView {
         // this.logVar();
     }
 
+    argentBonheur(){
+        if (this.argent <= 0){
+            let x = this.argent - 50;
+            this.bonheur += Math.sqrt(x) * this.difficulte;
+        }
+    }
+
     logVar() {
         console.log('humeur', this.humeur);
         console.log('argent', this.argent);

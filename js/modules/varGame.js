@@ -18,6 +18,9 @@ let VarGame = (function () {
             setInterval(() => {
                 view.modifVar('argent', -20 * view.difficulte);
             }, 300000);
+            setInterval(() => {
+                view.argentBonheur();
+            }, 300000);
         },
     }
 }) ();
