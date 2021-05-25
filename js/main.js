@@ -143,6 +143,12 @@ function create() {
 
 
     
+
+
+
+
+    
+
     /*------------- INITIALISATION TILES/LAYERS -------------*/
     
     let tilesets = map.addTilesetImage('tiles', 'tiles');

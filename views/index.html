@@ -29,6 +29,7 @@
     <script type="text/javascript" src="../js/models/Player.js"></script>
     <script type="text/javascript" src="../js/scriptmagique.js"></script>
     <script type="text/javascript" src="../js/models/Polygon.js"></script>
+
 </head>
 
 <body onClick="coord(event)">
@@ -72,6 +73,11 @@
 
 <div class="container-fluid">
 
+    <script>
+        let music = new Audio('../img/musiquejeu.mp3');
+        music.play();
+    </script>
+
     <div class="row">
         <script> let socket = io();</script>
         <div class="col-sm-8" id="game_page" style="background-color: black; margin-left: -15px; margin-right: 15px">
@@ -97,7 +103,6 @@
                     </div>
 
                     <div id="d_MaJ" style="display: block; height: 55vh; overflow: auto;background-color: #A09E97;">
-                        <audio controls="controls" id="cash" src="/img/cash.mp3" style="display: none;"></audio>
                     </div>
                 </div>
 
@@ -175,5 +180,6 @@
 
     scriptMagique.initEvent();
 </script>
+
 </body>
 </html>

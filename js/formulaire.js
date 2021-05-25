@@ -102,9 +102,9 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 let pAchatHTML = document.getElementById('achatTxt');
                 let imgHTML = document.getElementById('image');
                 let pClickHTML = document.getElementById('pClick');
-                let cash = document.querySelector('#cash')
-                console.log(cash);
 
+                let soundCash = new Audio('../img/cash.mp3');
+                
                 if (afficheAchat.childElementCount === 3) {
                     afficheAchat.removeChild(imgHTML);
                     afficheAchat.removeChild(pAchatHTML);
@@ -114,7 +114,7 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 afficheAchat.appendChild(img);
                 afficheAchat.appendChild(pAchat);
                 afficheAchat.appendChild(pClick);
-                cash.play();
+                soundCash.play();
             }
         }
     } else {

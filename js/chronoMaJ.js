@@ -46,6 +46,8 @@ class timee {
                     cacherachat.setAttribute('style','display: block; font-size: 14px;color: black;background: #BFB99E; border: 5px solid black; border-top-right-radius: 20px; border-bottom-right-radius: 20px;');
                     cachermaJ.setAttribute('style', 'display: block; font-size: 14px;color: black;background: #BFB99E; border: 5px solid black; border-top-left-radius: 20px; border-bottom-left-radius: 20px;');
                     verif = true;
+                    let soundMAJ = new Audio('../img/MAJ.mp3');
+                    soundMAJ.play();
                 }
                 clearInterval(myVar);
             }
