@@ -7,7 +7,7 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
         this.scene = scene;
         this.up = up;
         this.MaJup = majup;
-        this.niveauMaJ = 0
+        this.niveauMaJ = 0;
 
         this.infosNiveauMaJ;
         this.verifMaJ = false;
@@ -230,7 +230,9 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
     }
 
     finBarre() {
-        this.barre.destroy();
-        this.barre.graphics.destroy();
+        // this.barre.destroy();
+        // this.barre.graphics.destroy();
+        // this.barre.graphics.alpha = 0;
+        this.barre.barre.destroy();
     }
 }

@@ -45,9 +45,11 @@ let stockageVar = {
 
 let stockageObj = [];
 
-let levelUp, MaJUp;
+let levelUp, MaJUp, graphics;
 
 let tabObjNivMax =  [];
+
+let nbBarre = 0;
 
 function preload() {
 
@@ -245,7 +247,9 @@ function create() {
         }
     }
     let obj;
-    graphics = this.add.graphics({ fillStyle: { width: 15, color: 0x00ff00 } });
+
+    graphics = [];
+    for (let i = 0; i < 1000; i++) graphics.push(this.add.graphics({ fillStyle: { width: 15, color: 0xff0000 } }));
 
     for(let y of infoObjet){
       obj = new Objet(y,this,-1000,-1000, graphics, this.levelUp, this.MaJUp);
