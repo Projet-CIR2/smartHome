@@ -263,7 +263,7 @@ function create() {
     for(let i =0; i< nbHabitants; i++){
         let x = getRandomNumberBetween(0, pointsInteret.length-1);
         hab[i] = new Player(this, pointsInteret[x].x, pointsInteret[x].y, i, i.toString());
-        hab[i].setPath(matrixMap, mapWidth, mapHeight, pointsInteret);
+        hab[i].setVars(matrixMap, mapWidth, mapHeight, pointsInteret);
 
     }
 

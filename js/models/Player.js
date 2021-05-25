@@ -18,22 +18,31 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.sprite= perso;
 
         this.initAnim();
+        this.varStop = true;
     }
 
-    setPath(matrixMap, mapWidth, mapHeight, points){
-
+    setVars(matrixMap, mapWidth, mapHeight, points){
         this.pointInteret = points;
         this.matrixMap = matrixMap;
         this.mapHeight = mapHeight;
         this.mapWidth = mapWidth;
-        let x = getRandomNumberBetween(0, points.length-1);
-        socket.emit('matrix', matrixMap, mapWidth, mapHeight, [this.pos.x,this.pos.y,this.pointInteret[x].x,this.pointInteret[x].y], this.id);
+    }
+
+    setPath(){
+
+        
+        let x = getRandomNumberBetween(0, this.pointInteret.length-1);
+        socket.emit('matrix', this.matrixMap, this.mapWidth, this.mapHeight, [this.pos.x,this.pos.y,this.pointInteret[x].x,this.pointInteret[x].y], this.id);
     
         socket.on('path', (path, id) => {
             if(id == this.id){
+               
                 this.chemin = path;
                 this.cheminSize = path.length;
-                this.walk = true;
+                this.destination = this.cheminSize-1;
+                this.destinationInter = 1;
+                console.log("this.chemin");
+
             }
           
     
@@ -91,21 +100,24 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         }
         
         if (this.chemin != undefined && this.destinationInter <= this.destination && this.chemin.length >= 1) {
+
+            this.varStop = true;
             let coords = this.chemin[this.destinationInter];
             x = coords[1];
             y = coords[0];
-            this.pos.x = x;
-            this.pos.y =y;
             
             let pos = convert([x,y]);
             let a;
             if (a=this.movePlayer(this,pos[0],pos[1])) {
                 if (this.destinationInter < this.cheminSize) this.destinationInter++;
+                this.pos.x = x;
+                this.pos.y = y;
             }
             this.walk = true;
         }
         else{
             this.walk = false;
+            this.setPath();
         }
        
     }
@@ -113,12 +125,13 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     
 
     update(){
-        if(this.walk)this.cheminPathPlayer()
-        //else(this.setPath(this.matrixMap, this.mapWidth, this.mapHeight, this.pointInteret));
+
+        this.cheminPathPlayer()
+        
     }
 
     movePlayer(player, x, y) {
-        let speedX = 50;
+        let speedX = 100;
         let speedY = speedX/2
     
         player.body.velocity.x = 0;
