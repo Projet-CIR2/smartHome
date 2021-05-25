@@ -11,7 +11,7 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
 
         this.infosNiveauMaJ;
         this.verifMaJ = false;
-        
+
         scene.add.existing(this);
 
         this.on('pointerdown', function (pointer) {
@@ -149,7 +149,7 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
     }
 
     levelUp() {
-       
+
         if (this.niveau <= 3) {
             this.niveau++;
             this.verifMaJ = false;
@@ -164,7 +164,7 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
                     break;
             }
         }
-        switch(this.niveauMaJ) {
+        switch (this.niveauMaJ) {
             case 0:
                 this.infosNiveauMaJ = this.objet.niveau1;
                 break;
@@ -174,7 +174,7 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
             case 2:
                 this.infosNiveauMaJ = this.objet.niveau3;
                 break;
-            default: 
+            default:
                 break;
         }
         this.animUp();
@@ -182,14 +182,11 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
 
     animUp(boucle) {
         this.up.setAlpha(1);
-        // this.up.anims.restart();
-        this.up.x = this.x+10;
-        this.up.y = this.y-150;
-        console.log("anim ", this.up.x, this.up.y);
+        this.up.x = this.x + 10;
+        this.up.y = this.y - 150;
 
         this.up.play('levelUpAnim');
         this.up.once('animationcomplete', () => {
-            console.log('fini');
             this.up.setAlpha(0);
             if (boucle === undefined) this.animUp(true);
         });
@@ -197,16 +194,16 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
 
     animMaJUp(tempsMaj, boucle) {
         this.MaJup.setAlpha(1);
-        
-        this.MaJup.x = this.x+10;
-        this.MaJup.y = this.y-150;
+
+        this.MaJup.x = this.x + 10;
+        this.MaJup.y = this.y - 150;
 
         this.MaJup.play('MaJUpAnim');
         this.MaJup.once('animationcomplete', () => {
             this.MaJup.setAlpha(0);
             if (boucle <= tempsMaj || boucle === undefined) {
                 this.animMaJUp(tempsMaj, (boucle === undefined) ? 0 : boucle++);
-            } 
+            }
         });
     }
 
@@ -214,24 +211,12 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
         return this.niveau;
     }
 
-    addBarre()  {
+    addBarre() {
         this.barre = new Barre(this.scene, this.graphics, this.objet, 100, this.x, this.y);
     }
 
     finBarre() {
-        console.log('fin');
-
-
         this.barre.destroy();
         this.barre.graphics.destroy();
-        // this.barre.setPos(0, 0);
-
-        // console.log(this.barre.x, this.barre.y);
-        // this.barre.setPosition(0, 0);
-        // console.log(this.barre.x, this.barre.y);
-
-        // console.log(this.barre.alpha);
-        // this.barre.setAlpha(0);
-        // console.log(this.barre.alpha);
     }
 }
