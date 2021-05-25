@@ -46,7 +46,12 @@ let chat = (function () {
         // on modifie les valeurs du jeu
         if (event.humeur !== 0) gameView.modifVar('humeur', event.humeur);
         if (event.argent !== 0) gameView.modifVar('argent', event.argent);
-        if (event.debit !== 0) gameView.modifVar('debit', event.debit);
+        if (event.debit !== 0) {
+            gameView.modifVar('debit', event.debit);
+            setInterval(() => {
+                gameView.modifVar('debit', -1 * event.debit);
+            }, 30000);
+        }
         if (event.environnement !== 0) gameView.modifVar('environnement', event.environnement);
     }
 
