@@ -143,9 +143,10 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                     
                     let chrono = new timee(tmp, element.nom, cacherbutton, cacherbutton2, element);
                     chrono.start();
-                    
-                    debitModif.setDebit(element.infosNiveauMaJ.coutDebit);
-                    debitModif.start();
+
+                    gameView.modifVar('debit', -element.infosNiveauMaJ.coutDebit)
+                    // debitModif.setDebit(element.infosNiveauMaJ.coutDebit);
+                    // debitModif.start();
     
                     element.niveauMaJ++;
                     element.verifMaJ = true;

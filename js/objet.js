@@ -193,10 +193,29 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
             if (boucle === undefined) this.animUp(true);
         });
     }
+
     getNiveau() {
         return this.niveau;
     }
+
     addBarre()  {
         this.barre = new Barre(this.scene, this.graphics, this.objet, 100, this.x, this.y);
+    }
+
+    finBarre() {
+        console.log('fin');
+
+
+        this.barre.destroy();
+        this.barre.graphics.destroy();
+        // this.barre.setPos(0, 0);
+
+        // console.log(this.barre.x, this.barre.y);
+        // this.barre.setPosition(0, 0);
+        // console.log(this.barre.x, this.barre.y);
+
+        // console.log(this.barre.alpha);
+        // this.barre.setAlpha(0);
+        // console.log(this.barre.alpha);
     }
 }
