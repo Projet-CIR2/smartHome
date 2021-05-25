@@ -2,7 +2,9 @@ let infoObjet = [
   {
     nom: "Frigo",
     niveau0:{
+      environnement: -20,
       prix:750
+
     },
 
     niveau1: {
@@ -10,7 +12,7 @@ let infoObjet = [
       coutDebit: 25,
       tempsEtat: 90,
       bonheur: 3,
-      environnement: -20,
+      environnement: 5,
 
       coutReparation: 600,
       tempsReparation: 15,
@@ -46,6 +48,7 @@ let infoObjet = [
   {
     nom: "Fauteuil",
     niveau0:{
+      environnement: -20,
       prix:250
     },
 
@@ -54,7 +57,7 @@ let infoObjet = [
       coutDebit: 20,
       tempsEtat: 60,
       bonheur: 2,
-      environnement: -20,
+      environnement: 5,
 
       coutReparation: 125,
       tempsReparation: 10,
@@ -89,6 +92,7 @@ let infoObjet = [
   {
     nom: "Gazinière",
     niveau0:{
+      environnement: -20,
       prix:400
     },
 
@@ -97,7 +101,7 @@ let infoObjet = [
       coutDebit: 20,
       tempsEtat: 60,
       bonheur: 2,
-      environnement: -20,
+      environnement: 5,
 
       coutReparation: 200,
       tempsReparation: 10,
@@ -132,6 +136,7 @@ let infoObjet = [
   {
     nom: "Radiateur",
     niveau0:{
+      environnement: -20,
       prix:200
     },
 
@@ -140,7 +145,7 @@ let infoObjet = [
       coutDebit: 20,
       tempsEtat: 60,
       bonheur: 2,
-      environnement: -20,
+      environnement: 5,
 
       coutReparation: 100,
       tempsReparation: 10,
@@ -175,6 +180,7 @@ let infoObjet = [
   {
     nom: "Lave_Linge",
     niveau0:{
+      environnement: -20,
       prix:400
     },
 
@@ -183,7 +189,7 @@ let infoObjet = [
       coutDebit: 20,
       tempsEtat: 60,
       bonheur: 2,
-      environnement: -20,
+      environnement: 5,
 
       coutReparation: 200,
       tempsReparation: 10,
@@ -218,6 +224,7 @@ let infoObjet = [
   {
     nom: "Lave_Vaisselle",
     niveau0:{
+      environnement: -20,
       prix:300
     },
 
@@ -226,7 +233,7 @@ let infoObjet = [
       coutDebit: 20,
       tempsEtat: 60,
       bonheur: 2,
-      environnement: -20,
+      environnement: 5,
 
       coutReparation: 150,
       tempsReparation: 10,
@@ -261,6 +268,7 @@ let infoObjet = [
   {
     nom: "Télé",
     niveau0:{
+      environnement: -20,
       prix:600
     },
 
@@ -269,7 +277,7 @@ let infoObjet = [
       coutDebit: 25,
       tempsEtat: 90,
       bonheur: 3,
-      environnement: -20,
+      environnement: 5,
 
       coutReparation: 300,
       tempsReparation: 15,
@@ -304,6 +312,7 @@ let infoObjet = [
   {
     nom: "Réveil",
     niveau0:{
+      environnement: -20,
       prix:50
     },
 
@@ -312,7 +321,7 @@ let infoObjet = [
       coutDebit: 10,
       tempsEtat: 30,
       bonheur: 1,
-      environnement: -20,
+      environnement: 5,
 
       coutReparation: 25,
       tempsReparation: 5,
@@ -347,6 +356,7 @@ let infoObjet = [
   {
     nom: "Box_Internet",
     niveau0:{
+      environnement: -20,
       prix:70
     },
 
@@ -355,7 +365,7 @@ let infoObjet = [
       coutDebit: 10,
       tempsEtat: 30,
       bonheur: 1,
-      environnement: -20,
+      environnement: 5,
 
       coutReparation: 35,
       tempsReparation: 5,
@@ -390,6 +400,7 @@ let infoObjet = [
   {
     nom: "Lumière",
     niveau0:{
+      environnement: -20,
       prix:50
     },
 
@@ -398,7 +409,7 @@ let infoObjet = [
       coutDebit: 10,
       tempsEtat: 30,
       bonheur: 1,
-      environnement: -20,
+      environnement: 5,
 
       coutReparation: 25,
       tempsReparation: 5,
@@ -433,6 +444,7 @@ let infoObjet = [
   {
     nom: "Ordinateur",
     niveau0:{
+      environnement: -20,
       prix:700
     },
 
@@ -441,7 +453,7 @@ let infoObjet = [
       coutDebit: 25,
       tempsEtat: 90,
       bonheur: 3,
-      environnement: -20,
+      environnement: 5,
 
       coutReparation: 350,
       tempsReparation: 15,
@@ -476,6 +488,7 @@ let infoObjet = [
   {
     nom: "Robot_Aspirateur",
     niveau0:{
+      environnement: -20,
       prix:200
     },
 
@@ -484,7 +497,7 @@ let infoObjet = [
       coutDebit: 20,
       tempsEtat: 60,
       bonheur: 2,
-      environnement: -20,
+      environnement: 5,
 
       coutReparation: 100,
       tempsReparation: 10,
