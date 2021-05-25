@@ -279,7 +279,6 @@ function render() {
 
 function click(tileset) {
     tileset.on('pointerdown', function (pointer) {
-        //console.log("click sur", tileset.texture.key);
         if (this.isTinted) {
             this.clearTint();
         } else {

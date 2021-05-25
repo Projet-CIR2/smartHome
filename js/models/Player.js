@@ -36,7 +36,6 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
     initAnim() {
 
-        console.log(this.sprite);
         this.anims.create({
             key: 'left',
             frames: this.anims.generateFrameNumbers(this.sprite, { start: 0, end: 0 }),
@@ -84,7 +83,6 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
 
         }
-        //console.log(this.chemin);
         
         if (this.chemin != undefined && this.destinationInter <= this.destination) {
             let coords = this.chemin[this.destinationInter];
