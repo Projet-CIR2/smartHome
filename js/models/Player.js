@@ -40,8 +40,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
                 this.chemin = path;
                 this.cheminSize = path.length;
                 this.destination = this.cheminSize-1;
-                this.destinationInter = 1;
-                console.log("this.chemin");
+                this.destinationInter = 0;
 
             }
           
@@ -91,13 +90,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     cheminPathPlayer() {
         let x, y;
         
-        if (this.destination == -1 && this.cheminSize >= 1) {
-            this.destination = this.cheminSize-1;
-            this.destinationInter = 1;
-
-
-
-        }
+        
         
         if (this.chemin != undefined && this.destinationInter <= this.destination && this.chemin.length >= 1) {
 
@@ -105,19 +98,22 @@ class Player extends Phaser.Physics.Arcade.Sprite {
             let coords = this.chemin[this.destinationInter];
             x = coords[1];
             y = coords[0];
+
+            this.pos.x = x;
+            this.pos.y = y;
             
             let pos = convert([x,y]);
             let a;
             if (a=this.movePlayer(this,pos[0],pos[1])) {
                 if (this.destinationInter < this.cheminSize) this.destinationInter++;
-                this.pos.x = x;
-                this.pos.y = y;
+                
             }
-            this.walk = true;
         }
         else{
-            this.walk = false;
-            this.setPath();
+            
+            if(Math.random()>0.5){
+                this.setPath();
+            }
         }
        
     }
@@ -202,6 +198,8 @@ class Player extends Phaser.Physics.Arcade.Sprite {
                     player.anims.play('down');
                     break;
             }
+
+            
             return 1;
         }
         
