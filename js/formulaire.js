@@ -104,6 +104,15 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 let pClickHTML = document.getElementById('pClick');
 
                 let soundCash = new Audio('../img/cash.mp3');
+
+                
+                let affichageAchatChat = document.getElementById('chat');
+                let div = document.createElement('div');
+                let txtChat = document.createElement('p');
+                txtChat.innerHTML = "Vous venez d'acheter " + element.nom + " Niveau : " + element.niveauMaJ;
+                div.setAttribute('style', 'color: green; border-left : 6px solid green; padding-left : 3px; ');
+                div.appendChild(txtChat);
+                affichageAchatChat.prepend(div);
                 
                 if (afficheAchat.childElementCount === 3) {
                     afficheAchat.removeChild(imgHTML);
@@ -143,11 +152,15 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
 
                     let chrono = new timee(tmp, element.nom, cacherbutton, cacherbutton2, element);
                     chrono.start();
+                    
+                    element.animMaJUp(element.infosNiveauMaJ.tempsReparation);
 
                     gameView.modifVar('debit', -element.infosNiveauMaJ.coutDebit)
     
                     element.niveauMaJ++;
                     element.verifMaJ = true;
+
+                    
                 }   
                 boutton.setAttribute('style', 'display: none;');
             }
