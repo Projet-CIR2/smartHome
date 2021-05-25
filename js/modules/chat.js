@@ -1,3 +1,5 @@
+//const { text } = require("body-parser");
+
 let chat = (function () {
     // ajoute le texte au chat
     function afficheTexte(texte, couleur) {
@@ -15,7 +17,79 @@ let chat = (function () {
 
         let p = document.createElement('p');
         div.appendChild(p);
-        p.textContent = texte;
+        p.textContent = texte.description;
+
+        let stat = document.createElement('p');
+        div.appendChild(stat);
+        
+        if (texte.argent !== undefined) {
+        let textInfo = "";
+
+        if (texte.argent != 0 && texte.argent != undefined) {
+            if(texte.argent < 0) {
+                textInfo += 'Vous avez perdu : ' + Math.abs(texte.argent) + '€ <br>';
+
+                // textInfo += "Vous avez perdu : " + texte.argent + "€" + "<br>";
+            }
+            else {
+                textInfo += "Vous avez gagné : ";
+                textInfo += texte.argent;
+                textInfo += "€";
+                textInfo += "<br/>";
+            }
+        }
+
+        if (texte.debit != 0 && texte.debit != undefined) {
+            if(texte.debit < 0) {
+                textInfo += "  Vous avez perdu : ";
+                textInfo += Math.abs(texte.debit);
+                textInfo += " de debit";
+                textInfo += "<br/>";
+            }
+            else {
+                textInfo += "  Vous avez gagné : ";
+                textInfo += texte.debit;
+                textInfo += " de debit";
+                textInfo += "<br/>";
+            }
+        }
+
+        if (texte.humeur != 0 && texte.humeur != undefined) {
+            if(texte.humeur < 0) {
+                textInfo += "  Vous avez perdu : ";
+                textInfo += Math.abs(texte.humeur);
+                textInfo += " de confort";
+                textInfo += "<br/>";
+            }
+            else {
+                textInfo += "  Vous avez gagné : ";
+                textInfo += texte.humeur;
+                textInfo += " de confort";
+                textInfo += "<br/>";
+            }
+        }
+
+        if (texte.environnement != 0 && texte.environnement != undefined) {
+            if(texte.environnement < 0) {
+                textInfo += "  Vous avez perdu : ";
+                textInfo += Math.abs(texte.environnement);
+                textInfo += " d'environnement";
+            }
+            else {
+                textInfo += "  Vous avez gagné : ";
+                textInfo += texte.environnement;
+                textInfo += " d'environnement";
+            }
+        }
+
+        stat.innerHTML = textInfo;
+        stat.style.color = couleur;
+    }
+    else {
+        stat.textContent = texte;
+    }
+
+
         if (couleur !== undefined) p.setAttribute('style', 'color:' + couleur);
     }
 
@@ -32,13 +106,13 @@ let chat = (function () {
         // une chance sur 2 que l'événement soit positif ou négatif
         if (Math.floor(Math.random() * 2)) {
             event = json.evenements_important.positif[Math.floor(Math.random() * json.evenements_important.positif.length)];
-            afficheTexte(event.description, 'blue');
+            afficheTexte(event, 'blue');
             let soundBonus = new Audio('../../img/bonus.mp3');
             soundBonus.play().then();
         }
         else {
             event = json.evenements_important.negatif[Math.floor(Math.random() * json.evenements_important.negatif.length)];
-            afficheTexte(event.description, 'red');
+            afficheTexte(event, 'red');
             let soundAlert = new Audio('../../img/alert.mp3');
             soundAlert.play().then();
         }
@@ -60,8 +134,8 @@ let chat = (function () {
     return {
         // ajout des textes
         lanceTexte() {
-            setInterval(texteEvent, 90000);
-            setInterval(texteImportant, 30000);
+            setInterval(texteEvent, 90000); //90000
+            setInterval(texteImportant, 30000); //30000
         }
     }
 })();
