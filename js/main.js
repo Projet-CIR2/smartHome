@@ -84,6 +84,8 @@ function preload() {
     //this.load.image('Réveil', '../tiled/New/bedroom/reveil1.png');
 
     this.load.spritesheet('levelUp', '../img/levelUp.png', { frameWidth: 400, frameHeight: 300 })
+
+    this.load.audio('music','../img/musiquejeu.mp3')
 }
 
 
@@ -239,6 +241,9 @@ function create() {
     //     console.log(pointer.x);
     //     console.log(pointer.y);
     // });
+
+    this.sound.play('music');
+
 }
 
 function compteUneSeconde () {
