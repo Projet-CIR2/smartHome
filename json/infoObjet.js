@@ -173,7 +173,7 @@ let infoObjet = [
   },
 
   {
-    nom: "Lave Linge",
+    nom: "Lave_Linge",
     niveau0:{
       prix:400
     },
@@ -216,7 +216,7 @@ let infoObjet = [
   },
 
   {
-    nom: "Lave Vaisselle",
+    nom: "Lave_Vaisselle",
     niveau0:{
       prix:300
     },
@@ -345,7 +345,7 @@ let infoObjet = [
   },
 
   {
-    nom: "Box Internet",
+    nom: "Box_Internet",
     niveau0:{
       prix:70
     },
@@ -474,7 +474,7 @@ let infoObjet = [
   },
 
   {
-    nom: "Robot Aspirateur",
+    nom: "Robot_Aspirateur",
     niveau0:{
       prix:200
     },

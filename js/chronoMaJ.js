@@ -43,8 +43,8 @@ class timee {
             if(time <= 0) {
                 if(document.getElementById("bip"+elmt) != null && verif == false) {
                     document.getElementById("bip"+elmt).innerHTML = "TERMINE!";
-                    cacherachat.setAttribute('style','display: block');
-                    cachermaJ.setAttribute('style', 'display: block');
+                    cacherachat.setAttribute('style','display: block; font-size: 14px;color: black;background: #BFB99E; border: 5px solid black; border-top-right-radius: 20px; border-bottom-right-radius: 20px;');
+                    cachermaJ.setAttribute('style', 'display: block; font-size: 14px;color: black;background: #BFB99E; border: 5px solid black; border-top-left-radius: 20px; border-bottom-left-radius: 20px;');
                     verif = true;
                 }
                 clearInterval(myVar);

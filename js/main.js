@@ -71,17 +71,17 @@ function preload() {
     /*------------- LOAD OBJECTS -------------*/
 
     this.load.image('Télé', '../tiled/New/salon/tv1.png');
-    this.load.image('Boxinternet', '../tiled/New/salon/box1.png');
+    this.load.image('Box_Internet', '../tiled/New/salon/box1.png');
     this.load.image('Ordinateur', '../tiled/New/salon/computer1.png');
-    this.load.image('Robotaspirateur', '../tiled/New/robots/cleaner1.png');
-    this.load.image('Lumiere', '../tiled/New/light/mural1.png');
+    this.load.image('Robot_Aspirateur', '../tiled/New/robots/cleaner1.png');
+    this.load.image('Lumière', '../tiled/New/light/mural1.png');
     this.load.image('Frigo', '../tiled/New/kitchen/frdige1.png');
     this.load.image('Fauteuil', '../tiled/New/salon/canape1.png');
-    this.load.image('Gaziniere', '../tiled/New/kitchen/furnace1.png');
+    this.load.image('Gazinière', '../tiled/New/kitchen/furnace1.png');
     this.load.image('Radiateur', '../tiled/New/chauffage/radiateur1.png');
-    this.load.image('Lave linge', '../tiled/New/buanderie/lavelinge1.png');
-    this.load.image('Lave vaisselle', '../tiled/New/kitchen/dishwasher1.png');
-    //this.load.image('reveil', '../tiled/New/bedroom/reveil1.png');
+    this.load.image('Lave_Linge', '../tiled/New/buanderie/lavelinge1.png');
+    this.load.image('Lave_Vaisselle', '../tiled/New/kitchen/dishwasher1.png');
+    //this.load.image('Réveil', '../tiled/New/bedroom/reveil1.png');
 
     this.load.spritesheet('levelUp', '../img/levelUp.png', { frameWidth: 400, frameHeight: 300 })
 }
