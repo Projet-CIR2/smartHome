@@ -148,11 +148,20 @@ let json = {
             {description: "Vous avez gagnez le premier prix de beauter", argent: 10, debit: 0, humeur: 5, environnement: 0},
             {description: "C'est votre anniversaire vous recevez de l'argent", argent: 15, debit: 0, humeur: 0, environnement: 0},
             {description: "Votre nouvelle entreprise obtient un gros bénéfice", argent: 25, debit: 0, humeur: 0, environnement: 0},
-            {description: "Le débit de votre maison est très bon aujourd'huidd", argent: 0, debit: 5, humeur: 0, environnement: 0},
+            {description: "Le débit de votre maison est très bon aujourd'huid", argent: 0, debit: 5, humeur: 0, environnement: 0},
             {description: "La ville veut ouvrir un parc près de chez vous", argent: 0, debit: 0, humeur: 0, environnement: 10},
             {description: "Les zones vertes près de chez vous on été rénover", argent: 0, debit: 0, humeur: 0, environnement: 15},
             {description: "Votre famille vous rend visite à l'improviste", argent: 0, debit: 0, humeur: 10, environnement: 0},
-            {description: "Vous obtenez une offre de votre fournisseur internet", argent: 0, debit: 15, humeur: 0, environnement: 0}
+            {description: "Vous obtenez une offre de votre fournisseur internet", argent: 0, debit: 15, humeur: 0, environnement: 0},
+            {description: "Votre femme est enceinte", argent: 0, debit: 0, humeur: 30, environnement: 0},
+            {description: "Héritage de la grand-mère", argent: 40, debit: 0, humeur: 0, environnement: 0},
+            {description: "Déploiment de la 5G", argent: 0, debit: 20, humeur: 0, environnement: 0},
+            {description: "Réduction d'impot", argent: 20, debit: 0, humeur: 20, environnement: 0},
+            {description: "Vous commencé a trier vos dechets", argent: 0, debit: 15, humeur: 0, environnement: 20},
+            {description: "Interet du livret A", argent: 10, debit: 0, humeur: 0, environnement: 0},
+            {description: "Nouvelle Box livret", argent: 0, debit: 15, humeur: 0, environnement: 0},
+            {description: "Votre arbre pousse bien", argent: 0, debit: 0, humeur: 15, environnement: 10},
+            {description: "Le voisin vous invite a sa fête", argent: 0, debit: 0, humeur: 10, environnement: 0}
         ],
 
         negatif: [
@@ -166,7 +175,16 @@ let json = {
             {description: "Des enfants on saccager votre jardin", argent: 0, debit: 0, humeur: 0, environnement: -10},
             {description: "La ville veut construire un nouveau batiment à la place de ce parc", argent: 0, debit: 0, humeur: 0, environnement: -15},
             {description: "Votre maison a été endomagé par la tempete", argent: 0, debit: 0, humeur: -10, environnement: 0},
-            {description: "Vos nouveaux voisin ne vous laisse pas vivre tranquillement", argent: 0, debit: 0, humeur: -10, environnement: 0}
+            {description: "Vos nouveaux voisin ne vous laisse pas vivre tranquillement", argent: 0, debit: 0, humeur: -10, environnement: 0},
+            {description: "Votre chien a uriné sur votre box internet", argent: 0, debit: -20, humeur: -10, environnement: 0},
+            {description: "Panne Electricité", argent: 0, debit: -30, humeur: -20, environnement: 0},
+            {description: "Votre belle-mère passe a l'improviste", argent: 0, debit: 0, humeur: -15, environnement: 0},
+            {description: "Le cours du Bitcoin s'effondre", argent: -20, debit: 0, humeur: 0, environnement: 0},
+            {description: "Remboursement prêt immobilier", argent: -25, debit: 0, humeur: -10, environnement: 0},
+            {description: "L'installateur coupe votre raccordement fibre par erreur", argent: 0, debit: -30, humeur: -10, environnement: 0},
+            {description: "Un cheval de troie infiltre votre résaux", argent: 0, debit: -20, humeur: -10, environnement: 0},
+            {description: "Vos données bancaires ont été piratée", argent: -20, debit: -20, humeur: -10, environnement: 0},
+            {description: "Fuite d'eau dans la cuisine", argent: 0, debit: 0, humeur: -10, environnement: -20}
         ]
     },
 }
