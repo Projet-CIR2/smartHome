@@ -121,30 +121,31 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
     }
 
     degrade() {
-        let tempo = (this.tmpEtat) * 1000;
-        while (this.etat !== 0) {
-            setTimeout(() => {
-                --this.etat;
-                tempo = (this.tmpEtat) * 1000;
-            }, tempo);
-            switch (this.etat) {
-                case 2:
-                    this.setTint(0xFFA07A);
-                    break;
-                case 1:
-                    this.setTint(0xFA8072);
-                    break;
-                case 0:
-                    this.setTint(0xDC143C);
-                    break;
-                default:
-                    this.clearTint();
+        let tempo;
+        tempo = this.infosNiveau.tempsEtat * 1000;
+        if(this.etat === 3){
+          this.clearTint();
+        }
+        setTimeout(() => {
+          --this.etat;
+          switch (this.etat) {
+            case 2:
+              this.setTint(0xFFA07A);
+              this.degrade();
+              break;
+            case 1:
+              this.setTint(0xFA8072);
+              this.degrade();
+              break;
+            case 0:
+              this.setTint(0xDC143C);
+              this.bonheur= -this.bonheur;
+              break;
+            default:
+              this.clearTint();
             }
+          }, tempo);
         }
-        if (this.etat === 0) {
-            this.bonheur = -this.bonheur;
-        }
-    }
 
     position(x, y) {
         this.x = x;
@@ -155,7 +156,6 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
 
         this.setX(xPos);
         this.setY(yPos);
-
         this.visible = true;
     }
 
@@ -163,6 +163,7 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
 
         if (this.niveau <= 3) {
             this.niveau++;
+            this.etat=3;
             this.verifMaJ = false;
             switch (this.niveau) {
               case 1:

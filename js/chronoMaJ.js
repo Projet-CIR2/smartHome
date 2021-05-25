@@ -1,6 +1,6 @@
 let debitModif = (function() {
     let debit;
-    
+
     return {
         setDebit(deb) {
             debit = deb;
@@ -46,8 +46,9 @@ class timee {
                     verif = true;
                     let soundMAJ = new Audio('../img/MAJ.mp3');
                     soundMAJ.play();
-
                     element.finBarre();
+                    element.etat = 3;
+                    element.degrade();
                     gameView.modifVar('debit', element.infosNiveauMaJ.coutDebit);
                 }
                 let affichageAchatChat = document.getElementById('chat');
@@ -59,12 +60,12 @@ class timee {
                 affichageAchatChat.prepend(div);
                 clearInterval(timer);
             }
-            else {	
+            else {
                 if(document.getElementById("bip"+elmt) != null) {
                     document.getElementById("bip"+elmt).innerHTML = "MaJ en cours : " + time + " secondes restantes ...";
-                } 
-               
-            }	
+                }
+
+            }
         }, 1000);
     }
 }

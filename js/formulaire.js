@@ -79,6 +79,7 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 // let obj = stockageObj.find(obj => obj.objet.nom === element.nom);
                 if (element.niveau === 0) element.position(stockageVar.clickPolygon.x, stockageVar.clickPolygon.y);
                 element.levelUp();
+                element.degrade();
 
                 stockageVar.clickPolygon = undefined;
                 stockageVar.click = false;
@@ -105,7 +106,7 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
 
                 let soundCash = new Audio('../img/cash.mp3');
 
-                
+
                 let affichageAchatChat = document.getElementById('chat');
                 let div = document.createElement('div');
                 let txtChat = document.createElement('p');
@@ -113,7 +114,7 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 div.setAttribute('style', 'color: green; border-left : 6px solid green; padding-left : 3px; ');
                 div.appendChild(txtChat);
                 affichageAchatChat.prepend(div);
-                
+
                 if (afficheAchat.childElementCount === 3) {
                     afficheAchat.removeChild(imgHTML);
                     afficheAchat.removeChild(pAchatHTML);
@@ -152,7 +153,7 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
 
                     let chrono = new timee(tmp, element.nom, cacherbutton, cacherbutton2, element);
                     chrono.start();
-                    
+
                     element.animMaJUp(element.infosNiveauMaJ.tempsReparation);
 
                     gameView.modifVar('debit', -element.infosNiveauMaJ.coutDebit)

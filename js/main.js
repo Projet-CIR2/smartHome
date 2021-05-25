@@ -127,7 +127,7 @@ function create() {
         matrixMap[i] = new Array(mapWidth);
     }
 
-    
+
 
     let collisions = map.layers[3].data;
 
@@ -144,7 +144,7 @@ function create() {
 
 
     pointsInteret = [];
-    
+
 
     let layerPtInteret = map.layers[4].data;
     let i = 0;
@@ -157,11 +157,11 @@ function create() {
                 }
                 i++;
             }
-            
+
         }
     }
-    
-  
+
+
 
 
     //let test = this.add.sprite(609, 624, 'tempHouse');
@@ -173,15 +173,15 @@ function create() {
     // click(button);
 
 
-    
 
 
 
 
-    
+
+
 
     /*------------- INITIALISATION TILES/LAYERS -------------*/
-    
+
     let tilesets = map.addTilesetImage('tiles', 'tiles');
 
     layer1 = map.createLayer('sol', tilesets);
@@ -255,8 +255,8 @@ function create() {
     // let polygon = new Phaser.Geom.Polygon('0 66 0 223 129 159 129 0');
     // this.physics.add.existing(polygon);
 
-    
-    
+
+
     /*------------- INITIALISATION HABITANTS -------------*/
 
     hab = [];
@@ -267,7 +267,7 @@ function create() {
 
     }
 
-    
+
 
 
 
@@ -296,18 +296,18 @@ function compteUneSeconde () {
 
 function update(time, delta) {
 
-    
+
     for (let objet of stockageObj) {
         if (objet.barre !== undefined) {
            //objet.barre.modifBarre(chrono);
         }
     }
-    
+
 
     controls.update(delta);
 
     hab.forEach(element => {
-       element.update(); 
+       element.update();
     });
 
     // let pointer = this.input.activePointer;
