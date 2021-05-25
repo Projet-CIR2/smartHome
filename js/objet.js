@@ -182,6 +182,9 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
     animUp(boucle) {
         this.up.setAlpha(1);
         // this.up.anims.restart();
+        this.up.x = this.x+10;
+        this.up.y = this.y-150;
+        console.log("anim ", this.up.x, this.up.y);
 
         this.up.play('levelUpAnim');
         this.up.once('animationcomplete', () => {
