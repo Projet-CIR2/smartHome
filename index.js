@@ -75,7 +75,7 @@ app.post('/scenario', (req, res) => {
             obj3 : req.body.elmtObj3,
             
     }
-    console.log("indexjs", scena);
+    //console.log("indexjs", scena);
     scenario = scena;
     res.sendFile(__dirname + '/views/index.html');
 });
@@ -96,7 +96,6 @@ app.post('/', (req, res) => {
             obj3 : req.body.elmtObj3,
             
     }
-    console.log("indexjs", scena);
     scenario = scena;
     res.sendFile(__dirname + '/views/index.html');
 });
@@ -117,7 +116,6 @@ io.on('connection', function (socket) {
         for (var i = 0; i < heigth; i++) {
             for (var j = 0; j < width; j++) {
                 if(data[i][j] == 1) {
-                    //console.log(i,j," ");
                     grid.setWalkableAt(i, j, false);
                 }
             }
