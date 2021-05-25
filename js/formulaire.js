@@ -124,6 +124,8 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 afficheAchat.appendChild(pAchat);
                 afficheAchat.appendChild(pClick);
                 soundCash.play().then();
+
+                
             }
         }
     } else {

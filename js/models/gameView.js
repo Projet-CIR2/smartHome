@@ -109,11 +109,50 @@ class GameView {
             afficheAchat.setAttribute('style', 'position: absolute; margin-top: 20%; margin-left: 35%; background-color: #BFB99E;border-top-left-radius: 80px 80px;border-top-right-radius: 80px 80px;border-bottom-left-radius: 80px 80px;border-bottom-right-radius: 80px 80px; height: 30%; width: 35%; visible: hidden; border:5px solid black;');
 
             let div = document.createElement('div');
-            div.innerHTML = "<div id='dialog' role='dialog' aria-hidden='true' class='c-dialog'><div id='dialog2' role='document' class='c-dialog__box'> <h2 id='dialog-title' margin-top: 10px;>Fin de la partie !</h2><p id='dialog-desc'>Vous avez gagné, félicitation</p><a id='quitter' href='/'>Quitter</a></div></div>";
+            div.innerHTML = "<div id='dialog' role='dialog' aria-hidden='true' class='c-dialog'><div id='dialog2' role='document' class='c-dialog__box'> <h2 id='dialog-title' margin-top: 10px;>Fin de la partie !</h2><p id='dialog-desc'>Vous avez gagné, félicitation</p><p>Cliquer pour continuer</p><a id='quitter' href='/'>Quitter</a></div></div>";
             afficheAchat.appendChild(div);
             div.setAttribute('style', 'color: white; margin-top: 13px; text-align:center; font-size: 20px; margin-');
             console.log("FIN JEU WIN");
             this.verif = true;
+        }
+    }
+    verifLoose() {
+        if(this.verif == false) {
+            let body = document.getElementById('body');
+            if(this.humeur === 0) {
+                let afficheAchat = document.getElementById('achat');
+                afficheAchat.innerHTML = "";
+                afficheAchat.setAttribute('style', 'display: none;');
+                afficheAchat.setAttribute('style', 'position: absolute; margin-top: 20%; margin-left: 35%; background-color: #BFB99E;border-top-left-radius: 80px 80px;border-top-right-radius: 80px 80px;border-bottom-left-radius: 80px 80px;border-bottom-right-radius: 80px 80px; height: 30%; width: 35%; visible: hidden; border:5px solid black;');
+
+                let div = document.createElement('div');
+                div.innerHTML = "<div id='dialog' role='dialog' aria-hidden='true' class='c-dialog'><div id='dialog2' role='document' class='c-dialog__box'> <h2 id='dialog-title' margin-top: 10px;>Fin de la partie !</h2><p id='dialog-desc'>Vous avez perdu</p><p>Votre confort est à 0</p><p>Cliquer pour continuer</p><a id='quitter' href='/'>Quitter</a></div></div>";
+                afficheAchat.appendChild(div);
+                div.setAttribute('style', 'color: white; margin-top: 13px; text-align:center; font-size: 20px; margin-');
+                console.log("FIN JEU LOOSE");
+                this.verif = true;
+                body.addEventListener('click', () => {
+                    window.location.href = "/";
+                });
+                return 1;
+            }
+            else if(this.environnement === 0) {
+                let afficheAchat = document.getElementById('achat');
+                afficheAchat.innerHTML = "";
+                afficheAchat.setAttribute('style', 'display: none;');
+                afficheAchat.setAttribute('style', 'position: absolute; margin-top: 20%; margin-left: 35%; background-color: #BFB99E;border-top-left-radius: 80px 80px;border-top-right-radius: 80px 80px;border-bottom-left-radius: 80px 80px;border-bottom-right-radius: 80px 80px; height: 30%; width: 35%; visible: hidden; border:5px solid black;');
+
+                let div = document.createElement('div');
+                div.innerHTML = "<div id='dialog' role='dialog' aria-hidden='true' class='c-dialog'><div id='dialog2' role='document' class='c-dialog__box'> <h2 id='dialog-title' margin-top: 10px;>Fin de la partie !</h2><p id='dialog-desc'>Vous avez perdu</p><p>L'Environnement est à 0</p><p>Cliquer pour continuer</p><a id='quitter' href='/'>Quitter</a></div></div>";
+                afficheAchat.appendChild(div);
+                div.setAttribute('style', 'color: white; margin-top: 13px; text-align:center; font-size: 20px; margin-');
+                console.log("FIN JEU LOOSE");
+                this.verif = true;
+                body.addEventListener('click', () => {
+                    window.location.href = "/";
+                });
+                return 1;
+            }
         }
     }
 }
