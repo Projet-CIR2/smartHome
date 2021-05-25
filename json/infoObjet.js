@@ -2,8 +2,9 @@ let infoObjet = [
   {
     nom: "Frigo",
     niveau0:{
+      description: "permet d'obtenir l'objet frigo",
       environnement: -20,
-      prix:750
+      coutAmelioration:750
 
     },
 
@@ -48,8 +49,9 @@ let infoObjet = [
   {
     nom: "Fauteuil",
     niveau0:{
+      description: "permet d'obtenir l'objet fauteuil",
       environnement: -20,
-      prix:250
+      coutAmelioration:250
     },
 
     niveau1: {
@@ -92,8 +94,9 @@ let infoObjet = [
   {
     nom: "Gazinière",
     niveau0:{
+      description: "permet d'obtenir l'objet gaziniere",
       environnement: -20,
-      prix:400
+      coutAmelioration:400
     },
 
     niveau1: {
@@ -136,8 +139,9 @@ let infoObjet = [
   {
     nom: "Radiateur",
     niveau0:{
+      description: "permet d'obtenir l'objet radiateur",
       environnement: -20,
-      prix:200
+      coutAmelioration:200
     },
 
     niveau1: {
@@ -180,8 +184,9 @@ let infoObjet = [
   {
     nom: "Lave_Linge",
     niveau0:{
+      description: "permet d'obtenir l'objet lave linge",
       environnement: -20,
-      prix:400
+      coutAmelioration:400
     },
 
     niveau1: {
@@ -224,8 +229,9 @@ let infoObjet = [
   {
     nom: "Lave_Vaisselle",
     niveau0:{
+      description: "permet d'obtenir l'objet lave vaisselle",
       environnement: -20,
-      prix:300
+      coutAmelioration:300
     },
 
     niveau1: {
@@ -268,8 +274,9 @@ let infoObjet = [
   {
     nom: "Télé",
     niveau0:{
+      description: "permet d'obtenir l'objet télé",
       environnement: -20,
-      prix:600
+      coutAmelioration:600
     },
 
     niveau1: {
@@ -312,8 +319,9 @@ let infoObjet = [
   {
     nom: "Réveil",
     niveau0:{
+      description: "permet d'obtenir l'objet réveil",
       environnement: -20,
-      prix:50
+      coutAmelioration:50
     },
 
     niveau1: {
@@ -356,8 +364,9 @@ let infoObjet = [
   {
     nom: "Box_Internet",
     niveau0:{
+      description: "permet d'obtenir l'objet box internet",
       environnement: -20,
-      prix:70
+      coutAmelioration:70
     },
 
     niveau1: {
@@ -400,8 +409,9 @@ let infoObjet = [
   {
     nom: "Lumière",
     niveau0:{
+      description: "permet d'obtenir l'objet lumiere",
       environnement: -20,
-      prix:50
+      coutAmelioration:50
     },
 
     niveau1: {
@@ -444,8 +454,9 @@ let infoObjet = [
   {
     nom: "Ordinateur",
     niveau0:{
+      description: "permet d'obtenir l'objet ordinateur",
       environnement: -20,
-      prix:700
+      coutAmelioration:700
     },
 
     niveau1: {
@@ -488,8 +499,9 @@ let infoObjet = [
   {
     nom: "Robot_Aspirateur",
     niveau0:{
+      description: "permet d'obtenir l'objet robot aspirateur",
       environnement: -20,
-      prix:200
+      coutAmelioration:200
     },
 
     niveau1: {
