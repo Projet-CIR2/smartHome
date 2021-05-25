@@ -99,8 +99,8 @@ class Player extends Phaser.Physics.Arcade.Sprite {
             x = coords[1];
             y = coords[0];
 
-            this.pos.x = x;
-            this.pos.y = y;
+            this.pos.x = y;
+            this.pos.y = x;
             
             let pos = convert([x,y]);
             let a;
@@ -111,7 +111,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         }
         else{
             
-            if(Math.random()>0.5){
+            if(Math.random()>0.95){
                 this.setPath();
             }
         }
