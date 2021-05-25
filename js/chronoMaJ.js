@@ -50,7 +50,13 @@ class timee {
                     element.finBarre();
                     gameView.modifVar('debit', element.infosNiveauMaJ.coutDebit);
                 }
-
+                let affichageAchatChat = document.getElementById('chat');
+                let div = document.createElement('div');
+                let txtChat = document.createElement('p');
+                txtChat.innerHTML = "Le " + elmt + " vient d'etre mis à jour !";
+                div.setAttribute('style', 'color: purple; border-left : 6px solid purple; padding-left : 3px; ');
+                div.appendChild(txtChat);
+                affichageAchatChat.prepend(div);
                 clearInterval(timer);
             }
             else {	
