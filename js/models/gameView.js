@@ -1,16 +1,16 @@
 class GameView {
     constructor(elmt) {
-        this.humeur = elmt.humeur; // en %
+        this.humeur = Number(elmt.humeur); // en %
         this.argent = Number(elmt.argent); // en €
-        this.debit = elmt.debit; // en %
+        this.debit = Number(elmt.debit); // en %
         this.environnement = 100; // en %
-        if(elmt.difficulte == 'Facile') {
+        if(elmt.difficulte === 'Facile') {
             this.difficulte = 1;
         }
-        if(elmt.difficulte == 'Normal') {
+        if(elmt.difficulte === 'Normal') {
             this.difficulte = 2;
         }
-        if(elmt.difficulte == 'Difficile') {
+        if(elmt.difficulte === 'Difficile') {
             this.difficulte = 3;
         }
         this.objet = [];
@@ -46,6 +46,17 @@ class GameView {
         this.barreEnvironnement.modifBarre(this.environnement);
     }
 
+    // modifie la variable de jeu du type de nb
+    modifVar(type, nb) {
+        if (type === 'humeur' && this.humeur + nb >= 0 && this.humeur + nb <= 100) this.humeur += nb / this.difficulte;
+        if (type === 'argent') this.argent += nb / this.difficulte;
+        if (type === 'environnement' && this.environnement + nb >= 0 && this + nb <= 100) this.environnement += nb;
+        if (type === 'debit' && this.debit + nb >= 0 && this.debit + nb <= 100) this.debit += nb / this.difficulte;
+
+        this.modifBarre();
+        // this.logVar();
+    }
+
     logVar() {
         console.log('humeur', this.humeur);
         console.log('argent', this.argent);
@@ -58,6 +69,7 @@ class GameView {
     }
 
     paiement(infosNiveau) {
+        this.modifVar('argent', -infosNiveau.coutAmelioration);
         this.argent -= infosNiveau.coutAmelioration;
         this.environnement += infosNiveau.environnement;
         this.humeur += infosNiveau.bonheur;

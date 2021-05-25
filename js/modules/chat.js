@@ -40,10 +40,10 @@ let chat = (function () {
         }
 
         // on modifie les valeurs du jeu
-        if (event.humeur !== 0) VarGame.modifVar('humeur', event.humeur);
-        if (event.argent !== 0) VarGame.modifVar('argent', event.argent);
-        if (event.debit !== 0) VarGame.modifVar('debit', event.debit);
-        if (event.environnement !== 0) VarGame.modifVar('environnement', event.environnement);
+        if (event.humeur !== 0) gameView.modifVar('humeur', event.humeur);
+        if (event.argent !== 0) gameView.modifVar('argent', event.argent);
+        if (event.debit !== 0) gameView.modifVar('debit', event.debit);
+        if (event.environnement !== 0) gameView.modifVar('environnement', event.environnement);
     }
 
     return {
