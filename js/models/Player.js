@@ -20,14 +20,20 @@ class Player extends Phaser.Physics.Arcade.Sprite {
         this.initAnim();
     }
 
-    setPath(matrixMap, mapWidth, mapHeight){
+    setPath(matrixMap, mapWidth, mapHeight, points){
 
-        socket.emit('matrix', matrixMap, mapWidth, mapHeight, [this.pos.x,this.pos.y,10,10], this.id);
+        this.pointInteret = points;
+        this.matrixMap = matrixMap;
+        this.mapHeight = mapHeight;
+        this.mapWidth = mapWidth;
+        let x = getRandomNumberBetween(0, points.length-1);
+        socket.emit('matrix', matrixMap, mapWidth, mapHeight, [this.pos.x,this.pos.y,this.pointInteret[x].x,this.pointInteret[x].y], this.id);
     
         socket.on('path', (path, id) => {
             if(id == this.id){
                 this.chemin = path;
                 this.cheminSize = path.length;
+                this.walk = true;
             }
           
     
@@ -84,16 +90,22 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
         }
         
-        if (this.chemin != undefined && this.destinationInter <= this.destination) {
+        if (this.chemin != undefined && this.destinationInter <= this.destination && this.chemin.length >= 1) {
             let coords = this.chemin[this.destinationInter];
             x = coords[1];
             y = coords[0];
+            this.pos.x = x;
+            this.pos.y =y;
             
             let pos = convert([x,y]);
             let a;
             if (a=this.movePlayer(this,pos[0],pos[1])) {
                 if (this.destinationInter < this.cheminSize) this.destinationInter++;
             }
+            this.walk = true;
+        }
+        else{
+            this.walk = false;
         }
        
     }
@@ -101,7 +113,8 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     
 
     update(){
-        this.cheminPathPlayer()
+        if(this.walk)this.cheminPathPlayer()
+        else(this.setPath(this.matrixMap, this.mapWidth, this.mapHeight, this.pointInteret));
     }
 
     movePlayer(player, x, y) {
@@ -192,4 +205,8 @@ function convert([x, y]) {
     let posY = 280 + y* 64 + x*64;
 
     return [posX, posY];
+}
+
+function getRandomNumberBetween(min,max){
+    return Math.floor(Math.random()*(max-min+1)+min);
 }
