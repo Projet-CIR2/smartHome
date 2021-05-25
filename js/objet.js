@@ -24,7 +24,7 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
                     case 1:
                         this.setTint(0xFA8072);
                         break;
-                    case 1:
+                    case 0:
                         this.setTint(0xDC143C);
                         break;
                     default:
@@ -34,9 +34,9 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
         });
 
         this.nom = this.objet.nom;
-        this.niveau = 1; //niveau de l'objet
-        this.infosNiveau = this.objet.niveau1; //niveau de l'objet
-        this.infosNiveauMaJ = this.objet.niveau1;
+        this.niveau = 0; //niveau de l'objet
+        this.infosNiveau = this.objet.niveau0; //niveau de l'objet
+        this.infosNiveauMaJ = this.objet.niveau0;
         this.coutDebit = 0; // cout en debit de l'amelioration et reparation
         this.etat = 3; // etat de l'objet il y en a 4 (bon/moyen/mauvais/casser)
         this.tmpEtat = 0; // temps avant que l'objet soit cassé
@@ -83,6 +83,17 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
         setTimeout(() => {
             ++this.niveau;
             this.etat = 3;
+            if (this.niveau === 1) {
+                this.tmpEtat = monModule.rand(objet.niveau2.tempsEtat, objet.niveau2.tempsEtat + 10);
+                this.coutDebit = monModule.rand(objet.niveau2.coutDebit, objet.niveau2.coutDebit + 3);
+                this.bonheur = objet.niveau2.bonheur;
+
+                this.coutReparation = monModule.rand(objet.niveau2.coutReparation, objet.niveau2.coutReparation + 10);
+                this.tmpReparation = monModule.rand(objet.niveau2.tempsReparation, objet.niveau2.tempsReparation + 3);
+
+                this.coutAmelioration = monModule.rand(objet.niveau2.coutAmelioration, objet.niveau2.coutAmelioration + 15);
+                this.tmpAmelioration = monModule.rand(objet.niveau2.tempsAmelioration, objet.niveau2.tempsAmelioration + 5);
+            }
             if (this.niveau === 2) {
                 this.tmpEtat = monModule.rand(objet.niveau2.tempsEtat, objet.niveau2.tempsEtat + 10);
                 this.coutDebit = monModule.rand(objet.niveau2.coutDebit, objet.niveau2.coutDebit + 3);
@@ -154,14 +165,17 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
             this.niveau++;
             this.verifMaJ = false;
             switch (this.niveau) {
-                case 2:
-                    this.infosNiveau = this.objet.niveau2;
-                    break;
-                case 3:
-                    this.infosNiveau = this.objet.niveau3;
-                    break;
-                default:
-                    break;
+              case 1:
+                  this.infosNiveau = this.objet.niveau1;
+                  break;
+              case 2:
+                  this.infosNiveau = this.objet.niveau2;
+                  break;
+              case 3:
+                  this.infosNiveau = this.objet.niveau3;
+                  break;
+              default:
+                  break;
             }
         }
         switch (this.niveauMaJ) {

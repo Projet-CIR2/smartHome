@@ -1,5 +1,5 @@
 let createObjetMaj = function (mOru, title, text, btn, element) {
-    
+
     let currentDiv = document.getElementById(mOru);
 
     let div = document.createElement('div');
@@ -10,7 +10,7 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
     let p = document.createElement('p');
     div.appendChild(p);
     p.textContent = title;
-    
+
 
     p = document.createElement('p');
     div.appendChild(p);
@@ -77,7 +77,7 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 gameView.paiement(element.infosNiveau);
 
                 // let obj = stockageObj.find(obj => obj.objet.nom === element.nom);
-                if (element.niveau === 1) element.position(stockageVar.clickPolygon.x, stockageVar.clickPolygon.y);
+                if (element.niveau === 0) element.position(stockageVar.clickPolygon.x, stockageVar.clickPolygon.y);
                 element.levelUp();
 
                 stockageVar.clickPolygon = undefined;
@@ -127,8 +127,8 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
             }
         }
     } else {
-        
-        if(element.verifMaJ != false) { 
+
+        if(element.verifMaJ != false) {
             let txt = document.getElementById('infos'+element.nom);
             let p2 = document.createElement('p');
             p2.innerHTML = "Vous avez déjà fait cette MaJ";
@@ -138,14 +138,14 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
         }else {
             button.onclick = () => {
                 let tmp = element.infosNiveauMaJ.tempsReparation;
-    
+
                 let p  = document.getElementById('infos'+element.nom);
                 let p2 = document.createElement('p');
                 let boutton = document.getElementById('majButton'+element.nom);
-    
+
                 p2.id = "bip"+element.nom;
                 p.appendChild(p2);
-    
+
                 if(boutton !== undefined) {
                     let cacherbutton = document.getElementById('achatButton');
                     let cacherbutton2 = document.getElementById('achatMaJ');
@@ -156,15 +156,13 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                     element.animMaJUp(element.infosNiveauMaJ.tempsReparation);
 
                     gameView.modifVar('debit', -element.infosNiveauMaJ.coutDebit)
-    
+
                     element.niveauMaJ++;
                     element.verifMaJ = true;
-
-                    
-                }   
+                }
                 boutton.setAttribute('style', 'display: none;');
             }
-        
+
         }
     }
 

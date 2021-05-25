@@ -1,6 +1,6 @@
 let achat = (function() {
     let dataMaj = [];
-    
+
     return {
         recupData() {
             for (let element of stockageObj) {
@@ -38,10 +38,10 @@ let achat = (function() {
             let verif = false;
             console.log(this.getDataMaJ());
             let tab = this.getDataMaJ();
-            
+
             if(tab.length != 0) {
-                
-            
+
+
                 for(let i = 0; i < tab.length; i++) {
                     console.log(stockageObj[indice].nom);
                     if(stockageObj[indice].nom == tab[i].nom) {
@@ -49,7 +49,7 @@ let achat = (function() {
                     }
                 }
             }
-            
+
             if (indice !== -1 && verif == false) {
                 this.setDataMaJ(stockageObj[indice]);
                 // this.popUpgrade(indice);
@@ -114,4 +114,3 @@ let achat = (function() {
         }
     }
 })();
-
