@@ -215,8 +215,8 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
         this.MaJup.play('MaJUpAnim');
         this.MaJup.once('animationcomplete', () => {
             this.MaJup.setAlpha(0);
-            if (boucle <= tempsMaj || boucle === undefined) {
-                this.animMaJUp(tempsMaj, (boucle === undefined) ? 0 : boucle++);
+            if (boucle < tempsMaj || boucle === undefined) {
+                this.animMaJUp(tempsMaj, (boucle === undefined) ? 2 : ++boucle);
             }
         });
     }
