@@ -1,11 +1,12 @@
 class Objet extends Phaser.Physics.Arcade.Sprite {
-    constructor(objet, scene, x, y, graphics, up) {
+    constructor(objet, scene, x, y, graphics, up, majup) {
         super(scene, x, y, objet.nom);
         this.objet = objet;
         this.graphics = graphics;
         this.barre = undefined;
         this.scene = scene;
         this.up = up;
+        this.MaJup = majup;
         this.niveauMaJ = 0
 
         this.infosNiveauMaJ;
@@ -191,6 +192,21 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
             console.log('fini');
             this.up.setAlpha(0);
             if (boucle === undefined) this.animUp(true);
+        });
+    }
+
+    animMaJUp(tempsMaj, boucle) {
+        this.MaJup.setAlpha(1);
+        
+        this.MaJup.x = this.x+10;
+        this.MaJup.y = this.y-150;
+
+        this.MaJup.play('MaJUpAnim');
+        this.MaJup.once('animationcomplete', () => {
+            this.MaJup.setAlpha(0);
+            if (boucle <= tempsMaj || boucle === undefined) {
+                this.animMaJUp(tempsMaj, (boucle === undefined) ? 0 : boucle++);
+            } 
         });
     }
 

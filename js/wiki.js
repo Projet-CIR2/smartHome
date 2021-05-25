@@ -6,7 +6,6 @@ let BTNS2 = document.getElementById("Semaine 2");
 let BTNS3 = document.getElementById("Semaine 3");
 let BTNS4 = document.getElementById("Semaine 4");
 let BTNS5 = document.getElementById("Semaine 5");
-let BTNS5 = document.getElementById("Semaine 5");
 let BTNS67 = document.getElementById("Semaine 6-7");
 
 let dFP = document.getElementById("FP");

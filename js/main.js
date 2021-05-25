@@ -45,7 +45,7 @@ let stockageVar = {
 
 let stockageObj = [];
 
-let levelUp;
+let levelUp, MaJUp;
 
 function preload() {
 
@@ -104,6 +104,10 @@ function preload() {
     //this.load.image('Réveil', '../tiled/New/bedroom/reveil1.png');
 
     this.load.spritesheet('levelUp', '../img/levelUp.png', { frameWidth: 400, frameHeight: 300 })
+
+    this.load.spritesheet('MaJUp', '../img/MaJ.png', { frameWidth: 90, frameHeight: 90 })
+
+    this.load.audio('music','../img/musiquejeu.mp3')
 }
 
 
@@ -191,6 +195,19 @@ function create() {
     this.levelUp.displayHeight = 100;
     this.levelUp.setAlpha(0);
 
+    //anim MaJ
+    this.MaJUp = this.physics.add.sprite(0, 0, 'MaJUp');
+    this.anims.create({
+        key: 'MaJUpAnim',
+        frames: 'MaJUp',
+        frameRate: 8,
+        // repeat: -1,
+        // hideOnComplete: true
+    });
+    this.MaJUp.displayWidth = 90;
+    this.MaJUp.displayHeight = 90;
+    this.MaJUp.setAlpha(0);
+
     let cursors = this.input.keyboard.createCursorKeys();
 
     this.cameras.main.setZoom(0.3);
@@ -222,7 +239,7 @@ function create() {
     graphics = this.add.graphics({ fillStyle: { width: 15, color: 0x00ff00 } });
 
     for(let y of infoObjet){
-      obj = new Objet(y,this,-1000,-1000, graphics, this.levelUp);
+      obj = new Objet(y,this,-1000,-1000, graphics, this.levelUp, this.MaJUp);
       obj.visible = false;
       stockageObj.push(obj);
     }
@@ -259,6 +276,9 @@ function create() {
     //     console.log(pointer.x);
     //     console.log(pointer.y);
     // });
+
+    this.sound.play('music');
+
 }
 
 function compteUneSeconde () {
