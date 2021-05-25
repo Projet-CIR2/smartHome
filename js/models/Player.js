@@ -114,7 +114,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
     update(){
         if(this.walk)this.cheminPathPlayer()
-        else(this.setPath(this.matrixMap, this.mapWidth, this.mapHeight, this.pointInteret));
+        //else(this.setPath(this.matrixMap, this.mapWidth, this.mapHeight, this.pointInteret));
     }
 
     movePlayer(player, x, y) {
