@@ -31,13 +31,11 @@ class timee {
         (this.cacher).setAttribute('style','display: none');
         (this.cacher2).setAttribute('style','display: none');
         document.getElementById("bip"+this.elmt).innerHTML = "MaJ en cours : " + this.timeMaJ + " secondes restantes ...";
-        this.dec(this.elmt, this.timeMaJ, this.myVar, this.verif, this.cacher, this.cacher2, this.element, this.maxTime);
+        this.dec(this.elmt, this.timeMaJ, this.verif, this.cacher, this.cacher2, this.element, this.maxTime);
     }
-    setTime(nb) {
-        this.timeMaJ = nb;
-    }
-    dec(elmt, time, myVar, verif, cacherachat, cachermaJ, element, maxTime) {
-        this.myVar = setInterval(function() {
+
+    dec(elmt, time, verif, cacherachat, cachermaJ, element, maxTime) {
+        let timer = setInterval(function() {
             element.barre.modifBarre(time-1,maxTime);
             time--;
             if(time <= 0) {
@@ -48,8 +46,12 @@ class timee {
                     verif = true;
                     let soundMAJ = new Audio('../img/MAJ.mp3');
                     soundMAJ.play();
+
+                    element.finBarre();
+                    gameView.modifVar('debit', element.infosNiveauMaJ.coutDebit);
                 }
-                clearInterval(myVar);
+
+                clearInterval(timer);
             }
             else {	
                 if(document.getElementById("bip"+elmt) != null) {

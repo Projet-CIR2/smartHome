@@ -137,17 +137,14 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 p2.id = "bip"+element.nom;
                 p.appendChild(p2);
     
-                if(boutton != undefined) {
+                if(boutton !== undefined) {
                     let cacherbutton = document.getElementById('achatButton');
                     let cacherbutton2 = document.getElementById('achatMaJ');
 
                     let chrono = new timee(tmp, element.nom, cacherbutton, cacherbutton2, element);
                     chrono.start();
-                    
-                    element.animMaJUp(element.infosNiveauMaJ.tempsReparation);
 
-                    debitModif.setDebit(element.infosNiveauMaJ.coutDebit);
-                    debitModif.start();
+                    gameView.modifVar('debit', -element.infosNiveauMaJ.coutDebit)
     
                     element.niveauMaJ++;
                     element.verifMaJ = true;

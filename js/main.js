@@ -23,11 +23,11 @@ let controls;
 
 let game = new Phaser.Game(config);
 
-let player, player2, J2Haut, J2Bas, J2Gauche, J2Droite, layer1, layer2, layer3, layer4, collisions, map, sprite, clickImg, housebarre;
+let J2Haut, J2Bas, J2Gauche, J2Droite, layer1, layer2, layer3, layer4, collisions, map, sprite, clickImg, housebarre;
 
 let chronoTexte, monTimer, chrono = 100;
 
-let matrixMap, chemin, cheminSize;
+let matrixMap, chemin, cheminSize, pointsInteret, nbHabitants, hab;
 
 let newCoordX, newCoordY, testt, destination = -1, destinationInter = -1;
 
@@ -57,9 +57,9 @@ function preload() {
     this.load.image('tiles', '../testPathfinding/newtiles.png');
 
     /*------------- LOAD SPRITES -------------*/
-    this.load.spritesheet('pere', '../img/pere.png', { frameWidth: 256, frameHeight: 512 });
-    this.load.spritesheet('mere', '../img/mere.png', { frameWidth: 256, frameHeight: 512 });
-    this.load.spritesheet('fils', '../img/fils.png', { frameWidth: 256, frameHeight: 512 });
+    this.load.spritesheet('0', '../img/pere.png', { frameWidth: 256, frameHeight: 512 });
+    this.load.spritesheet('1', '../img/mere.png', { frameWidth: 256, frameHeight: 512 });
+    this.load.spritesheet('2', '../img/fils.png', { frameWidth: 256, frameHeight: 512 });
 
 
 
@@ -71,36 +71,16 @@ function preload() {
     /*------------- LOAD OBJECTS -------------*/
 
     this.load.image('Télé', '../tiled/New/salon/tv1.png');
-    this.load.image('Télé', '../tiled/New/salon/tv2.png');
     this.load.image('Box_Internet', '../tiled/New/salon/box1.png');
-    this.load.image('Box_Internet', '../tiled/New/salon/box2.png');
-    this.load.image('Box_Internet', '../tiled/New/salon/box3.png');
-    this.load.image('Box_Internet', '../tiled/New/salon/box4.png');
     this.load.image('Ordinateur', '../tiled/New/salon/computer1.png');
-    this.load.image('Ordinateur', '../tiled/New/salon/computer2.png');
-    this.load.image('Ordinateur', '../tiled/New/salon/computer3.png');
-    this.load.image('Ordinateur', '../tiled/New/salon/computer4.png');
     this.load.image('Robot_Aspirateur', '../tiled/New/robots/cleaner1.png');
-    this.load.image('Robot_Aspirateur', '../tiled/New/robots/cleaner2.png');
-    this.load.image('Robot_Aspirateur', '../tiled/New/robots/cleaner3.png');
-    this.load.image('Robot_Aspirateur', '../tiled/New/robots/cleaner4.png');
     this.load.image('Lumière', '../tiled/New/light/mural1.png');
-    this.load.image('Lumière', '../tiled/New/light/mural2.png');
     this.load.image('Frigo', '../tiled/New/kitchen/frdige1.png');
-    this.load.image('Frigo', '../tiled/New/kitchen/frdige2.png');
-    this.load.image('Frigo', '../tiled/New/kitchen/frdige3.png');
-    this.load.image('Frigo', '../tiled/New/kitchen/frdige4.png');
     this.load.image('Fauteuil', '../tiled/New/salon/canape1.png');
     this.load.image('Gazinière', '../tiled/New/kitchen/furnace1.png');
-    this.load.image('Gazinière', '../tiled/New/kitchen/furnace2.png');
-    this.load.image('Gazinière', '../tiled/New/kitchen/furnace3.png');
-    this.load.image('Gazinière', '../tiled/New/kitchen/furnace4.png');
     this.load.image('Radiateur', '../tiled/New/chauffage/radiateur1.png');
     this.load.image('Lave_Linge', '../tiled/New/buanderie/lavelinge1.png');
     this.load.image('Lave_Vaisselle', '../tiled/New/kitchen/dishwasher1.png');
-    this.load.image('Lave_Vaisselle', '../tiled/New/kitchen/dishwasher2.png');
-    this.load.image('Lave_Vaisselle', '../tiled/New/kitchen/dishwasher3.png');
-    this.load.image('Lave_Vaisselle', '../tiled/New/kitchen/dishwasher4.png');
     //this.load.image('Réveil', '../tiled/New/bedroom/reveil1.png');
 
     this.load.spritesheet('levelUp', '../img/levelUp.png', { frameWidth: 400, frameHeight: 300 })
@@ -134,6 +114,9 @@ function create() {
 
 
     /*------------- INITIALISATION MAP -------------*/
+
+    nbHabitants = 3;
+
     map = this.add.tilemap('map');
 
     mapWidth = map.width;
@@ -143,6 +126,8 @@ function create() {
     for (let i = 0; i < mapHeight; i++) {
         matrixMap[i] = new Array(mapWidth);
     }
+
+    
 
     let collisions = map.layers[3].data;
 
@@ -157,6 +142,28 @@ function create() {
         }
     }
 
+
+    pointsInteret = [];
+    
+
+    let layerPtInteret = map.layers[4].data;
+    let i = 0;
+    for (let u = 0; u < mapHeight; u++) {
+        for (let v = 0; v < mapWidth; v++) {
+            if (layerPtInteret[u][v].index == 137) {
+                pointsInteret[i] = {
+                    x: v,
+                    y: u
+                }
+                i++;
+            }
+            
+        }
+    }
+    
+  
+
+
     //let test = this.add.sprite(609, 624, 'tempHouse');
     //clickImg.setInteractive();
 
@@ -166,15 +173,15 @@ function create() {
     // click(button);
 
 
+    
 
 
 
 
-
-
+    
 
     /*------------- INITIALISATION TILES/LAYERS -------------*/
-
+    
     let tilesets = map.addTilesetImage('tiles', 'tiles');
 
     layer1 = map.createLayer('sol', tilesets);
@@ -248,17 +255,18 @@ function create() {
     // let polygon = new Phaser.Geom.Polygon('0 66 0 223 129 159 129 0');
     // this.physics.add.existing(polygon);
 
-
-
+    
+    
     /*------------- INITIALISATION HABITANTS -------------*/
 
-    player = new Player(this, 4,7, 0, "pere");
-    player2 = new Player(this, 7,16, 1, "mere");
-    player3 = new Player(this, 2,16, 2, "fils");
+    hab = [];
+    for(let i =0; i< nbHabitants; i++){
+        hab[i] = new Player(this, pointsInteret[i].x, pointsInteret[i].y, i, i.toString());
+        hab[i].setPath(matrixMap, mapWidth, mapHeight, pointsInteret);
 
-    player.setPath(matrixMap, mapWidth, mapHeight)
-    player2.setPath(matrixMap, mapWidth, mapHeight);
-    player3.setPath(matrixMap, mapWidth, mapHeight);
+    }
+
+    
 
 
 
@@ -287,19 +295,19 @@ function compteUneSeconde () {
 
 function update(time, delta) {
 
-
+    
     for (let objet of stockageObj) {
         if (objet.barre !== undefined) {
            //objet.barre.modifBarre(chrono);
         }
     }
-
+    
 
     controls.update(delta);
 
-    player.update();
-    player2.update();
-    player3.update();
+    hab.forEach(element => {
+       element.update(); 
+    });
 
     // let pointer = this.input.activePointer;
 

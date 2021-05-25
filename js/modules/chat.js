@@ -34,13 +34,13 @@ let chat = (function () {
             event = json.evenements_important.positif[Math.floor(Math.random() * json.evenements_important.positif.length)];
             afficheTexte(event.description, 'blue');
             let soundBonus = new Audio('../../img/bonus.mp3');
-            soundBonus.play();
+            soundBonus.play().then();
         }
         else {
             event = json.evenements_important.negatif[Math.floor(Math.random() * json.evenements_important.negatif.length)];
             afficheTexte(event.description, 'red');
             let soundAlert = new Audio('../../img/alert.mp3');
-            soundAlert.play();
+            soundAlert.play().then();
         }
 
         // on modifie les valeurs du jeu
