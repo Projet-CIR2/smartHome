@@ -51,6 +51,7 @@ class timee {
                     soundMAJ.play().then();
                     element.finBarre();
                     element.etat = 3;
+                    clearTimeout(element.time);
                     element.degrade();
                     achat.suppMaj(elmt);
                     scriptMagique.eventMaj();

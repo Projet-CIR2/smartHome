@@ -19,14 +19,12 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
 
     let button;
 
-    if (element.niveau !== 3) {
-        button = document.createElement('button');
-        div.appendChild(button);
-        button.setAttribute('class', 'btn btn-warning btn-sm');
-        button.textContent = btn;
-        if (mOru == 'd_MaJ') {
-            button.id = 'majButton' + element.nom;
-        }
+    button = document.createElement('button');
+    div.appendChild(button);
+    button.setAttribute('class', 'btn btn-warning btn-sm');
+    button.textContent = btn;
+    if (mOru === 'd_MaJ') {
+        button.id = 'majButton' + element.nom;
     }
     if (mOru === 'd_Upgrade') {
         let pAchat = document.createElement('p');
