@@ -104,7 +104,7 @@ let chat = (function () {
     function texteImportant() {
         let event;
         // une chance sur 2 que l'événement soit positif ou négatif
-        if (Math.floor(Math.random() * 2)) {
+        if (Math.floor(Math.random() * 3) <= 1) {
             event = json.evenements_important.positif[Math.floor(Math.random() * json.evenements_important.positif.length)];
             afficheTexte(event, 'blue');
             let soundBonus = new Audio('../../img/bonus.mp3');

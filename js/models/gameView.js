@@ -83,7 +83,7 @@ class GameView {
     modifVar(type, nb) {
         if (type === 'humeur' && this.humeur + nb <= 100) this.humeur += nb / this.difficulte;
         if (type === 'argent') this.argent += nb;
-        if (type === 'environnement' && this + nb <= 100) this.environnement += nb;
+        if (type === 'environnement' && this.environnement + nb <= 100) this.environnement += nb;
         if (type === 'debit' && this.debit + nb >= 0 && this.debit + nb <= 100) this.debit += nb / this.difficulte;
         
         if(this.environnement <= 0) {
@@ -93,7 +93,6 @@ class GameView {
             this.humeur = 0;
         }
         this.modifBarre();
-        // this.logVar();
     }
 
     argentBonheur(){
