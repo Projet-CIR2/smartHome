@@ -19,7 +19,7 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
 
     let button;
 
-    if (element.niveauMaJ !== 3) {
+    if (element.niveau !== 3) {
         button = document.createElement('button');
         div.appendChild(button);
         button.setAttribute('class', 'btn btn-warning btn-sm');
