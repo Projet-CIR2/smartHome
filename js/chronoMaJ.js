@@ -39,9 +39,7 @@ class timee {
         let timer = setInterval(function() {
             element.barre.modifBarre(time-1,maxTime);
             time--;
-            console.log(time);
             if(time <= 0) {
-                console.log('je rentre dans time', verif, document.getElementById("bip"+elmt));
                 if(verif === false) {
                     element.majEnCours = false;
                     if (stockageObj.every(unElement => unElement.majEnCours === false)) {
