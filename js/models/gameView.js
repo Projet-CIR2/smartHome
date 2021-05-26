@@ -64,10 +64,12 @@ class GameView {
     }
 
     argentBonheur(){
-        if (this.argent <= 0){
-            let x = this.argent - 50;
+        let z = this.argent
+        if (z <= 0){
+            let x = z - 50;
             this.bonheur += Math.sqrt(x) * this.difficulte;
         }
+        // this.logVar();
     }
 
     logVar() {
@@ -82,8 +84,7 @@ class GameView {
     }
 
     paiement(infosNiveau) {
-        this.modifVar('argent', -infosNiveau.coutAmelioration);
-        this.argent -= infosNiveau.coutAmelioration;
+        this.modifVar('argent', -1 * infosNiveau.coutAmelioration);
         this.environnement += infosNiveau.environnement;
         this.humeur += infosNiveau.bonheur;
         this.modifBarre();

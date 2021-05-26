@@ -3,6 +3,7 @@ let infoObjet = [
     nom: "Frigo",
     niveau0:{
       description: "Frigo de niveau 1 équipé d'un freezer idéal pour commencer ",
+      bonheur: 3,
       environnement: -20,
       coutAmelioration:750
 
@@ -50,6 +51,7 @@ let infoObjet = [
     nom: "Fauteuil",
     niveau0:{
       description: "Fauteuil de niveau 1 peu confortable ",
+      bonheur: 2,
       environnement: -20,
       coutAmelioration:250
     },
@@ -95,6 +97,7 @@ let infoObjet = [
     nom: "Gazinière",
     niveau0:{
       description: "Gaziniere de niveau 1 modeste et fonctionnel ",
+      bonheur: 2,
       environnement: -20,
       coutAmelioration:400
     },
@@ -140,6 +143,7 @@ let infoObjet = [
     nom: "Radiateur",
     niveau0:{
       description: "Radiateur de niveau 1 chauffe mais avec difficultée ",
+      bonheur: 2,
       environnement: -20,
       coutAmelioration:200
     },
@@ -185,6 +189,7 @@ let infoObjet = [
     nom: "Lave_Linge",
     niveau0:{
       description: "Lave linge de niveau 1 lave vos vêtements à faible température ",
+      bonheur: 2,
       environnement: -20,
       coutAmelioration:400
     },
@@ -230,6 +235,7 @@ let infoObjet = [
     nom: "Lave_Vaisselle",
     niveau0:{
       description: "Lave vaisselle de niveau 1 lave de façon superficiel ",
+      bonheur: 2,
       environnement: -20,
       coutAmelioration:300
     },
@@ -275,6 +281,7 @@ let infoObjet = [
     nom: "Télé",
     niveau0:{
       description: "Télévision de niveau 1 équipé d'un écran de basse qualité ",
+      bonheur: 3,
       environnement: -20,
       coutAmelioration:600
     },
@@ -320,6 +327,7 @@ let infoObjet = [
     nom: "Réveil",
     niveau0:{
       description: "Réveil de niveau 1 modeste mais efficace ",
+      bonheur: 1,
       environnement: -20,
       coutAmelioration:50
     },
@@ -365,6 +373,7 @@ let infoObjet = [
     nom: "Box_Internet",
     niveau0:{
       description: "Box internet de niveau 1 qui fournie une connection suffisante mais instable ",
+      bonheur: 1,
       environnement: -20,
       coutAmelioration:70
     },
@@ -410,6 +419,7 @@ let infoObjet = [
     nom: "Lumière",
     niveau0:{
       description: "Lumiere de niveau 1 modeste mais efficace ",
+      bonheur: 1,
       environnement: -20,
       coutAmelioration:50
     },
@@ -455,6 +465,7 @@ let infoObjet = [
     nom: "Ordinateur",
     niveau0:{
       description: "Ordinateur de niveau 1 équipé d'un écran de basse qualité ",
+      bonheur: 3,
       environnement: -20,
       coutAmelioration:700
     },
@@ -500,6 +511,7 @@ let infoObjet = [
     nom: "Robot_Aspirateur",
     niveau0:{
       description: "Robot aspirateur de niveau 1 nettoie avec une brosse le sol ",
+      bonheur: 2,
       environnement: -20,
       coutAmelioration:200
     },
