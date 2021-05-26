@@ -6,8 +6,8 @@ let achat = (function () {
         recupData() {
             for (let element of stockageObj) {
                 createObjetMaj('d_Upgrade', element.nom, "Amélioration suivante : " + element.infosNiveau.description + "<br><br>" +
-                    ((element.niveau !== 3) ? "Prix : " + element.infosNiveau.coutAmelioration + "€" : "Vous etes arrivé au niveau maximum !"),
-                    ((element.niveau !== 3) ? ((element.niveau === 0) ? 'Acheter' : 'Améliorer') : 'Niveau Max'), element);
+                    ((element.niveau !== 3) ? "Prix : " + element.infosNiveau.coutAmelioration + "€" : "Vous êtes arrivé au niveau maximum !"),
+                    ((element.niveau !== 3) ? ((element.niveau === 0) ? 'Acheter' : 'Améliorer'): 'Niveau Max'), element);
             }
         },
 

@@ -24,7 +24,7 @@ socket.on('scena', (elmt) => {
     infos.setAttribute('style', 'text-shadow: inherit');
 
     let obj = document.createElement('p');
-    obj.innerHTML = "Vos objectifs : <br><br>Vous devez améliorer ces objets connecté au niveau 3 !<br><br>" + "1. " + elmt.obj1 + "<br>2. " + elmt.obj2 + "<br>3. " + elmt.obj3; 
+    obj.innerHTML = "Vos objectifs : <br><br>Vous devez améliorer ces objets connectés au niveau 3 !<br><br>" + "1. " + elmt.obj1 + "<br>2. " + elmt.obj2 + "<br>3. " + elmt.obj3; 
     obj.setAttribute('style', 'text-shadow: inherit');
 
 	scenar.appendChild(obj);
