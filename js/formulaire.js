@@ -75,18 +75,22 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 if (element.niveau === 0) {
                     // si on peut acheter, on assigne à la case polygon son objet
                     stockageVar.clickPolygon.objet = title;
-                    stockageVar.clickPolygon.removeAlpha();
-                    stockageVar.clickPolygon.refreshUpgrade();
 
                     element.position(stockageVar.clickPolygon.x, stockageVar.clickPolygon.y);
-                    stockageVar.clickPolygon = undefined;
-                    stockageVar.click = false;
-    
                 }
                 element.levelUp();
                 element.degrade();
 
-                
+                stockageVar.click = false;
+                if (stockageVar.clickPolygon !== undefined) {
+                    stockageVar.clickPolygon.removeAlpha();
+                    stockageVar.clickPolygon.refreshUpgrade();
+                }
+
+                stockageVar.clickPolygon = undefined;
+
+                // scriptMagique.clean();
+                // scriptMagique.clickUpgrade();
                 
                 // on ajoute l'objet aux objets achetés
                 achat.addMaj(title);
