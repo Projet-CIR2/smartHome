@@ -11,6 +11,7 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
 
         this.infosNiveauMaJ;
         this.verifMaJ = false;
+        this.end = false;
 
         scene.add.existing(this);
 
@@ -160,7 +161,6 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
     }
 
     levelUp() {
-
         if (this.niveau <= 3) {
             this.niveau++;
             this.etat=3;
