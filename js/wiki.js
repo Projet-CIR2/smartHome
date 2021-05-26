@@ -7,6 +7,9 @@ let BTNS3 = document.getElementById("Semaine 3");
 let BTNS4 = document.getElementById("Semaine 4");
 let BTNS5 = document.getElementById("Semaine 5");
 let BTNS67 = document.getElementById("Semaine 6-7");
+let BTNS8 = document.getElementById("Semaine 8");
+let BTNS9 = document.getElementById("Semaine 9");
+let BTNS10 = document.getElementById("Semaine 10");
 
 let dFP = document.getElementById("FP");
 let dCDC = document.getElementById("CDC");
@@ -17,6 +20,9 @@ let dS3 = document.getElementById("S3");
 let dS4 = document.getElementById("S4");
 let dS5 = document.getElementById("S5");
 let dS67 = document.getElementById("S6-7");
+let dS8 = document.getElementById("S8");
+let dS9 = document.getElementById("S9");
+let dS10 = document.getElementById("S10");
 
 BTNFP.addEventListener("click", () => {
     if(dFP.style.display != "none"){
@@ -32,6 +38,9 @@ BTNFP.addEventListener("click", () => {
         dS4.style.display = "none";
         dS5.style.display = "none";
         dS67.style.display = "none";
+        dS8.style.display = "none";
+        dS9.style.display = "none";
+        dS10.style.display = "none";
     }
   });
 
@@ -49,6 +58,9 @@ BTNCDC.addEventListener("click", () => {
         dS4.style.display = "none";
         dS5.style.display = "none";
         dS67.style.display = "none";
+        dS8.style.display = "none";
+        dS9.style.display = "none";
+        dS10.style.display = "none";
     }
   });
 
@@ -66,6 +78,9 @@ BTNCDC.addEventListener("click", () => {
         dS4.style.display = "none";
         dS5.style.display = "none";
         dS67.style.display = "none";
+        dS8.style.display = "none";
+        dS9.style.display = "none";
+        dS10.style.display = "none";
     }
   });
 
@@ -83,6 +98,9 @@ BTNCDC.addEventListener("click", () => {
         dS4.style.display = "none";
         dS5.style.display = "none";
         dS67.style.display = "none";
+        dS8.style.display = "none";
+        dS9.style.display = "none";
+        dS10.style.display = "none";
     }
   });
 
@@ -100,6 +118,9 @@ BTNCDC.addEventListener("click", () => {
         dS4.style.display = "none";
         dS5.style.display = "none";
         dS67.style.display = "none";
+        dS8.style.display = "none";
+        dS9.style.display = "none";
+        dS10.style.display = "none";
     }
   });
 
@@ -117,6 +138,9 @@ BTNCDC.addEventListener("click", () => {
         dS4.style.display = "none";
         dS5.style.display = "none";
         dS67.style.display = "none";
+        dS8.style.display = "none";
+        dS9.style.display = "none";
+        dS10.style.display = "none";
     }
   });
 
@@ -134,6 +158,9 @@ BTNCDC.addEventListener("click", () => {
         dS1.style.display = "none";
         dS5.style.display = "none";
         dS67.style.display = "none";
+        dS8.style.display = "none";
+        dS9.style.display = "none";
+        dS10.style.display = "none";
     }
   });
 
@@ -151,6 +178,9 @@ BTNCDC.addEventListener("click", () => {
         dS4.style.display = "none";
         dS1.style.display = "none";
         dS67.style.display = "none";
+        dS8.style.display = "none";
+        dS9.style.display = "none";
+        dS10.style.display = "none";
     }
   });
 
@@ -168,5 +198,68 @@ BTNCDC.addEventListener("click", () => {
         dS4.style.display = "none";
         dS1.style.display = "none";
         dS5.style.display = "none";
+        dS8.style.display = "none";
+        dS9.style.display = "none";
+        dS10.style.display = "none";
+    }
+  });
+
+  BTNS8.addEventListener("click", () => {
+    if(dS8.style.display != "none"){
+      //nothing
+    } 
+    else {
+        dS8.style.display = "block";
+        dFP.style.display = "none";
+        dCDC.style.display = "none";
+        dLEF.style.display = "none";
+        dS2.style.display = "none";
+        dS3.style.display = "none";
+        dS4.style.display = "none";
+        dS1.style.display = "none";
+        dS5.style.display = "none";
+        dS67.style.display = "none";
+        dS9.style.display = "none";
+        dS10.style.display = "none";
+    }
+  });
+
+  BTNS9.addEventListener("click", () => {
+    if(dS9.style.display != "none"){
+      //nothing
+    } 
+    else {
+        dS9.style.display = "block";
+        dFP.style.display = "none";
+        dCDC.style.display = "none";
+        dLEF.style.display = "none";
+        dS2.style.display = "none";
+        dS3.style.display = "none";
+        dS4.style.display = "none";
+        dS1.style.display = "none";
+        dS5.style.display = "none";
+        dS67.style.display = "none";
+        dS8.style.display = "none";
+        dS10.style.display = "none";
+    }
+  });
+
+  BTNS10.addEventListener("click", () => {
+    if(dS10.style.display != "none"){
+      //nothing
+    } 
+    else {
+        dS10.style.display = "block";
+        dFP.style.display = "none";
+        dCDC.style.display = "none";
+        dLEF.style.display = "none";
+        dS2.style.display = "none";
+        dS3.style.display = "none";
+        dS4.style.display = "none";
+        dS1.style.display = "none";
+        dS5.style.display = "none";
+        dS67.style.display = "none";
+        dS8.style.display = "none";
+        dS9.style.display = "none";
     }
   });
