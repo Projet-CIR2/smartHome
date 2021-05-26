@@ -11,7 +11,7 @@ let infoObjet = [
 
     niveau1: {
       description: "Frigo de niveau 2 permetant d'avoir à manger pour 1 semaine",
-      coutDebit: 25,
+      coutDebit: 45,
       tempsEtat: 90,
       bonheur: 9,
       environnement: 5,
@@ -25,7 +25,7 @@ let infoObjet = [
 
     niveau2: {
       description: "Frigo de niveau 3, sublime l'humeur de ses utilisateurs",
-      coutDebit: 28,
+      coutDebit: 50,
       tempsEtat: 120,
       bonheur: 12,
       environnement: 5,
@@ -38,7 +38,7 @@ let infoObjet = [
 
     niveau3: {
       description: "Frigo de niveau max atteint",
-      coutDebit: 31,
+      coutDebit: 55,
       bonheur: 15,
       environnement: 5,
       tempsEtat: 150,
@@ -58,7 +58,7 @@ let infoObjet = [
 
     niveau1: {
       description: "Fauteuil de niveau 2 idéal pour se reposer",
-      coutDebit: 20,
+      coutDebit: 35,
       tempsEtat: 60,
       bonheur: 6,
       environnement: 5,
@@ -72,7 +72,7 @@ let infoObjet = [
 
     niveau2: {
       description: "Fauteuil de niveau 3 avec un confort irréprochable",
-      coutDebit: 23,
+      coutDebit: 40,
       tempsEtat: 90,
       bonheur: 9,
       environnement: 5,
@@ -84,7 +84,7 @@ let infoObjet = [
 
     niveau3: {
       description: "Fauteuil de niveau max atteint",
-      coutDebit: 26,
+      coutDebit: 45,
       bonheur: 12,
       environnement: 5,
       tempsEtat: 120,
@@ -104,7 +104,7 @@ let infoObjet = [
 
     niveau1: {
       description: "Gazinière de niveau 2 équipé d'un four idéal pour les amateurs",
-      coutDebit: 20,
+      coutDebit: 35,
       tempsEtat: 60,
       bonheur: 6,
       environnement: 5,
@@ -118,7 +118,7 @@ let infoObjet = [
 
     niveau2: {
       description: "Gazinière de niveau 3 équipé d'un autocuiseur parfait pour toutes les envies",
-      coutDebit: 23,
+      coutDebit: 40,
       tempsEtat: 90,
       bonheur: 9,
       environnement: 5,
@@ -130,7 +130,7 @@ let infoObjet = [
 
     niveau3: {
       description: "Gazinière de niveau max atteint",
-      coutDebit: 26,
+      coutDebit: 45,
       bonheur: 12,
       environnement: 5,
       tempsEtat: 120,
@@ -150,7 +150,7 @@ let infoObjet = [
 
     niveau1: {
       description: "Radiateur de niveau 2 relié à un chauffage centrale qui ne cherche qu'à satisfaire vos besoins",
-      coutDebit: 20,
+      coutDebit: 35,
       tempsEtat: 60,
       bonheur: 6,
       environnement: 5,
@@ -164,7 +164,7 @@ let infoObjet = [
 
     niveau2: {
       description: "Radiateur de niveau 3 équipé d'un thermostat automatique pour votre confort ",
-      coutDebit: 23,
+      coutDebit: 40,
       tempsEtat: 90,
       bonheur: 9,
       environnement: 5,
@@ -176,7 +176,7 @@ let infoObjet = [
 
     niveau3: {
       description: "Radiateur de niveau max atteint",
-      coutDebit: 26,
+      coutDebit: 45,
       tempsEtat: 120,
       bonheur: 12,
       environnement: 5,
@@ -196,7 +196,7 @@ let infoObjet = [
 
     niveau1: {
       description: "Lave linge de niveau 2 équipé d'un sèche linge intégré",
-      coutDebit: 20,
+      coutDebit: 35,
       tempsEtat: 60,
       bonheur: 6,
       environnement: 5,
@@ -210,7 +210,7 @@ let infoObjet = [
 
     niveau2: {
       description: "Lave linge de niveau 3 lave de façon délicate et précise ",
-      coutDebit: 23,
+      coutDebit: 40,
       tempsEtat: 90,
       bonheur: 9,
       environnement: 5,
@@ -222,7 +222,7 @@ let infoObjet = [
 
     niveau3: {
       description: "Lave linge de niveau max atteint",
-      coutDebit: 26,
+      coutDebit: 45,
       tempsEtat: 120,
       bonheur: 12,
       environnement: 5,
@@ -242,7 +242,7 @@ let infoObjet = [
 
     niveau1: {
       description: "Lave vaisselle de niveau 2 dispose d'un nettoyage irréprochable",
-      coutDebit: 20,
+      coutDebit: 35,
       tempsEtat: 60,
       bonheur: 6,
       environnement: 5,
@@ -256,7 +256,7 @@ let infoObjet = [
 
     niveau2: {
       description: "Lave vaisselle de niveau 3 idéal pour une vaisselle scintillante ",
-      coutDebit: 23,
+      coutDebit: 40,
       tempsEtat: 90,
       bonheur: 9,
       environnement: 5,
@@ -268,7 +268,7 @@ let infoObjet = [
 
     niveau3: {
       description: "Lave vaisselle de niveau max atteint ",
-      coutDebit: 26,
+      coutDebit: 45,
       tempsEtat: 120,
       bonheur: 12,
       environnement: 5,
@@ -288,7 +288,7 @@ let infoObjet = [
 
     niveau1: {
       description: "Télévision de niveau 2 dispose d'un écran de bonne qualité, capte les chaines via une antenne",
-      coutDebit: 25,
+      coutDebit: 45,
       tempsEtat: 90,
       bonheur: 9,
       environnement: 5,
@@ -302,7 +302,7 @@ let infoObjet = [
 
     niveau2: {
       description: "Télévision de niveau 3 possède un écran de haute qualité, capte les chaines via satellite",
-      coutDebit: 28,
+      coutDebit: 50,
       tempsEtat: 120,
       bonheur: 12,
       environnement: 5,
@@ -314,7 +314,7 @@ let infoObjet = [
 
     niveau3: {
       description: "Télévision de niveau max atteint",
-      coutDebit: 31,
+      coutDebit: 55,
       tempsEtat: 150,
       bonheur: 15,
       environnement: 5,
@@ -334,7 +334,7 @@ let infoObjet = [
 
     niveau1: {
       description: "Réveil de niveau 2 dispose d'un antenne radio et peu enregistrer des musiques",
-      coutDebit: 10,
+      coutDebit: 25,
       tempsEtat: 30,
       bonheur: 3,
       environnement: 5,
@@ -348,7 +348,7 @@ let infoObjet = [
 
     niveau2: {
       description: "Réveil de niveau 3 ideal pour commencer une bonne journée ",
-      coutDebit: 13,
+      coutDebit: 30,
       tempsEtat: 60,
       bonheur: 6,
       environnement: 5,
@@ -360,7 +360,7 @@ let infoObjet = [
 
     niveau3: {
       description: "Réveil de niveau max atteint ",
-      coutDebit: 16,
+      coutDebit: 35,
       tempsEtat: 90,
       bonheur: 9,
       environnement: 5,
@@ -380,7 +380,7 @@ let infoObjet = [
 
     niveau1: {
       description: "Box internet de niveau 2 qui fournie bonne connection internet et fluide",
-      coutDebit: 10,
+      coutDebit: 25,
       tempsEtat: 30,
       bonheur: 3,
       environnement: 5,
@@ -394,7 +394,7 @@ let infoObjet = [
 
     niveau2: {
       description: "Box internet de niveau 3 permet une gestion autonome de la connection ",
-      coutDebit: 13,
+      coutDebit: 30,
       tempsEtat: 60,
       bonheur: 6,
       environnement: 5,
@@ -406,7 +406,7 @@ let infoObjet = [
 
     niveau3: {
       description: "Box internet de niveau max atteint ",
-      coutDebit: 16,
+      coutDebit: 35,
       tempsEtat: 90,
       bonheur: 9,
       environnement: 5,
@@ -426,7 +426,7 @@ let infoObjet = [
 
     niveau1: {
       description: "Lumiere de niveau 2 dispose d'un éclairage modulable ",
-      coutDebit: 10,
+      coutDebit: 25,
       tempsEtat: 30,
       bonheur: 3,
       environnement: 5,
@@ -440,7 +440,7 @@ let infoObjet = [
 
     niveau2: {
       description: "Lumière de niveau 3 possède un éclairage automatique ",
-      coutDebit: 13,
+      coutDebit: 30,
       tempsEtat: 60,
       bonheur: 6,
       environnement: 5,
@@ -452,7 +452,7 @@ let infoObjet = [
 
     niveau3: {
       description: "Lumière de niveau max atteint ",
-      coutDebit: 16,
+      coutDebit: 35,
       tempsEtat: 90,
       bonheur: 9,
       environnement: 5,
@@ -472,7 +472,7 @@ let infoObjet = [
 
     niveau1: {
       description: "Ordinateur de niveau 2 possède une bonne puissance de calcul et dispose d'un écran de bonne qualité",
-      coutDebit: 25,
+      coutDebit: 45,
       tempsEtat: 90,
       bonheur: 9,
       environnement: 5,
@@ -486,7 +486,7 @@ let infoObjet = [
 
     niveau2: {
       description: "Ordinateur de niveau 3 idéal pour les vrais gamers",
-      coutDebit: 28,
+      coutDebit: 50,
       tempsEtat: 120,
       bonheur: 12,
       environnement: 5,
@@ -498,7 +498,7 @@ let infoObjet = [
 
     niveau3: {
       description: "Ordinateur de niveau max atteint",
-      coutDebit: 31,
+      coutDebit: 55,
       tempsEtat: 150,
       bonheur: 15,
       environnement: 5,
@@ -518,7 +518,7 @@ let infoObjet = [
 
     niveau1: {
       description: "Robot aspirateur de niveau 2 aspire la poussière de façon silencieuse",
-      coutDebit: 20,
+      coutDebit: 35,
       tempsEtat: 60,
       bonheur: 6,
       environnement: 5,
@@ -532,7 +532,7 @@ let infoObjet = [
 
     niveau2: {
       description: "Robot aspirateur de niveau 3 aspire et lave le sol pour une surface éclatante ",
-      coutDebit: 23,
+      coutDebit: 40,
       tempsEtat: 90,
       bonheur: 9,
       environnement: 5,
@@ -544,7 +544,7 @@ let infoObjet = [
 
     niveau3: {
       description: "Robot aspirateur de niveau max atteint ",
-      coutDebit: 26,
+      coutDebit: 45,
       tempsEtat: 120,
       bonheur: 12,
       environnement: 5,
