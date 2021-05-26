@@ -14,8 +14,7 @@ let achat = (function () {
         recupDataMaj() {
             for (let element of dataMaj) {
                 createObjetMaj('d_MaJ', element.nom,
-                    "Prix Maj : " + element.infosNiveau.coutReparation + "€" +
-                    "<br><br>Temps de MaJ : " + element.infosNiveau.tempsReparation + "s" +
+                    "Temps de MaJ : " + element.infosNiveau.tempsReparation + "s" +
                     "<br><br>Cout débit : " + element.infosNiveau.coutDebit,
                     'Mettre à jour', element);
             }
