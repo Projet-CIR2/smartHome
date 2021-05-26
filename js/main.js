@@ -183,17 +183,18 @@ function create() {
     layer4 = map.createLayer('collisions', tilesets);
 
     // animation levelUp
-    this.levelUp = this.physics.add.sprite(0, 0, 'levelUp');
+    this.levelUp = [];
+    for (let i = 0; i < infoObjet.length; i++) {
+        this.levelUp.push(this.physics.add.sprite(0, 0, 'levelUp'));
+        this.levelUp[i].displayWidth = 150;
+        this.levelUp[i].displayHeight = 100;
+        this.levelUp[i].setAlpha(0);
+    }
     this.anims.create({
         key: 'levelUpAnim',
         frames: 'levelUp',
-        frameRate: 14,
-        // repeat: -1,
-        // hideOnComplete: true
+        frameRate: 14
     });
-    this.levelUp.displayWidth = 150;
-    this.levelUp.displayHeight = 100;
-    this.levelUp.setAlpha(0);
 
     //anim MaJ
     this.MaJUp = [];
@@ -203,14 +204,13 @@ function create() {
         this.MaJUp[i].displayWidth = 90;
         this.MaJUp[i].displayHeight = 90;
         this.MaJUp[i].setAlpha(0);
+        this.MaJUp[i].id = i;
     }
     console.log(this.MaJUp);
     this.anims.create({
         key: 'MaJUpAnim',
         frames: 'MaJUp',
-        frameRate: 8,
-        // repeat: -1,
-        // hideOnComplete: true
+        frameRate: 8
     });
 
     let cursors = this.input.keyboard.createCursorKeys();
@@ -240,15 +240,14 @@ function create() {
             }
         }
     }
-    let obj;
 
     graphics = [];
     for (let i = 0; i < 1000; i++) graphics.push(this.add.graphics({fillStyle: {width: 15, color: 0xff0000}}));
 
     let j = 0;
+    let obj;
     for (let y of infoObjet) {
-        console.log(j);
-        obj = new Objet(y, this, -1000, -1000, graphics, this.levelUp, this.MaJUp[j++]);
+        obj = new Objet(y, this, -1000, -1000, graphics, this.levelUp[j], this.MaJUp[j++]);
         obj.visible = false;
         stockageObj.push(obj);
     }

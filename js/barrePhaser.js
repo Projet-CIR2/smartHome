@@ -10,10 +10,7 @@ class Barre {
         this.x = x - 70;
         this.y = y - 80;
 
-        console.log(this.graphics);
         this.barre = this.graphics.fillRect(this.x, this.y, size + 80, 20);
-
-        // this.graphics.setPosition(0, 0);
     }
 
     modifBarre(value, maxTime) {

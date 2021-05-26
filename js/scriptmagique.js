@@ -8,7 +8,6 @@ let scriptMagique = (function () {
             MAJ = document.getElementById("MaJ");
             upg = document.getElementById("Upgrade");
             majup = document.getElementById("upmaj");
-            console.log(MAJ);
 
             MAJ.addEventListener("click", () => {
                 this.clean();
