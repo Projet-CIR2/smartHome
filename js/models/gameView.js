@@ -43,6 +43,27 @@ class GameView {
         document.getElementById('Upgrade').addEventListener('click', () => {
             achat.verif('Upgrade');
         });
+
+        let secondes = 0, minutes = 0, heures = 0;
+        let currentP = document.getElementById('compteur');
+
+        setInterval(() => {
+            let text = "";
+            secondes++;
+            if (secondes >= 60) minutes++;
+            if (minutes >= 60) heures++;
+
+            if (heures < 10) text += "0" + heures;
+            else text += heures;
+            text += ":";
+            if (minutes < 10) text += "0" + minutes;
+            else text += minutes;
+            text += ":";
+            if (secondes < 10) text += "0" + secondes;
+            else text += secondes;
+
+            currentP.textContent = text;
+        }, 1000);
     }
 
     modifBarre() {
