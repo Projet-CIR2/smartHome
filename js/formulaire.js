@@ -79,12 +79,15 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                     stockageVar.clickPolygon.refreshUpgrade();
 
                     element.position(stockageVar.clickPolygon.x, stockageVar.clickPolygon.y);
+                    stockageVar.clickPolygon = undefined;
+                    stockageVar.click = false;
+    
                 }
                 element.levelUp();
                 element.degrade();
 
-                stockageVar.clickPolygon = undefined;
-                stockageVar.click = false;
+                
+                
                 // on ajoute l'objet aux objets achetés
                 achat.addMaj(title);
                 let img = document.createElement('img');
