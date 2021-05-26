@@ -231,9 +231,6 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
     }
 
     finBarre() {
-        // this.barre.destroy();
-        // this.barre.graphics.destroy();
-        // this.barre.graphics.alpha = 0;
         this.barre.barre.destroy();
     }
 }

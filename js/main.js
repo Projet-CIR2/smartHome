@@ -47,7 +47,7 @@ let stockageObj = [];
 
 let levelUp, MaJUp, graphics;
 
-let tabObjNivMax =  [];
+let tabObjNivMax = [];
 
 let nbBarre = 0;
 
@@ -61,11 +61,9 @@ function preload() {
     this.load.image('tiles', '../tiled/newtiles.png');
 
     /*------------- LOAD SPRITES -------------*/
-    this.load.spritesheet('0', '../img/pere.png', { frameWidth: 256, frameHeight: 512 });
-    this.load.spritesheet('1', '../img/mere.png', { frameWidth: 256, frameHeight: 512 });
-    this.load.spritesheet('2', '../img/fils.png', { frameWidth: 256, frameHeight: 512 });
-
-
+    this.load.spritesheet('0', '../img/pere.png', {frameWidth: 256, frameHeight: 512});
+    this.load.spritesheet('1', '../img/mere.png', {frameWidth: 256, frameHeight: 512});
+    this.load.spritesheet('2', '../img/fils.png', {frameWidth: 256, frameHeight: 512});
 
 
     this.load.image('button', '../img/button.png');
@@ -87,13 +85,12 @@ function preload() {
     this.load.image('Lave_Vaisselle', '../tiled/New/kitchen/dishwasher1.png');
     this.load.image('Réveil', '../tiled/New/bedrooms/reveil.png');
 
-    this.load.spritesheet('levelUp', '../img/levelUp.png', { frameWidth: 400, frameHeight: 300 })
+    this.load.spritesheet('levelUp', '../img/levelUp.png', {frameWidth: 400, frameHeight: 300})
 
-    this.load.spritesheet('MaJUp', '../img/MaJ.png', { frameWidth: 90, frameHeight: 90 })
+    this.load.spritesheet('MaJUp', '../img/MaJ.png', {frameWidth: 90, frameHeight: 90})
 
-    this.load.audio('music','../img/musiquejeu.mp3')
+    this.load.audio('music', '../img/musiquejeu.mp3')
 }
-
 
 
 function create() {
@@ -139,8 +136,7 @@ function create() {
         for (let v = 0; v < mapWidth; v++) {
             if (collisions[u][v].index == -1) {
                 matrixMap[u][v] = 0;
-            }
-            else {
+            } else {
                 matrixMap[u][v] = 1;
             }
         }
@@ -177,13 +173,6 @@ function create() {
     // click(button);
 
 
-
-
-
-
-
-
-
     /*------------- INITIALISATION TILES/LAYERS -------------*/
 
     let tilesets = map.addTilesetImage('tiles', 'tiles');
@@ -207,7 +196,15 @@ function create() {
     this.levelUp.setAlpha(0);
 
     //anim MaJ
-    this.MaJUp = this.physics.add.sprite(0, 0, 'MaJUp');
+    this.MaJUp = [];
+    console.log(infoObjet.length);
+    for (let i = 0; i < infoObjet.length; i++) {
+        this.MaJUp.push(this.physics.add.sprite(0, 0, 'MaJUp'));
+        this.MaJUp[i].displayWidth = 90;
+        this.MaJUp[i].displayHeight = 90;
+        this.MaJUp[i].setAlpha(0);
+    }
+    console.log(this.MaJUp);
     this.anims.create({
         key: 'MaJUpAnim',
         frames: 'MaJUp',
@@ -215,9 +212,6 @@ function create() {
         // repeat: -1,
         // hideOnComplete: true
     });
-    this.MaJUp.displayWidth = 90;
-    this.MaJUp.displayHeight = 90;
-    this.MaJUp.setAlpha(0);
 
     let cursors = this.input.keyboard.createCursorKeys();
 
@@ -249,12 +243,14 @@ function create() {
     let obj;
 
     graphics = [];
-    for (let i = 0; i < 1000; i++) graphics.push(this.add.graphics({ fillStyle: { width: 15, color: 0xff0000 } }));
+    for (let i = 0; i < 1000; i++) graphics.push(this.add.graphics({fillStyle: {width: 15, color: 0xff0000}}));
 
-    for(let y of infoObjet){
-      obj = new Objet(y,this,-1000,-1000, graphics, this.levelUp, this.MaJUp);
-      obj.visible = false;
-      stockageObj.push(obj);
+    let j = 0;
+    for (let y of infoObjet) {
+        console.log(j);
+        obj = new Objet(y, this, -1000, -1000, graphics, this.levelUp, this.MaJUp[j++]);
+        obj.visible = false;
+        stockageObj.push(obj);
     }
 
     // new Polygon(this, 1, 1);
@@ -262,19 +258,14 @@ function create() {
     // this.physics.add.existing(polygon);
 
 
-
     /*------------- INITIALISATION HABITANTS -------------*/
 
     hab = [];
-    for(let i =0; i< nbHabitants; i++){
-        let x = getRandomNumberBetween(0, pointsInteret.length-1);
+    for (let i = 0; i < nbHabitants; i++) {
+        let x = getRandomNumberBetween(0, pointsInteret.length - 1);
         hab[i] = new Player(this, pointsInteret[x].x, pointsInteret[x].y, i, i.toString());
         hab[i].setVars(matrixMap, mapWidth, mapHeight, pointsInteret);
-
     }
-
-
-
 
 
     monTimer = this.time.addEvent({
@@ -296,16 +287,16 @@ function create() {
 
 }
 
-function compteUneSeconde () {
-    chrono= chrono-1; // on incremente le chronometre d'une unite
+function compteUneSeconde() {
+    chrono = chrono - 1; // on incremente le chronometre d'une unite
 }
 
 function update(time, delta) {
 
 
     for (let objet of stockageObj) {
-        if (objet.barre !== undefined) {
-           //objet.barre.modifBarre(chrono);
+        if (objet.niveau === 3) {
+            tabObjNivMax.push(objet.nom);
         }
     }
 
@@ -314,7 +305,7 @@ function update(time, delta) {
     controls.update(delta);
 
     hab.forEach(element => {
-       element.update();
+        element.update();
     });
 
     // let pointer = this.input.activePointer;
@@ -335,8 +326,6 @@ function render() {
     game.debug.inputInfo(32, 32);
     game.debug.pointer(game.input.activePointer);
 }
-
-
 
 
 function click(tileset) {
@@ -362,10 +351,9 @@ function calculPixelY(y) {
 }
 
 
-
 function convert([x, y]) {
-    let posX = 135 +x*128 - y * 128;
-    let posY = 280 + y* 64 + x*64;
+    let posX = 135 + x * 128 - y * 128;
+    let posY = 280 + y * 64 + x * 64;
 
     return [posX, posY];
 }
