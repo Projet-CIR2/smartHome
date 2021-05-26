@@ -18,18 +18,21 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
     p.id = "infos" + element.nom;
 
     let button;
+    if (!element.majEnCours) {
+        button = document.createElement('button');
+        div.appendChild(button);
+        button.setAttribute('class', 'btn btn-warning btn-sm');
+        button.textContent = btn;
 
-    button = document.createElement('button');
-    div.appendChild(button);
-    button.setAttribute('class', 'btn btn-warning btn-sm');
-    button.textContent = btn;
-    if (mOru === 'd_MaJ') {
-        button.id = 'majButton' + element.nom;
+        if (mOru === 'd_MaJ') {
+            button.id = 'majButton' + element.nom;
+        }
     }
+
     if (mOru === 'd_Upgrade') {
         let pAchat = document.createElement('p');
         let pClick = document.createElement('p');
-        if (element.niveau !== 3) button.onclick = () => {
+        if (element.niveau !== 3 && button != undefined) button.onclick = () => {
             let afficheAchat = document.getElementById('achat');
             afficheAchat.innerHTML = "";
             afficheAchat.setAttribute('style', 'display: none;');
@@ -153,34 +156,35 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
             }
         }
     } else {
-        button.onclick = () => {
-            if (element.infosNiveau.coutDebit < gameView.debit) {
-                let tmp = element.infosNiveau.tempsReparation;
+        if (button != undefined) {
+            button.onclick = () => {
+                if (element.infosNiveau.coutDebit < gameView.debit) {
+                    let tmp = element.infosNiveau.tempsReparation;
 
-                let p = document.getElementById('infos' + element.nom);
-                let p2 = document.createElement('p');
-                let boutton = document.getElementById('majButton' + element.nom);
+                    let p = document.getElementById('infos' + element.nom);
+                    let p2 = document.createElement('p');
+                    let boutton = document.getElementById('majButton' + element.nom);
 
-                p2.id = "bip" + element.nom;
-                p.appendChild(p2);
+                    p2.id = "bip" + element.nom;
+                    p.appendChild(p2);
 
-                if (boutton !== undefined) {
-                    let cacherbutton = document.getElementById('achatButton');
-                    let cacherbutton2 = document.getElementById('achatMaJ');
+                    if (boutton !== undefined) {
+                        let cacherbutton = document.getElementById('achatButton');
+                        let cacherbutton2 = document.getElementById('achatMaJ');
 
-                    let chrono = new timee(tmp, element.nom, cacherbutton, cacherbutton2, element);
-                    chrono.start();
+                        let chrono = new timee(tmp, element.nom, cacherbutton, cacherbutton2, element);
+                        chrono.start();
 
-                    element.animMaJUp(element.infosNiveau.tempsReparation);
+                        element.animMaJUp(element.infosNiveau.tempsReparation);
 
-                    gameView.modifVar('debit', -element.infosNiveau.coutDebit)
+                        gameView.modifVar('debit', -element.infosNiveau.coutDebit)
 
-                    element.niveauMaJ++;
+                        element.niveauMaJ++;
+                    }
+                    boutton.setAttribute('style', 'display: none;');
                 }
-                boutton.setAttribute('style', 'display: none;');
             }
         }
-
     }
 
 }
