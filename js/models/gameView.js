@@ -89,6 +89,9 @@ class GameView {
         if(this.environnement <= 0) {
             this.environnement = 0;
         }
+        if(this.humeur <= 0) {
+            this.humeur = 0;
+        }
         this.modifBarre();
         // this.logVar();
     }
