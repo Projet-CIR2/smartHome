@@ -121,16 +121,15 @@ function create() {
 
     /*------------- INITIALISATION MAP -------------*/
 
-    console.log(gameView.scenario.map)
     switch(gameView.scenario.map){
-        case 0:
+        case '0':
             map = this.add.tilemap('map0');
             break;
-        case 1:
-            map = this.add.tilemap('map0');
+        case '1':
+            map = this.add.tilemap('map1');
             break;
         default:
-            map = this.add.tilemap('map0');
+            map = this.add.tilemap('map1');
             break;       
 
 

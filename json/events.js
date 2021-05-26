@@ -61,7 +61,7 @@ let json = {
             objet1: "Lave_Linge",
             objet2: "Lave_Vaisselle", 
             objet3: "Robot_Aspirateur",
-            habitants: 4,
+            habitants: 3,
             map: 0,
         },
         {
