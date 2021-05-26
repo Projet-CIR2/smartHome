@@ -45,7 +45,11 @@ let stockageVar = {
 
 let stockageObj = [];
 
-let levelUp, MaJUp;
+let levelUp, MaJUp, graphics;
+
+let tabObjNivMax =  [];
+
+let nbBarre = 0;
 
 function preload() {
 
@@ -53,8 +57,8 @@ function preload() {
 
 
     /*------------- LOAD MAPS -------------*/
-    this.load.tilemapTiledJSON('map', '../testPathfinding/map1.json');
-    this.load.image('tiles', '../testPathfinding/newtiles.png');
+    this.load.tilemapTiledJSON('map', '../tiled/map1.json');
+    this.load.image('tiles', '../tiled/newtiles.png');
 
     /*------------- LOAD SPRITES -------------*/
     this.load.spritesheet('0', '../img/pere.png', { frameWidth: 256, frameHeight: 512 });
@@ -74,14 +78,14 @@ function preload() {
     this.load.image('Box_Internet', '../tiled/New/salon/box1.png');
     this.load.image('Ordinateur', '../tiled/New/salon/computer1.png');
     this.load.image('Robot_Aspirateur', '../tiled/New/robots/cleaner1.png');
-    this.load.image('Lumière', '../tiled/New/light/mural1.png');
+    this.load.image('Lumière', '../tiled/New/light/lampe.png');
     this.load.image('Frigo', '../tiled/New/kitchen/frdige1.png');
-    this.load.image('Fauteuil', '../tiled/New/salon/canape1.png');
+    this.load.image('Fauteuil', '../tiled/New/salon/canape.png');
     this.load.image('Gazinière', '../tiled/New/kitchen/furnace1.png');
-    this.load.image('Radiateur', '../tiled/New/chauffage/radiateur1.png');
+    this.load.image('Radiateur', '../tiled/New/chauffage/radiateur.png');
     this.load.image('Lave_Linge', '../tiled/New/buanderie/lavelinge1.png');
     this.load.image('Lave_Vaisselle', '../tiled/New/kitchen/dishwasher1.png');
-    //this.load.image('Réveil', '../tiled/New/bedroom/reveil1.png');
+    this.load.image('Réveil', '../tiled/New/bedrooms/reveil.png');
 
     this.load.spritesheet('levelUp', '../img/levelUp.png', { frameWidth: 400, frameHeight: 300 })
 
@@ -243,7 +247,9 @@ function create() {
         }
     }
     let obj;
-    graphics = this.add.graphics({ fillStyle: { width: 15, color: 0x00ff00 } });
+
+    graphics = [];
+    for (let i = 0; i < 1000; i++) graphics.push(this.add.graphics({ fillStyle: { width: 15, color: 0xff0000 } }));
 
     for(let y of infoObjet){
       obj = new Objet(y,this,-1000,-1000, graphics, this.levelUp, this.MaJUp);
@@ -303,6 +309,7 @@ function update(time, delta) {
         }
     }
 
+    gameView.verifWin(tabObjNivMax);
 
     controls.update(delta);
 

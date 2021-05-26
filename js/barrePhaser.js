@@ -1,12 +1,19 @@
-class Barre extends Phaser.GameObjects.Rectangle {
-    constructor(scene, graphics, sprite, size, x, y) {
-        super(scene, x - 70, y - 80, size + 80, 20);
+class Barre {
+    constructor(scene, graphics, sprite, size, x, y,) {
         scene.add.existing(this);
         this.sprite = sprite;
         this.size = size + 80;
-        this.graphics = graphics;
 
-        this.graphics.fillRect(this.x, this.y, size + 80, 20);
+        this.graphics = graphics[nbBarre++];
+        this.graphics.alpha = 1;
+
+        this.x = x - 70;
+        this.y = y - 80;
+
+        console.log(this.graphics);
+        this.barre = this.graphics.fillRect(this.x, this.y, size + 80, 20);
+
+        // this.graphics.setPosition(0, 0);
     }
 
     modifBarre(value, maxTime) {
