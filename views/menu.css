@@ -1,11 +1,10 @@
 body {
-    background-image: url("../img/fond.png");
+    background-image: url("../img/fond.jpg");
     background-size: cover;
 
 }
 
 p {
-    color: white;
     font-weight: bold;
 }
 
@@ -14,16 +13,23 @@ p {
     margin-left: 15%;
     margin-top: 3%;
     margin-bottom: -130px;
+    color:white;
 }
 .jouer {
-    margin-left: 87%;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: auto;
     font-size: 36px;
+    text-align: center;
+
     background-color: transparent;
     cursor: pointer;
 }
 
 .scena {
-    margin-left: 83%;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: auto;
     font-size: 36px;
     color: white;
     background-color: transparent;
@@ -33,8 +39,21 @@ p {
 }
 a {
     text-decoration: none;
+    color:black;
 }
 
 #list_scena {
     font-size: 16px;
+}
+
+#tablette{
+    background-image: url(../img/tablette.png);
+    background-repeat: no-repeat;
+    background-size: contain ;
+    height: 400px;
+    width: 400px;
+    margin-top: 0%;
+    margin-left: 70%;
+    color: black;
+    padding-top: 10%;
 }
