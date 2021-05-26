@@ -51,13 +51,16 @@ let tabObjNivMax = [];
 
 let nbBarre = 0;
 
+
 function preload() {
 
-    this.load.image('tempHouse', '../img/tqt.png');
 
 
-    /*------------- LOAD MAPS -------------*/
-    this.load.tilemapTiledJSON('map', '../tiled/map1.json');
+    
+    this.load.tilemapTiledJSON('map0', '../tiled/map1.json');
+    this.load.tilemapTiledJSON('map1', '../tiled/map2.json');
+
+
     this.load.image('tiles', '../tiled/newtiles.png');
 
     /*------------- LOAD SPRITES -------------*/
@@ -93,7 +96,9 @@ function preload() {
 }
 
 
-function create() {
+function create() { 
+
+
     //matrixMap.forEach(element => element.forEach(elem => elem = 0));
     //console.log(matrixMap);
     /*button = game.add.button(game.world.centerX - 120, game.world.centerY - 120, 'button', start, this, 2, 1, 0);
@@ -116,9 +121,20 @@ function create() {
 
     /*------------- INITIALISATION MAP -------------*/
 
-    nbHabitants = 3;
+    console.log(gameView.scenario.map)
+    switch(gameView.scenario.map){
+        case 0:
+            map = this.add.tilemap('map0');
+            break;
+        case 1:
+            map = this.add.tilemap('map0');
+            break;
+        default:
+            map = this.add.tilemap('map0');
+            break;       
 
-    map = this.add.tilemap('map');
+
+    }
 
     mapWidth = map.width;
     mapHeight = map.height;
@@ -257,6 +273,7 @@ function create() {
 
     /*------------- INITIALISATION HABITANTS -------------*/
 
+    nbHabitants = gameView.scenario.habitants;
     hab = [];
     for (let i = 0; i < nbHabitants; i++) {
         let x = getRandomNumberBetween(0, pointsInteret.length - 1);

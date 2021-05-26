@@ -13,6 +13,8 @@ let json = {
             objet1: "Lumière",
             objet2: "Robot_Aspirateur", 
             objet3: "Box_Internet",
+            habitants: 3,
+            map: 0,
         },
         {
             titre: "Lève tard",
@@ -26,6 +28,8 @@ let json = {
             objet1: "Fauteuil",
             objet2: "Réveil", 
             objet3: "Lumière",
+            habitants: 1,
+            map: 1,
         },
         {
             titre: "Repos avant tout",
@@ -39,6 +43,8 @@ let json = {
             objet1: "Lumière",
             objet2: "Fauteuil", 
             objet3: "Radiateur",
+            habitants: 2,
+            map: 1,
         },
 
         
@@ -55,6 +61,8 @@ let json = {
             objet1: "Lave_Linge",
             objet2: "Lave_Vaisselle", 
             objet3: "Robot_Aspirateur",
+            habitants: 4,
+            map: 0,
         },
         {
             titre: "Le joueur",
@@ -68,6 +76,8 @@ let json = {
             objet1: "Fauteuil",
             objet2: "Ordinateur", 
             objet3: "Box_Internet",
+            habitants: 1,
+            map: 1,
             
         },
         {
@@ -82,6 +92,8 @@ let json = {
             objet1: "Lave_Vaisselle",
             objet2: "Frigo", 
             objet3: "Gazinière",
+            habitants: 2,
+            map: 0,
         },
         {
             titre: "Vie tranquille",
@@ -95,6 +107,8 @@ let json = {
             objet1: "Fauteuil",
             objet2: "Radiateur", 
             objet3: "Télé",
+            habitants: 2,
+            map: 0,
         },
     ],
 

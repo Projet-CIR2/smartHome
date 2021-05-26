@@ -73,6 +73,8 @@ app.post('/scenario', (req, res) => {
             obj1 : req.body.elmtObj1,
             obj2 : req.body.elmtObj2,
             obj3 : req.body.elmtObj3,
+            habitants: req.body.habs,
+            map: req.body.map,
             
     }
     scenario = scena;
@@ -93,6 +95,8 @@ app.post('/', (req, res) => {
             obj1 : req.body.elmtObj1,
             obj2 : req.body.elmtObj2,
             obj3 : req.body.elmtObj3,
+            habitants: req.body.habs,
+            map: req.body.map,
             
     }
     scenario = scena;
@@ -125,6 +129,7 @@ io.on('connection', function (socket) {
 
     });
     socket.emit('scena', scenario);
+   
 });
 
 
