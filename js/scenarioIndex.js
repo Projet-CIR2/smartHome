@@ -20,7 +20,7 @@ socket.on('scena', (elmt) => {
     desc.setAttribute('style', 'text-shadow: inherit');
 
     let infos = document.createElement('p');
-    infos.innerHTML = "Informations de départ : <br><br>Votre Humeur : " + elmt.humeur + "<br>Votre débit internet : " + elmt.debit + "<br>Votre argent : " + elmt.argent ;
+    infos.innerHTML = "Informations de départ : <br><br>Votre Confort : " + elmt.humeur + "<br>Votre débit internet : " + elmt.debit + "<br>Votre argent : " + elmt.argent ;
     infos.setAttribute('style', 'text-shadow: inherit');
 
     let obj = document.createElement('p');

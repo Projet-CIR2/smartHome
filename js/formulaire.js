@@ -78,7 +78,6 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
 
                     element.position(stockageVar.clickPolygon.x, stockageVar.clickPolygon.y);
                 }
-                element.levelUp();
                 element.degrade();
 
                 stockageVar.click = false;
@@ -96,7 +95,7 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 achat.addMaj(title);
                 let img = document.createElement('img');
 
-                afficheAchat.setAttribute('style', 'position: absolute; margin-top: 20%; margin-left: 35%; background-color: #BFB99E;border-top-left-radius: 80px 80px;border-top-right-radius: 80px 80px;border-bottom-left-radius: 80px 80px;border-bottom-right-radius: 80px 80px; height: 36%; width: 32%; visible: hidden; border:5px solid black;');
+                afficheAchat.setAttribute('style', 'position: absolute; margin-top: 20%; margin-left: 35%; background-color: #BFB99E;border-top-left-radius: 80px 80px;border-top-right-radius: 80px 80px;border-bottom-left-radius: 80px 80px;border-bottom-right-radius: 80px 80px; height: 42%; width: 32%; visible: hidden; border:5px solid black;');
                 img.src = "./img/icone_obj/" + title + ".png";
                 img.setAttribute('style', 'height: 90px; width: 90px; margin-left: 30%; margin-top: 15px; ');
                 img.id = 'image';
@@ -104,6 +103,24 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 pAchat.textContent = "Vous avez acheté " + title;
                 pAchat.setAttribute('style', 'color: white; margin-top: 13px; text-align:center; font-size: 20px;');
                 pAchat.id = 'achatTxt';
+
+                let stat = element.infosNiveau;
+                let stats = document.createElement('p');
+                let textstats = "";
+                if (stat.environnement < 0) {
+                    textstats += 'Impact Environnement : -' + Math.abs(stat.environnement) + '<br>';
+                }
+                else{
+                    textstats += "Impact Environnement :" + stat.environnement + '<br>';
+                }
+                
+                element.levelUp();
+                textstats += 'Confort : ' + stat.bonheur + '<br>';
+                textstats += 'Coût de réparation : ' + element.infosNiveau.coutDebit + ' de Debit' + '<br>';
+                textstats += 'Temps de dégration si mise à jour pas faite : ' + element.infosNiveau.tempsEtat + ' seconde' +'<br>';
+
+                stats.innerHTML =textstats;
+                stats.setAttribute('style','color: white; margin-top: 7px; text-align:center; font-size: 13px;')
 
                 pClick.textContent = "Cliquer pour continuer";
                 pClick.setAttribute('style', 'color: white; margin-top: 7px; text-align:center; font-size: 15px;');
@@ -132,6 +149,7 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 }
                 afficheAchat.appendChild(img);
                 afficheAchat.appendChild(pAchat);
+                afficheAchat.appendChild(stats);
                 afficheAchat.appendChild(pClick);
                 soundCash.play().then();
 
