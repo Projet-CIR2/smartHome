@@ -50,8 +50,14 @@ class GameView {
         setInterval(() => {
             let text = "";
             secondes++;
-            if (secondes >= 60) minutes++;
-            if (minutes >= 60) heures++;
+            if (secondes >= 60) {
+                secondes = 0;
+                minutes++;
+            }
+            if (minutes >= 60) {
+                minutes = 0;
+                heures++;
+            }
 
             if (heures < 10) text += "0" + heures;
             else text += heures;
