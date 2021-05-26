@@ -8,6 +8,7 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
         this.up = up;
         this.MaJup = majup;
         this.niveauMaJ = 0;
+        this.majEnCours = false;
 
         this.infosNiveauMaJ;
         this.end = false;
@@ -122,7 +123,7 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
 
     degrade() {
         let tempo;
-        tempo = this.infosNiveau.tempsEtat * 1000 / 3;
+        tempo = this.infosNiveau.tempsEtat * 1000 / 2;
         if (this.etat === 3) {
             this.clearTint();
         }

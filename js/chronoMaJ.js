@@ -22,6 +22,7 @@ class timee {
         this.element = element;
         this.maxTime = time;
 
+        element.majEnCours = true;
         element.addBarre();
     }
     getElmt() {
@@ -38,14 +39,18 @@ class timee {
         let timer = setInterval(function() {
             element.barre.modifBarre(time-1,maxTime);
             time--;
+            console.log(time);
             if(time <= 0) {
-                if(document.getElementById("bip"+elmt) != null && verif == false) {
-                    document.getElementById("bip"+elmt).innerHTML = "TERMINE!";
-                    cacherachat.setAttribute('style','display: block; font-size: 14px;color: black;background: #BFB99E; border: 5px solid black; border-top-right-radius: 20px; border-bottom-right-radius: 20px;');
-                    cachermaJ.setAttribute('style', 'display: block; font-size: 14px;color: black;background: #BFB99E; border: 5px solid black; border-top-left-radius: 20px; border-bottom-left-radius: 20px;');
+                console.log('je rentre dans time', verif, document.getElementById("bip"+elmt));
+                if(verif === false) {
+                    element.majEnCours = false;
+                    if (stockageObj.every(unElement => unElement.majEnCours === false)) {
+                        cacherachat.setAttribute('style', 'display: block; font-size: 14px;color: black;background: #BFB99E; border: 5px solid black; border-top-right-radius: 20px; border-bottom-right-radius: 20px;');
+                        cachermaJ.setAttribute('style', 'display: block; font-size: 14px;color: black;background: #BFB99E; border: 5px solid black; border-top-left-radius: 20px; border-bottom-left-radius: 20px;');
+                    }
                     verif = true;
                     let soundMAJ = new Audio('../img/MAJ.mp3');
-                    soundMAJ.play();
+                    soundMAJ.play().then();
                     element.finBarre();
                     element.etat = 3;
                     element.degrade();
