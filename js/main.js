@@ -198,7 +198,6 @@ function create() {
 
     //anim MaJ
     this.MaJUp = [];
-    console.log(infoObjet.length);
     for (let i = 0; i < infoObjet.length; i++) {
         this.MaJUp.push(this.physics.add.sprite(0, 0, 'MaJUp'));
         this.MaJUp[i].displayWidth = 90;
@@ -206,7 +205,6 @@ function create() {
         this.MaJUp[i].setAlpha(0);
         this.MaJUp[i].id = i;
     }
-    console.log(this.MaJUp);
     this.anims.create({
         key: 'MaJUpAnim',
         frames: 'MaJUp',
