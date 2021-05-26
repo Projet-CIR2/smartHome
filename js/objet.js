@@ -1,5 +1,5 @@
 class Objet extends Phaser.Physics.Arcade.Sprite {
-    constructor(objet, scene, x, y, graphics, up, majup) {
+    constructor(objet, scene, x, y, graphics, up, majup, etatCrit) {
         super(scene, x, y, objet.nom);
         this.objet = objet;
         this.graphics = graphics;
@@ -7,6 +7,7 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
         this.scene = scene;
         this.up = up;
         this.MaJup = majup;
+        this.etatCrit = etatCrit;
         this.niveauMaJ = 0;
         this.majEnCours = false;
         this.time = undefined;
@@ -124,7 +125,7 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
 
     degrade() {
         let tempo;
-        tempo = this.infosNiveau.tempsEtat * 1000 / 2;
+        tempo = this.infosNiveau.tempsEtat * 1000 / 3;
         if (this.etat === 3) {
             this.clearTint();
         }
@@ -137,6 +138,7 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
                     this.degrade();
                     break;
                 case 1:
+                    this.animEtatCrit();
                     this.setTint(0xFA8072);
                     this.degrade();
                     break;
@@ -221,6 +223,19 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
             if (boucle < tempsMaj || boucle === undefined) {
                 this.animMaJUp(tempsMaj, (boucle === undefined) ? 2 : ++boucle);
             }
+        });
+    }
+
+    animEtatCrit() {
+        this.etatCrit.setAlpha(1);
+
+        this.etatCrit.x = this.x + 10;
+        this.etatCrit.y = this.y - 150;
+
+        this.etatCrit.play('etatCritAnim');
+        this.etatCrit.once('animationcomplete', () => {
+            this.etatCrit.setAlpha(0);
+            if (!this.majEnCours) this.animEtatCrit();
         });
     }
 

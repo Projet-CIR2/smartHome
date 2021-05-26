@@ -88,9 +88,11 @@ function preload() {
     this.load.image('Lave_Vaisselle', '../tiled/New/kitchen/dishwasher1.png');
     this.load.image('Réveil', '../tiled/New/bedrooms/reveil.png');
 
-    this.load.spritesheet('levelUp', '../img/levelUp.png', {frameWidth: 400, frameHeight: 300})
+    this.load.spritesheet('levelUp', '../img/levelUp.png', {frameWidth: 400, frameHeight: 300});
 
-    this.load.spritesheet('MaJUp', '../img/MaJ.png', {frameWidth: 90, frameHeight: 90})
+    this.load.spritesheet('MaJUp', '../img/MaJ.png', {frameWidth: 90, frameHeight: 90});
+
+    this.load.spritesheet('etatCrit', '../img/etatCrit.png', {frameWidth: 291, frameHeight: 270});
 
     this.load.audio('music', '../img/musiquejeu.mp3')
 }
@@ -130,9 +132,7 @@ function create() {
             break;
         default:
             map = this.add.tilemap('map1');
-            break;       
-
-
+            break;
     }
 
     mapWidth = map.width;
@@ -226,6 +226,21 @@ function create() {
         frameRate: 8
     });
 
+    //animation état critique
+    this.etatCrit = [];
+    for (let i = 0; i < infoObjet.length; i++) {
+        this.etatCrit.push(this.physics.add.sprite(0, 0, 'etatCrit'));
+        this.etatCrit[i].displayWidth = 90;
+        this.etatCrit[i].displayHeight = 90;
+        this.etatCrit[i].setAlpha(0);
+        this.etatCrit[i].id = i;
+    }
+    this.anims.create({
+        key: 'etatCritAnim',
+        frames: 'etatCrit',
+        frameRate: 1
+    });
+
     let cursors = this.input.keyboard.createCursorKeys();
 
     this.cameras.main.setZoom(0.3);
@@ -260,7 +275,7 @@ function create() {
     let j = 0;
     let obj;
     for (let y of infoObjet) {
-        obj = new Objet(y, this, -1000, -1000, graphics, this.levelUp[j], this.MaJUp[j++]);
+        obj = new Objet(y, this, -1000, -1000, graphics, this.levelUp[j], this.MaJUp[j], this.etatCrit[j++]);
         obj.visible = false;
         stockageObj.push(obj);
     }
