@@ -301,6 +301,7 @@ function update(time, delta) {
     }
 
     gameView.verifWin(tabObjNivMax);
+    gameView.verifLoose();
 
     controls.update(delta);
 
