@@ -78,11 +78,11 @@ function preload() {
     this.load.image('Box_Internet', '../tiled/New/salon/box1.png');
     this.load.image('Ordinateur', '../tiled/New/salon/computer1.png');
     this.load.image('Robot_Aspirateur', '../tiled/New/robots/cleaner1.png');
-    this.load.image('Lumière', '../tiled/New/light/mural1.png');
+    this.load.image('Lumière', '../tiled/New/light/lampe.png');
     this.load.image('Frigo', '../tiled/New/kitchen/frdige1.png');
     this.load.image('Fauteuil', '../tiled/New/salon/canape.png');
     this.load.image('Gazinière', '../tiled/New/kitchen/furnace1.png');
-    this.load.image('Radiateur', '../tiled/New/chauffage/radiateur1.png');
+    this.load.image('Radiateur', '../tiled/New/chauffage/radiateur.png');
     this.load.image('Lave_Linge', '../tiled/New/buanderie/lavelinge1.png');
     this.load.image('Lave_Vaisselle', '../tiled/New/kitchen/dishwasher1.png');
     this.load.image('Réveil', '../tiled/New/bedrooms/reveil.png');
