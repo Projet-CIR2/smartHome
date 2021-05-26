@@ -154,7 +154,7 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
         }
     } else {
         button.onclick = () => {
-            if (element.infosNiveau.coutReparation > gameView.getArgentPlayer() && element.infosNiveau.coutDebit < gameView.debit) {
+            if (element.infosNiveau.coutDebit < gameView.debit) {
                 let tmp = element.infosNiveau.tempsReparation;
 
                 let p = document.getElementById('infos' + element.nom);
