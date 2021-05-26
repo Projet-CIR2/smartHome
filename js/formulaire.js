@@ -15,7 +15,7 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
     p = document.createElement('p');
     div.appendChild(p);
     p.innerHTML = text + "<br><br>";
-    p.id="infos"+element.nom;
+    p.id = "infos" + element.nom;
 
     let button;
 
@@ -24,8 +24,8 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
         div.appendChild(button);
         button.setAttribute('class', 'btn btn-warning btn-sm');
         button.textContent = btn;
-        if(mOru == 'd_MaJ') {
-            button.id = 'majButton'+ element.nom;
+        if (mOru == 'd_MaJ') {
+            button.id = 'majButton' + element.nom;
         }
     }
     if (mOru === 'd_Upgrade') {
@@ -78,7 +78,6 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
 
                     element.position(stockageVar.clickPolygon.x, stockageVar.clickPolygon.y);
                 }
-                element.degrade();
 
                 stockageVar.click = false;
                 if (stockageVar.clickPolygon !== undefined) {
@@ -88,11 +87,8 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
 
                 stockageVar.clickPolygon = undefined;
 
-                // scriptMagique.clean();
-                // scriptMagique.clickUpgrade();
-                
                 // on ajoute l'objet aux objets achetés
-                achat.addMaj(title);
+                achat.addInter(title);
                 let img = document.createElement('img');
 
                 afficheAchat.setAttribute('style', 'position: absolute; margin-top: 20%; margin-left: 35%; background-color: #BFB99E;border-top-left-radius: 80px 80px;border-top-right-radius: 80px 80px;border-bottom-left-radius: 80px 80px;border-bottom-right-radius: 80px 80px; height: 50%; width: 32%; visible: hidden; border:5px solid black;');
@@ -109,18 +105,20 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 let textstats = "";
                 if (stat.environnement < 0) {
                     textstats += 'Impact Environnement : -' + Math.abs(stat.environnement) + '<br>';
-                }
-                else{
+                } else {
                     textstats += "Impact Environnement :" + stat.environnement + '<br>';
                 }
-                
+
                 element.levelUp();
+                if (element.niveau !== 0) achat.cleanMaj();
+                element.degrade();
+
                 textstats += 'Confort : ' + stat.bonheur + '<br>';
                 textstats += 'Coût de réparation : ' + element.infosNiveau.coutDebit + ' de Debit' + '<br>';
-                textstats += 'Temps de dégration si mise à jour pas faite : ' + element.infosNiveau.tempsEtat + ' seconde' +'<br>';
+                textstats += 'Temps de dégration si mise à jour pas faite : ' + element.infosNiveau.tempsEtat + ' seconde' + '<br>';
 
-                stats.innerHTML =textstats;
-                stats.setAttribute('style','color: white; margin-top: 7px; text-align:center; font-size: 13px;')
+                stats.innerHTML = textstats;
+                stats.setAttribute('style', 'color: white; margin-top: 7px; text-align:center; font-size: 13px;')
 
                 pClick.textContent = "Cliquer pour continuer";
                 pClick.setAttribute('style', 'color: white; margin-top: 7px; text-align:center; font-size: 15px;');
@@ -153,47 +151,36 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 afficheAchat.appendChild(pClick);
                 soundCash.play().then();
 
-                
+
             }
         }
     } else {
+        button.onclick = () => {
+            let tmp = element.infosNiveau.tempsReparation;
 
-        if(element.verifMaJ != false) {
-            let txt = document.getElementById('infos'+element.nom);
+            let p = document.getElementById('infos' + element.nom);
             let p2 = document.createElement('p');
-            p2.innerHTML = "Vous avez déjà fait cette MaJ";
-            txt.appendChild(p2);
-            let aze = document.getElementById('majButton'+element.nom);
-            aze.setAttribute('style', 'display: none');
-        }else {
-            button.onclick = () => {
-                let tmp = element.infosNiveauMaJ.tempsReparation;
+            let boutton = document.getElementById('majButton' + element.nom);
 
-                let p  = document.getElementById('infos'+element.nom);
-                let p2 = document.createElement('p');
-                let boutton = document.getElementById('majButton'+element.nom);
+            p2.id = "bip" + element.nom;
+            p.appendChild(p2);
 
-                p2.id = "bip"+element.nom;
-                p.appendChild(p2);
+            if (boutton !== undefined) {
+                let cacherbutton = document.getElementById('achatButton');
+                let cacherbutton2 = document.getElementById('achatMaJ');
 
-                if(boutton !== undefined) {
-                    let cacherbutton = document.getElementById('achatButton');
-                    let cacherbutton2 = document.getElementById('achatMaJ');
+                let chrono = new timee(tmp, element.nom, cacherbutton, cacherbutton2, element);
+                chrono.start();
 
-                    let chrono = new timee(tmp, element.nom, cacherbutton, cacherbutton2, element);
-                    chrono.start();
+                element.animMaJUp(element.infosNiveau.tempsReparation);
 
-                    element.animMaJUp(element.infosNiveauMaJ.tempsReparation);
+                gameView.modifVar('debit', -element.infosNiveau.coutDebit)
 
-                    gameView.modifVar('debit', -element.infosNiveauMaJ.coutDebit)
-
-                    element.niveauMaJ++;
-                    element.verifMaJ = true;
-                }
-                boutton.setAttribute('style', 'display: none;');
+                element.niveauMaJ++;
             }
-
+            boutton.setAttribute('style', 'display: none;');
         }
+
     }
 
 }

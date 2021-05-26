@@ -21,6 +21,14 @@ let scriptMagique = (function () {
             });
         },
 
+        eventMaj() {
+            if (document.getElementById("d_MaJ") !== null) {
+                this.clean();
+                this.clickMaj();
+                achat.verif();
+            }
+        },
+
         clickMaj() {
             let div = document.createElement('div');
             majup.style.backgroundColor = '#A09E97';

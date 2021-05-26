@@ -49,7 +49,9 @@ class timee {
                     element.finBarre();
                     element.etat = 3;
                     element.degrade();
-                    gameView.modifVar('debit', element.infosNiveauMaJ.coutDebit);
+                    achat.suppMaj(elmt);
+                    scriptMagique.eventMaj();
+                    gameView.modifVar('debit', element.infosNiveau.coutDebit);
                 }
                 let affichageAchatChat = document.getElementById('chat');
                 let div = document.createElement('div');

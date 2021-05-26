@@ -1,28 +1,50 @@
-let achat = (function() {
+let achat = (function () {
     let dataMaj = [];
+    let dataInter = [];
 
     return {
         recupData() {
             for (let element of stockageObj) {
                 createObjetMaj('d_Upgrade', element.nom, "Amélioration suivante : " + element.infosNiveau.description + "<br><br>" +
                     ((element.niveau !== 3) ? "Prix : " + element.infosNiveau.coutAmelioration + "€" : "Vous etes arrivé au niveau maximum !"),
-                    ((element.niveau !== 3) ? ((element.niveau === 0) ? 'Acheter' : 'Améliorer'): 'Niveau Max'), element);
+                    ((element.niveau !== 3) ? ((element.niveau === 0) ? 'Acheter' : 'Améliorer') : 'Niveau Max'), element);
             }
         },
 
         recupDataMaj() {
             for (let element of dataMaj) {
                 createObjetMaj('d_MaJ', element.nom,
-                    "Prix Maj : " + element.infosNiveauMaJ.coutReparation + "€" +
-                    "<br><br>Temps de MaJ : " + element.infosNiveauMaJ.tempsReparation + "s" +
-                    "<br><br>Cout débit : " + element.infosNiveauMaJ.coutDebit,
+                    "Prix Maj : " + element.infosNiveau.coutReparation + "€" +
+                    "<br><br>Temps de MaJ : " + element.infosNiveau.tempsReparation + "s" +
+                    "<br><br>Cout débit : " + element.infosNiveau.coutDebit,
                     'Mettre à jour', element);
             }
         },
 
+        cleanMaj() {
+            dataMaj = [];
+            this.baisseEtat();
+        },
+
+        baisseEtat() {
+            for (let element of dataInter) {
+                if (element.etat !== 3) {
+                    if (dataMaj.findIndex(elmt => elmt.nom === element.nom) === -1) {
+                        dataMaj.push(element);
+                    }
+                }
+            }
+            scriptMagique.eventMaj();
+        },
+
+        suppMaj(title) {
+            let ind = dataMaj.findIndex(elmt => elmt.nom === title);
+            dataMaj.splice(ind, 1);
+        },
+
         achat() {
-            this.recupData(),
-                this.recupDataMaj()
+            this.recupData();
+            this.recupDataMaj();
         },
 
         popUpgrade(nb) {
@@ -33,25 +55,23 @@ let achat = (function() {
             dataMaj.splice(nb, 1);
         },
 
-        addMaj(title) {
+        addMaj() {
+
+        },
+
+        addInter(title) {
             let indice = stockageObj.findIndex(element => element.nom === title);
             let verif = false;
-            console.log(this.getDataMaJ());
-            let tab = this.getDataMaJ();
+            let tab = this.getInter();
 
-            if(tab.length != 0) {
-
-
-                for(let i = 0; i < tab.length; i++) {
-                    console.log(stockageObj[indice].nom);
-                    if(stockageObj[indice].nom == tab[i].nom) {
+            if (tab.length !== 0)
+                for (let i = 0; i < tab.length; i++)
+                    if (stockageObj[indice].nom === tab[i].nom)
                         verif = true;
-                    }
-                }
-            }
 
-            if (indice !== -1 && verif == false) {
-                this.setDataMaJ(stockageObj[indice]);
+
+            if (indice !== -1 && verif === false) {
+                this.setInter(stockageObj[indice]);
                 // this.popUpgrade(indice);
             }
         },
@@ -90,8 +110,7 @@ let achat = (function() {
                 p.setAttribute('style', 'color: white; text-align: center; margin-top: 80%;');
                 div = document.getElementById('d_MaJ');
                 div.appendChild(p);
-            }
-            else {
+            } else {
                 if (document.getElementById('d_MaJ') !== null) {
                     scriptMagique.clean();
                     scriptMagique.clickMaj();
@@ -106,11 +125,11 @@ let achat = (function() {
                 div.setAttribute('style', 'display: none;')
             });
         },
-        getDataMaJ() {
-            return dataMaj;
+        getInter() {
+            return dataInter;
         },
-        setDataMaJ(val) {
-            dataMaj.push(val);
+        setInter(val) {
+            dataInter.push(val);
         },
     }
 })();

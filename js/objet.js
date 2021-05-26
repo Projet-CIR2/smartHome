@@ -10,7 +10,6 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
         this.niveauMaJ = 0;
 
         this.infosNiveauMaJ;
-        this.verifMaJ = false;
         this.end = false;
 
         scene.add.existing(this);
@@ -123,30 +122,32 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
 
     degrade() {
         let tempo;
-        tempo = this.infosNiveau.tempsEtat * 1000;
-        if(this.etat === 3){
-          this.clearTint();
+        tempo = this.infosNiveau.tempsEtat * 1000 / 3;
+        if (this.etat === 3) {
+            this.clearTint();
         }
         setTimeout(() => {
-          --this.etat;
-          switch (this.etat) {
-            case 2:
-              this.setTint(0xFFA07A);
-              this.degrade();
-              break;
-            case 1:
-              this.setTint(0xFA8072);
-              this.degrade();
-              break;
-            case 0:
-              this.setTint(0xDC143C);
-              this.bonheur= -this.bonheur;
-              break;
-            default:
-              this.clearTint();
+            if (this.etat !== 0) --this.etat;
+            achat.baisseEtat();
+            switch (this.etat) {
+                case 2:
+                    this.setTint(0xFFA07A);
+                    this.degrade();
+                    break;
+                case 1:
+                    this.setTint(0xFA8072);
+                    this.degrade();
+                    break;
+                case 0:
+                    this.setTint(0xDC143C);
+                    gameView.modifVar('humeur', -this.infosNiveau.bonheur);
+                    this.degrade();
+                    break;
+                default:
+                    this.clearTint();
             }
-          }, tempo);
-        }
+        }, tempo);
+    }
 
     position(x, y) {
         this.x = x;
@@ -163,20 +164,19 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
     levelUp() {
         if (this.niveau <= 3) {
             this.niveau++;
-            this.etat=3;
-            this.verifMaJ = false;
+            this.etat = 3;
             switch (this.niveau) {
-              case 1:
-                  this.infosNiveau = this.objet.niveau1;
-                  break;
-              case 2:
-                  this.infosNiveau = this.objet.niveau2;
-                  break;
-              case 3:
-                  this.infosNiveau = this.objet.niveau3;
-                  break;
-              default:
-                  break;
+                case 1:
+                    this.infosNiveau = this.objet.niveau1;
+                    break;
+                case 2:
+                    this.infosNiveau = this.objet.niveau2;
+                    break;
+                case 3:
+                    this.infosNiveau = this.objet.niveau3;
+                    break;
+                default:
+                    break;
             }
         }
         switch (this.niveauMaJ) {

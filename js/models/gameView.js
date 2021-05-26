@@ -143,10 +143,15 @@ class GameView {
             div.innerHTML = "<div id='dialog' role='dialog' aria-hidden='true' class='c-dialog'><div id='dialog2' role='document' class='c-dialog__box'> <h2 id='dialog-title' margin-top: 10px;>Fin de la partie !</h2><p id='dialog-desc'>Vous avez gagné, félicitation</p><p>Cliquer pour continuer</p><a id='quitter' href='/'>Quitter</a></div></div>";
             afficheAchat.appendChild(div);
             div.setAttribute('style', 'color: white; margin-top: 13px; text-align:center; font-size: 20px; margin-');
-            console.log("FIN JEU WIN");
             this.verif = true;
+
+            let body = document.getElementById('body');
+            body.addEventListener('click', () => {
+                window.location.href = "/";
+            });
         }
     }
+
     verifLoose() {
         if(this.verif == false) {
             let body = document.getElementById('body');
@@ -160,7 +165,7 @@ class GameView {
                 div.innerHTML = "<div id='dialog' role='dialog' aria-hidden='true' class='c-dialog'><div id='dialog2' role='document' class='c-dialog__box'> <h2 id='dialog-title' margin-top: 10px;>Fin de la partie !</h2><p id='dialog-desc'>Vous avez perdu</p><p>Votre confort est à 0</p><p>Cliquer pour continuer</p><a id='quitter' href='/'>Quitter</a></div></div>";
                 afficheAchat.appendChild(div);
                 div.setAttribute('style', 'color: white; margin-top: 13px; text-align:center; font-size: 20px; margin-');
-                console.log("FIN JEU LOOSE");
+
                 this.verif = true;
                 body.addEventListener('click', () => {
                     window.location.href = "/";
@@ -177,7 +182,7 @@ class GameView {
                 div.innerHTML = "<div id='dialog' role='dialog' aria-hidden='true' class='c-dialog'><div id='dialog2' role='document' class='c-dialog__box'> <h2 id='dialog-title' margin-top: 10px;>Fin de la partie !</h2><p id='dialog-desc'>Vous avez perdu</p><p>L'Environnement est à 0</p><p>Cliquer pour continuer</p><a id='quitter' href='/'>Quitter</a></div></div>";
                 afficheAchat.appendChild(div);
                 div.setAttribute('style', 'color: white; margin-top: 13px; text-align:center; font-size: 20px; margin-');
-                console.log("FIN JEU LOOSE");
+
                 this.verif = true;
                 body.addEventListener('click', () => {
                     window.location.href = "/";
