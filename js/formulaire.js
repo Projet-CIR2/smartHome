@@ -154,29 +154,31 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
         }
     } else {
         button.onclick = () => {
-            let tmp = element.infosNiveau.tempsReparation;
+            if (element.infosNiveau.coutReparation > gameView.getArgentPlayer() && element.infosNiveau.coutDebit > gameView.debit) {
+                let tmp = element.infosNiveau.tempsReparation;
 
-            let p = document.getElementById('infos' + element.nom);
-            let p2 = document.createElement('p');
-            let boutton = document.getElementById('majButton' + element.nom);
+                let p = document.getElementById('infos' + element.nom);
+                let p2 = document.createElement('p');
+                let boutton = document.getElementById('majButton' + element.nom);
 
-            p2.id = "bip" + element.nom;
-            p.appendChild(p2);
+                p2.id = "bip" + element.nom;
+                p.appendChild(p2);
 
-            if (boutton !== undefined) {
-                let cacherbutton = document.getElementById('achatButton');
-                let cacherbutton2 = document.getElementById('achatMaJ');
+                if (boutton !== undefined) {
+                    let cacherbutton = document.getElementById('achatButton');
+                    let cacherbutton2 = document.getElementById('achatMaJ');
 
-                let chrono = new timee(tmp, element.nom, cacherbutton, cacherbutton2, element);
-                chrono.start();
+                    let chrono = new timee(tmp, element.nom, cacherbutton, cacherbutton2, element);
+                    chrono.start();
 
-                element.animMaJUp(element.infosNiveau.tempsReparation);
+                    element.animMaJUp(element.infosNiveau.tempsReparation);
 
-                gameView.modifVar('debit', -element.infosNiveau.coutDebit)
+                    gameView.modifVar('debit', -element.infosNiveau.coutDebit)
 
-                element.niveauMaJ++;
+                    element.niveauMaJ++;
+                }
+                boutton.setAttribute('style', 'display: none;');
             }
-            boutton.setAttribute('style', 'display: none;');
         }
 
     }
