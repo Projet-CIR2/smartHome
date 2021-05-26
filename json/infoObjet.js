@@ -2,7 +2,7 @@ let infoObjet = [
   {
     nom: "Frigo",
     niveau0:{
-      description: "Frigo de niveau 1 équipé d'un freezer idéal pour commencer ",
+      description: "Frigo de niveau 1 équipé d'un freezer, idéal pour commencer ",
       bonheur: 3,
       environnement: -20,
       coutAmelioration:750
@@ -10,7 +10,7 @@ let infoObjet = [
     },
 
     niveau1: {
-      description: "Frigo de niveau 2 qui permet de combler le besoin nutritionnel",
+      description: "Frigo de niveau 2 permetant d'avoir à manger pour 1 semaine",
       coutDebit: 25,
       tempsEtat: 90,
       bonheur: 3,
@@ -24,7 +24,7 @@ let infoObjet = [
     },
 
     niveau2: {
-      description: "Frigo de niveau 3 sublime l'humeur de ses utilisateurs",
+      description: "Frigo de niveau 3, sublime l'humeur de ses utilisateurs",
       coutDebit: 28,
       tempsEtat: 120,
       bonheur: 6,
@@ -50,14 +50,14 @@ let infoObjet = [
   {
     nom: "Fauteuil",
     niveau0:{
-      description: "Fauteuil de niveau 1 peu confortable ",
+      description: "Fauteuil de niveau 1, peu confortable ",
       bonheur: 2,
       environnement: -20,
       coutAmelioration:250
     },
 
     niveau1: {
-      description: "Fauteuil de niveau 2 ideal pour se reposer",
+      description: "Fauteuil de niveau 2 idéal pour se reposer",
       coutDebit: 20,
       tempsEtat: 60,
       bonheur: 2,
@@ -71,7 +71,7 @@ let infoObjet = [
     },
 
     niveau2: {
-      description: "Fauteuil de niveau 3 avec un confort irrésistible",
+      description: "Fauteuil de niveau 3 avec un confort irréprochable",
       coutDebit: 23,
       tempsEtat: 90,
       bonheur: 4,
@@ -96,14 +96,14 @@ let infoObjet = [
   {
     nom: "Gazinière",
     niveau0:{
-      description: "Gaziniere de niveau 1 modeste et fonctionnel ",
+      description: "Gazinière de niveau 1, modeste et fonctionnelle ",
       bonheur: 2,
       environnement: -20,
       coutAmelioration:400
     },
 
     niveau1: {
-      description: "Gaziniere de niveau 2 équipé d'un four ideal pour les amateurs",
+      description: "Gaziniere de niveau 2 équipé d'un four idéal pour les amateurs",
       coutDebit: 20,
       tempsEtat: 60,
       bonheur: 2,
@@ -117,7 +117,7 @@ let infoObjet = [
     },
 
     niveau2: {
-      description: "Gaziniere de niveau 3 équipé d'un autocuiseur parfait pour toutes les envies",
+      description: "Gazinière de niveau 3 équipé d'un autocuiseur parfait pour toutes les envies",
       coutDebit: 23,
       tempsEtat: 90,
       bonheur: 4,
