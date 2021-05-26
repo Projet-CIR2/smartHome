@@ -18,6 +18,13 @@ let achat = (function () {
                     "<br><br>Cout débit : " + element.infosNiveau.coutDebit,
                     'Mettre à jour', element);
             }
+            if (dataMaj.length === 0) {
+                let p = document.createElement('p');
+                p.textContent = "Pas de MaJ à faire";
+                p.setAttribute('style', 'color: white; text-align: center; margin-top: 80%;');
+                let div = document.getElementById('d_MaJ');
+                div.appendChild(p);
+            }
         },
 
         cleanMaj() {
@@ -98,18 +105,13 @@ let achat = (function () {
                     else {
                         p = document.createElement('p');
                         p.textContent = "Vous avez déjà placé un objet";
+                        p.id = "objMaj"
                         p.setAttribute('style', 'color: white; text-align: center; margin-top: 80%;');
                         div = document.getElementById('d_Upgrade');
                         div.appendChild(p);
                     }
                 }
-            } else if (dataMaj.length === 0 && mOru === 'MaJ') {
-                p = document.createElement('p');
-                p.textContent = "Vous n'avez pas d'objet";
-                p.setAttribute('style', 'color: white; text-align: center; margin-top: 80%;');
-                div = document.getElementById('d_MaJ');
-                div.appendChild(p);
-            } else {
+            }else {
                 if (document.getElementById('d_MaJ') !== null) {
                     scriptMagique.clean();
                     scriptMagique.clickMaj();
