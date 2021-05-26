@@ -81,17 +81,23 @@ class GameView {
 
     // modifie la variable de jeu du type de nb
     modifVar(type, nb) {
-        if (type === 'humeur' && this.humeur + nb <= 100) this.humeur += nb / this.difficulte;
+        if (type === 'humeur') {
+            if (this.humeur + (nb / this.difficulte) <= 100) this.humeur += nb / this.difficulte;
+            else this.humeur = 100;
+        }
         if (type === 'argent') this.argent += nb;
-        if (type === 'environnement' && this.environnement + nb <= 100) this.environnement += nb;
-        if (type === 'debit' && this.debit + nb >= 0 && this.debit + nb <= 100) this.debit += nb / this.difficulte;
+        if (type === 'environnement') {
+            if (this.environnement + nb <= 100) this.environnement += nb;
+            else this.environnement = 100;
+        }
+        if (type === 'debit' && this.debit + nb >= 0) {
+            if (this.debit + (nb / this.difficulte) <= 100) this.debit += nb / this.difficulte;
+            else this.debit = 100;
+        }
         
-        if(this.environnement <= 0) {
-            this.environnement = 0;
-        }
-        if(this.humeur <= 0) {
-            this.humeur = 0;
-        }
+        if(this.environnement <= 0) this.environnement = 0;
+        if(this.humeur <= 0) this.humeur = 0;
+
         this.modifBarre();
     }
 
