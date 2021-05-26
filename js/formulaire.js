@@ -68,16 +68,18 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                 afficheAchat.appendChild(pAchat);
                 afficheAchat.appendChild(pClick);
             } else {
-                // si on peut acheter, on assigne à la case polygon son objet
-                stockageVar.clickPolygon.objet = title;
-                stockageVar.clickPolygon.removeAlpha();
-                stockageVar.clickPolygon.refreshUpgrade();
-
                 // modification des variables lors du paiement
                 gameView.paiement(element.infosNiveau);
 
                 // let obj = stockageObj.find(obj => obj.objet.nom === element.nom);
-                if (element.niveau === 0) element.position(stockageVar.clickPolygon.x, stockageVar.clickPolygon.y);
+                if (element.niveau === 0) {
+                    // si on peut acheter, on assigne à la case polygon son objet
+                    stockageVar.clickPolygon.objet = title;
+                    stockageVar.clickPolygon.removeAlpha();
+                    stockageVar.clickPolygon.refreshUpgrade();
+
+                    element.position(stockageVar.clickPolygon.x, stockageVar.clickPolygon.y);
+                }
                 element.levelUp();
 
                 stockageVar.clickPolygon = undefined;
