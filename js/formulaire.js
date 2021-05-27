@@ -183,6 +183,45 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
                     }
                     boutton.setAttribute('style', 'display: none;');
                 }
+                else {
+                    let pAchat = document.createElement('p');
+                    let pClick = document.createElement('p');
+                    
+
+                    let pAchatHTML = document.getElementById('achatTxt');
+                    let pClickHTML = document.getElementById('pClick');
+
+                    let afficheAchat = document.getElementById('achat');
+                    afficheAchat.innerHTML = "";
+                    afficheAchat.setAttribute('style', 'display: none;');
+
+                    afficheAchat.setAttribute('style', 'position: absolute; margin-top: 20%; margin-left: 35%; background-color: #BFB99E;border-top-left-radius: 80px 80px;border-top-right-radius: 80px 80px;border-bottom-left-radius: 80px 80px;border-bottom-right-radius: 80px 80px; height: 35%; width: 32%; visible: hidden; border:5px solid black;');
+
+                    let img = document.createElement('img');
+                    img.src = "./img/icone_obj/attention.png";
+                    img.setAttribute('style', 'height: 100; width: 100px; margin-left: 35%; margin-top: 15px; ');
+                    img.id = 'image';
+
+                    pAchat.textContent = "Vous n'avez pas assez de débit pour faire cette MaJ";
+                    pAchat.setAttribute('style', 'color: white; margin-top: 13px; text-align:center; font-size: 20px;');
+                    pAchat.id = 'achatTxt';
+
+                    pClick.textContent = "Cliquer pour continuer";
+                    pClick.setAttribute('style', 'color: white; margin-top: 7px; text-align:center; font-size: 15px;');
+                    pClick.id = 'pClick';
+
+                    let imgHTML = document.getElementById('image');
+
+                    if (afficheAchat.childElementCount === 3) {
+                        afficheAchat.removeChild(imgHTML);
+                        afficheAchat.removeChild(pAchatHTML);
+                        afficheAchat.removeChild(pClickHTML);
+
+                    }
+                    afficheAchat.appendChild(img);
+                    afficheAchat.appendChild(pAchat);
+                    afficheAchat.appendChild(pClick);
+                }
             }
         }
     }
