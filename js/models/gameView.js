@@ -148,7 +148,8 @@ class GameView {
             afficheAchat.setAttribute('style', 'position: absolute; margin-top: 20%; margin-left: 35%; background-color: #BFB99E;border-top-left-radius: 80px 80px;border-top-right-radius: 80px 80px;border-bottom-left-radius: 80px 80px;border-bottom-right-radius: 80px 80px; height: 30%; width: 35%; visible: hidden; border:5px solid black;');
 
             let div = document.createElement('div');
-            div.innerHTML = "<div id='dialog' role='dialog' aria-hidden='true' class='c-dialog'><div id='dialog2' role='document' class='c-dialog__box'> <h2 id='dialog-title' margin-top: 10px;>Fin de la partie !</h2><p id='dialog-desc'>Vous avez gagné, félicitation</p><p>Cliquer pour continuer</p><a id='quitter' href='/'>Quitter</a></div></div>";
+            div.innerHTML = "<div id='dialog' role='dialog' aria-hidden='true' class='c-dialog'><div id='dialog2' role='document' class='c-dialog__box'> <h2 id='dialog-title' margin-top: 10px;>Fin de la partie !</h2><p id='dialog-desc'>Vous avez gagné, félicitation <br>"+this.scenario.description_fin+"</p><p>Cliquer pour continuer</p><a id='quitter' href='/'>Quitter</a></div></div>";
+
             afficheAchat.appendChild(div);
             div.setAttribute('style', 'color: white; margin-top: 13px; text-align:center; font-size: 20px; margin-');
             this.verif = true;
@@ -171,6 +172,9 @@ class GameView {
 
                 let div = document.createElement('div');
                 div.innerHTML = "<div id='dialog' role='dialog' aria-hidden='true' class='c-dialog'><div id='dialog2' role='document' class='c-dialog__box'> <h2 id='dialog-title' margin-top: 10px;>Fin de la partie !</h2><p id='dialog-desc'>Vous avez perdu</p><p>Votre confort est à 0</p><p>Cliquer pour continuer</p><a id='quitter' href='/'>Quitter</a></div></div>";
+                
+                afficheAchat.appendChild(div);
+                
                 afficheAchat.appendChild(div);
                 div.setAttribute('style', 'color: white; margin-top: 13px; text-align:center; font-size: 20px; margin-');
 
@@ -188,6 +192,7 @@ class GameView {
 
                 let div = document.createElement('div');
                 div.innerHTML = "<div id='dialog' role='dialog' aria-hidden='true' class='c-dialog'><div id='dialog2' role='document' class='c-dialog__box'> <h2 id='dialog-title' margin-top: 10px;>Fin de la partie !</h2><p id='dialog-desc'>Vous avez perdu</p><p>L'Environnement est à 0</p><p>Cliquer pour continuer</p><a id='quitter' href='/'>Quitter</a></div></div>";
+                
                 afficheAchat.appendChild(div);
                 div.setAttribute('style', 'color: white; margin-top: 13px; text-align:center; font-size: 20px; margin-');
 
