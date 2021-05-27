@@ -32,7 +32,7 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
     if (mOru === 'd_Upgrade') {
         let pAchat = document.createElement('p');
         let pClick = document.createElement('p');
-        if (element.niveau !== 3 && button != undefined) button.onclick = () => {
+        if (element.niveau !== 3 && button !== undefined) button.onclick = () => {
             let afficheAchat = document.getElementById('achat');
             afficheAchat.innerHTML = "";
             afficheAchat.setAttribute('style', 'display: none;');
@@ -156,7 +156,7 @@ let createObjetMaj = function (mOru, title, text, btn, element) {
             }
         }
     } else {
-        if (button != undefined) {
+        if (button !== undefined) {
             button.onclick = () => {
                 if (element.infosNiveau.coutDebit < gameView.debit) {
                     let tmp = element.infosNiveau.tempsReparation;

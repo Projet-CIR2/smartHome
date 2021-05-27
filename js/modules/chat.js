@@ -25,7 +25,7 @@ let chat = (function () {
         if (texte.argent !== undefined) {
         let textInfo = "";
 
-        if (texte.argent != 0 && texte.argent != undefined) {
+        if (texte.argent !== 0 && texte.argent !== undefined) {
             if(texte.argent < 0) {
                 textInfo += 'Vous avez perdu : ' + Math.abs(texte.argent) + '€ <br>';
 
@@ -39,7 +39,7 @@ let chat = (function () {
             }
         }
 
-        if (texte.debit != 0 && texte.debit != undefined) {
+        if (texte.debit !== 0 && texte.debit !== undefined) {
             if(texte.debit < 0) {
                 textInfo += "  Vous avez perdu : ";
                 textInfo += Math.abs(texte.debit);
@@ -54,7 +54,7 @@ let chat = (function () {
             }
         }
 
-        if (texte.humeur != 0 && texte.humeur != undefined) {
+        if (texte.humeur !== 0 && texte.humeur !== undefined) {
             if(texte.humeur < 0) {
                 textInfo += "  Vous avez perdu : ";
                 textInfo += Math.abs(texte.humeur);
@@ -69,7 +69,7 @@ let chat = (function () {
             }
         }
 
-        if (texte.environnement != 0 && texte.environnement != undefined) {
+        if (texte.environnement !== 0 && texte.environnement !== undefined) {
             if(texte.environnement < 0) {
                 textInfo += "  Vous avez perdu : ";
                 textInfo += Math.abs(texte.environnement);
