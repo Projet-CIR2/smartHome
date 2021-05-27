@@ -11,6 +11,8 @@ let scenarIndexerMenu = (function () {
         let obj1 = scenar.objet1;
         let obj2 = scenar.objet2;
         let obj3 = scenar.objet3;
+        let hab = scenar.habitants;
+        let map_ = scenar.map;
         $.ajax({
             type:"POST",
             url: "/",
@@ -26,6 +28,8 @@ let scenarIndexerMenu = (function () {
                elmtObj1 : obj1,
                elmtObj2 : obj2,
                elmtObj3 : obj3,
+               habs : hab,
+               map: map_,
             },
             success: () => {
                 window.location.href = "/jouer";

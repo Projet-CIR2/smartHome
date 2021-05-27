@@ -25,6 +25,7 @@ let achat = (function () {
                 let div = document.getElementById('d_MaJ');
                 div.appendChild(p);
             }
+            this.affichage();
         },
 
         cleanMaj() {
@@ -111,7 +112,7 @@ let achat = (function () {
                         div.appendChild(p);
                     }
                 }
-            }else {
+            } else {
                 if (document.getElementById('d_MaJ') !== null) {
                     scriptMagique.clean();
                     scriptMagique.clickMaj();
@@ -132,5 +133,16 @@ let achat = (function () {
         setInter(val) {
             dataInter.push(val);
         },
+        affichage() {
+            for (let element of dataMaj) {
+                if(element.majEnCours === true && document.getElementById('bip' + element.nom) === null) {
+                    let p = document.getElementById('infos' + element.nom);
+                    let p2 = document.createElement('p');
+
+                    p2.id = "bip" + element.nom;
+                    p.appendChild(p2);
+                }
+            }
+        }
     }
 })();

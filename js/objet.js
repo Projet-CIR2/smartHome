@@ -138,7 +138,7 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
                     this.degrade();
                     break;
                 case 1:
-                    this.animEtatCrit();
+                    if (!this.majEnCours) this.animEtatCrit();
                     this.setTint(0xFA8072);
                     this.degrade();
                     break;
@@ -220,13 +220,13 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
         this.MaJup.play('MaJUpAnim');
         this.MaJup.once('animationcomplete', () => {
             this.MaJup.setAlpha(0);
-            if (boucle < tempsMaj || boucle === undefined) {
+            if ((boucle < tempsMaj || boucle === undefined) && this.majEnCours) {
                 this.animMaJUp(tempsMaj, (boucle === undefined) ? 2 : ++boucle);
             }
         });
     }
 
-    animEtatCrit() {
+    animEtatCrit(niv) {
         this.etatCrit.setAlpha(1);
 
         this.etatCrit.x = this.x + 10;
@@ -235,7 +235,7 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
         this.etatCrit.play('etatCritAnim');
         this.etatCrit.once('animationcomplete', () => {
             this.etatCrit.setAlpha(0);
-            if (!this.majEnCours) this.animEtatCrit();
+            if (!this.majEnCours && (niv === this.niveau || niv === undefined)) this.animEtatCrit(this.niveau);
         });
     }
 
