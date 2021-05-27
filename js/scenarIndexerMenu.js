@@ -39,7 +39,6 @@ let scenarIndexerMenu = (function () {
     return {
         send(scenar) {
             post(scenar);
-            console.log(scenar);
         }
     }
 })();
