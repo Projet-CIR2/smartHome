@@ -1,5 +1,5 @@
 let config = {
-    type: Phaser.CANVAS,
+    type: Phaser.AUTO,
     width: window.innerWidth * 8 / 12,
     height: window.innerHeight - 56,
     backgroundColor: '#2d2d2d',
