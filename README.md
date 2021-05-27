@@ -1,4 +1,4 @@
-## HomeIO
+# HomeIO
 
 CIRiousGame 2020/2021
 Thème : Maison intelligente
@@ -14,8 +14,16 @@ Lourenço Quentin
 Pineau	Arthur
 Fournet Pierre-louis  
 
+## Indications
+
+Installez node.js,
+Allez dans une console puis rendez vous dans le dossier du projet
+Entrez la commande suivante : npm install ensuite,
+Entrez la commande suivante : node index.js
+Puis rendez vous sur google le lien suivant : http://localhost:4555
+
 ## Répartition des tâches :
-Cette liste est exhaustive, certains objectifs étant plus conséquent ont été réalisés à plusieurs.
+Cette liste est non exhaustive, certains objectifs étant plus conséquent ont été réalisés à plusieurs.
 
 Game designer (HTML/CSS) : Pineau	Arthur
 Visuel (MAP/OBJET) & player : Delestret Sébastien
