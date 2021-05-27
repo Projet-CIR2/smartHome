@@ -193,7 +193,7 @@ function create() {
 
     let cursors = this.input.keyboard.createCursorKeys();
 
-    this.cameras.main.setZoom(0.3);
+    this.cameras.main.setZoom(0.4);
 
     let controlConfig = {
         camera: this.cameras.main,
