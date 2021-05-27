@@ -67,8 +67,11 @@ class timee {
                 clearInterval(timer);
             }
             else {
+                
                 if(document.getElementById("bip"+elmt) != null) {
                     document.getElementById("bip"+elmt).innerHTML = "MaJ en cours : " + time + " secondes restantes ...";
+                }else {
+                    achat.affichage();
                 }
 
             }
