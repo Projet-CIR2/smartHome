@@ -9,16 +9,11 @@ Message : L'entretien des objets connectés tout en respectant la planète
 
 
 ## Jeu créé par :
-Barrat Nicolas
-
-Delestret Sébastien
-
-Giot Amaury
-
-Lourenço Quentin
-
-Pineau	Arthur
-
+Barrat Nicolas, 
+Delestret Sébastien, 
+Giot Amaury, 
+Lourenço Quentin, 
+Pineau	Arthur, 
 Fournet Pierre-louis  
 
 
