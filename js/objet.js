@@ -138,7 +138,7 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
                     this.degrade();
                     break;
                 case 1:
-                    this.animEtatCrit();
+                    if (!this.majEnCours) this.animEtatCrit();
                     this.setTint(0xFA8072);
                     this.degrade();
                     break;
