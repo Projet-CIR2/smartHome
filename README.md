@@ -22,7 +22,7 @@ Entrez la commande suivante : npm install ensuite,
 Entrez la commande suivante : node index.js
 Puis rendez vous sur google le lien suivant : http://localhost:4555
 
-## Répartition des tâches :
+## Répartition des tâches
 Cette liste est non exhaustive, certains objectifs étant plus conséquent ont été réalisés à plusieurs.
 
 Game designer (HTML/CSS) : Pineau	Arthur
@@ -31,3 +31,7 @@ Phaser : Barrat Nicolas
 JS (achat/maj) : Fournet Pierre-louis  
 Objet : Lourenço Quentin
 Event : Giot Amaury
+
+## Liens
+Github : https://github.com/Projet-CIR2/smartHome
+Disponible en ligne : https://nicob.space/homeio
