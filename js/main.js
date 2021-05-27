@@ -14,28 +14,16 @@ let config = {
     scene: {
         preload: preload,
         create: create,
-        update: update,
-        render: render
+        update: update
     }
 };
 
-let controls;
-
 let game = new Phaser.Game(config);
 
-let J2Haut, J2Bas, J2Gauche, J2Droite, layer1, layer2, layer3, layer4, collisions, map, sprite, clickImg, housebarre;
+let controls, layer1, layer2, layer3, layer4, collisions, map, text, pointsInteret,
+    nbHabitants, hab, mapWidth, mapHeight, lastDirection, levelUp, MaJUp, graphics;
 
-let chronoTexte, monTimer, chrono = 100;
-
-let matrixMap, chemin, cheminSize, pointsInteret, nbHabitants, hab;
-
-let newCoordX, newCoordY, testt, destination = -1, destinationInter = -1;
-
-let isoX, isoY, text;
-
-let mapWidth, mapHeight;
-
-let lastDirection;
+let monTimer, chrono = 100;
 
 let stockageVar = {
     click: false,
@@ -45,12 +33,9 @@ let stockageVar = {
 
 let stockageObj = [];
 
-let levelUp, MaJUp, graphics;
-
 let tabObjNivMax = [];
 
 let nbBarre = 0;
-
 
 function preload() {
 
@@ -98,28 +83,7 @@ function preload() {
 }
 
 
-function create() { 
-
-
-    //matrixMap.forEach(element => element.forEach(elem => elem = 0));
-    //console.log(matrixMap);
-    /*button = game.add.button(game.world.centerX - 120, game.world.centerY - 120, 'button', start, this, 2, 1, 0);
-    button.width = 240;
-    button.height = 120;
-
-    //	Progress report
-    text = game.add.text(game.world.centerX - 70, game.world.centerY - 75, 'Start Game', { fill: '#ffffff' });
-
-    game.stage.backgroundColor = '#182d3b'
-
-
-    cursors2 = this.input.keyboard.addKeys({
-        'P': Phaser.KeyCode.P
-    });
-
-    this.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
-    cursors2.P.onDown.add(goFull, this);*/
-
+function create() {
 
     /*------------- INITIALISATION MAP -------------*/
 
@@ -144,12 +108,11 @@ function create() {
     }
 
 
-
     let collisions = map.layers[3].data;
 
     for (let u = 0; u < mapHeight; u++) {
         for (let v = 0; v < mapWidth; v++) {
-            if (collisions[u][v].index == -1) {
+            if (collisions[u][v].index === -1) {
                 matrixMap[u][v] = 0;
             } else {
                 matrixMap[u][v] = 1;
@@ -159,13 +122,11 @@ function create() {
 
 
     pointsInteret = [];
-
-
     let layerPtInteret = map.layers[4].data;
     let i = 0;
     for (let u = 0; u < mapHeight; u++) {
         for (let v = 0; v < mapWidth; v++) {
-            if (layerPtInteret[u][v].index == 137) {
+            if (layerPtInteret[u][v].index === 137) {
                 pointsInteret[i] = {
                     x: v,
                     y: u
@@ -175,17 +136,6 @@ function create() {
 
         }
     }
-
-
-
-
-    //let test = this.add.sprite(609, 624, 'tempHouse');
-    //clickImg.setInteractive();
-
-    // let button = this.add.sprite(500, 500, 'button');
-    // button.setInteractive();
-
-    // click(button);
 
 
     /*------------- INITIALISATION TILES/LAYERS -------------*/
@@ -280,10 +230,6 @@ function create() {
         stockageObj.push(obj);
     }
 
-    // new Polygon(this, 1, 1);
-    // let polygon = new Phaser.Geom.Polygon('0 66 0 223 129 159 129 0');
-    // this.physics.add.existing(polygon);
-
 
     /*------------- INITIALISATION HABITANTS -------------*/
 
@@ -302,14 +248,6 @@ function create() {
         callbackScope: this,
         loop: true
     });
-    //convertTileCoordInScreenCoord(5,5);
-
-    // text = this.add.text(0, 0, 'Move the mouse', { font: '10px Courier', fill: '#00ff00' });
-
-    // this.input.on('pointerdown', function(pointer){
-    //     console.log(pointer.x);
-    //     console.log(pointer.y);
-    // });
 
     this.sound.play('music');
 
@@ -337,6 +275,7 @@ function update(time, delta) {
         element.update();
     });
 
+    //////// debug positions
     // let pointer = this.input.activePointer;
 
     // text.setText([
@@ -351,12 +290,6 @@ function update(time, delta) {
     // ]);
 }
 
-function render() {
-    game.debug.inputInfo(32, 32);
-    game.debug.pointer(game.input.activePointer);
-}
-
-
 function click(tileset) {
     tileset.on('pointerdown', function (pointer) {
         if (this.isTinted) {
@@ -365,24 +298,4 @@ function click(tileset) {
             this.setTint(0xCDB751);
         }
     })
-}
-
-
-function calculPixelX(x) {
-    let test2 = x * /*256*/ 64;
-    return test2;
-}
-
-function calculPixelY(y) {
-    let test2 = y * /*128*/ 64;
-    return test2;
-
-}
-
-
-function convert([x, y]) {
-    let posX = 135 + x * 128 - y * 128;
-    let posY = 280 + y * 64 + x * 64;
-
-    return [posX, posY];
 }
