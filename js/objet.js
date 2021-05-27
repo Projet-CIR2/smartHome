@@ -226,7 +226,7 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
         });
     }
 
-    animEtatCrit() {
+    animEtatCrit(niv) {
         this.etatCrit.setAlpha(1);
 
         this.etatCrit.x = this.x + 10;
@@ -235,7 +235,7 @@ class Objet extends Phaser.Physics.Arcade.Sprite {
         this.etatCrit.play('etatCritAnim');
         this.etatCrit.once('animationcomplete', () => {
             this.etatCrit.setAlpha(0);
-            if (!this.majEnCours) this.animEtatCrit();
+            if (!this.majEnCours && niv === this.niveau) this.animEtatCrit(this.niveau);
         });
     }
 
